@@ -135,7 +135,7 @@ abrimos *dos pull requests*, uno desde cada una de estas ramas. Para
 hacer esto, selecciona cada una de las ramas antes de hacer tu *pull
 request*:
 
-!(Selección de rama)[./rama.png?raw=true]
+<img src="./rama.png" width="318" height="276" />
 
 ¡Recuerda volver a tu rama `master` para seguir trabajando
 normalmente!
