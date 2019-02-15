@@ -37,23 +37,25 @@ la distribución distaría mucho de ser homogénea ☺ Por tanto:
 
 *m = m<sub>1</sub> + m<sub>2</sub>*
 
-*f = rand(24) | m < 4*
+*f = rand(24) | m > 24*
 
-*f = &lfloor; (m % 100) / 4 &rfloor; | m ≥ 4*
+*f = &lfloor; (m % 100) / 4 &rfloor; | m ≤ 24*
 
 Esto es:
 
-- Sumen el número de matrícula de ambos participantes del equipo. En
-  caso de que hayas quedado sin pareja, asume que *m<sub>2</sub> =
-  00000000*.
+- Sumen el número de *matrícula* de alumno (o número de *cuenta*) de
+  ambos participantes del equipo. En caso de que hayas quedado sin
+  pareja, asume que *m<sub>2</sub> = 00000000*.
 
-- Si los últimos dos números de la suma son 00, 01, 02 o 03, elige un
+- Si los últimos dos números de la suma son 97, 98, 99 o 00, elige un
   fascículo al azar.
 
-- Si la suma *no* termina en 00, 01, 02 o 03:
+- Si la suma *no* termina en 97, 98, 99 o 00:
   - toma sus dos últimos números (*m módulo 100*).
   - Divídelos sobre 4 (con aritmética entera, descartando partes
     fraccionales)
+
+Por favor, indica en la entrega el número de matrícula de ambos.
 
 ## ¿Qué leer?
 
