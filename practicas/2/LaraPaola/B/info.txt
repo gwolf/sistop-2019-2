@@ -1,0 +1,8 @@
+MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
+Procesador
+Intel Core i5 de doble núcleo y 2.3 GHz (Turbo Boost de hasta 3.6 GHz) con 64 MB de eDRAM
+Almacenamiento
+128 GB
+SSD de 128 GB
+Gráficos
+Intel Iris Plus Graphics 640
