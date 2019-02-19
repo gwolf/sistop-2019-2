@@ -11,8 +11,11 @@ del curso]]. Les reitero, sin embargo, que resulta más enriquecedor (y
 como lo refleja la rúbrica, obtiene una calificación un poco más alta)
 el que ustedes me planteen los temas de su interés.
 
-|--------+--------------------+---------------------------------+------------+------------|
-| Fecha  | Tema               | Integrantes                     | Documentos | Evaluación |
-|--------+--------------------+---------------------------------+------------+------------|
-| 26/feb | "The Machine" (HP) | Lizbeth Alejandro, Arturo Durán |            |            |
-|--------+--------------------+---------------------------------+------------+------------|
+|--------+-----------------------------+-------------------------------------+------------+------------|
+| Fecha  | Tema                        | Integrantes                         | Documentos | Evaluación |
+|--------+-----------------------------+-------------------------------------+------------+------------|
+| 26/feb | "The Machine" (HP)          | Lizbeth Alejandro, Arturo Durán     |            |            |
+| 28/feb | Rootkits                    | Beatriz Sánchez, Rodrigo Francisco  |            |            |
+| 5/mar  | RATS - Remote Access Trojan | Miguel Pérez Quiroz, Carlos Morales |            |            |
+| 7/mar  | Seguridad                   | Ernesto Aguilera                    |            |            |
+|--------+-----------------------------+-------------------------------------+------------+------------|
