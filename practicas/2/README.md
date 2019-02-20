@@ -87,7 +87,7 @@ un archivo dentro de ésta. Por ejemplo, para obtener la fecha del
 sistema y guardarla en un archivo:
 
 	$ git checkout practica2a
-	$ date > practicas/3/WolfGunnar/A/hora_actual.txt
+	$ date > practicas/2/WolfGunnar/A/hora_actual.txt
 
 El comando `git checkout` tiene por efecto que el _punto actual de
 trabajo_ en el repositorio sea el que le indicamos; podemos
@@ -109,8 +109,8 @@ Ahora, vamos a la rama de la práctica 2B:
 Puedes verificar que tu archivo en el directorio de 2A no
 existe. ¡No te preocupes, no se ha perdido!
 
-	$ ls practicas/3/WolfGunnar/A/hora_actual.txt
-	ls: cannot access practicas/3/WolfGunnar/A/hora_actual.txt: No such file or directory
+	$ ls practicas/2/WolfGunnar/A/hora_actual.txt
+	ls: cannot access practicas/2/WolfGunnar/A/hora_actual.txt: No such file or directory
 
 Ahora, generemos un archivo ejemplo. Puede ser cualquier cosa, en este
 caso (desde un sistema Linux) puede ser la información de tu CPU,
@@ -118,8 +118,8 @@ según la presenta el sistema operativo (claro, el archivo
 `/proc/cpuinfo` sólo existe en Linux; ponle cualquier contenido que
 elijas en caso de estar usando otro sistema):
 
-	$ cp /proc/cpuinfo practicas/3/WolfGunnar/B/cpuinfo.txt
-	$ git add practicas/3/WolfGunnar/B/cpuinfo.txt
+	$ cp /proc/cpuinfo practicas/2/WolfGunnar/B/cpuinfo.txt
+	$ git add practicas/2/WolfGunnar/B/cpuinfo.txt
 	$ git commit -m 'Agrego el archivo de Gunnar Wolf para la práctica 2B'
 
 ## Envía tus cambios mediante *dos* pull requests
