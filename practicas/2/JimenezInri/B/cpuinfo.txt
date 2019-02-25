@@ -1,0 +1,25 @@
+OS Name	Microsoft Windows 7 Home Premium
+Version	6.1.7601 Service Pack 1 Build 7601
+Other OS Description 	Not Available
+OS Manufacturer	Microsoft Corporation
+System Name	INRI
+System Manufacturer	Gateway
+System Model	ID49C
+System Type	x64-based PC
+Processor	Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz, 2266 Mhz, 2 Core(s), 4 Logical Processor(s)
+BIOS Version/Date	Gateway V1.00, 4/20/2010
+SMBIOS Version	2.6
+Windows Directory	C:\Windows
+System Directory	C:\Windows\system32
+Boot Device	\Device\HarddiskVolume2
+Locale	United States
+Hardware Abstraction Layer	Version = "6.1.7601.24354"
+User Name	INRI\brunovelezbecerra
+Time Zone	Central Standard Time (Mexico)
+Installed Physical Memory (RAM)	4.00 GB
+Total Physical Memory	3.68 GB
+Available Physical Memory	1.36 GB
+Total Virtual Memory	7.35 GB
+Available Virtual Memory	4.54 GB
+Page File Space	3.68 GB
+Page File	C:\pagefile.sys

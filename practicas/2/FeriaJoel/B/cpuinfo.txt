@@ -1,0 +1,48 @@
+El informe del sistema se escribió en: 02/14/19 11:19:19
+Nombre del sistema: LAPTOP-4NUIEOO0
+[Resumen del sistema]
+
+Elemento	Valor	
+Nombre del SO	Microsoft Windows 10 Home Single Language	
+Versión	10.0.17134 compilación 17134	
+Descripción adicional del SO 	No disponible	
+Fabricante del SO	Microsoft Corporation	
+Nombre del sistema	LAPTOP-4NUIEOO0	
+Fabricante del sistema	Acer	
+Modelo del sistema	Predator PT715-51	
+Tipo de sistema	PC basado en x64	
+SKU del sistema	0000000000000000	
+Procesador	Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz, 2801 Mhz, 4 procesadores principales, 8 procesadores lógicos	
+Versión y fecha de BIOS	Insyde Corp. V1.01, 26/06/2017	
+Versión de SMBIOS	3.0	
+Versión de controladora integrada	1.01	
+Modo de BIOS	UEFI	
+Fabricante de la placa base	KBL	
+Modelo de placa base	No disponible	
+Nombre de la placa base	Placa base	
+Rol de plataforma	Móvil	
+Estado de arranque seguro	Activada	
+Configuración de PCR7	Se necesita elevación de privilegios para ver	
+Directorio de Windows	C:\WINDOWS	
+Directorio del sistema	C:\WINDOWS\system32	
+Dispositivo de arranque	\Device\HarddiskVolume1	
+Configuración regional	España	
+Capa de abstracción de hardware	Versión = "10.0.17134.556"	
+Nombre de usuario	LAPTOP-4NUIEOO0\joel0	
+Zona horaria	Hora estándar central (México)	
+Memoria física instalada (RAM)	16.0 GB	
+Memoria física total	15.9 GB	
+Memoria física disponible	8.85 GB	
+Memoria virtual total	20.6 GB	
+Memoria virtual disponible	11.5 GB	
+Espacio de archivo de paginación	4.75 GB	
+Archivo de paginación	C:\pagefile.sys	
+Protección de DMA de kernel	Desactivada	
+Seguridad basada en la virtualización	No habilitado	
+Compatibilidad con cifrado de dispositivo	Se necesita elevación de privilegios para ver	
+Hyper-V - Extensiones de modo de monitor VM	Sí	
+Hyper-V - Extensiones de traducción de dirección de segundo nivel	Sí	
+Hyper-V - Virtualización habilitada en Firmware	Sí	
+Hyper-V -Protección de ejecución de datos	Sí	
+
+[Recursos de hardware]
