@@ -153,55 +153,133 @@ significarán mayores retos personales 😉
 
 - Félix González ::
   - Archivo :: [[./GonzalezFelix/fotografia mapa conceptual.jpg][fotografia mapa conceptual.jpg]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentas un resumen estructurado en secciones
+                   consecutivas título-párrafo, no un _mapa
+                   conceptual_. Te sugiero comprender mejor ese
+                   modelo, que presenta una buena estructura para
+                   plasmar y comprender la profundidad de algunos
+                   conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está adecuado.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Ivan Hernández ::
   - Archivo :: [[./HernandezIvan/tarea1.pdf][tarea1.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: ¡Buen trabajo!
+  - Calificación :: 10
 
 - Víctor Hernández ::
   - Archivo :: [[./HernandezVictor/victor.pdf][victor.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentas un resumen estructurado en recuadros
+                   consecutivos, no un _mapa conceptual_. Te sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está un tanto
+                   corto: Si no conoces el artículo, ¿puedes darte una
+                   buena idea con ver tu resumen?
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 8
 
 - Omar Ibarra ::
   - Archivo :: [[./IbarraOmar/Tarea_1.pdf][Tarea_1.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentas un resumen estructurado en recuadros
+                   consecutivos, no un _mapa conceptual_. Te sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está un tanto
+                   corto: Si no conoces el artículo, ¿puedes darte una
+                   buena idea con ver tu resumen?
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 8
 
 - Osmar Juárez, Luis Morales ::
   - Archivo :: [[./JuarezOsmar-MoralesLuis/DiagramaTarea1.jpg][DiagramaTarea1.jpg]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentan un resumen estructurado en recuadros
+                   consecutivos, no un _mapa conceptual_. Les sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Paola Lara ::
   - Archivo :: [[./LaraPaola/Tarea1-LaraPaola.pdf][Tarea1-LaraPaola.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentas un resumen estructurado en recuadros
+                   consecutivos, no un _mapa conceptual_. Te sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Miguel López ::
   - Archivos :: [[./LopezSotoMiguel/Anexo.txt][Anexo.txt]], [[./LopezSotoMiguel/Mapa.pdf][Mapa.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: ¡Buen trabajo!
+  - Calificación :: 10
 
 - Carlos Morales, Miguel Pérez Quiroz ::
   - Archivo :: [[./MoralesCarlos_PérezQuirozMiguel/Tarea1.pdf][Tarea1.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Presentan un pequeño resumen por ``acto'', no un
+                   mapa conceptual. Les sugiero revisar esta
+                   herramienta de organización mental.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Miguel Pérez Ruiz ::
   - Archivo :: [[./PerezRuizMiguel/T1.pdf][T1.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Buen trabajo.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Víctor Piña ::
   - Archivo :: [[./PiñaVictor/diagrama.png][diagrama.png]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: La herramienta que usaste le da una apariencia
+                   única a tu trabajo. Estéticamente, muy claro y
+                   único. ¡Felicidades!
+
+		   Sin embargo... Creo que es particularmente útil
+                   para cuando la cantidad de información sea
+                   menor. Para este caso, sugeriría hacer un esquema
+                   para cada "acto".
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
 
 - Vicente Romero ::
   - Archivo :: [[./RomeroVicente/tareaSO.pdf][tareaSO.pdf]]
-  - Comentarios ::
-  - Calificación ::
+  - Comentarios :: Trabaja un poco más en tu presentación, no da muy
+                   buena imagen tuya ☹
+
+		   En mi opinión, le faltó desarrollo a tu
+                   presentación; como le comenté a otros compañeros,
+                   esto no es exactamente un mapa mental, te sugiero
+                   revisarlo, te van a ser útiles.
+  - Calificación :: 8
