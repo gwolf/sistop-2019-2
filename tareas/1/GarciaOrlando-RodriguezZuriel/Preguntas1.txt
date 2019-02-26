@@ -1,0 +1,17 @@
+
+TAREA 1. Respuesta al punto 2
+
+¿Qué puntos principales ubican que puedan relacionarse con los temas que revisamos en clase?
+
+En primera instancia ubicamos el tema de las distintas ISAs asi como su historia, casos que fueron desastrosas como lo fue el iAPX 432 de intel pero que gracias a ello se dio el surgimiento de populares y en ciertas medidas "utiles" ISAs que son la intel x8086.
+
+Ligado a lo anterior comprendimos el surgimiento de las ISAs RISC y CISC que hasta la actulidad son utilizadas por la eficiciencia que provocan. 
+
+También observamos la veracidad de la leyes de Moore y la escala de Dennard.
+
+Por último nos intereso el hecho del desarrollo de nuevas propuestas de arquitecturas como son las Domain Specific Arquitectures (DSAs), VLIW que aun siendo un fracaso para computadoras de propósito general tiene una aplicación en el área de aplicaciones DSP, y Googleś TPU (Tensor Processinjg Unit ) que estan ligadas a la aceleración de las DNN (Deep Neural Network)     
+
+
+¿Encuentras alguna tensión entre lo expuesto y lo que presenta este texto?
+
+No encontramos niguna, ya que lo leido y visto en clase es similar. 
