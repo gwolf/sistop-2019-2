@@ -19,4 +19,5 @@ el que ustedes me planteen los temas de su interés.
 | 5/mar  | RATS - Remote Access Trojan                       | Miguel Pérez Quiroz, Carlos Morales |            |            |
 | 7/mar  | Seguridad                                         | Ernesto Aguilera                    |            |            |
 | 12/mar | Planificación → Tiempo real, núcleo prevenible... | Orlando García, Luis Morales        |            |            |
+| 14/mar | SPECTRE y Meltdown                                | Osmar Juárez                        |            |            |
 |--------+---------------------------------------------------+-------------------------------------+------------+------------|
