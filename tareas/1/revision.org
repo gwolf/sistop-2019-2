@@ -1,0 +1,207 @@
+#+title: Revisión de la tarea 1
+
+Como lo comenté en clase, esta tarea es meramente un control de
+lectura. Espero que el texto les haya resultado interesante y les
+parezca una buena forma de concluir nuestro repaso histórico.
+
+Notarán que la dispersión de calificaciones es muy limitada. No se
+preocupen, ya más adelante llegarán tareas más divertidas, que les
+significarán mayores retos personales 😉
+
+- Gabriel Aguilar, Sandra García ::
+  - Archivo :: [[./AguilarGabriel-GarciaSandra/MapaConceptual.jpg][MapaConceptual.jpg]]
+  - Comentarios :: ¡Excelente resumen!
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
+
+- Ernesto Aguilera ::
+  - Archivo :: [[./AguileraErnesto/AguileraErnesto.txt][AguileraErnesto.txt]]
+  - Comentarios :: Un mapa verdaderamente mínimo, aunque sin duda
+                   suficiente. ¡Bien!
+
+		   Sin embargo, me falta todo un "acto": El
+                   diagnóstico de la actualidad y predicción del
+                   futuro (_Act IV: Dennard Scaling and Moore’s Law
+                   are Dead, but DSAs, TPUs, and Open RISC-V are
+                   alive_). ¿Qué pasó?
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 8
+
+- Lizbeth Alejandro, Arturo Durán ::
+  - Archivo :: [[./AlejandroLizbeth-DuránArturo/Tarea_1.pdf][Tarea_1.pdf]]
+  - Comentarios :: Las fotos son de bastante baja calidad ☹ Cuesta
+                   trabajo leer...
+
+		   Página 5, cerca del final: Mencionan _una basta
+                   cantidad de instrucciones_. La palabra _basta_
+                   indica _suficiente_, querían decir _vasta cantidad_
+                   (amplia).
+
+		   Muy buen mapa, y agradezco que los párrafos
+                   restantes los presentaran a texto completo, queda
+                   más claro.
+  - Calificación :: 10
+
+- Luis Arvizu, Inri Jimenez ::
+  - Archivo :: [[./ArvizuLuis-JimenezInri/ArvizuLuis-JimenezInri.jpg][ArvizuLuis-JimenezInri.jpg]]
+  - Comentarios :: Presentan un resumen estructurado en "bolitas"
+                   consecutivas, no un _mapa conceptual_. Les sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está adecuado.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
+
+- Daniel Cruz ::
+  - Archivo :: [[./CruzDaniel/tarea1.pdf][tarea1.pdf]]
+  - Comentarios :: Presentan un resumen estructurado en "bolitas"
+                   consecutivas, no un _mapa conceptual_. Les sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está adecuado.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
+
+- Joel Feria, Vladimir López ::
+  - Archivos :: [[./FeriaBermudezJoel-LópezCirigoVladimir/Tarea1.png][Tarea1.png]], [[./FeriaJoel_LopezJose/MAPA-CONCEPTUAL-SO.pptx][MAPA-CONCEPTUAL-SO.pptx]], [[./FeriaJoel_LopezJose/Mapa_conp_t1.png][Mapa_conp_t1.png]]
+  - Comentarios :: Enviaron tres archivos con el mismo contenido;
+                   /Tarea1.png/ y /Mapa_conp_t1.png/ son idénticos, y
+                   /MAPA-CONCEPTUAL-SO.pptx es –supongo– el fuente a
+                   partir del cual lo desarrollaron. Usan dos
+                   directorios
+                   (/FeriaBermudezJoel-LópezCirigoVladimir/ y
+                   /./FeriaJoel_LopezJose/) ¡Ojo con eso! Entreguen
+                   sólo una versión de cada cosa.
+
+		   Presentan un resumen estructurado en "bolitas"
+                   consecutivas, no un _mapa conceptual_. Les sugiero
+                   comprender mejor ese modelo, que presenta una buena
+                   estructura para plasmar y comprender la profundidad
+                   de algunos conceptos posiblemente complicados.
+
+		   A nivel cantidad de información, está adecuado.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 8
+
+- Rodrigo Francisco, Beatriz Sánchez ::
+  - Archivo :: [[./FranciscoRodrigo-SanchezBeatriz/Tarea1.pdf][Tarea1.pdf]]
+  - Comentarios :: Interesante manera de presentarlo, y bonita
+                   presentación gráfica ☺
+
+		   Tengo que decir, sin embargo, que es más una
+                   infografía que un mapa conceptual. Les sugiero
+                   revisar esta herramienta para estructurar conceptos
+                   y comprender "pedazos" de información compleja.
+
+		   ¡Ojo! Dennard Scaling no es el nombre de una
+                   persona que murió, sino que una observación
+                   publicada por Robert Dennard, diciendo que conforme
+                   se reducen los transistores, su densidad de
+                   potencia (la energía eléctrica consumida por área)
+                   se mantiene constante, disminuyendo voltaje y
+                   corriente conforme se miniaturiza. El artículo no
+                   dice que murió Dennard Scaling ☺
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
+
+- Orlando García, Zuriel Rodríguez ::
+  - Archivos :: [[./GarciaOrlando-RodriguezZuriel/Preguntas1.txt][Preguntas1.txt]], [[./GarciaOrlando-RodriguezZuriel/Tarea1.docx][Tarea1.docx]], [[./GarciaOrlando-RodriguezZuriel/Tarea1.jpg][Tarea1.jpg]]
+  - Comentarios :: Los archivos /Tarea1.docx/ y /Tarea1.jpg/ tienen el
+                   mismo contenido.
+
+		   Presentan un pequeño resumen por ``acto'', no un
+                   mapa conceptual. Les sugiero revisar esta
+                   herramienta de organización mental.
+
+		   Cuando tomen el /pantallazo/ de un documento,
+                   corrijan (o por lo menos, oculen 😉) las
+                   indicaciones de ortografía y sintaxis. ¡Se ve feo y
+                   poco profesional!
+  - Calificación :: 9
+
+- Vicente García, Enrique Guerrero ::
+  - Archivo :: [[./GarciaVicente-GuerreroEnrique/TAREA-1.pdf][TAREA-1.pdf]]
+  - Comentarios :: Buen estructura de información, y buena cobertura
+                   del tema.
+
+		   Falta: El segundo inciso (relación entre lo que
+                   aquí se expone y lo visto en clase, tensiones entre
+                   los temas)
+  - Calificación :: 9
+
+- Félix González ::
+  - Archivo :: [[./GonzalezFelix/fotografia mapa conceptual.jpg][fotografia mapa conceptual.jpg]]
+  - Comentarios ::
+  - Calificación ::
+
+- Ivan Hernández ::
+  - Archivo :: [[./HernandezIvan/tarea1.pdf][tarea1.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Víctor Hernández ::
+  - Archivo :: [[./HernandezVictor/victor.pdf][victor.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Omar Ibarra ::
+  - Archivo :: [[./IbarraOmar/Tarea_1.pdf][Tarea_1.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Osmar Juárez, Luis Morales ::
+  - Archivo :: [[./JuarezOsmar-MoralesLuis/DiagramaTarea1.jpg][DiagramaTarea1.jpg]]
+  - Comentarios ::
+  - Calificación ::
+
+- Paola Lara ::
+  - Archivo :: [[./LaraPaola/Tarea1-LaraPaola.pdf][Tarea1-LaraPaola.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Miguel López ::
+  - Archivos :: [[./LopezSotoMiguel/Anexo.txt][Anexo.txt]], [[./LopezSotoMiguel/Mapa.pdf][Mapa.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Carlos Morales, Miguel Pérez Quiroz ::
+  - Archivo :: [[./MoralesCarlos_PérezQuirozMiguel/Tarea1.pdf][Tarea1.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Miguel Pérez Ruiz ::
+  - Archivo :: [[./PerezRuizMiguel/T1.pdf][T1.pdf]]
+  - Comentarios ::
+  - Calificación ::
+
+- Víctor Piña ::
+  - Archivo :: [[./PiñaVictor/diagrama.png][diagrama.png]]
+  - Comentarios ::
+  - Calificación ::
+
+- Vicente Romero ::
+  - Archivo :: [[./RomeroVicente/tareaSO.pdf][tareaSO.pdf]]
+  - Comentarios ::
+  - Calificación ::

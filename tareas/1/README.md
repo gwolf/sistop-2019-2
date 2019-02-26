@@ -50,3 +50,7 @@ independiente:
 	$ git branch tarea1
 	$ git checkout tarea1
 
+## Revisión
+
+Conforme vaya calificando sus tareas, podrán ver [mis comentarios
+aquí](./revision.org).
