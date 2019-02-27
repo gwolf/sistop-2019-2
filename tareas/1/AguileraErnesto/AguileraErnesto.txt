@@ -1,0 +1,28 @@
+Desarrollo de los procesadores
+	El Sistema IBM / 360, el VAX de DEC y el preludio a CISC
+		Inercia
+		Compiladores de alto nivel
+		Operaciones complejas y evaluaciones polinómicas
+		Amigable para el programador
+	Éxitos accidentales y grandes fracasos
+		Direcciones de memoria
+			8 bit
+			16 bit
+		z80
+		iAPX 432
+		Masivamente complejo
+		Fracaso
+	Dennard Scaling y Moore's Law están muertos, pero los DSA, TPU y Open RISC-V están vivos
+		OpenRISC y OpenSPARC
+		RISC-V Foundation
+		Ley de Moore ha muerto
+		DSAs
+			CPU	
+			GPU
+			TPU
+		El nacimiento de RISC, VLIW y el hundimiento del Itanic
+		Motorola MECL 10K
+		Building 801 at IBM’s Thomas J. Watson Research Center
+		VLIW machines
+		Itanium
+		Intel EPIC fail
