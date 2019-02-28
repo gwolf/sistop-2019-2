@@ -4,6 +4,11 @@
 - Tema presentado por :: Lizbeth Alejandro y Arturo Durán
 - Calificación global :: 84.94 * 0.3 + 87.50 * 0.7 = *86.73*
 
+* Comentarios
+
+Sin duda, eligieron un tema complicado, y la exposición fue bastante
+buena — ¡Y el resultado así lo demuestra, felicidades!
+
 * Evaluación grupal
 
 [[./evaluacion_alumnos.pdf][Evaluaciones individuales de los alumnos]]
@@ -43,8 +48,9 @@
 |          100 |        100 |       75 |        75 | 87.50 |
 |          100 |        100 |       75 |        50 | 81.25 |
 |--------------+------------+----------+-----------+-------|
+|   *Globales* |            |          |           |       |
 |        93.55 |      90.32 |    80.65 |     75.23 | 84.94 |
-#+TBLFM: @>$1..@>$4=vmean(@II..@III-1); f-2::@2$>..@>$>=vmean($1..$4); f-2
+#+TBLFM: @>$1..@>$4=vmean(@II..@III-1); f-2::@2$>..@>>>$>=vmean($1..$4); f-2
 
 * Evaluación del docente
 
@@ -58,6 +64,6 @@
 | Dominio del tema       |   0.15 |           75 |    11.25 |
 | Presencia              |   0.15 |           75 |    11.25 |
 |------------------------+--------+--------------+----------|
-| Global                 |        |              |    87.50 |
+| *Global*               |        |              |    87.50 |
 #+TBLFM: @<<$4..@>>$4=$2*$3::$4=vsum(@<<..@>>);f-2
 
