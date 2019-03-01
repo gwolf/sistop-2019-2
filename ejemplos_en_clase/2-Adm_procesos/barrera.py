@@ -19,13 +19,15 @@ def todos_juntos(yo):
     print "Y ya somos %d hilos..." % num
     if num == maximo:
         print "Liberemos esa barrera!"
-        barr.release()
+        for i in range(maximo):
+            barr.release()
+        num = 0
     mut.release()
     barr.acquire()
-    barr.release()
+    # barr.release()
 
     print "Soy el hilo %d y ya termine" % yo
 
 
-for i in range(10):
+for i in range(15):
     Thread(target=todos_juntos, args=[i]).start()
