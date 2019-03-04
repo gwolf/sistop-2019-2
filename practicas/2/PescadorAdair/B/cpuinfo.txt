@@ -1,0 +1,38 @@
+Nombre del SO	Microsoft Windows 8.1 Pro
+Versión	6.3.9600 compilación 9600
+Descripción adicional del SO 	No disponible
+Fabricante del SO	Microsoft Corporation
+Nombre del sistema	CITLADA
+Fabricante del sistema	LENOVO
+Modelo del sistema	20308
+Tipo de sistema	PC basado en x64
+SKU del sistema	LENOVO_MT_20308
+Procesador	Intel(R) Pentium(R) 3556U @ 1.70GHz, 1701 Mhz, 2 procesadores principales, 2 procesadores lógicos
+Versión y fecha de BIOS	LENOVO 8ACN24WW, 10/09/2013
+Versión de SMBIOS	2.7
+Versión de controladora integrada	1.24
+Modo de BIOS	UEFI
+Fabricante de la placa base	LENOVO
+Modelo de placa base	No disponible
+Nombre de la placa base	Placa base
+Rol de plataforma	Móvil
+Estado de arranque seguro	Desactivada
+Configuración de PCR7	Enlace no posible
+Directorio de Windows	C:\Windows
+Directorio del sistema	C:\Windows\system32
+Dispositivo de arranque	\Device\HarddiskVolume2
+Configuración regional	México
+Capa de abstracción de hardware	Versión = "6.3.9600.18969"
+Nombre de usuario	CitlAda\Peña
+Zona horaria	Hora estándar central (México)
+Memoria física instalada (RAM)	4.00 GB
+Memoria física total	3.91 GB
+Memoria física disponible	1.67 GB
+Memoria virtual total	4.60 GB
+Memoria virtual disponible	2.07 GB
+Espacio de archivo de paginación	704 MB
+Archivo de paginación	C:\pagefile.sys
+Hyper-V - Extensiones de modo de monitor VM	Sí
+Hyper-V - Extensiones de traducción de dirección de segundo nivel	Sí
+Hyper-V - Virtualización habilitada en Firmware	Sí
+Hyper-V -Protección de ejecución de datos	Sí
