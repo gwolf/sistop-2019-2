@@ -141,17 +141,67 @@
 * Rodrigo Francisco y Beatriz Sánchez
 - Documentos entregados :: [[./FranciscoRodrigo-SanchezBeatriz/proyecto1.pdf]]
 - Comentarios ::
-- Calificación ::
+  - Respecto al artículo seleccionado: Me parece también muy adecuado
+    e intersante. Es probablemente una de las áreas donde más se nota
+    el paso del tiempo; a principios de los ochenta las arquitecturas
+    CISC no habían aún explotado tanto como llegaron a hacerlo con los
+    x86, pero ya pueden ver la cantidad de cosas que tiene que hacer
+    el primer pasito de ejecución en el CPU.
+  - Respecto a la Jupiter Ace, en esa época/generación, prácticamente
+    todos los vendedores ofrecían /algún tipo/ de BASIC. Forth, como
+    lo mencioné a alguno de sus compañeros, no es un lenguaje tan
+    amigable a usuarios novatos; hoy en día su uso persiste sobre todo
+    en los entornos limitados de pre-carga de sistema.
+- Calificación :: 10
 
 * Orlando García y Zuriel Rodríguez
 - Documentos entregados :: [[./GarciaOrlando-RodriguezZuriel/Proyecto1SO.pdf]]
 - Comentarios ::
-- Calificación ::
+  - ¡Ojo con la ortografía y otros dedazos! En la carátula, /fasículo/
+    (por /fascículo/); en los primeros párrafos, /80ś y 90ś/ (por 80's
+    y 90's... Que tampoco es correcto en español, pero por lo menos es
+    lo que querían escribir 😉), incluso menciono /ram/ por /RAM/
+    (¡no, no es lo mismo!), varios casos de acentos faltantes o
+    dedazos menores...
+  - Mencionan la conexión de la C64 a /disco duro/ — Existió hardware
+    en su época que lo permitía, pero definitivamente no era
+    común. Prácticamente toda esa generación de computadoras existió
+    lejos de la complejidad de los discos duros ☺
+  - ¡Ojo con las conclusiones a las que llegan! Comprendo que hay que
+    darle un cierre a los textos que escribimos, pero... ¿Están
+    seguros que pueden sustentar esto?
+
+    #+BEGIN_QUOTE
+    Si bien las computadores de entonces, y aún las actuales distan
+    mucho de ser capaces de almacenar y acceder a la información de
+    manera tan eficiente como nosotros lo hacemos, los desarrollos en
+    el área de electrónica e informática nos permiten compensar dichas
+    deficiencias e incluso superarlas.
+    #+END_QUOTE
+  - Me permito compartirles... ¿Creen que era /fácil/ hacer
+    programación de gráficas y sonido? Bueno, eso lo creíamos también
+    en su momento nosotros. Pero me encontré hace tiempo con un [[https://gwolf.org/files/C64_graficacion_y_sonido.pdf][curso
+    de graficación y sonido para C64]] que tomé hacia 1987. ¡Vean lo
+    manual y pedestre que resultaba!
+
+- Calificación :: 8
 
 * Vicente García y Enrique Guerrero
 - Documentos entregados :: [[./GarciaVicente-GuerreroEnrique/Proyecto1.pdf]]
 - Comentarios ::
-- Calificación ::
+  - Interesantes puntos que mencionan de la MTX512, de la estética, de
+    la apertura de los equipos...
+  - Ojo, el que CP/M tuviera una interfaz de texto no quiere decir
+    (citándolos) que /en ese entonces la interfaz con el usuario aun
+    no llegaba a ser crucial o de importancia para las empresas./ ¡Muy
+    por el contrario! Era visto como /el entorno serio/, enfocado a la
+    productividad y los negocios, contrapuesto con el poco profesional
+    arranque directo a BASIC, o –peor aún, como en la Apple 2–
+    arranque únicamente desde discos.
+  - Respecto al otro artículo que eligieron: Me parece un buen
+    resumen, pero faltó atender al planteamiento hecho: /enfocándote
+    en los temas que vimos hasta ahora en clase/.
+- Calificación :: 9
 
 * Félix Gonzalez y Yared Guzmán
 - Documentos entregados :: [[./GonzalezFelix-GuzmanYared/proyecto1.pdf]]
@@ -159,27 +209,83 @@
   - No siguieron las instrucciones de entrega (el directorio no
     corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
     1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
-- Calificación ::
+  - Una entrega que no contiene información alguna de quiénes son sus
+    autores, qué es lo que buscan resolver, etc.
+    - ⸘Qué fascículo revisaron‽ Me gustaría referirme a él para
+      ampliar sobre lo que mencionan, pero no me dan ni esa
+      información básica...
+  - Al tiempo que hablan de corrección ortográfica usan la palabra
+    "facilito" por "facilitó". ¡No se confíen de más del corrector!
+    ¡Siempre resulta insuficiente!
+  - Les sugiero fuertemente trabajar en su redacción. Muchas ideas se
+    enredan consigo mismas y pierden continuidad; hay ideas casi
+    contrapuestas en la misma unidad lingüística. ¡Es muy importante
+    desarrollar nuestra comunicación escrita!
+  - Mencionan la siguiente frase:
+    #+BEGIN_QUOTE
+    Algo relevante y visto en clase es como ya se comunicaban el
+    ordenador-humano y viceversa, pues el ordenador no pensaba por sí
+    mismo, aunque ya se planteaba la idea de una inteligencia
+    artificial; Se tenían que hacer preguntas concretas para saber
+    hacia dónde dirigirse, visto en los sistemas operativos, pues
+    estos son los que manejan la computadora (...)
+    #+END_QUOTE
+    Esto da a entender que hoy la inteligencia artificial es un hecho,
+    y hoy en día la computadora cuenta con las herramientas para
+    anticiparse a nuestras necesidades. ¿Es realmente así? Vamos,
+    incluso en el terreno de los /asistentes digitales/ (Siri de
+    Apple, Alexa de Amazon, Go de Google...) tenemos que /manejarlos/
+    en el sentido correcto, entrenarlos extensivamente, etc. Y no es
+    el uso general de una computadora, sino que computadoras de
+    propósito muy específico...
+  - ¡No mencionan siquiera a la computadora del artículo del centro
+    del fascículo que les tocó! ☹ El resumen global que hicieron es
+    adecuado y acorde a lo que esperaba de este reporte, pero no
+    cumple con lo que les pedí. Lo doy por bueno porque planteé este
+    ejercicio diciendo que es para ayudar, no sólo para evaluar... 
+- Calificación :: 8 - 1 = 7
 
-* Leonardo González
-- Documentos entregados :: [[./GonzalezLeonardo/resumenfas06.odt]]
+* Leonardo González y Miguel Pérez Ruiz
+- Documentos entregados :: [[./GonzalezLeonardo-PerezRuizMiguel/resumenfas06.odt]]
 - Comentarios ::
-- Calificación ::
+  - ¡Muy buen resumen!
+  - Les faltó dar el nombre de archivo correspondiente a uno de los
+    participantes del equipo (el archivo está sólo a nombre de
+    Leonardo). Lo ajusto yo...
+  - Algo que me queda como duda es que... En los 80s-90s comprendíamos
+    que las comunicaciones paralelas eran más caras, pero de mayor
+    ancho de banda que las seriales. Por eso, los dispositivos más
+    demandantes de ancho de banda (discos duros, impresora) se
+    conectaban por interfaz paralela, en tanto que los de menor ancho
+    de banda (teclado, mouse) iban por puertos seriales.
+
+    Pero luego llegó USB, y después de éste, SATA, a cambiar para
+    siempre lo que conocíamos.
+
+    ¿Cómo o por qué? ☹ Tengo que leer...
+- Calificación :: 10
 
 * Iván Hernández
 - Documentos entregados :: [[./HernandezIvan/proyecto1.docx]]
 - Comentarios ::
-- Calificación ::
+  - Presentas un buen resumen del artículo /Bien direccionada/ de tu
+    fascículo
+  - ¡Pero debías presentar también una reseña de la computadora
+    /Jupiter Ace/! ☹ ¿Qué pasó?
+- Calificación :: 8
 
 * Víctor Hernández
 - Documentos entregados :: [[./HernandezVictor/Proyecto_1.odt]]
 - Comentarios ::
-- Calificación ::
+  - Demasiado reducido ☹ En las instrucciones solicito /unas 2-3
+    páginas/. ¡Entregaste menos de media página!
+- Calificación :: 7
 
 * Omar Ibarra
 - Documentos entregados :: [[./IbarraOmar/Resena.pdf]]
 - Comentarios ::
-- Calificación ::
+  - Buen resumen
+- Calificación :: 10
 
 * Inri Jiménez
 - Documentos entregados :: [[./JimenezInri/MI_COMPUTER.pdf]]
