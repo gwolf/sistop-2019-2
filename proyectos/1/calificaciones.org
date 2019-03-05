@@ -1,0 +1,229 @@
+#+title: Proyecto 1 — Calificaciones y comentarios
+#+options: toc:nil
+
+* Gabriel Aguilar y Sandra García
+- Documentos entregados :: [[./AguilarGabriel-GarciaSandra/MiComputer reseña.pdf]]
+- Comentarios ::
+  - ¡Muy buen trabajo!
+  - Me gusta la reflexión que hacen respecto a los dispositivos de
+    entrada. Me permito ahondar un poco más: ¿Por qué seguimos atados
+    a la distribución QWERTY en teclados que no tienen ya partes
+    mecánicas? La respuesta más socorrida: Por costumbre, por
+    entrenamiento. Habemos millones de personas que tenemos los dedos
+    o diversas áreas del cerebro entrenadas al [[https://en.wikipedia.org/wiki/QWERTY][teclado QWERTY]]. ¡No nos
+    saquen de nuestra zona de confort!
+
+    [[https://www.thevintagenews.com/2016/01/06/why-is-the-keyboard-layout-qwerty-not-abcde/][QWERTY fue diseñado para que tecleáramos más lento]]... Porque en
+    las máquinas de escribir mecánicas los /tipos/ se atoraban al
+    escribir demasiado rápido. Para nuestra interacción diaria, usamos
+    tecnología de hace /140 años/. Así que... Lección 1: Cuesta mucho
+    trabajo romper la inercia.
+
+    Por otro lado, creo importante mencionar que en los 80 /sí hubo/
+    bastante experimentación con modelos de interacción. Recuerdo un
+    reemplazo de mouse que se usaba con un mini-casco, y hacía que el
+    apuntador se moviera según hacia dónde volteaba la cabeza del
+    usuario — Pesadilla de usabilidad. Plumas ópticas o interfaces
+    táctiles en computadoras de escritorio, llevaban a brazos cansados
+    y monitores emborronados.
+
+    Vamos... No digo que se intentó /de todo/, pero sí que hubo muchas
+    tecnologías que no avanzaron más porque no consideraban lo
+    suficiente a la [[https://es.wikipedia.org/wiki/Ergonom%C3%ADa][ergonomía]], un campo de estudio muy importante que
+    amerita que conozcamos por lo menos básicamente — Si no por otra
+    cosa, para estructurar de forma adecuada nuestro espacio personal
+    de trabajo.
+- Calificación :: 10
+
+* Ernesto Aguilera
+- Documentos entregados :: [[./AguileraErnesto/MiComputerFascículo2AguileraErnesto.pdf]]
+- Comentarios ::
+  - Buen comentario. No tengo mucho que agregar a lo que mencionas,
+    sencillamente me parece un buen trabajo ☺
+- Calificación :: 10
+
+* Lizbeth Alejandro
+- Documentos entregados :: [[./AlejandroLizbeth/Proyecto1.LizbethAlejandro.pdf]]
+- Comentarios ::
+  - Muy buen trabajo. Y como se va haciendo hábito, hasta le dedicas
+    un rato al diseño gráfico.
+  - El chip de audio que te llama la atención de la C64 era muy
+    peculiar, y permitía como bien mencionas /simular/ instrumentos —
+    No /reproducir/ instrumentos, como lo haríamos hoy, sino que
+    describir matemáticamente una onda que se aproximara al sonido del
+    instrumento (y variarla / distorsionarla al vuelo, permitiendo
+    efectos /muy/ interesantes).
+  - ¡Ojo! ¿Disco duro? ¡No, nada de eso! La C64 permitía (como
+    accesorios adicionales) utilizar una interfaz de /cassette/ o de
+    disco flexible.
+- Calificación :: 10
+
+* Daniel Cruz y Luis Mata
+- Documentos entregados :: [[./CruzDaniel-MataLuis/proyecto.pdf]]
+- Comentarios ::
+  - A veces no me queda más que reconocer que... Ya llovió desde mi
+    infancia ☺ Se ve que resulta difícil relacionarse con algunos
+    conceptos. No puedo achacarles a ustedes el no conocer la época...
+
+  - Casi todas las computadoras de la época usaban un modulador RF
+    para la salida de video; únicamente las muy /profesionales/ tenían
+    monitores como un aparato dedicado (la TV daba bien y de sobra
+    para ello). Incluso las primeras PC con tarjeta CGA podían usarse
+    hacia una salida de televisión.
+
+  - Hacen la siguiente pregunta en su texto (¡me parece perfecto!):
+    #+BEGIN_QUOTE
+     Parece no sonar muy difícil ya que como se dijo toda instrucción
+     tiene una dirección y solo basta saber qué dirección para empezar
+     a procesar la información, pero aquí la duda que surgió es ¿Cómo
+     la computadora iba a interpretar la información? ¿Cómo sabría que
+     es una instrucción o un dato que debe guardar o almacenar?
+    #+END_QUOTE
+
+    El contenido de la memoria /no hace distinción/ respecto a si es
+    para almacenamiento / procesamiento o para ejecución (¡eso es lo
+    que define a la [[https://es.wikipedia.org/wiki/Arquitectura_de_Von_Neumann][arquitectura von Neumann]]!) Siendo puristas, /toda
+    la memoria de la computadora/ podría ser ejecutable, y podrías
+    realizar operaciones que modificaran al código ejecutable
+    mismo. Hay... Precisiones que iremos viendo poco a poco en el
+    curso (particularmente, en /Administración de Memoria/).
+
+    Y el tema que eligieron, la memoria... Es uno de los que más nos
+    muestra cambios entre /los viejos tiempos/ y hoy en día.
+- Calificación :: 10
+
+* Arturo Durán
+- Documentos entregados :: [[./DuránArturo/Proyecto_1.pdf]]
+- Comentarios ::
+  - Buen resumen
+  - El /acoplador acústico/ es un módem — O más específicamente, es
+    una /categoría de módem/, que no hace la modulación/demodulación a
+    los niveles eléctricos de la línea telefónica, sino que tiene un
+    micrófono y un audífono, que deben /acoplarse/ al auricular del
+    teléfono.
+
+    Este tipo de módems fueron comunes en los setenta y ochenta
+    tempranos, pero fueron desapareciendo porque el ruido que entraba
+    a pesar del mejor acoplamiento era demasiado para incluso los 1200
+    o 2400 baudios, que eran comunes hacia fines de los ochenta. (Eso
+    sí... ¡Primera vez que leo que hubiera diferencia de señalización
+    entre EUA y Europa! Si acaso, debe haberse resuelto mucho antes de
+    la fecha que menciono...)
+- Calificación :: 10
+
+* Joel Feria y José López
+- Documentos entregados :: [[./FeriaJoel_LopezJose/FeriaJoel_LopezJose.docx]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+  - Respecto a las /varitas mágicas/, te refiero en primer término lo
+    que le comenté a Gabriel y Sandra (primer trabajo calificado en
+    este mismo documento) en lo relativo a la ergonomía. /Dibujar/ con
+    un lápiz óptico suena muy atractivo, pero es una pesadilla a la
+    ergonomía.
+
+    Hubo varias implementaciones con tecnología similar a las /varitas
+    mágicas/, probablemente una de las que más se comercializó fue la
+    [[https://es.wikipedia.org/wiki/Nintendo_Zapper][/pistola Zapper/ que venía con el Nintendo NES]] original. Sin
+    embargo, a pesar de su amplísima distribución estuvo muy lejos de
+    ser un éxito, principalmente por su baja usabilidad (y por lo
+    fácil que es /engañar/ al controlador).
+  - Lo que mencionas de Forth: Cierto, es un lenguaje menos /amigable/
+    que BASIC. Y no es casualidad — Después de todo, BASIC son siglas
+    de "lenguaje simbólico de instrucciones multi-propósito para
+    principiantes". /Todos/ hacíamos algo de BASIC en esos años. Forth
+    era... Más complejo. Y eso sin duda impactó en el éxito de la
+    Jupiter Ace y similares.
+
+- Calificación :: 10 - 1 = 9
+
+* Rodrigo Francisco y Beatriz Sánchez
+- Documentos entregados :: [[./FranciscoRodrigo-SanchezBeatriz/proyecto1.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Orlando García y Zuriel Rodríguez
+- Documentos entregados :: [[./GarciaOrlando-RodriguezZuriel/Proyecto1SO.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Vicente García y Enrique Guerrero
+- Documentos entregados :: [[./GarciaVicente-GuerreroEnrique/Proyecto1.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Félix Gonzalez y Yared Guzmán
+- Documentos entregados :: [[./GonzalezFelix-GuzmanYared/proyecto1.pdf]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+- Calificación ::
+
+* Leonardo González
+- Documentos entregados :: [[./GonzalezLeonardo/resumenfas06.odt]]
+- Comentarios ::
+- Calificación ::
+
+* Iván Hernández
+- Documentos entregados :: [[./HernandezIvan/proyecto1.docx]]
+- Comentarios ::
+- Calificación ::
+
+* Víctor Hernández
+- Documentos entregados :: [[./HernandezVictor/Proyecto_1.odt]]
+- Comentarios ::
+- Calificación ::
+
+* Omar Ibarra
+- Documentos entregados :: [[./IbarraOmar/Resena.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Inri Jiménez
+- Documentos entregados :: [[./JimenezInri/MI_COMPUTER.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Osmar Juárez y Luis Morales
+- Documentos entregados :: [[./JuarezOsmar-MoralesLuis/Proyecto1_SO_Fasiculo1.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Karen Jurado
+- Documentos entregados :: [[./JuradoKaren/MiComputer.docx]]
+- Comentarios ::
+  - No seguiste las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+- Calificación ::
+
+* Paola Lara
+- Documentos entregados :: [[./LaraPaola/Proyecto1.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Miguel López
+- Documentos entregados :: [[./LopezMiguel/Revista Mi Computer.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Alan Monroy y Adair Peña
+- Documentos entregados ::
+     [[./Monroy_Rodríguez_Alan_Peña_Pescador_Adair/Proyecto_1.docx]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+- Calificación ::
+
+* Carlos Morales y Miguel Pérez Quiroz
+- Documentos entregados :: [[./MoralesCarlos-PerezQuirozMiguel/Reseña.pdf]]
+- Comentarios ::
+- Calificación ::
+
+* Vicente Romero
+- Documentos entregados :: [[./RomeroVicente/Proyecto 1.pdf]]
+- Comentarios ::
+- Calificación ::
