@@ -53,6 +53,7 @@ de forma anónima.
 ** Criterios de evaluación grupal
 
 - Originalidad
+- Nivel adecuado
 - Relevancia
 - Claridad en la presentación
 - Presencia
