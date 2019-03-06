@@ -12,15 +12,15 @@ Para evitar peleas, debe mantenerse un buen balance: No debes permitir que abord
 Hay sólo una balsa.
 No se preocupen por devolver la balsa (está programada para volver sola)
 
-##Lenguaje y entorno utilizado.
+## Lenguaje y entorno utilizado.
 La solución está implementada en Python versión Python 3.6.4 :: Anaconda, Inc.
 
-##¿Cómo ejecutar el programa?
+## ¿Cómo ejecutar el programa?
 Ejercutar el siguiente comando en una terminal
     python3 /path/RiverCrossing.py
 donde "path" es la ubicación del archivo RiverCrossing.py
 
-##Estrategias de sincronización utilizados
+## Estrategias de sincronización utilizados
 Utilizamos una barrera, un mutex y dos semáforos cerrados
     Nota:
     No se utilizaron refinamientos porque no se pedía nunguno
