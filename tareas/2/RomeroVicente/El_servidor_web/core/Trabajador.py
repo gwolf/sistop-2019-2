@@ -7,7 +7,7 @@ import threading
 class Trabajador:
     def __init__(self,uid):
         self.uid = uid
-        self.code = False ## Por defecto esta en modo activo o a la escucha 
+        self.code = False ## Por defecto esta en modo activo o a la escucha
         self.semaforo = threading.Semaphore(0)
         self.conexion_id = 0
 

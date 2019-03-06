@@ -29,7 +29,7 @@ class Jefe:
         with open(self.log,"a") as outfile:
             outfile.write("{2} trabajador {0} proceso conexion {3} en {1} segundos\n".format(uid,tiempo_total,datetime.now(),trabajador.conexion_id))
         self.sem.release()
-        return trabajador.uid
+        print("Trabajador {0} escuchando conexion".format(trabajador.uid))
 
     def set_conexion(self,conexion_id):
         self.get_trabajador_disponible().despertar(conexion_id)
@@ -47,7 +47,6 @@ class Jefe:
 
     def control(self):
         while(True):
-            while len(self.get_trabajadores_disponibles()) < self.max_workers:
-                uid = self.asignar_worker()
-                print("Trabajador {0} escuchando conexion".format(uid))
+            while len(self.get_trabajadores_disponibles()) < self.max_workers: #Este ciclo estara activo hasta que existan el numero definido de trabajadores a la espera
+                Thread(target=self.asignar_worker).start()
             sleep(randint(0,1))

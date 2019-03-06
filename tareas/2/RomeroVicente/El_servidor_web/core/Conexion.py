@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from random import randint
-import threading
+from threading import Thread
 from time import sleep
-import signal
+from random import randint
 
 
 class Conexion:
@@ -14,8 +13,8 @@ class Conexion:
         while(True):
             rand_num = str(randint(1000000,9999999))
             print("{0} esperando trabajo".format(rand_num))
-            while len(self.jefe.get_trabajadores_disponibles()) == 0:
+            while len(self.jefe.get_trabajadores_disponibles()) == 0: ## En caso de que no existan trabajadores devolvera un codigo de error de servidor saturado
                 print("Codigo 500 servidor saturado")
                 sleep(randint(0,1))
-            self.jefe.set_conexion(rand_num)
+            Thread(target=self.jefe.set_conexion,args=(rand_num,)).start()
             sleep(randint(0,1))
