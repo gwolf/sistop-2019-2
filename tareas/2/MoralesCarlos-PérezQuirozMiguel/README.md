@@ -18,6 +18,7 @@ La solución está implementada en Python versión Python 3.6.4 :: Anaconda, Inc
 ## ¿Cómo ejecutar el programa?
 Ejercutar el siguiente comando en una terminal
     python3 /path/RiverCrossing.py
+
 donde "path" es la ubicación del archivo RiverCrossing.py
 
 ## Estrategias de sincronización utilizados
