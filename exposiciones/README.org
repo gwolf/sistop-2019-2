@@ -21,6 +21,9 @@ el que ustedes me planteen los temas de su interés.
 | 14/mar | SPECTRE y Meltdown                                | Osmar Juárez                        |                       |            |
 | 19/mar | Rootkits                                          | Beatriz Sánchez, Rodrigo Francisco  |                       |            |
 | 21/mar | Algoritmo de Dekker y solucuión de Peterson       | Ivan Hernández                      |                       |            |
+| 26/mar | — No disponible —                                 |                                     |                       |            |
+| 28/mar | — No disponible —                                 |                                     |                       |            |
+| 2/abr  | — No disponible —                                 |                                     |                       |            |
 | 4/abr  | Trusted Platform Module (TPM)                     | Sandra García y Gabriel Aguilar     |                       |            |
 | 9/abr  | Inteligencia artificial en SOs                    | Zuriel Uzai y Orlando García        |                       |            |
 | 11/abr | Cómputo cuántico                                  | Miguel Ángel López                  |                       |            |
@@ -50,6 +53,7 @@ de forma anónima.
 ** Criterios de evaluación grupal
 
 - Originalidad
+- Nivel adecuado
 - Relevancia
 - Claridad en la presentación
 - Presencia
