@@ -1,0 +1,3 @@
+Corrijo: Entrega en directorio equivocado
+
+proyectos/PrimerProyecto/MiComputer.docx → proyectos/1/JuradoKaren/MiComputer.docx
