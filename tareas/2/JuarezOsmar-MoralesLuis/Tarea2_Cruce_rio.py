@@ -16,8 +16,6 @@ barrera_windows = threading.Semaphore(0)
 sem_balsa = threading.Semaphore(0)
 desarrolladores = []
 mutex_ctr_desarrolladores = threading.Semaphore(1)
-mutex_hackerFormado = threading.Semaphore(0)
-mutex_serfFormado = threading.Semaphore(0)
 
 def balsa():
 	global contador_hackers
