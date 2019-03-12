@@ -300,25 +300,54 @@ puntos de calificación ☹
 - Documentación :: [[./HernandezVictor/Cruce del río.odt][Cruce del río.odt]]
 - Código :: [[./HernandezVictor/Cruce del río.py][Cruce del río.py]]
 - Lenguaje :: Python
-- Comentarios :: 
-- Calificación :: 
+- Comentarios ::
+  - El principal problema de tu implementación es que tu =balsa()=
+    espera a tres señales: =sem_balsa=, =mutex_hackers= y
+    =mutex_serfs=. Tu =sem_balsa= inicia en 4 (¿por? ¿un multiplex de
+    balsas simultáneas?), y los mutexes están abiertos. Entonces, por
+    eso pasa cuatro veces al principio, hasta que =sem_balsa == 0=.
+
+    Hasta ahí, todo bien. Pero a continuación, caes en un bloqueo
+    mutuo clásico: Tanto =mutex_hackers= como =mutex_serfs= son
+    necesarios para que (dentro de =serf= o =hacker=) se libere
+    =sem_balsa=, pero =balsa= ya se quedó bloqueando a ambas, y no
+    llega a presentarse el umbral esperado
+  - No puedo darte una resolución simple. Va por buen camino, pero
+    el bloqueo mutuo parece que te espantó... 😉
+- Calificación :: 7
 
 ** Omar Ibarra
 - Problema elegido :: El cruce del río
 - Documentación :: No entregada
 - Código :: [[./IbarraOmar/tarea2.py]]
 - Lenguaje :: Python
-- Comentarios :: 
+- Comentarios ::
   - No hay documentación ☹
-- Calificación :: 
+  - No considero que este problema resuelva satisfactoriamente las
+    condiciones planteadas
+  - Generas tres funciones, cada una de las cuales sube una diferente
+    combinación de actores... Pero la única sincronización que haces
+    es un mutex para la sección crítica
+    - ¿Y si tienes diferente número de /serfs/ y de /hackers/?
+    - No puede darse el no-determinismo de que cada vez se /mezclen/
+      de diferente manera, con la impredecibilidad que caracteriza a
+      estos problemas
+- Calificación :: 7 - 2 = 5
 
 ** Osmar Juárez y Luis Morales
 - Problema elegido :: El cruce del río
 - Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionTarea2_SO.pdf][DocumentacionTarea2_SO.pdf]]
 - Código :: [[./JuarezOsmar-MoralesLuis/Tarea2_Cruce_rio.py][Tarea2_Cruce_rio.py]]
 - Lenguaje :: Python
-- Comentarios :: 
-- Calificación :: 
+- Comentarios ::
+  - Solución aparentemente correcta
+    - Aunque después de un par de vueltas cae inevitablemente en
+      bloqueo mutuo. ¿Por qué?
+  - Implementaron una lógica un poco más compleja de lo que acostumbro
+    ver para este problema. Consideren, dada su similitud, ¿es
+    verdaderamente necesario que existan dos funciones, =serfs()= y
+    =hackers()=? 
+- Calificación :: 8
 
 ** Paola Lara
 - Problema elegido :: Santa Claus
