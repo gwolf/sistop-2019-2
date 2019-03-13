@@ -356,29 +356,69 @@ puntos de calificación ☹
 - Lenguaje :: Python
 - Comentarios :: 
   - No hay documentación ☹
-- Calificación :: 
+    - Mismo comentario que hice a casos anteriores: Es muy importante
+      comentar, y se los valgo como /media-documentación/. Sin
+      embargo, el /exceso de comentarios/ no es bueno — Les quita
+      tiempo, y aveces más que ayudar dificulta a la lectura (¡y
+      muchas veces es incluso contraproducente! Ve el primer caso, en
+      que comentaron erróneamente).
+  - Lo dije y lo sostengo. ¡Muy buen programa y muy buena implementación!
+  - Sólo apuntaría a un cambio, pero más por pasarme de literal que
+    otra cosa: Los nueve renos son siempre los mismos. Al
+    inicializar, tendría que ser:
+    #+BEGIN_SRC python
+    for num_reno in range(9):
+      threading.Thread(target=Reno, args=[]).start()
+    #+END_SRC
+    Claro, eso requeriría modificar a =Reno()= para que viva dentro
+    de un =while True:=, agregando una señal al final del
+    =viaje_anual()= para que, todos juntos, pudieran irse a
+    descansar.
+
+    (no me meto con los elfos, esos sí podrían ser infinitos ☺)
+- Calificación :: 10 - 1 = 9
 
 ** Miguel López
 - Problema elegido :: Intersección de caminos
 - Documentación :: [[./LopezMiguel/Intersección de caminos.pdf][Intersección de caminos.pdf]]
-- Código :: [[./LopezMiguel/Intersección de caminos.py][Intersección de caminos.py]]
+- Código :: [[./LopezMiguel/Interseccion%20de%20caminos.py][Interseccion de caminos.py]]
 - Lenguaje :: Python
-- Comentarios :: 
-- Calificación :: 
+- Comentarios ::
+  - Excelente descripción / justificación de tus decisiones de diseño
+  - Muy buena implementación
+    - Tu uso de semáforos para implementar "semáforos viales" no es
+      ortodoxo, y muchos lo criticarían. Además, el poner un sleep por
+      tiempo definido /no puede ser visto/ como sincronización
+    - Pero es una implementación buena y original, y demuestra que
+      dominas el conocimiento pertinente. Por mi, ¡perfecto!
+  - Lo único que podría ser mejor es la "interfaz usuario", que fuera
+    más claro lo que está pasando (p.ej. indicar qué hilo está
+    pasando por cada sección, o incluso "ya que estamos" hacerlo con
+    interfaz gráfica 😉
+- Calificación :: 10
 
 ** Carlos Morales y Miguel Pérez Quiroz
 - Problema elegido :: El cruce del río
 - Documentación :: [[./MoralesCarlos-PérezQuirozMiguel/README.md][README.md]]
 - Código :: [[./MoralesCarlos-PérezQuirozMiguel/RiverCrossing.py][RiverCrossing.py]]
 - Lenguaje :: Python
-- Comentarios :: 
-- Calificación :: 
+- Comentarios ::
+  - Buena implementación — Y lograda de una manera bastante original,
+    muy distinta de casi todas las demás. ¡Bien!
+- Calificación :: 10
 
 ** Vicente Romero
 - Problema elegido :: El servidor Web
 - Documentación :: [[./RomeroVicente/README.md][README.md]]
 - Código :: [[./RomeroVicente/El_servidor_web/main.py][main.py]], [[./RomeroVicente/El_servidor_web/core/Console.py][Console.py]], [[./RomeroVicente/El_servidor_web/core/Conexion.py][Conexion.py]], [[./RomeroVicente/El_servidor_web/core/Jefe.py][Jefe.py]], [[./RomeroVicente/El_servidor_web/core/Trabajador.py][Trabajador.py]]
 - Lenguaje :: Python
-- Comentarios :: 
-- Calificación :: 
+- Comentarios ::
+  - Sin temor a equivocarme, eres /mucho/ mejor pythonista que yo 😉
+  - Muy buen trabajo, muy buena estructura y presentación
+  - Si acaso, y para que el trabajo verdaderamente brille, faltaría
+    algo de comentarios en las funciones. El código me resulta un poco
+    denso y difícil de seguir
+  - Excelente el que presentes un programa parametrizable desde la
+    línea de comandos, que genere bitácora y toda la cosa :-D
+- Calificación :: 10
 
