@@ -1,0 +1,415 @@
+#+title: Proyecto 1 — Calificaciones y comentarios
+#+options: toc:nil
+
+* Gabriel Aguilar y Sandra García
+- Documentos entregados :: [[./AguilarGabriel-GarciaSandra/MiComputer reseña.pdf]]
+- Comentarios ::
+  - ¡Muy buen trabajo!
+  - Me gusta la reflexión que hacen respecto a los dispositivos de
+    entrada. Me permito ahondar un poco más: ¿Por qué seguimos atados
+    a la distribución QWERTY en teclados que no tienen ya partes
+    mecánicas? La respuesta más socorrida: Por costumbre, por
+    entrenamiento. Habemos millones de personas que tenemos los dedos
+    o diversas áreas del cerebro entrenadas al [[https://en.wikipedia.org/wiki/QWERTY][teclado QWERTY]]. ¡No nos
+    saquen de nuestra zona de confort!
+
+    [[https://www.thevintagenews.com/2016/01/06/why-is-the-keyboard-layout-qwerty-not-abcde/][QWERTY fue diseñado para que tecleáramos más lento]]... Porque en
+    las máquinas de escribir mecánicas los /tipos/ se atoraban al
+    escribir demasiado rápido. Para nuestra interacción diaria, usamos
+    tecnología de hace /140 años/. Así que... Lección 1: Cuesta mucho
+    trabajo romper la inercia.
+
+    Por otro lado, creo importante mencionar que en los 80 /sí hubo/
+    bastante experimentación con modelos de interacción. Recuerdo un
+    reemplazo de mouse que se usaba con un mini-casco, y hacía que el
+    apuntador se moviera según hacia dónde volteaba la cabeza del
+    usuario — Pesadilla de usabilidad. Plumas ópticas o interfaces
+    táctiles en computadoras de escritorio, llevaban a brazos cansados
+    y monitores emborronados.
+
+    Vamos... No digo que se intentó /de todo/, pero sí que hubo muchas
+    tecnologías que no avanzaron más porque no consideraban lo
+    suficiente a la [[https://es.wikipedia.org/wiki/Ergonom%C3%ADa][ergonomía]], un campo de estudio muy importante que
+    amerita que conozcamos por lo menos básicamente — Si no por otra
+    cosa, para estructurar de forma adecuada nuestro espacio personal
+    de trabajo.
+- Calificación :: 10
+
+* Ernesto Aguilera
+- Documentos entregados :: [[./AguileraErnesto/MiComputerFascículo2AguileraErnesto.pdf]]
+- Comentarios ::
+  - Buen comentario. No tengo mucho que agregar a lo que mencionas,
+    sencillamente me parece un buen trabajo ☺
+- Calificación :: 10
+
+* Lizbeth Alejandro
+- Documentos entregados :: [[./AlejandroLizbeth/Proyecto1.LizbethAlejandro.pdf]]
+- Comentarios ::
+  - Muy buen trabajo. Y como se va haciendo hábito, hasta le dedicas
+    un rato al diseño gráfico.
+  - El chip de audio que te llama la atención de la C64 era muy
+    peculiar, y permitía como bien mencionas /simular/ instrumentos —
+    No /reproducir/ instrumentos, como lo haríamos hoy, sino que
+    describir matemáticamente una onda que se aproximara al sonido del
+    instrumento (y variarla / distorsionarla al vuelo, permitiendo
+    efectos /muy/ interesantes).
+  - ¡Ojo! ¿Disco duro? ¡No, nada de eso! La C64 permitía (como
+    accesorios adicionales) utilizar una interfaz de /cassette/ o de
+    disco flexible.
+- Calificación :: 10
+
+* Daniel Cruz y Luis Mata
+- Documentos entregados :: [[./CruzDaniel-MataLuis/proyecto.pdf]]
+- Comentarios ::
+  - A veces no me queda más que reconocer que... Ya llovió desde mi
+    infancia ☺ Se ve que resulta difícil relacionarse con algunos
+    conceptos. No puedo achacarles a ustedes el no conocer la época...
+
+  - Casi todas las computadoras de la época usaban un modulador RF
+    para la salida de video; únicamente las muy /profesionales/ tenían
+    monitores como un aparato dedicado (la TV daba bien y de sobra
+    para ello). Incluso las primeras PC con tarjeta CGA podían usarse
+    hacia una salida de televisión.
+
+  - Hacen la siguiente pregunta en su texto (¡me parece perfecto!):
+    #+BEGIN_QUOTE
+     Parece no sonar muy difícil ya que como se dijo toda instrucción
+     tiene una dirección y solo basta saber qué dirección para empezar
+     a procesar la información, pero aquí la duda que surgió es ¿Cómo
+     la computadora iba a interpretar la información? ¿Cómo sabría que
+     es una instrucción o un dato que debe guardar o almacenar?
+    #+END_QUOTE
+
+    El contenido de la memoria /no hace distinción/ respecto a si es
+    para almacenamiento / procesamiento o para ejecución (¡eso es lo
+    que define a la [[https://es.wikipedia.org/wiki/Arquitectura_de_Von_Neumann][arquitectura von Neumann]]!) Siendo puristas, /toda
+    la memoria de la computadora/ podría ser ejecutable, y podrías
+    realizar operaciones que modificaran al código ejecutable
+    mismo. Hay... Precisiones que iremos viendo poco a poco en el
+    curso (particularmente, en /Administración de Memoria/).
+
+    Y el tema que eligieron, la memoria... Es uno de los que más nos
+    muestra cambios entre /los viejos tiempos/ y hoy en día.
+- Calificación :: 10
+
+* Arturo Durán
+- Documentos entregados :: [[./DuránArturo/Proyecto_1.pdf]]
+- Comentarios ::
+  - Buen resumen
+  - El /acoplador acústico/ es un módem — O más específicamente, es
+    una /categoría de módem/, que no hace la modulación/demodulación a
+    los niveles eléctricos de la línea telefónica, sino que tiene un
+    micrófono y un audífono, que deben /acoplarse/ al auricular del
+    teléfono.
+
+    Este tipo de módems fueron comunes en los setenta y ochenta
+    tempranos, pero fueron desapareciendo porque el ruido que entraba
+    a pesar del mejor acoplamiento era demasiado para incluso los 1200
+    o 2400 baudios, que eran comunes hacia fines de los ochenta. (Eso
+    sí... ¡Primera vez que leo que hubiera diferencia de señalización
+    entre EUA y Europa! Si acaso, debe haberse resuelto mucho antes de
+    la fecha que menciono...)
+- Calificación :: 10
+
+* Joel Feria y José López
+- Documentos entregados :: [[./FeriaJoel_LopezJose/FeriaJoel_LopezJose.docx]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+  - Respecto a las /varitas mágicas/, te refiero en primer término lo
+    que le comenté a Gabriel y Sandra (primer trabajo calificado en
+    este mismo documento) en lo relativo a la ergonomía. /Dibujar/ con
+    un lápiz óptico suena muy atractivo, pero es una pesadilla a la
+    ergonomía.
+
+    Hubo varias implementaciones con tecnología similar a las /varitas
+    mágicas/, probablemente una de las que más se comercializó fue la
+    [[https://es.wikipedia.org/wiki/Nintendo_Zapper][/pistola Zapper/ que venía con el Nintendo NES]] original. Sin
+    embargo, a pesar de su amplísima distribución estuvo muy lejos de
+    ser un éxito, principalmente por su baja usabilidad (y por lo
+    fácil que es /engañar/ al controlador).
+  - Lo que mencionas de Forth: Cierto, es un lenguaje menos /amigable/
+    que BASIC. Y no es casualidad — Después de todo, BASIC son siglas
+    de "lenguaje simbólico de instrucciones multi-propósito para
+    principiantes". /Todos/ hacíamos algo de BASIC en esos años. Forth
+    era... Más complejo. Y eso sin duda impactó en el éxito de la
+    Jupiter Ace y similares.
+
+- Calificación :: 10 - 1 = 9
+
+* Rodrigo Francisco y Beatriz Sánchez
+- Documentos entregados :: [[./FranciscoRodrigo-SanchezBeatriz/proyecto1.pdf]]
+- Comentarios ::
+  - Respecto al artículo seleccionado: Me parece también muy adecuado
+    e intersante. Es probablemente una de las áreas donde más se nota
+    el paso del tiempo; a principios de los ochenta las arquitecturas
+    CISC no habían aún explotado tanto como llegaron a hacerlo con los
+    x86, pero ya pueden ver la cantidad de cosas que tiene que hacer
+    el primer pasito de ejecución en el CPU.
+  - Respecto a la Jupiter Ace, en esa época/generación, prácticamente
+    todos los vendedores ofrecían /algún tipo/ de BASIC. Forth, como
+    lo mencioné a alguno de sus compañeros, no es un lenguaje tan
+    amigable a usuarios novatos; hoy en día su uso persiste sobre todo
+    en los entornos limitados de pre-carga de sistema.
+- Calificación :: 10
+
+* Orlando García y Zuriel Rodríguez
+- Documentos entregados :: [[./GarciaOrlando-RodriguezZuriel/Proyecto1SO.pdf]]
+- Comentarios ::
+  - ¡Ojo con la ortografía y otros dedazos! En la carátula, /fasículo/
+    (por /fascículo/); en los primeros párrafos, /80ś y 90ś/ (por 80's
+    y 90's... Que tampoco es correcto en español, pero por lo menos es
+    lo que querían escribir 😉), incluso menciono /ram/ por /RAM/
+    (¡no, no es lo mismo!), varios casos de acentos faltantes o
+    dedazos menores...
+  - Mencionan la conexión de la C64 a /disco duro/ — Existió hardware
+    en su época que lo permitía, pero definitivamente no era
+    común. Prácticamente toda esa generación de computadoras existió
+    lejos de la complejidad de los discos duros ☺
+  - ¡Ojo con las conclusiones a las que llegan! Comprendo que hay que
+    darle un cierre a los textos que escribimos, pero... ¿Están
+    seguros que pueden sustentar esto?
+
+    #+BEGIN_QUOTE
+    Si bien las computadores de entonces, y aún las actuales distan
+    mucho de ser capaces de almacenar y acceder a la información de
+    manera tan eficiente como nosotros lo hacemos, los desarrollos en
+    el área de electrónica e informática nos permiten compensar dichas
+    deficiencias e incluso superarlas.
+    #+END_QUOTE
+  - Me permito compartirles... ¿Creen que era /fácil/ hacer
+    programación de gráficas y sonido? Bueno, eso lo creíamos también
+    en su momento nosotros. Pero me encontré hace tiempo con un [[https://gwolf.org/files/C64_graficacion_y_sonido.pdf][curso
+    de graficación y sonido para C64]] que tomé hacia 1987. ¡Vean lo
+    manual y pedestre que resultaba!
+
+- Calificación :: 8
+
+* Vicente García y Enrique Guerrero
+- Documentos entregados :: [[./GarciaVicente-GuerreroEnrique/Proyecto1.pdf]]
+- Comentarios ::
+  - Interesantes puntos que mencionan de la MTX512, de la estética, de
+    la apertura de los equipos...
+  - Ojo, el que CP/M tuviera una interfaz de texto no quiere decir
+    (citándolos) que /en ese entonces la interfaz con el usuario aun
+    no llegaba a ser crucial o de importancia para las empresas./ ¡Muy
+    por el contrario! Era visto como /el entorno serio/, enfocado a la
+    productividad y los negocios, contrapuesto con el poco profesional
+    arranque directo a BASIC, o –peor aún, como en la Apple 2–
+    arranque únicamente desde discos.
+  - Respecto al otro artículo que eligieron: Me parece un buen
+    resumen, pero faltó atender al planteamiento hecho: /enfocándote
+    en los temas que vimos hasta ahora en clase/.
+- Calificación :: 9
+
+* Félix Gonzalez y Yared Guzmán
+- Documentos entregados :: [[./GonzalezFelix-GuzmanYared/proyecto1.pdf]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+  - Una entrega que no contiene información alguna de quiénes son sus
+    autores, qué es lo que buscan resolver, etc.
+    - ⸘Qué fascículo revisaron‽ Me gustaría referirme a él para
+      ampliar sobre lo que mencionan, pero no me dan ni esa
+      información básica...
+  - Al tiempo que hablan de corrección ortográfica usan la palabra
+    "facilito" por "facilitó". ¡No se confíen de más del corrector!
+    ¡Siempre resulta insuficiente!
+  - Les sugiero fuertemente trabajar en su redacción. Muchas ideas se
+    enredan consigo mismas y pierden continuidad; hay ideas casi
+    contrapuestas en la misma unidad lingüística. ¡Es muy importante
+    desarrollar nuestra comunicación escrita!
+  - Mencionan la siguiente frase:
+    #+BEGIN_QUOTE
+    Algo relevante y visto en clase es como ya se comunicaban el
+    ordenador-humano y viceversa, pues el ordenador no pensaba por sí
+    mismo, aunque ya se planteaba la idea de una inteligencia
+    artificial; Se tenían que hacer preguntas concretas para saber
+    hacia dónde dirigirse, visto en los sistemas operativos, pues
+    estos son los que manejan la computadora (...)
+    #+END_QUOTE
+    Esto da a entender que hoy la inteligencia artificial es un hecho,
+    y hoy en día la computadora cuenta con las herramientas para
+    anticiparse a nuestras necesidades. ¿Es realmente así? Vamos,
+    incluso en el terreno de los /asistentes digitales/ (/Siri/ de
+    Apple, /Alexa/ de Amazon, /OK Google/...) tenemos que /manejarlos/
+    en el sentido correcto, entrenarlos extensivamente, etc. Y no es
+    el uso general de una computadora, sino que computadoras de
+    propósito muy específico...
+  - ¡No mencionan siquiera a la computadora del artículo del centro
+    del fascículo que les tocó! ☹ El resumen global que hicieron es
+    adecuado y acorde a lo que esperaba de este reporte, pero no
+    cumple con lo que les pedí. Lo doy por bueno porque planteé este
+    ejercicio diciendo que es para ayudar, no sólo para evaluar... 
+- Calificación :: 8 - 1 = 7
+
+* Leonardo González y Miguel Pérez Ruiz
+- Documentos entregados :: [[./GonzalezLeonardo-PerezRuizMiguel/resumenfas06.odt]]
+- Comentarios ::
+  - ¡Muy buen resumen!
+  - Les faltó dar el nombre de archivo correspondiente a uno de los
+    participantes del equipo (el archivo está sólo a nombre de
+    Leonardo). Lo ajusto yo...
+  - Algo que me queda como duda es que... En los 80s-90s comprendíamos
+    que las comunicaciones paralelas eran más caras, pero de mayor
+    ancho de banda que las seriales. Por eso, los dispositivos más
+    demandantes de ancho de banda (discos duros, impresora) se
+    conectaban por interfaz paralela, en tanto que los de menor ancho
+    de banda (teclado, mouse) iban por puertos seriales.
+
+    Pero luego llegó USB, y después de éste, SATA, a cambiar para
+    siempre lo que conocíamos.
+
+    ¿Cómo o por qué? ☹ Tengo que leer...
+- Calificación :: 10
+
+* Iván Hernández
+- Documentos entregados :: [[./HernandezIvan/proyecto1.docx]]
+- Comentarios ::
+  - Presentas un buen resumen del artículo /Bien direccionada/ de tu
+    fascículo
+  - ¡Pero debías presentar también una reseña de la computadora
+    /Jupiter Ace/! ☹ ¿Qué pasó?
+- Calificación :: 8
+
+* Víctor Hernández
+- Documentos entregados :: [[./HernandezVictor/Proyecto_1.odt]]
+- Comentarios ::
+  - Demasiado reducido ☹ En las instrucciones solicito /unas 2-3
+    páginas/. ¡Entregaste menos de media página!
+- Calificación :: 7
+
+* Omar Ibarra
+- Documentos entregados :: [[./IbarraOmar/Resena.pdf]]
+- Comentarios ::
+  - Buen resumen
+  - Somos dados a exagerar, pero hay que evitar hacerlo. ¿Existe
+    realmente algún programa que conozcas que "pese" terabytes?
+    - (¿por qué un programa "pesa"? Esto es ya cuestión de
+      estilo... ¡Pero me saca ronchas leerlo! 😉)
+- Calificación :: 10
+
+* Inri Jiménez
+- Documentos entregados :: [[./JimenezInri/MI_COMPUTER.pdf]]
+- Comentarios ::
+  - Supongo que es un dedazo — Mencionas que la Commodore 64 fue
+    /desarrollada en 1962/ (salió a la venta en 1982)
+  - La C64 no es una /terminal/, es una /computadora completa/ (una
+    terminal es sólo un aparato que se conecta a una computadora
+    central; lo que usamos hoy en día como línea de comando es un
+    /emulador de terminal/)
+  - Tu texto es bastante corto, pero alcanza a revolverse bastante. Te
+    sugiero fuertemente enfocarte en mejorar tus habilidades para la
+    redacción, será parte fundamental de tu desempeño profesional.
+  - Dedicas apenas un párrafo a la mitad del ejercicio (un segundo
+    artículo que llamara tu atención) ☹
+- Calificación :: 8
+
+* Osmar Juárez y Luis Morales
+- Documentos entregados :: [[./JuarezOsmar-MoralesLuis/Proyecto1_SO_Fasiculo1.pdf]]
+- Comentarios ::
+  - Mencionan en su segunda página, respecto al Sinclair Spectrum:
+    #+BEGIN_QUOTE
+    si los programas, ya hechos que se encontraban en venta para la
+    Spectrum, no se adaptaban a las características que necesitaba el
+    usuario, este podía crear los programas para así adaptarlos a sus
+    necesidades (...) Esto nos daba una idea de que si queríamos
+    sacarle el mejor provecho a nuestra computadora personal debíamos
+    saber un poco de fundamentos de programación.
+    #+END_QUOTE
+    En primer lugar, como promotor del software libre, yo sostengo que
+    eso sigue siendo realidad hoy ☺ En segundo lugar... Recuerden que
+    en esa época el mercado objetivo era el de los aficionados y
+    entusiastas. Sí, todos los libros y cursos de uso de computadoras
+    iniciaban con los fundamentos de programación.
+  - Se acercan a un concepto muy importante, y por el que muchos
+    luchamos: La /generatividad/ de la computadora (y de Internet). No
+    únicamente es un dispositivo multipropósito, sino que es un
+    dispositivo que nos permite /generar propósitos/, /generar nuevas
+    formas de uso/.
+  - ¡Buen trabajo!
+- Calificación :: 10
+
+* Karen Jurado
+- Documentos entregados :: [[./JuradoKaren/MiComputer.docx]]
+- Comentarios ::
+  - No seguiste las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+  - Buena reseña de la PET, y buena elección del tema de Grace Hopper
+    ☺
+- Calificación :: 10 - 1 = 9
+
+* Paola Lara
+- Documentos entregados :: [[./LaraPaola/Proyecto1.pdf]]
+- Comentarios ::
+  - Como ya lo platicamos, hiciste un muy buen trabajo. Y me gusta cómo
+    vas relacionando los temas que mencionas con la realidad actual.
+- Calificación :: 10
+
+* Miguel López
+- Documentos entregados :: [[./LopezMiguel/Revista Mi Computer.pdf]]
+- Comentarios ::
+  - ¿Conexión a Internet en una Oric de los 80? No, estábamos aún muy
+    lejos. La conexión a Internet apenas entró en ámbitos domésticos a
+    principios de los 1990.
+
+    Existen algunos proyectos de /retrocomputación/ que permiten
+    conectarse a Internet desde una Commodore 64, pero son /muy/
+    posteriores (por ejemplo, un [[http://dunkels.com/adam/tfe/][cartucho para adaptar una conexión
+    Ethernet para la C64]] apareció en 2002, casi cuando esta
+    computadora cumplía los 20 años). ¿Puedes imaginar navegar en
+    Internet utilizando [[http://www.armory.com/~spectre/cwi/hl/][el navegador HyperLink]]?  (producido entre 1994
+    y 2003)
+  - Das en en clavo con tu último comentario: Uno de los puntos que
+    me parecen más valiosos de mostrarles estas viejas revistas es
+    que, como la profundidad de las abstracciones no era tan grande,
+    era posible /explicar de manera sencilla y visual/ lo que pasaba
+    en todo momento /tras bambalinas/. Hoy en día resulta prácticamente
+    imposible imaginar un esfuerzo comparable a MiComputer ☹
+- Calificación :: 10
+
+* Alan Monroy y Adair Peña
+- Documentos entregados ::
+     [[./Monroy_Rodríguez_Alan_Peña_Pescador_Adair/Proyecto_1.docx]]
+- Comentarios ::
+  - No siguieron las instrucciones de entrega (el directorio no
+    corresponde con lo que especifica el [[../../practicas/1/README.md][punto 4 de la práctica
+    1]]. (Corregido por mí). ¡Descuento un punto de calificación! ☹
+  - El primer artículo que mencionan, /La voz de su amo/, me pareció
+    muy interesante y les agradezco que lo eligieran. No, no me atrevo
+    a decir que fuera papel del sistema operativo el manejo de sonido
+    (sólo de asignar recursos, y echar a andar o detener al programa
+    específico que lo programe)... Pero entiendo que son paralelos que
+    intentan trazar, y lo celebro ☺
+  - Veo que eligieron reseñar a varios de los artículos de este
+    fascículo. ¡Me da gusto que les generara tanto interés! ☺
+- Calificación :: 10 - 1 = 9
+
+* Carlos Morales y Miguel Pérez Quiroz
+- Documentos entregados :: [[./MoralesCarlos-PerezQuirozMiguel/Reseña.pdf]]
+- Comentarios ::
+  - Buena apreciación que hacen. Las primeras computadoras /pequeñas/
+    e integradas eran vendidas se conocían como /transportables/, y no
+    eran para usar /mientras se transportaban/. ¡Ni siquiera tenían
+    baterías!
+  - Vinculan con un artículo de tema bastante cercano. ¡Bien! ☺
+  - Yo discrepo con su conclusión... ¿Realmente puede usarse la
+    entrada de voz de forma alterna ante una computadora en vez de
+    teclado? Para órdenes cortas, y dispuestos a tolerar algo de
+    frustración, estoy de acuerdo... ¿Pero para el uso reiterado, la
+    escritura de textos y demás? No lo creo...
+- Calificación :: 10
+
+* Vicente Romero
+- Documentos entregados :: [[./RomeroVicente/Proyecto 1.pdf]]
+- Comentarios ::
+  - Buena vinculación del recorrido que haces del Sinclair QL con lo
+    visto en clase. ¡Bien!
+  - Las computadoras personales de la época no contemplaban ejecutar
+    sistemas tipo Unix... Tuvo que esperar hasta principios de los 90
+    para que se diera ese paso. El /estándar dorado/ de la época era
+    CP/M.
+- Calificación :: 10
