@@ -16,10 +16,9 @@ el que ustedes me planteen los temas de su interés.
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 | 26/feb | "The Machine" (HP)                                        | Lizbeth Alejandro, Arturo Durán     | [[./AlejandroLizbeth-DuránArturo/ResumenTheMachine.LizbethAlejandro.ArturoDuran.pdf][Resumen]], [[./AlejandroLizbeth-Dur%C3%A1nArturo/The.machine.LizbethAlejandro.ArturoDuran.pdf][Presentación]] | [[./AlejandroLizbeth-DuránArturo/evaluacion.org][Evaluación]] |
 | 7/mar  | Seguridad en entornos virtualizados; el modelo de anillos | Ernesto Aguilera                    | [[./AguileraErnesto/Resumen.Seguridad.en.entornos.virtualizados.el.modelo.de.anillos.AguileraErnesto.pdf][Resumen]], [[./AguileraErnesto/Seguridad.en.entornos.virtualizados.el.modelo.de.anillos.AguileraErnesto.pdf][Presentación]] | [[./AguileraErnesto/evaluacion.org][Evaluación]] |
-| 12/mar | Planificación → Tiempo real, núcleo prevenible...         | Orlando García, Luis Morales        |                       |            |
-| 14/mar | SPECTRE y Meltdown                                        | Osmar Juárez                        |                       |            |
 | 19/mar | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  |                       |            |
-| 21/mar | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández                      |                       |            |
+| 21/mar | SPECTRE y Meltdown                                        | Osmar Juárez                        |                       |            |
+| 21/mar | Planificación → Tiempo real, núcleo prevenible...         | Orlando García, Luis Morales        |                       |            |
 | 26/mar | — No disponible —                                         |                                     |                       |            |
 | 28/mar | — No disponible —                                         |                                     |                       |            |
 | 2/abr  | — No disponible —                                         |                                     |                       |            |
@@ -27,6 +26,7 @@ el que ustedes me planteen los temas de su interés.
 | 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Orlando García        |                       |            |
 | 11/abr | Cómputo cuántico                                          | Miguel Ángel López                  |                       |            |
 | 16/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales |                       |            |
+| 18/abr | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández                      |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 
 
