@@ -1,0 +1,424 @@
+#+title: Revisión de la tarea 2
+#+options: toc:nil num:nil
+
+* Aspectos comunes
+
+En primer lugar, me llamó la atención fuertemente que si bien en la
+sección *La entrega* del [[./README.md][planteamiento de esta tarea]] se indica
+claramente que espero /documentación/ junto con la resolución del
+problema, hubo tantos alumnos que no la entregaron (10 de las 19
+tareas entregadas a tiempo) ☹
+
+Las tareas que no incluyen documentación pierden automáticamente dos
+puntos de calificación ☹
+
+* Revisión
+
+** Gabriel Aguilar y Sandra García
+- Problema elegido :: Gatos y ratones
+- Documentación :: [[./AguilarGabriel-GarciaSandra/Read Me.txt][Read Me.txt]]
+- Código :: [[./AguilarGabriel-GarciaSandra/gatosRatones.py][gatosRatones.py]], [[./AguilarGabriel-GarciaSandra/gatosRatones_v2.py][gatosRatones_v2.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Buena implementación, y buena identificación del patrón a utilizar
+    (/exclusión categórica/ ⇒ /Apagador/).
+  - La situación es susceptible a la inanición, porque un tipo de
+    actor "acapara" al apagador:
+    #+BEGIN_SRC text
+      $ python3 gatosRatones_v2.py 
+      (...)
+	   GATO 3 esta comiendo en el plato 5 ...
+	 El PLATO 5 se desocupo
+
+      YA NO HAY GATOS
+
+	   RATON 2 esta comiendo en el plato 6 ...
+	 El PLATO 6 se desocupo
+	   RATON 9 esta comiendo en el plato 7 ...
+	 El PLATO 7 se desocupo
+	   RATON 6 esta comiendo en el plato 0 ...
+	 El PLATO 0 se desocupo
+	   RATON 10 esta comiendo en el plato 4 ...
+      (...)
+	 El PLATO 7 se desocupo
+	   RATON 4 esta comiendo en el plato 4 ...
+	 El PLATO 4 se desocupo
+
+      YA NO HAY RATONES
+
+	   GATO 1 esta comiendo en el plato 5 ...
+	 El PLATO 5 se desocupo
+	   GATO 5 esta comiendo en el plato 5 ...
+
+      ,*********** Los GATOS se COMIERON al RATON 0 ***********
+
+	 El PLATO 5 se desocupo
+	   GATO 6 esta comiendo en el plato 2 ...
+      (...)
+    #+END_SRC
+    No se alternan el control del plato /mientras hay algún otro de la
+    misma categoría/. Esto es correcto, pero podría ser más
+    /divertido/ modular el flujo para que haya más momentos de
+    tensión — Momentos en que se intercambia el control del apagador ☺
+- Calificación :: 10
+
+** Ernesto Aguilera
+- Problema elegido :: El cruce del río
+- Documentación :: No entregada
+- Código :: [[./AguileraErnesto/Balsa.py][Balsa.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - No hay documentación ☹
+  - Lanzas dos =creator()= a la vez, protegiendo correctamente de
+    acceso simultáneo con un mutex.
+  - Identificaste bien la solución: Subirlos únicamente de dos en dos
+    en tus funciones =serfDispatcher= y =hackerDispatcher=
+    - ¿Por qué tener dos funciones diferenes si hacen básicamente lo
+      mismo? Podría combinarse prefectamente en una sola...
+  - Pero tu programa cae en bloqueo tras crear a dos actores.
+    - Lanzaste a los dos =dispatcher= sin haber esperado a que
+      éstos existieran.
+    - Tus funciones =dispatcher= usan las mismas variables globales
+      que =creator= y que =cruzaRio=, pero usan un =mutex=
+      diferente. ¿Por qué?
+    - En =cruzaRio= usas correctamente =mutexGlobal= (que sólo usas
+      ahí :-Þ) y además adquieres =mutex=, pero nunca lo
+      liberas... ¡Ahí está tu bloqueo!
+    - En vez de que =cruzaRio= evalúe si =balsa==4=, podrías hacer que
+      cualquiera de los =dispatcher= al detectar que en la balsa ya
+      hay cuatro pasajeros lanzara una señalización a cruzaRio
+    - Los =dispatchers= se ejecutan una única vez, deberían ejecutarse
+      mientras siga habiendo cola...
+  - =cruzaRio= no vacía la balsa una vez que llega al otro lado... Los
+    cuatro se quedan sentados para siempre
+- Calificación :: 7 - 2 = 5
+
+** Luis Arvizu
+- Problema elegido :: Los alumnos y el asesor
+- Documentación :: No entregada
+- Código :: [[./ArvizuLuis/Asesorias_Luis.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - No hay documentación ☹
+  - Para comprender más fácil la /responsabilidad/ de cada uno de los
+    actores, considera que aunque sea una sola computadora, cada hilo
+    debe limitarse a hacer su tarea (y nunca actuar a nombre del
+    otro).
+    - Por ejemplo, ¿quién es el que pregunta? Son los
+      alumnos. Entonces, en vez de que la función =Profesor()= incluya
+      una llamada a =Pregunta()=, eso te apunta a que ésta tiene que
+      mandar (¿una? ¿varias?) señalización al alumno para que éste
+      comience con sus preguntas.
+    - En tu implementación, parte importante de la confusión viene de
+      que la =Pregunta()= es invocada tanto por =Alumno()= como por
+      =Profesor()= (¡y nadie responde! ☹)
+  - Hay que repensar demasiado tu respuesta para que quede funcional ☹
+- Calificación :: 7 - 2 = 5
+
+** Daniel Cruz y Luis Mata
+- Problema elegido :: Gatos y ratones
+- Documentación :: [[./CruzDanielMataLuis/readme][readme]]
+- Código :: [[./CruzDanielMataLuis/gatosratones.py][gatosratones.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Me parece que el principal problema que ustedes identificaron es
+    que... ¡no hay ningún problema! 😉
+    - Con el programa como lo entregaron, los gatos esperan mucho más
+      que los ratones para comenzar a entrar, y nunca se cumple el que
+      se tengan que perseguir
+    - Si le elimino todas las demoras (=time.sleep()=) al programa, la
+      ejecución va ágil y rapidita mostrando:
+      #+BEGIN_SRC text
+	El gato 0 esta en la casa
+	Se acerca el gato 0
+	Gato 0: comiendo...
+	Soy el gato 0 y termine de comer
+	El gato 1 esta en la casa
+	El raton 0 esta en la casa
+	 Se acerca el gato 1El gato 2 esta en la casa
+
+	Gato 1: comiendo...
+	Soy el gato 1 y termine de comer
+	 El gato 3 esta en la casa
+	Raton 0 comiendo..........
+	El raton 2 esta en la casa
+	Soy el raton 0 y termine de comer
+	El gato 4 esta en la casa
+	 Se acerca el gato 2
+	Gato 2: comiendo...
+	Soy el gato 2 y termine de comer
+	El gato 5 esta en la casa
+	 Raton 2 comiendo..........Hay 1 ratones en la casa!
+
+	El gato 3 se comio un raton
+	El gato 6 esta en la casa
+	 Soy el raton 2 y termine de comer
+	Se acerca el gato 3
+	Gato 3: comiendo...
+      #+END_SRC
+    - Es /bastante poco probable/ que un gato se coma a un ratón, pero
+      definitivamente no es imposible
+- Calificación :: 10
+
+** Arturo Durán
+- Problema elegido :: Los alumnos y el asesor
+- Documentación :: [[./DuránArturo/leeme.txt][leeme.txt]]
+- Código :: [[./DuránArturo/asesor.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - La ejecución de tu programa me parece completamente correcta. Como
+    dices, parece que hay /linealidad/, pero los alumnos sí
+    intercambian el flujo.
+    - La aparente linealidad es porque el espacio que se abre entre
+      invocaciones de =pregunta_respuesta()= es demasiado ajustado
+  - Lo que no implementa tu =profesor()= es volverse a dormir cuando
+    no hay alumnos
+    - Vas un poco en ese sentido cuando verificas =alumnos ==
+      alumnos_que_iran_hoy= como condición para terminar la ejecución
+      del profesor. ¡Ojo! Tendrías que haber usado un mutex para
+      verificar =alumnos=.
+  - Ojo: Igual que comenté a la implementación anterior, ¡asegúrate de
+    que cada actor se ciña a sus funciones! Esto es, en tu caso, ni
+    bien está sentado frente al profesor (usando el multiplex
+    =mutex_preg_resp=, ¡buena solución!), =alumno()= invoca a
+    =pregunta_respuesta()=... ¡No es el profesor el que responde!
+    - Debería haber una señalización para que el alumno emita la
+      pregunta, el profesor la respuesta
+- Calificación :: 8
+
+** Rodrigo Francisco y Beatriz Sánchez
+- Problema elegido :: El cruce del río
+- Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md][README.md]]
+- Código :: [[./FranciscoRodrigo-SanchezBeatriz/CruceRio.py][CruceRio.py]]
+- Lenguaje :: Python
+- Comentarios :: 
+  - Declaran e importan varias /cosas/ que no utilizan
+    - Comprendo que =sleep()= pueda ser innecesario, pero distrae
+      incluirlo ;-) Al igual que l inexistente variable global
+      =esCap=...
+  - La implementación es correcta, pero me parece que hay un pequeña
+    condición de carrera entre los =print()=, que son el único efecto
+    observable externamente
+    - Y por eso casi siempre /parece/ que hay cinco pasajeros en una
+      balsa y sólo tres en otra — Pero el código que lo implementa es
+      correcto
+- Calificación :: 10
+
+** Vicente García y Enrique Guerrero
+- Problema elegido :: Los alumnos y el asesor
+- Documentación :: [[./GarciaVicente-GuerreroEnrique/EjercicioSincronizacion.pdf][EjercicioSincronizacion.pdf]]
+- Código :: [[./GarciaVicente-GuerreroEnrique/EjercicioSincro.py][EjercicioSincro.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - La mayor parte de mis comentarios al código los incluyen en la
+    documentación. ¡Bien! :-)
+  - Claro, este profesor es un simulador... ¿Qué es eso de irse a
+    dormir y dejar que los alumnos crean que alguien les respondió?
+    ¿Es un ayudante acaso el que resuelve? 😉
+  - El uso de señalización que hacen es /muy/ heterodoxo. Dentro de
+    una misma ejecución de =control_preguntas()=, liberan e
+    inmediatamente adquieren la misma señal... Me parece que resulta
+    ocioso (aunque, sí, ilustra lo que quieren presentar)
+    - En realidad, si hubieran "partido" el control de pregunta entre
+      alumno y profesor, esta división quedaría natural y
+      perfectamente en su lugar)
+- Calificación :: 8
+
+** Féliz González y Yared Guzmán
+- Problema elegido :: El cruce del río
+- Documentación :: No entregada
+- Código :: [[./Gonzalez Felix - Guzman Yared/El cruce del rio.py]]
+- Lenguaje :: Python
+- Comentarios :: 
+  - No hay documentación ☹
+    - Les doy la mitad de los dos puntos que pido por la
+      documentación, porque su programa está /muy bien/ comentado
+    - Sin embargo, el papel de los comentarios y de la documentación
+      es /muy diferente/. Un usuario que no se acerque a las fuentes
+      debe poder leer su documentación.
+    - Caen un poco en /comentarios excesivos/. Por ejemplo:
+      #+BEGIN_SRC python
+	#Se define la estructura de lo que hara serf
+	def serfs():
+	    global num_S     #Declarando variables
+	    global num_H
+	    mutex.acquire() 
+	    num_S += 1       #Contador para hackers
+      #+END_SRC
+      De todos estos comentarios, únicamente el último tiene
+      significado que no resulta obvio de leer estructura del programa
+      (¡y está equivocado! =num_S= es el contador de serfs, =num_H= el
+      de hackers)
+  - Su implementación es la más original que he visto para este
+    problema, y absolutamente válida. ¡Muy bien hecho!
+- Calificación :: 10 - 1 = 9
+
+** Leonardo González y Miguel Pérez Ruiz
+- Problema elegido :: El cruce del río
+- Documentación :: No entregada
+- Código :: [[./GonzalezLeonardo-PerezRuizMiguel/Tarea.py][Tarea.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - No hay documentación ☹
+  - Le prestan atención a lo amigable de la salida. ¡Muy bien!
+  - Buena implementación; correcta y fácil de leer
+    - Mismo comentario que hice al caso anterior: Es muy importante
+      comentar, y se los valgo como /media-documentación/. Sin
+      embargo, el /exceso de comentarios/ no es bueno — Les quita
+      tiempo, y aveces más que ayudar dificulta a la lectura (¡y muchas
+      veces es incluso contraproducente! Vean el caso anterior, en que
+      comentaron erróneamente).
+    - Hay que comentar la /lógica no-obvia/. Podemos asumir que quien
+      lea nuestros comentarios comprende lo básico de la sintaxis del
+      lenguaje.
+- Calificación :: 10 - 1 = 9
+
+** Ivan Hernández
+- Problema elegido :: Los alumnos y el asesor
+- Documentación :: No entregada
+- Código :: [[./HernandezIvan/alum_ace.py][alum_ace.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - No hay documentación ☹
+  - El programa no está implementado completo ☹ No hay interacción
+    entre hilos
+  - Curioso que identifiques a las =sillas()= como un /sujeto activo/
+    del programa. Sin embargo, sólo las generas y terminan su
+    ejecución. ¿Cuál es su funcióñ?
+  - El alumno no hace nada más que anunciar que está vivo
+  - El profesor, a pesar de tener mala ortografía (⸘Acesorar‽
+    ¡Asesorar!), es el que está más cerca de tener
+    funcionalidad... Pero tampoco la tiene ☹
+  - Veo que intentaste usar algunas construcciones, como los hilos y
+    semáforos, e implementaste algunos mutexes (aunque no
+    siempre de forma correcta). No puedo apuntar a por dónde comenzar
+    a corregir tu programa ☹
+- Calificación :: 6 - 2 = 4
+
+** Víctor Hernández
+- Problema elegido :: El cruce del río
+- Documentación :: [[./HernandezVictor/Cruce del río.odt][Cruce del río.odt]]
+- Código :: [[./HernandezVictor/Cruce del río.py][Cruce del río.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - El principal problema de tu implementación es que tu =balsa()=
+    espera a tres señales: =sem_balsa=, =mutex_hackers= y
+    =mutex_serfs=. Tu =sem_balsa= inicia en 4 (¿por? ¿un multiplex de
+    balsas simultáneas?), y los mutexes están abiertos. Entonces, por
+    eso pasa cuatro veces al principio, hasta que =sem_balsa == 0=.
+
+    Hasta ahí, todo bien. Pero a continuación, caes en un bloqueo
+    mutuo clásico: Tanto =mutex_hackers= como =mutex_serfs= son
+    necesarios para que (dentro de =serf= o =hacker=) se libere
+    =sem_balsa=, pero =balsa= ya se quedó bloqueando a ambas, y no
+    llega a presentarse el umbral esperado
+  - No puedo darte una resolución simple. Va por buen camino, pero
+    el bloqueo mutuo parece que te espantó... 😉
+- Calificación :: 7
+
+** Omar Ibarra
+- Problema elegido :: El cruce del río
+- Documentación :: No entregada
+- Código :: [[./IbarraOmar/tarea2.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - No hay documentación ☹
+  - No considero que este problema resuelva satisfactoriamente las
+    condiciones planteadas
+  - Generas tres funciones, cada una de las cuales sube una diferente
+    combinación de actores... Pero la única sincronización que haces
+    es un mutex para la sección crítica
+    - ¿Y si tienes diferente número de /serfs/ y de /hackers/?
+    - No puede darse el no-determinismo de que cada vez se /mezclen/
+      de diferente manera, con la impredecibilidad que caracteriza a
+      estos problemas
+- Calificación :: 7 - 2 = 5
+
+** Osmar Juárez y Luis Morales
+- Problema elegido :: El cruce del río
+- Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionTarea2_SO.pdf][DocumentacionTarea2_SO.pdf]]
+- Código :: [[./JuarezOsmar-MoralesLuis/Tarea2_Cruce_rio.py][Tarea2_Cruce_rio.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Solución aparentemente correcta
+    - Aunque después de un par de vueltas cae inevitablemente en
+      bloqueo mutuo. ¿Por qué?
+  - Implementaron una lógica un poco más compleja de lo que acostumbro
+    ver para este problema. Consideren, dada su similitud, ¿es
+    verdaderamente necesario que existan dos funciones, =serfs()= y
+    =hackers()=? 
+- Calificación :: 8
+
+** Paola Lara
+- Problema elegido :: Santa Claus
+- Documentación :: No entregada
+- Código :: [[./LaraPaola/SantaiPaw.py][SantaiPaw.py]]
+- Lenguaje :: Python
+- Comentarios :: 
+  - No hay documentación ☹
+    - Mismo comentario que hice a casos anteriores: Es muy importante
+      comentar, y se los valgo como /media-documentación/. Sin
+      embargo, el /exceso de comentarios/ no es bueno — Les quita
+      tiempo, y aveces más que ayudar dificulta a la lectura (¡y
+      muchas veces es incluso contraproducente! Ve el primer caso, en
+      que comentaron erróneamente).
+  - Lo dije y lo sostengo. ¡Muy buen programa y muy buena implementación!
+  - Sólo apuntaría a un cambio, pero más por pasarme de literal que
+    otra cosa: Los nueve renos son siempre los mismos. Al
+    inicializar, tendría que ser:
+    #+BEGIN_SRC python
+    for num_reno in range(9):
+      threading.Thread(target=Reno, args=[]).start()
+    #+END_SRC
+    Claro, eso requeriría modificar a =Reno()= para que viva dentro
+    de un =while True:=, agregando una señal al final del
+    =viaje_anual()= para que, todos juntos, pudieran irse a
+    descansar.
+
+    (no me meto con los elfos, esos sí podrían ser infinitos ☺)
+- Calificación :: 10 - 1 = 9
+
+** Miguel López
+- Problema elegido :: Intersección de caminos
+- Documentación :: [[./LopezMiguel/Intersección de caminos.pdf][Intersección de caminos.pdf]]
+- Código :: [[./LopezMiguel/Interseccion%20de%20caminos.py][Interseccion de caminos.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Excelente descripción / justificación de tus decisiones de diseño
+  - Muy buena implementación
+    - Tu uso de semáforos para implementar "semáforos viales" no es
+      ortodoxo, y muchos lo criticarían. Además, el poner un sleep por
+      tiempo definido /no puede ser visto/ como sincronización
+    - Pero es una implementación buena y original, y demuestra que
+      dominas el conocimiento pertinente. Por mi, ¡perfecto!
+  - Lo único que podría ser mejor es la "interfaz usuario", que fuera
+    más claro lo que está pasando (p.ej. indicar qué hilo está
+    pasando por cada sección, o incluso "ya que estamos" hacerlo con
+    interfaz gráfica 😉
+- Calificación :: 10
+
+** Carlos Morales y Miguel Pérez Quiroz
+- Problema elegido :: El cruce del río
+- Documentación :: [[./MoralesCarlos-PérezQuirozMiguel/README.md][README.md]]
+- Código :: [[./MoralesCarlos-PérezQuirozMiguel/RiverCrossing.py][RiverCrossing.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Buena implementación — Y lograda de una manera bastante original,
+    muy distinta de casi todas las demás. ¡Bien!
+- Calificación :: 10
+
+** Vicente Romero
+- Problema elegido :: El servidor Web
+- Documentación :: [[./RomeroVicente/README.md][README.md]]
+- Código :: [[./RomeroVicente/El_servidor_web/main.py][main.py]], [[./RomeroVicente/El_servidor_web/core/Console.py][Console.py]], [[./RomeroVicente/El_servidor_web/core/Conexion.py][Conexion.py]], [[./RomeroVicente/El_servidor_web/core/Jefe.py][Jefe.py]], [[./RomeroVicente/El_servidor_web/core/Trabajador.py][Trabajador.py]]
+- Lenguaje :: Python
+- Comentarios ::
+  - Sin temor a equivocarme, eres /mucho/ mejor pythonista que yo 😉
+  - Muy buen trabajo, muy buena estructura y presentación
+  - Si acaso, y para que el trabajo verdaderamente brille, faltaría
+    algo de comentarios en las funciones. El código me resulta un poco
+    denso y difícil de seguir
+  - Excelente el que presentes un programa parametrizable desde la
+    línea de comandos, que genere bitácora y toda la cosa :-D
+- Calificación :: 10
+

@@ -1,0 +1,14 @@
+Problema de sincronizacion elejido: Los alumnos y el asesor
+
+Desarrollado en Python versión: Python 2.7.16rc1, editor de texto: Atom, intérprete de consola en kali linux
+
+Ejecucion en consola linux: $python asesor.py
+
+Se utilizó mutex para el acceso restringido a zonas críticas, señalizacion para despertar al asesor, un torniquete...
+... para tratar de hacer un poco mas desordenado el acceso a preguntas y un multiplexor para limitar el número de hilos...
+... que accesan simultáneamente a un azona crítica.
+
+Algun refinamiento quizá es la agregación de sleeps y randoms para hacer mas variada la espera de los hilos...
+...pero fuera de ello nop
+
+Creo que funciona, a veces se nota algo lineal la atención pero si hay variedad en las intervenciones de los alumnos.
