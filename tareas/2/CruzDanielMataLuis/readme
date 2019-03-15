@@ -1,0 +1,5 @@
+El problema que decidimos resolver fue el de los gato y los ratones 
+Se programo en Python. 
+Trabajamos con un mutex y un torniquete.
+Actividad no completada, ya que no logramos implementar que el gato se coma al raton que este comiendo en ese momento. 
+
