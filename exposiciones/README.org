@@ -23,10 +23,11 @@ el que ustedes me planteen los temas de su interés.
 | 28/mar | — No disponible —                                         |                                     |                       |            |
 | 2/abr  | — No disponible —                                         |                                     |                       |            |
 | 4/abr  | Trusted Platform Module (TPM)                             | Sandra García y Gabriel Aguilar     |                       |            |
-| 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Orlando García        |                       |            |
+| 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Omar Ibarra           |                       |            |
 | 11/abr | Cómputo cuántico                                          | Miguel Ángel López                  |                       |            |
-| 16/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales |                       |            |
-| 18/abr | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández                      |                       |            |
+| 23/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales |                       |            |
+| 25/abr | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández                      |                       |            |
+| 30/abr | Puntos de control en procesos                             | Alan Monroy y Adair Peña            |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 
 
