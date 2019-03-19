@@ -1,0 +1,32 @@
+Gatos y Ratones
+
++Se usó el lenguaje Python para resolver el problema
+	-Es necesario tener la versión 3 de python
+	-Diríjase a la ruta donde se encuentran los archivos a ejecutar
+	-Para ejecutarlo basta con poner "python <nombre_archivo.py>" en la consola
+		Ejemplo:
+			python gatosRatones.py
+			python gatosRatones_v2.py 
+	-En seguida verá al programa ejecutándose
++La estrategia a segir fue la creación de dos semáforos que tendrán dos funciones:
+	1.- Proteger a los contadores de ser modificados por varios hilos a la vez
+	2.- Señalización de que los platos están ocupados por el otro grupo 
+	    de animales
+	-Cada animal verifica primero si hay algún animal del otro grupo comiendo 
+	 para que pueda empezar a comer.
+	-Si está el especio libre este mismo semáforo sirve como mutex de la variable
+	 compartida.
+	-El primer animal avisará a los demás de su clase que pueden comer y el último
+	 avisará a los otros animales que es su turno para comer
++No hubo refinamientos, sin embargo anexamos dos versiones
+	1.- No existe la posibilidad de que los gatos se coman a los ratones
+	    ya que el pacto de caballeros está bien implementado
+	2.- Existe la posibilidad de que un ratón se acerque a comer cuando hay gatos
+ 	    comiendo, por lo que los gatos se lo deborarían y el sistema manda mensaje.
+		Además añadimos la posibilidad de que los animales coman más de una vez.
++Nos dimos cuenta que los platos se ocupan y desocupan seguiedo una misma secuencia, es 
+	decir si el plato  0 es ocupadó, será el siguiente en desocuparse. No estamos seguros
+	qué origina esto, pero creemos que se debe al tiempo entre la ocupación y liberación 
+ 	del plato.
+ 
+	
