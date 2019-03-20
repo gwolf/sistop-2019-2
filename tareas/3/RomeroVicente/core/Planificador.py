@@ -3,6 +3,7 @@ class Planificador:
         self.log = log
         self.quantum = quantum
         self.procesos = procesos
+        self.procesos.sort(key=lambda x:x.llegada,reverse=False) #ordena por el orden de llegada
         self.total = 0
         self.T_list = []
         self.P_list = []
@@ -14,9 +15,9 @@ class Planificador:
         suma = 0
         for proceso in self.procesos:
             suma = suma + proceso.t
-            texto = texto + " " + proceso.nombre +": " + str(proceso.llegada) + ", t="+ str(proceso.t)+";"
+            texto = texto + " " + proceso.nombre +": " + str(proceso.llegada) + ", t="+ str(proceso.t/self.quantum)+"[quantum];"
         self.total = suma
-        print(texto + "(total:"+str(self.total)+")")
+        print(texto + "(total:"+str(self.total/1000)+"[s])")
 
     def get_promedios(self):
         P_promedio = 0
