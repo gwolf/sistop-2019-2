@@ -4,7 +4,8 @@ import argparse
 from threading import Thread
 from core.FCFS import FCFS
 from core.Proceso import Proceso
-
+from core.RoundRobin import RoundRobin
+from core.RoundRobin4 import RoundRobin4
 
 
 
@@ -21,4 +22,8 @@ class Console:
         for i in range(self.args.process):
             procesos.append(Proceso()) ## se inicializa la lista de procesos
         fcfs = FCFS(self.args.log,self.args.quantum,procesos)
-        Thread(target = fcfs.iniciar_planificador, name="programa principal").start()
+        round_robin = RoundRobin(self.args.log,self.args.quantum,procesos)
+        round_robin4 = RoundRobin4(self.args.log,self.args.quantum,procesos)
+        fcfs.iniciar_planificador()
+        round_robin.iniciar_planificador()
+        round_robin4.iniciar_planificador()
