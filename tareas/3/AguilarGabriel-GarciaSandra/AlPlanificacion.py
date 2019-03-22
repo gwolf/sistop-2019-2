@@ -214,7 +214,7 @@ def prueba(ronda):
 	FCFS(ordenProcesos)
 	RR1(ordenProcesos)
 	RR4(ordenProcesos)
-    SPN(ordenProcesos
+    SPN(ordenProcesos)
 #A=[[0,3,'A'],[1,5,'B'],[3,2,'C'],[9,5,'D'],[12,5,'E']]
 #FCFS(A)
 #RR1(A)
