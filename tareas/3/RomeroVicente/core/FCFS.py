@@ -12,12 +12,12 @@ class FCFS(Planificador):
     def planificar(self):
         texto = ""
         total = 0
+        inicio = 0
         for proceso in self.procesos:
-            if(proceso.llegada > total):
-                inicio = proceso.llegada
-                total = total + inicio
-            else:
-                inicio = total
+            while(proceso.llegada > total):
+                total = total + 1
+                texto = texto + "[  ]"
+            inicio = total
             fin = inicio + ceil(proceso.t/self.quantum)
             T = (fin - proceso.llegada)
             quantum_tick = proceso.t/self.quantum
@@ -28,7 +28,7 @@ class FCFS(Planificador):
             self.R_list.append(R)
             E = T - quantum_tick
             self.E_list.append(E)
-            for i in range(int(quantum_tick)):
+            for i in range(ceil(quantum_tick)):
                 texto = texto + proceso.nombre
             total = total + ceil(proceso.t/self.quantum)
         promedios = self.get_promedios()
