@@ -1,7 +1,10 @@
 package dispatch;
 
 import java.util.Comparator;
-
+/* Clase que implementa el algoritmo de
+*  "el más corto a continuación".
+*
+*/
 
 public class Spn implements Despachador{
     public float tiempoEjecucion=0;
