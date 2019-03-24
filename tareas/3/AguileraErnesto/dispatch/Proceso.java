@@ -1,5 +1,11 @@
 package dispatch;
 
+/* Clase en la que se abstraen los
+*  atributos de un proceso, también 
+*  se encarga de recalcular sus propios 
+*  tiempos.
+*/
+
 public class Proceso{
     private int nombre;
 
