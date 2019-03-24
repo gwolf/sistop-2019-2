@@ -5,7 +5,11 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/* Clase que implementa el algoritmo
+*  de Round Robin, en la versión actual
+*  no modifica correctamente los procesos 
+*  y llega a un estado erróneo.
+*/
 
 public class RoundRobin implements Despachador{
     
