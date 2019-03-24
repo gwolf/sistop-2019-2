@@ -1,7 +1,10 @@
 package dispatch;
 
 import java.util.Comparator;
-
+/* Clase del algoritmo de "Primero llegado, primero servido"
+*  se utiliza un flujo de datos dada la facilidad del problema.
+*
+*/
 
 public class Fifo implements Despachador{
     
