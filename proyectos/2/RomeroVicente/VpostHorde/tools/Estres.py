@@ -126,7 +126,7 @@ class Estres(Peticion):
         return True
 
     def esperarCompletos(self):
-        while(len(self.respuestas)< int(self.hilos)):
+        while(len(self.respuestas) < int(self.hilos)):
             pass
 
     def esperarTiempo(self): 
