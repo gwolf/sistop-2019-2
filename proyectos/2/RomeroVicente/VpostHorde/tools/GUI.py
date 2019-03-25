@@ -85,7 +85,7 @@ class GUI(wx.Frame):
 
     def __set_properties(self):
         # begin wxGlade: Ventana.__set_properties
-        self.SetTitle("Usecad-Estres")
+        self.SetTitle("VpostHorde")
         self.rdboxHeader.SetSelection(0)
         self.rdoBoxEntrada.SetSelection(0)
         # end wxGlade
