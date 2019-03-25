@@ -296,10 +296,11 @@ class GUI(wx.Frame):
                 dialog.ShowModal()
                 return
         else:
-            thread = threading.Thread(target = self.test.iniciarHilos)
+            mutex = threading.Semaphore(0)
+            thread = threading.Thread(target = self.test.iniciarHilos,args=(mutex,))
             thread.start()
-            while thread.is_alive():
-                self.espera(thread)
+            self.espera(thread)
+            mutex.acquire()
             analisis = self.test.crearAnalisis()
             with wx.MessageDialog(self, str(analisis.exitosVSFallos)+" tiempo promedio: "+str(analisis.tiempo_promedio)+"\nCodigos de estado devueltos: "+str(analisis.state_codes_dict) + "\nLos resultados crudos se pueden consular en: " + self.test.archivoRespuestas+".txt" ,"Resultados") as dialog:
                 dialog.ShowWindowModal()

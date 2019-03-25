@@ -19,7 +19,7 @@ class Estres(Peticion):
     __metaclass__ = Singleton
     def __init__(self,hilos,tiempo,url,payload,tipo,headers,auth,archivo,archivoRespuestas):
         self.__instance = None
-        self.hilos = hilos
+        self.hilos = int(hilos) + 1
         self.tiempo = tiempo
         if(self.tiempo != None):
             self.horaFinal = time.time() + int(self.tiempo)
@@ -28,7 +28,9 @@ class Estres(Peticion):
         self.archivoRespuestas = archivoRespuestas
         Peticion.__init__(self,url,payload,tipo,headers,auth)
         self.respuestas = []
-        self.finished = False
+        self.finished = threading.Semaphore(1)
+        self.mutex = threading.Semaphore(1)
+        self.barrier = threading.Semaphore(0)
 
     def crearAnalisis(self):
         analizador = Analisis()
@@ -44,85 +46,131 @@ class Estres(Peticion):
         analizador.analizar_state_codes()
         return analizador
 
-    def iniciarHilos(self):
+    def iniciarHilos(self,mutex):
         if(self.tiempo != None):
             self.horaFinal = time.time() + int(self.tiempo)
         print("guardado:"+self.archivoRespuestas)
         output = open(self.archivoRespuestas+".txt","w")
         if(self.tipo == "POST"):
             if(self.file == None):
+                self.finished.acquire()
                 while(self.esperarTiempo()):
+                    num = 0
                     for i in range(int(self.hilos)):
-                        thread = threading.Thread(target = self.post, args = (self.respuestas,),name=str(i+1)+" peticion")
+                        thread = threading.Thread(target = self.post, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                         thread.start()
-                    thread.join()
-                    self.esperarCompletos()
+                        if num == self.hilos:
+                            for i in range(self.hilos):
+                                self.barrier.release()
+                            num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                     if (self.tiempo == None):
                         break
                 self.escribirRespuestas(output)
             else:
+                self.finished.acquire()
                 while(self.esperarTiempo()):
+                    num = 0
                     for i in range(int(self.hilos)):
-                        thread = threading.Thread(target = self.postFile, args = (self.respuestas,),name=str(i+1)+" peticion")
+                        thread = threading.Thread(target = self.postFile, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                         thread.start()
-                    thread.join()
-                    self.esperarCompletos()
+                        if num == self.hilos:
+                            for i in range(self.hilos):
+                                self.barrier.release()
+                            num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                     if (self.tiempo == None):
                         break
             self.escribirRespuestas(output)
         elif(self.tipo == "GET"):
+            self.finished.acquire()
             while(self.esperarTiempo()):
-                for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.get, args = (self.respuestas,),name=str(i+1)+" peticion")
+                num = 0
+                for i in range(self.hilos):
+                    thread = threading.Thread(target = self.get, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                    self.mutex.acquire()
                     thread.start()
-                thread.join()
-                self.esperarCompletos()
+                    num = num + 1
+                if num == self.hilos:
+                    for i in range(self.hilos):
+                        self.barrier.release()
+                    num = 0
+                self.barrier.acquire()
+                self.barrier.release()
                 if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
+            self.finished.release()
         elif(self.tipo == "PUT"):
+            self.finished.acquire()
             while(self.esperarTiempo()):
+                num = 0
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.put, args = (self.respuestas,),name=str(i+1)+" peticion")
+                    thread = threading.Thread(target = self.put, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                     thread.start()
-                thread.join()
-                self.esperarCompletos()
+                if num == self.hilos:
+                    for i in range(self.hilos):
+                        self.barrier.release()
+                    num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                 if (self.tiempo == None):
                     break
             self.escribirRespuestas(output)
         elif(self.tipo == "DELETE"):
+            self.finished.acquire()
             while(self.esperarTiempo()):
+                num = 0
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.delete, args = (self.respuestas,),name=str(i+1)+" peticion")
+                    thread = threading.Thread(target = self.delete, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                     thread.start()
-                thread.join()
-                self.esperarCompletos()
+                if num == self.hilos:
+                    for i in range(self.hilos):
+                        self.barrier.release()
+                    num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                 if (self.tiempo == None):
                     break
             self.escribirRespuestas(output)
         elif(self.tipo == "HEAD"):
+            self.finished.acquire()
             while(self.esperarTiempo()):
+                num = 0
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.head, args = (self.respuestas,),name=str(i+1)+" peticion")
+                    thread = threading.Thread(target = self.head, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                     thread.start()
-                thread.join()
-                self.esperarCompletos()
+                if num == self.hilos:
+                    for i in range(self.hilos):
+                        self.barrier.release()
+                    num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                 if (self.tiempo == None):
                     break
             self.escribirRespuestas(output)
         elif(self.tipo == "OPTIONS"):
+            self.finished.acquire()
             while(self.esperarTiempo()):
+                num = 0
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.options, args = (self.respuestas,),name = str(i+1)+" peticion")
+                    thread = threading.Thread(target = self.options, args = (self.respuestas,self.mutex,),name = str(i+1)+" peticion")
                     thread.start()
-                thread.join()
-                self.esperarCompletos()
+                if num == self.hilos:
+                    for i in range(self.hilos):
+                        self.barrier.release()
+                    num = 0
+                    self.barrier.acquire()
+                    self.barrier.release()
                 if (self.tiempo == None):
                     break
             self.escribirRespuestas(output)
         else:
             pass
         output.close()
+        mutex.release()
         return True
 
     def esperarCompletos(self):
@@ -131,6 +179,7 @@ class Estres(Peticion):
 
     def esperarTiempo(self): 
         if(self.tiempo == None or time.time() <= self.horaFinal):
+            self.finished.release()
             return True
         return False
     
