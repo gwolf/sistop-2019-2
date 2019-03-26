@@ -1,5 +1,6 @@
 import tools.Estres as Estres
 import argparse
+import threading
 from tools.GUI import *
 class Consola:
     def __init__(self):
@@ -41,7 +42,7 @@ class Consola:
             mutex.acquire()
             self.estres.iniciarHilos(mutex)
             analisis = self.estres.crearAnalisis()
-            print(str(analisis.exitosVSFallos)+" "+str(analisis.tiempo_promedio)+" "+str(analisis.state_codes_dict))
+            print("["+str(analisis.exitosVSFallos)+",'tiempo_promedio':"+str(analisis.tiempo_promedio)+", "+str(analisis.state_codes_dict)+"]")
             analisis.dibujar_state_codes()
         elif self.estres == None:
             app = MyApp(0)
