@@ -38,9 +38,7 @@ class Consola:
 
     def iniciar_consola(self):
         if self.estres != None and self.estres != False:
-            mutex = threading.Semaphore(1)
-            mutex.acquire()
-            self.estres.iniciarHilos(mutex)
+            self.estres.iniciarHilos()
             analisis = self.estres.crearAnalisis()
             print("["+str(analisis.exitosVSFallos)+",'tiempo_promedio':"+str(analisis.tiempo_promedio)+", "+str(analisis.state_codes_dict)+"]")
             analisis.dibujar_state_codes()

@@ -7,13 +7,7 @@ from wx.lib.plot import PlotCanvas
 from tools.plot import plot
 import math
 
-# begin wxGlade: dependencies
-# end wxGlade
-
-# begin wxGlade: extracode
-# end wxGlade
-
-class Grid(wx.Dialog):
+class Grid(wx.Dialog): # Crea la tabla de contenido que da un formato simetrico a los elementos graficos
     def __init__(self, gridSize, matrix, *args, **kwds):
         # begin wxGlade: MyDialog.__init__
         self.gridSize = gridSize
@@ -24,12 +18,14 @@ class Grid(wx.Dialog):
 
 
 
-class GUI(wx.Frame):
+class GUI(wx.Frame): #Clase de la aplicacion grafica
     def __init__(self, *args, **kwds):
         # begin wxGlade: GUI.__init__
         kwds["style"] = kwds.get("style", 0) | wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
+        #Aqui se inicializa la prueba de estres antes de su ejecucion
         self.test = Estres.Estres(hilos = 1 ,tiempo = None, url = None, payload = None, tipo = "GET", headers = None,auth = None, archivo = None, archivoRespuestas ="./out")
+        #Aqui se inicializan las variables que seran modificadas segun el estado de los elementos graficos
         self.fileDatos = False
         self.fileHeader = False
         self.datos = None
@@ -39,6 +35,7 @@ class GUI(wx.Frame):
         self.datosArchChecked = False 
         self.headerArchChecked = False 
         self.testEnProceso = False
+        #Aqui se inicializan los elementos graficos con sus respectivas clases y parametros
         self.SetSize((1000, 400))
         self.panel_1 = wx.Panel(self, wx.ID_ANY)
         self.btnArchivoSalida = wx.Button(self.panel_1, wx.ID_ANY, "archivo", style=wx.BU_EXACTFIT)
@@ -61,7 +58,7 @@ class GUI(wx.Frame):
 
         self.__set_properties()
         self.__do_layout()
-
+        #Se inicializan los eventos y señales personalizados
         self.Bind(wx.EVT_BUTTON, self.guardarSalida, self.btnArchivoSalida)
         self.Bind(wx.EVT_COMBOBOX, self.getTipo, self.cmbxTipo)
         self.Bind(wx.EVT_TEXT, self.getUrl, self.txtUrl)
@@ -90,7 +87,7 @@ class GUI(wx.Frame):
         self.rdoBoxEntrada.SetSelection(0)
         # end wxGlade
 
-    def __do_layout(self):
+    def __do_layout(self):#da el formato grafico a los elementos dentro del grid
         # begin wxGlade: Ventana.__do_layout
         sizer_1 = wx.BoxSizer(wx.VERTICAL)
         grid_sizer_1 = wx.GridSizer(0, 6, 0, 0)
@@ -195,14 +192,14 @@ class GUI(wx.Frame):
         self.Layout()
         # end wxGlade
 
-    def guardarSalida(self, event):
+    def guardarSalida(self, event):#Abre una ventana de dialogo que guardara la ruta del archivo de salida 
         with wx.FileDialog(self, "Guardar salida", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
             if fileDialog.ShowModal() == wx.ID_CANCEL:
                 self.test.archivoRespuestas = "out"
                 return
             self.test.archivoRespuestas = fileDialog.GetPath()
 
-
+    #Estos metodos se ejecutan al recibir la interrupcion cuando cambia su informacion
     def getTipo(self, event):  # wxGlade: Ventana.<event_handler>
         self.test.tipo = self.cmbxTipo.GetStringSelection()
 
@@ -286,30 +283,31 @@ class GUI(wx.Frame):
     def resetForm(self, event):  # wxGlade: Ventana.<event_handler>
         Estres.Estres(hilos = 1 ,tiempo = None, url = None, payload = None, tipo = "GET", headers = None,auth = None, archivo = None, archivoRespuestas ="./out")
 
+    #Este metodo inicia el test
     def iniciarTest(self, event):  # wxGlade: Ventana.<event_handler>
         if self.test.url == None or self.test.url == "":
-            with wx.MessageDialog(self, "No introducistes URL","Aviso") as dialog:
+            with wx.MessageDialog(self, "No introduciste URL","Aviso") as dialog:
                 dialog.ShowModal()
                 return
         elif self.test.headers == "no Dict":
-            with wx.MessageDialog(self, "No introducistes bien el header","Aviso") as dialog:
+            with wx.MessageDialog(self, "No introduciste header en formato valido","Aviso") as dialog:
                 dialog.ShowModal()
                 return
         else:
-            mutex = threading.Semaphore(0)
+            mutex = threading.Semaphore(0) #Inicia un mutex que sera pasado 
             thread = threading.Thread(target = self.test.iniciarHilos,args=(mutex,))
             thread.start()
             self.espera(thread)
-            mutex.acquire()
-            analisis = self.test.crearAnalisis()
+            mutex.acquire() #Espera a que se libere el semaforo al finalizar el test
+            analisis = self.test.crearAnalisis() #Crea el analisis con los resultados
+            # Dibuja la grafica en una ventana grafica
             with wx.MessageDialog(self, str(analisis.exitosVSFallos)+" tiempo promedio: "+str(analisis.tiempo_promedio)+"\nCodigos de estado devueltos: "+str(analisis.state_codes_dict) + "\nLos resultados crudos se pueden consular en: " + self.test.archivoRespuestas+".txt" ,"Resultados") as dialog:
                 dialog.ShowWindowModal()
             graficque = analisis.dibujar_state_codes()
-            print(graficque)
             grafica = plot(graficque)
             grafica.dibujar() 
 
-    def espera(self,hilo):
+    def espera(self,hilo): #Abre un dialogo que se cerrara cuando se libere el semaforo
         if hilo.is_alive() == False:
             with wx.MessageDialog(self,"El test ya termino","Aviso") as finished:
                 val = finished.ShowWindowModal()
@@ -332,15 +330,9 @@ class GUI(wx.Frame):
 
 # end of class Ventana
 
-class MyApp(wx.App):
+class MyApp(wx.App): #Inicializacion propia del wx
     def OnInit(self):
         self.frame = GUI(None, wx.ID_ANY, "")
         self.SetTopWindow(self.frame)
         self.frame.Show()
         return True
-
-# end of class MyApp
-
-if __name__ == "__main__":
-    app = MyApp(0)
-    app.MainLoop()

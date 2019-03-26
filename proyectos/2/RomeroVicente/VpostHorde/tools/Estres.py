@@ -1,11 +1,11 @@
 from tools.Peticion import Peticion
-from tools.analisis import Analisis
+from tools.Analisis import Analisis
 from operator import itemgetter
 import threading
 import time
 import json
 
-class Singleton(type):
+class Singleton(type): #Evita que en algun caso extremo exista otra instancia de la clase en ejecucion
     def __init__(cls, name, bases, dct):
         cls.__instance = None
         type.__init__(cls, name, bases, dct)
@@ -18,22 +18,22 @@ class Singleton(type):
 class Estres(Peticion):
     __metaclass__ = Singleton
     def __init__(self,hilos,tiempo,url,payload,tipo,headers,auth,archivo,archivoRespuestas):
-        self.__instance = None
-        self.hilos = int(hilos) + 1
+        self.__instance = None #Parte de la implementacion del Singleton
+        self.hilos = int(hilos)
         self.tiempo = tiempo
         if(self.tiempo != None):
-            self.horaFinal = time.time() + int(self.tiempo)
+            self.horaFinal = time.time() + int(self.tiempo) # Si se especifica el tiempo se le suma a la hora del sistema el tiempo especificado
         self.horaFinal = None
         self.file = archivo
         self.archivoRespuestas = archivoRespuestas
-        Peticion.__init__(self,url,payload,tipo,headers,auth)
-        self.respuestas = []
+        Peticion.__init__(self,url,payload,tipo,headers,auth) # Se pasan los parametros que corresponden a la clase padre
+        self.respuestas = [] 
         self.finished = threading.Semaphore(1)
         self.mutex = threading.Semaphore(1)
-        self.barrier = threading.Semaphore(0)
+        self.barrier = threading.Semaphore(0) # se crean los semaforos correspondientes 
 
-    def crearAnalisis(self):
-        analizador = Analisis()
+    def crearAnalisis(self): # Este metodo retorna el analisis final de las respuestas del servidor
+        analizador = Analisis() 
         respuestas = sorted(self.respuestas, key=itemgetter('timeDate'), reverse=True)
         self.respuestas = []
         for respuesta in respuestas:
@@ -46,45 +46,52 @@ class Estres(Peticion):
         analizador.analizar_state_codes()
         return analizador
 
-    def iniciarHilos(self,mutex):
+    def iniciarHilos(self, mutex): # Este metodo crea e inicializa los procesos
         if(self.tiempo != None):
             self.horaFinal = time.time() + int(self.tiempo)
         print("guardado:"+self.archivoRespuestas)
-        output = open(self.archivoRespuestas+".txt","w")
-        if(self.tipo == "POST"):
-            if(self.file == None):
-                self.finished.acquire()
+        output = open(self.archivoRespuestas+".txt","w") # Toma la variable del archivo y la abre
+        if(self.tipo == "POST"): # si se usa el metodo POST
+            self.finished.acquire() # Se inicia un mutex que impide la escritura antes de la finalizacion de los procesos
+            if(self.file == None): #Si no se definio un archivo a enviar se envia con metodo post normal
                 while(self.esperarTiempo()):
-                    num = 0
-                    for i in range(int(self.hilos)):
+                    num = 0 # se inicializa en 0 el contador para la barrera 
+                    for i in range(self.hilos):
                         thread = threading.Thread(target = self.post, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                        thread.start()
-                        if num == self.hilos:
-                            for i in range(self.hilos):
-                                self.barrier.release()
-                            num = 0
+                        self.mutex.acquire() #se inicializa un mutex que proteje la ejecucion de la peticion
+                        thread.start() #adentro se libera el mutex
+                        self.mutex.acquire()
+                        num = num + 1 #se proteje el contador con este mutex
+                        self.mutex.release()
+                    if num == self.hilos:
+                        for i in range(self.hilos):
+                            self.barrier.release() #Se libera la barrear
+                        num = 0 #Se reinicializa el contador para otra barrera
                     self.barrier.acquire()
-                    self.barrier.release()
-                    if (self.tiempo == None):
+                    if (self.tiempo==None): # Si no se define tiempo se terminara el while inmediatamente
                         break
                 self.escribirRespuestas(output)
+                self.finished.release()
             else:
-                self.finished.acquire()
                 while(self.esperarTiempo()):
                     num = 0
                     for i in range(int(self.hilos)):
                         thread = threading.Thread(target = self.postFile, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                        self.mutex.acquire()
                         thread.start()
-                        if num == self.hilos:
-                            for i in range(self.hilos):
-                                self.barrier.release()
-                            num = 0
+                        self.mutex.acquire()
+                        num = num + 1 #se proteje el contador con este mutex
+                        self.mutex.release()
+                    if num == self.hilos:
+                        for i in range(self.hilos):
+                            self.barrier.release()
+                        num = 0
                     self.barrier.acquire()
-                    self.barrier.release()
-                    if (self.tiempo == None):
+                    if (self.tiempo==None):
                         break
-            self.escribirRespuestas(output)
-        elif(self.tipo == "GET"):
+                self.escribirRespuestas(output)
+                self.finished.release()
+        elif(self.tipo == "GET"): # apartir de aqui el proceso es igual solo que con metodos diferentes
             self.finished.acquire()
             while(self.esperarTiempo()):
                 num = 0
@@ -92,13 +99,14 @@ class Estres(Peticion):
                     thread = threading.Thread(target = self.get, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
                     self.mutex.acquire()
                     thread.start()
-                    num = num + 1
+                    self.mutex.acquire()
+                    num = num + 1 #se proteje el contador con este mutex
+                    self.mutex.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
                     num = 0
                 self.barrier.acquire()
-                self.barrier.release()
                 if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
@@ -109,81 +117,93 @@ class Estres(Peticion):
                 num = 0
                 for i in range(int(self.hilos)):
                     thread = threading.Thread(target = self.put, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                    self.mutex.acquire()
                     thread.start()
+                    self.mutex.acquire()
+                    num = num + 1 #se proteje el contador con este mutex
+                    self.mutex.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
                     num = 0
-                    self.barrier.acquire()
-                    self.barrier.release()
-                if (self.tiempo == None):
+                self.barrier.acquire()
+                if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
+            self.finished.release()
         elif(self.tipo == "DELETE"):
             self.finished.acquire()
             while(self.esperarTiempo()):
                 num = 0
                 for i in range(int(self.hilos)):
                     thread = threading.Thread(target = self.delete, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                    self.mutex.acquire()
                     thread.start()
+                    self.mutex.acquire()
+                    num = num + 1 #se proteje el contador con este mutex
+                    self.mutex.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
                     num = 0
-                    self.barrier.acquire()
-                    self.barrier.release()
-                if (self.tiempo == None):
+                self.barrier.acquire()
+                if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
+            self.finished.release()
         elif(self.tipo == "HEAD"):
             self.finished.acquire()
             while(self.esperarTiempo()):
                 num = 0
                 for i in range(int(self.hilos)):
                     thread = threading.Thread(target = self.head, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                    self.mutex.acquire()
                     thread.start()
+                    self.mutex.acquire()
+                    num = num + 1 #se proteje el contador con este mutex
+                    self.mutex.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
                     num = 0
-                    self.barrier.acquire()
-                    self.barrier.release()
-                if (self.tiempo == None):
+                self.barrier.acquire()
+                if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
+            self.finished.release()
         elif(self.tipo == "OPTIONS"):
             self.finished.acquire()
             while(self.esperarTiempo()):
                 num = 0
                 for i in range(int(self.hilos)):
                     thread = threading.Thread(target = self.options, args = (self.respuestas,self.mutex,),name = str(i+1)+" peticion")
+                    self.mutex.acquire()
                     thread.start()
+                    self.mutex.acquire()
+                    num = num + 1 #se proteje el contador con este mutex
+                    self.mutex.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
                     num = 0
-                    self.barrier.acquire()
-                    self.barrier.release()
-                if (self.tiempo == None):
+                self.barrier.acquire()
+                if (self.tiempo==None):
                     break
             self.escribirRespuestas(output)
+            self.finished.release()
         else:
             pass
         output.close()
-        mutex.release()
+        mutex.release() #Libera el semaforo //SOLO UTIL EN MODO GUI
         return True
 
-    def esperarCompletos(self):
-        while(len(self.respuestas) < int(self.hilos)):
-            pass
-
-    def esperarTiempo(self): 
+    def esperarTiempo(self):  # Este metodo da el valor al loop del tiempo que debe durar la prueba
         if(self.tiempo == None or time.time() <= self.horaFinal):
-            self.finished.release()
             return True
         return False
     
-    def escribirRespuestas(self,archivo):
-        self.respuestas = sorted(self.respuestas, key=itemgetter('timeDate'), reverse=True)
-        for respuesta in self.respuestas:
-            archivo.write(str(respuesta)+"\n")
+    def escribirRespuestas(self,archivo): # Este metodo escribe en el archivo las respuestas de la prueba
+        self.respuestas = sorted(self.respuestas, key=itemgetter('timeDate'), reverse=True) #Acomoda la lista por orden de ejecucion
+        with archivo as in_archivo:
+            for respuesta in self.respuestas:
+                in_archivo.write(str(respuesta)+"\n")

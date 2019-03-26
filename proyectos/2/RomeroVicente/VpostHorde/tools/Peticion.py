@@ -4,7 +4,7 @@ from multiprocessing import Queue
 import time
 import sys
 import json
-import tools.analisis as Analisis
+import tools.Analisis as Analisis
 import time
 import mimetypes
 
@@ -39,7 +39,7 @@ class Peticion(object):
         except Exception as e:
             print(e)
 
-    def payloadCurlADict(self):
+    def payloadCurlADict(self):#Parsea la entrada de texto al formato interno de requests
         payload = {}
         datos = self.payload.split("&")
         for dato in datos:
@@ -47,7 +47,7 @@ class Peticion(object):
             payload[dato[0]] = dato[1]
         self.payload = payload
 
-    def headerCurlADict(self):
+    def headerCurlADict(self):#Parsea la entrada de texto al formato para el requests
         headers = {}
         datos = self.headers.split(",")
         for dato in datos:
@@ -55,27 +55,27 @@ class Peticion(object):
             headers[dato[0]] = dato[1]
         self.headers = headers
 
-    def istipoValido(self, tipo):
+    def istipoValido(self, tipo):#revisa en el diccionario de tipos si se paso un metodo valido o no
         if tipo in self.tiposValidos:
             return True
         return False
     
-    def get(self, resultados,mutex):
-        respuesta = {}
+    def get(self, resultados,mutex):#Envia la peticion GET
+        respuesta = {} # inicia el diccionario para la respuesta que se va a guardar
         try:
-            tiempoInicio = time.time()
-            r = requests.get(self.url,params = self.payload, headers = self.headers, auth = self.auth, verify=False)            
-            respuesta["code"] = r.status_code
-            respuesta["estado"] = "exito"
+            tiempoInicio = time.time() 
+            r = requests.get(self.url,params = self.payload, headers = self.headers, auth = self.auth, verify=False)# Se crea y se la peticion con los atributos del objeto usando requests
+            respuesta["code"] = r.status_code #Guarda el codigo status que regresa el servidor
+            respuesta["estado"] = "exito" #Retorna si hubo exito o no
         except Exception as e:
-            respuesta["code"] = str(type(e))
+            respuesta["code"] = str(type(e)) #Guarda la excepcion en caso de que fallase la peticion
             respuesta["estado"] = "fallo"            
         finally:
-            respuesta["fecha"] = time.strftime("%c")
-            respuesta["timeDate"] = time.time()
-            respuesta["tiempoPeticion"] = time.time() - tiempoInicio
-            resultados.append(respuesta)
-            mutex.release()
+            respuesta["fecha"] = time.strftime("%c") #Guarda la fecha actual
+            respuesta["timeDate"] = time.time() #Guarda el tiempo UNIX actual
+            respuesta["tiempoPeticion"] = time.time() - tiempoInicio #Guarda el tiempo que duro la peticion en completarse hasta este punto
+            resultados.append(respuesta) #Añade la respuesta a la lista de resultados
+            mutex.release() #libera el mutex externo
             return respuesta
     
     def post(self,resultados,mutex):
