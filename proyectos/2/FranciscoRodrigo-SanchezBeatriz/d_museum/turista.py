@@ -1,6 +1,8 @@
 import threading
 import random
 from d_museum.lenguajes import language
+import d_museum.var_glob
+
 class Turista(threading.Thread):
     """Esta es una clase Turista"""
     def __init__(self,id):

@@ -1,6 +1,7 @@
 import threading
 import random
 from d_museum.lenguajes import language
+import d_museum.var_glob
 
 class Guia(threading.Thread):
     """Clase guia que simular a una persona que puede guiar turistas de distintas nacionalidadesñ"""
