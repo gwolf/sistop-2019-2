@@ -12,4 +12,4 @@ class Guia(threading.Thread):
         self.idiomas = random.sample(language,2)
 
     def run(self):
-        print("Soy el guia %d hablo %s y %s" %(self.id,self.idiomas[0],self.idiomas[1]))
+        #print("Soy el guia %d hablo %s y %s" %(self.id,self.idiomas[0],self.idiomas[1]))
