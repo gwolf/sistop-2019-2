@@ -77,3 +77,19 @@ optional arguments:
                         Se añade la ruta del archivo que va a ser enviado por
                         multipart en cada peticion
 ```
+### ejemplos de ejecucion
+
+#### Consola
+<img src="https://i.ibb.co/c2g88nc/captura-1.png" width="500"/>
+
+#### Resultados de texto
+<img src="https://i.ibb.co/q1WHZkj/captura-1-2.png" width="500"/>
+
+#### entorno grafico
+<img src="https://i.ibb.co/sgCjhMq/captura-1-5.png" width="500"/>
+
+#### Resultado grafico
+<img src="https://i.ibb.co/DQTbjS3/captura-2.png" width="500"/>
+
+#### Grafica de test
+<img src="https://i.ibb.co/ZhRCK2J/captura-3.png" width="500"/>
