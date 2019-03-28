@@ -29,7 +29,7 @@ class Estres(Peticion):
         Peticion.__init__(self,url,payload,tipo,headers,auth) # Se pasan los parametros que corresponden a la clase padre
         self.respuestas = [] 
         self.finished = threading.Semaphore(1)
-        self.mutex = threading.Semaphore(1)
+        self.mutex_cont = threading.Semaphore(1)
         self.barrier = threading.Semaphore(0) # se crean los semaforos correspondientes 
 
     def crearAnalisis(self): # Este metodo retorna el analisis final de las respuestas del servidor
@@ -54,15 +54,16 @@ class Estres(Peticion):
         if(self.tipo == "POST"): # si se usa el metodo POST
             self.finished.acquire() # Se inicia un mutex que impide la escritura antes de la finalizacion de los procesos
             if(self.file == None): #Si no se definio un archivo a enviar se envia con metodo post normal
+                num_respuestas = 0 # Se inicializa una variable que acumula el numero de respuestas esperadas
                 while(self.esperarTiempo()):
                     num = 0 # se inicializa en 0 el contador para la barrera 
+                    num_respuestas = num_respuestas + self.hilos # en cada iteracion se aumenta por el numero de hilos concurrentes
                     for i in range(self.hilos):
-                        thread = threading.Thread(target = self.post, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                        self.mutex.acquire() #se inicializa un mutex que proteje la ejecucion de la peticion
+                        thread = threading.Thread(target = self.post, args = (self.respuestas,),name=str(i+1)+" peticion")
                         thread.start() #adentro se libera el mutex
-                        self.mutex.acquire()
+                        self.mutex_cont.acquire()
                         num = num + 1 #se proteje el contador con este mutex
-                        self.mutex.release()
+                        self.mutex_cont.release()
                     if num == self.hilos:
                         for i in range(self.hilos):
                             self.barrier.release() #Se libera la barrear
@@ -70,18 +71,21 @@ class Estres(Peticion):
                     self.barrier.acquire()
                     if (self.tiempo==None): # Si no se define tiempo se terminara el while inmediatamente
                         break
+                while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                    pass
                 self.escribirRespuestas(output)
                 self.finished.release()
             else:
+                num_respuestas = 0
                 while(self.esperarTiempo()):
                     num = 0
-                    for i in range(int(self.hilos)):
-                        thread = threading.Thread(target = self.postFile, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                        self.mutex.acquire()
+                    num_respuestas = num_respuestas + self.hilos
+                    for i in range(self.hilos):
+                        thread = threading.Thread(target = self.postFile, args = (self.respuestas,),name=str(i+1)+" peticion")
                         thread.start()
-                        self.mutex.acquire()
+                        self.mutex_cont.acquire()
                         num = num + 1 #se proteje el contador con este mutex
-                        self.mutex.release()
+                        self.mutex_cont.release()
                     if num == self.hilos:
                         for i in range(self.hilos):
                             self.barrier.release()
@@ -89,19 +93,22 @@ class Estres(Peticion):
                     self.barrier.acquire()
                     if (self.tiempo==None):
                         break
+                while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                    pass
                 self.escribirRespuestas(output)
                 self.finished.release()
         elif(self.tipo == "GET"): # apartir de aqui el proceso es igual solo que con metodos diferentes
             self.finished.acquire()
+            num_respuestas = 0
             while(self.esperarTiempo()):
                 num = 0
+                num_respuestas = num_respuestas + self.hilos
                 for i in range(self.hilos):
-                    thread = threading.Thread(target = self.get, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                    self.mutex.acquire()
+                    thread = threading.Thread(target = self.get, args = (self.respuestas,),name=str(i+1)+" peticion")
                     thread.start()
-                    self.mutex.acquire()
+                    self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
-                    self.mutex.release()
+                    self.mutex_cont.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
@@ -109,19 +116,22 @@ class Estres(Peticion):
                 self.barrier.acquire()
                 if (self.tiempo==None):
                     break
+            while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                pass
             self.escribirRespuestas(output)
             self.finished.release()
         elif(self.tipo == "PUT"):
             self.finished.acquire()
+            num_respuestas = 0
             while(self.esperarTiempo()):
                 num = 0
+                num_respuestas = num_respuestas + self.hilos
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.put, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                    self.mutex.acquire()
+                    thread = threading.Thread(target = self.put, args = (self.respuestas,),name=str(i+1)+" peticion")
                     thread.start()
-                    self.mutex.acquire()
+                    self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
-                    self.mutex.release()
+                    self.mutex_cont.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
@@ -129,19 +139,22 @@ class Estres(Peticion):
                 self.barrier.acquire()
                 if (self.tiempo==None):
                     break
+            while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                pass
             self.escribirRespuestas(output)
             self.finished.release()
         elif(self.tipo == "DELETE"):
             self.finished.acquire()
+            num_respuestas = 0
             while(self.esperarTiempo()):
                 num = 0
+                num_respuestas = num_respuestas + self.hilos
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.delete, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
-                    self.mutex.acquire()
+                    thread = threading.Thread(target = self.delete, args = (self.respuestas,),name=str(i+1)+" peticion")
                     thread.start()
-                    self.mutex.acquire()
+                    self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
-                    self.mutex.release()
+                    self.mutex_cont.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
@@ -149,19 +162,23 @@ class Estres(Peticion):
                 self.barrier.acquire()
                 if (self.tiempo==None):
                     break
+            while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                pass
             self.escribirRespuestas(output)
             self.finished.release()
         elif(self.tipo == "HEAD"):
             self.finished.acquire()
+            num_respuestas = 0
             while(self.esperarTiempo()):
                 num = 0
+                num_respuestas = num_respuestas + self.hilos
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.head, args = (self.respuestas,self.mutex,),name=str(i+1)+" peticion")
+                    thread = threading.Thread(target = self.head, args = (self.respuestas,),name=str(i+1)+" peticion")
                     self.mutex.acquire()
                     thread.start()
-                    self.mutex.acquire()
+                    self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
-                    self.mutex.release()
+                    self.mutex_cont.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
@@ -169,19 +186,22 @@ class Estres(Peticion):
                 self.barrier.acquire()
                 if (self.tiempo==None):
                     break
+                while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                    pass
             self.escribirRespuestas(output)
             self.finished.release()
         elif(self.tipo == "OPTIONS"):
             self.finished.acquire()
+            num_respuestas = 0
             while(self.esperarTiempo()):
                 num = 0
+                num_respuestas = num_respuestas + self.hilos
                 for i in range(int(self.hilos)):
-                    thread = threading.Thread(target = self.options, args = (self.respuestas,self.mutex,),name = str(i+1)+" peticion")
-                    self.mutex.acquire()
+                    thread = threading.Thread(target = self.options, args = (self.respuestas,),name = str(i+1)+" peticion")
                     thread.start()
-                    self.mutex.acquire()
+                    self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
-                    self.mutex.release()
+                    self.mutex_cont.release()
                 if num == self.hilos:
                     for i in range(self.hilos):
                         self.barrier.release()
@@ -189,6 +209,8 @@ class Estres(Peticion):
                 self.barrier.acquire()
                 if (self.tiempo==None):
                     break
+                while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+                    pass
             self.escribirRespuestas(output)
             self.finished.release()
         else:
