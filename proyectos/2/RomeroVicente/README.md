@@ -44,4 +44,36 @@ Las variables compartidas en este programa son las siguientes
 #### Se uso y probo en las siguientes distribuciones
 * ArchLinux
 * CentOS 7
+## Instrucciones de uso
+### Comandos de consola
+```
+uso: main.py [-h] [--cli] [-u [URL]] [-o [OUT_FILE]] [-d [PAYLOAD]]
+               [-H [HEADERS]] [--auth [AUTH]] [-X [TYPE]] [-t [THREADS]]
+               [-s [SECONDS]] [-f [FILE]]
 
+optional arguments:
+  -h, --help            Mirar los comandos de ayuda
+  --cli                 si esta activado se iniciara en modo consola usando
+                        los parametros
+  -u [URL], --url [URL]
+                        Define la url objetivo
+  -o [OUT_FILE], --out-file [OUT_FILE]
+                        Se define el archivo de salida de la prueba
+  -d [PAYLOAD], --payload [PAYLOAD]
+                        Define el payload para cada peticion (formato Curl)
+  -H [HEADERS], --headers [HEADERS]
+                        Define las cabeceras de cada peticion
+  --auth [AUTH]         Define la cabecera de autenticacion (bearer o diggest
+                        o basic)
+  -X [TYPE], --type [TYPE]
+                        Se define el tipo de la peticion [GET|POST|PUT|DELETE]
+  -t [THREADS], --threads [THREADS]
+                        Se la cantidad de peticiones simultaneas activas
+  -s [SECONDS], --seconds [SECONDS]
+                        Se define la cantidad de segundos que durara la prueba
+                        si se deja en 0 la prueba durara lo que tarden los
+                        hilos especificados en ejecutares
+  -f [FILE], --file [FILE]
+                        Se añade la ruta del archivo que va a ser enviado por
+                        multipart en cada peticion
+```
