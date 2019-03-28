@@ -60,11 +60,11 @@ class Peticion(object):
             return True
         return False
     
-    def get(self, resultados,mutex):#Envia la peticion GET
+    def get(self, resultados):#Envia la peticion GET
         respuesta = {} # inicia el diccionario para la respuesta que se va a guardar
         try:
             tiempoInicio = time.time() 
-            r = requests.get(self.url,params = self.payload, headers = self.headers, auth = self.auth, verify=False)# Se crea y se la peticion con los atributos del objeto usando requests
+            r = requests.get(self.url,params = self.payload, headers = self.headers, auth = self.auth)# Se crea y se la peticion con los atributos del objeto usando requests
             respuesta["code"] = r.status_code #Guarda el codigo status que regresa el servidor
             respuesta["estado"] = "exito" #Retorna si hubo exito o no
         except Exception as e:
@@ -75,15 +75,13 @@ class Peticion(object):
             respuesta["timeDate"] = time.time() #Guarda el tiempo UNIX actual
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio #Guarda el tiempo que duro la peticion en completarse hasta este punto
             resultados.append(respuesta) #Añade la respuesta a la lista de resultados
-            mutex.release() #libera el mutex externo
             return respuesta
     
-    def post(self,resultados,mutex):
+    def post(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
-            r = requests.post(self.url,data = self.payload, headers = self.headers, auth = self.auth, verify=False) 
+            r = requests.post(self.url,data = self.payload, headers = self.headers, auth = self.auth) 
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -94,16 +92,14 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
     
-    def postFile(self,resultados,mutex):
+    def postFile(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
             files = {'file':open(self.payload,'rb')}
-            r = requests.post(self.url,files = files, headers = self.headers, auth = self.auth, verify=False)
+            r = requests.post(self.url,files = files, headers = self.headers, auth = self.auth)
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -114,15 +110,13 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
 
-    def put(self,resultados,mutex):
+    def put(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
-            r = requests.put(self.url,data = self.payload, headers = self.headers, auth = self.auth, verify=False)
+            r = requests.put(self.url,data = self.payload, headers = self.headers, auth = self.auth)
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -133,15 +127,13 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
 
-    def delete(self,resultados,mutex):
+    def delete(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
-            r = requests.delete(self.url, auth = self.auth, verify=False)
+            r = requests.delete(self.url, auth = self.auth)
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -152,15 +144,13 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
     
-    def head(self,resultados,mutex):
+    def head(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
-            r = requests.head(self.url,headers = self.headers, auth = self.auth, verify=False)
+            r = requests.head(self.url,headers = self.headers, auth = self.auth)
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -171,15 +161,13 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
     
-    def options(self,resultados,mutex):
+    def options(self,resultados):
         respuesta = {}
         try:
-            mutex.acquire()
             tiempoInicio = time.time()
-            r = requests.options(self.url, params = self.payload, headers = self.headers, auth = self.auth, verify=False)
+            r = requests.options(self.url, params = self.payload, headers = self.headers, auth = self.auth)
             respuesta["code"] = r.status_code
             respuesta["estado"] = "exito"
         except Exception as e:
@@ -190,5 +178,4 @@ class Peticion(object):
             respuesta["timeDate"] = time.time()
             respuesta["tiempoPeticion"] = time.time() - tiempoInicio
             resultados.append(respuesta)
-            mutex.release()
             return respuesta
