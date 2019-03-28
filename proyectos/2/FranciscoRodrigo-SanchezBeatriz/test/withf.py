@@ -13,7 +13,7 @@ mutex_guia=Semaphore(1)
 
 def esp(num):
 
-	global turista_esp,turista_ing,esCap
+	global turista_esp,turista_ing
 	#print("esp %d esperando ..." %num)
 	mutex_guia.acquire()
 	turista_esp+=1
@@ -34,7 +34,7 @@ def esp(num):
 
 def ing(num):
 
-	global turista_esp,turista_ing, esCap
+	global turista_esp,turista_ing
 	#print("ing %d esperando ..." %num)
 	mutex_guia.acquire()
 	print("Turista que habla inglés %d listo para recorrido" %num)

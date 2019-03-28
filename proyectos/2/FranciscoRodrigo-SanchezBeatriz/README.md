@@ -1,4 +1,12 @@
 # El Museo de Djisktra
+
+## Integrantes
+
+* Francisco RODRIGO
+* Sanchez BREATRIZ
+
+## Entorno y dependecias
+
 En la vida cotidiana se presentan situaciones de concurrencia para los cuales serían buena idea poder aplicar los métodos de sincronización vistos en clase. Para el caso del museo de Djisktra se tiene la siguiente problemática.
 
 El museo Djisktra se exhiben muchas máquinas de la era pasada que resultan muy curiosas a las nuevas generaciones, además de que hay actividades lúdicas en las cuales los `millenials` aprenden cómo funcionan alguno de los componentes de la computadora.

@@ -1,7 +1,27 @@
 import threading
 import random
 from d_museum.lenguajes import language
-import d_museum.var_glob
+#import d_museum.var_glob
+from d_museum.guia import Guia,mis_guias
+
+from threading import Semaphore
+
+# varibles globales para el controlar nuestra
+# implementacion de la primera parte del proyecto
+    #turista_esp=0
+    #turista_ing=0
+
+lista_turista_esp=Semaphore(0)
+lista_turista_ing=Semaphore(0)
+total=4
+mutex_guia=Semaphore(1)
+
+# Al inicio todos los guias estan dispoibles
+# Se los paso por referencia para poderlos sacar
+# en caso de quue ya haya la suficiente cantidad de turistas
+guias_disponibles = mis_guias
+mutex_guias = [Semaphore(1) for i in range(5)]
+lista_turistas = [Semaphore(0) for i in range(5)]
 
 class Turista(threading.Thread):
     """Esta es una clase Turista"""
@@ -9,23 +29,32 @@ class Turista(threading.Thread):
         threading.Thread.__init__(self)
         self.id = id
         self.idioma = random.choice(language)
+
     def run(self):
-        #print("Soy el turista %d y hablo %s" %(self.id,self.idioma))
+        print("Soy el turista %d y hablo %s" %(self.id,self.idioma))
 
-    	global turista_esp,turista_ing,esCap
-    	#print("esp %d esperando ..." %num)
-    	mutex_guia.acquire()
-    	turista_esp+=1
-    	print("Turista que habla español %d formado para recorrido" %num)
-    	if (turista_ing + turista_esp) >=4:
-    		for i in range(turista_ing):
-    			lista_turista_ing.release()
-    		for i in range(turista_esp):
-    			lista_turista_esp.release()
-    		turista_ing=0
-    		turista_esp=0
-    		print("*** Inicia recorrido")
+        #buscar en la lista de guias dispoibles quein habla su idioma y sumarle al contador
 
-    	mutex_guia.release()
+        for index,j in enumerate(guias_disponibles):
+            if j.idiomas[0] ==  self.idioma or j.idiomas[1] == self.idioma :
+                mutex_guias[index].acquire()
+                j.contador+=1
+                if j.contador==4:
+                    #sacarlo de la lista de guias disp
+                    del guias_disponibles[index]
+                    for i in range(4):
+                        lista_turistas[index].release()
+                j.contador=0
+                print("Inicia recorrido")
+                mutex_guias[index].release()
+                lista_turistas[index].acquire()
+            else :
+                print("me voy solo :( ... ")
 
-    	lista_turista_esp.acquire()
+        if len(guias_disponibles) == 0:
+            print("No hay guias! que mal servicio, me voy solo")
+
+
+
+
+        #print("Estoy imprimendo el contador del tercer guia = %d " %mis_guias[2].contador)
