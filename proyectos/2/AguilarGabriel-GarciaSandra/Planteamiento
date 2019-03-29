@@ -1,0 +1,13 @@
+PLANTEAMIENTO
+Una familia de n integrantes cuenta con m televisores, todos los dias a cierta hora todos los integrantes de la familia desean ver algo distinto, debido a esto compiten por las televisiones en la casa.
+
+
+REGLAS:
+- m<n
+- Los programas de tv son de duracion distinta
+- Cada cadena televisiva tiene una duracion y frecuencias distintas para los bloques de comerciales
+- Cuando inicia el bloque comercial en el canal sintonizado los otros integrantes de la familia pueden cambiar el canal
+
+
+REFINAMIENTO(S):
+- Los integrantes de la familia pueden decidir ver otro programa.
