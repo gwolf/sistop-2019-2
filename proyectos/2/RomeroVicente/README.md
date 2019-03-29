@@ -17,6 +17,11 @@ El mayor evento nocivo que puede ocurrir es al momento de guardar las respuestas
 de memoria, tambien puede ocurrir que al enviar 2 peticiones simultaneas se bloqueen mutuamente, la finalidad es poder simular
 fielmente el numero exacto de usuarios simultaneos "haciendo click" a la pagina por lo que una barrera es lo mas idoneo.
 
+### ¿Hay eventos concurrentes para los cuales el ordenamiento relativo no resulta importante?
+Al momento de lanzar las peticiones y esperar la respuesta no importa el orden en que se envie ya que pueden tardar un tiempo
+arbitrario en recibir la respuesta, solo es importante para mantener la simulacion lo mas cercana a los parametros que esta 
+cantidad de hilos concurrentes no rebasen los maximos permitidos por la barrera.
+
 ## Lógica de operación
 ### Identificación del estado compartido e interaccion
 Las variables compartidas en este programa son las siguientes
