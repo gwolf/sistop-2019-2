@@ -11,4 +11,4 @@ le ayuda en sus labores como administrador y tambien hace un htop para ver los p
 
 
 Requisitos de software:
-El script funciona correctamente en CentOs 6 y se debe de contar con la instalacion del comando 'htop'
+El script funciona correctamente en CentOs 6, con Gnome y se debe de contar con la instalacion del comando 'htop' 
