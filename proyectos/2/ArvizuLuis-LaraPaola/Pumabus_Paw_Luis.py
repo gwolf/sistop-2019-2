@@ -58,7 +58,7 @@ def Minutos():
 	mutex.acquire()
 	minutos += 1 #añade a los "minutos" que van pasando 
 	print  'Ha pasado un minuto' + '\n' + (total) + 'Minutos = %d' %(minutos)
-	if minutos == 25: 
+    if minutos == 25: #Si pasan 25  min sale el pumabus
 		pumaBus.release() 
 	mutex.release()
 
@@ -71,7 +71,7 @@ def PumaBus():
 		print (arrancaPumabus)
 		mutex.acquire()
 
-		if minutos == 25: #Si pasan 10 min. sale el pumabus
+		if minutos == 25: #Si pasan 25 min. sale el pumabus
 			print (arrancaPumabus)
 			Recorrido() 
 			minutos -= 25 #Vacia el contador de minutos 
@@ -82,6 +82,8 @@ def PumaBus():
 		print (pumaInactivo) 
 		mutex.release()
 
+
+#Definen los tiempos que tardara cada hilo
 threading.Thread(target = PumaBus, args = []).start()
 while True:
 	threading.Thread(target = Personas, args = []).start()
