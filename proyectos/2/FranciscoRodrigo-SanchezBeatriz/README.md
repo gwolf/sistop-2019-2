@@ -5,66 +5,145 @@
 * Francisco RODRIGO
 * Sanchez BREATRIZ
 
-## Entorno y dependecias
+## Identificación del problema
 
 En la vida cotidiana se presentan situaciones de concurrencia para los cuales serían buena idea poder aplicar los métodos de sincronización vistos en clase. Para el caso del museo de Djisktra se tiene la siguiente problemática.
 
-El museo Djisktra se exhiben muchas máquinas de la era pasada que resultan muy curiosas a las nuevas generaciones, además de que hay actividades lúdicas en las cuales los `millenials` aprenden cómo funcionan alguno de los componentes de la computadora.
-El museo está dividido en secciones.
+El museo cuenta con guías que solo pueden atender a turistas que hablan ciertos idiomas. La característica principal de nuestros guías es que:
 
-1.  Sección de sistemas operativos.
-2.  Las primeras generaciones de computadoras.
-3.  Sección de Vulnerabilidades
-4.  Personajes más importantes de la computación.
-5.  La sala Turing
-6.  La sala Larry Page & Sergey Brin
-7.  La sala  Neumann 
+* Un guía puede hablar como máximo **dos idiomas**, los cuales podrían ser: español, inglés, alemán, japonés, francés, portugués, italiano, holandés.
 
-Y además el museo cuenta con guías que solo pueden atender a turistas que hablan ciertos idiomas, dado que el guía no maneja todos los idiomas. En el museo se tienen 5 guías que tienen las siguientes características.
+Para comenzar a dar el recorrido se deben cumplir ciertas condiciones
 
-* El guía 1 solo atiende turistas estadounidenses, ingleses y franceses dado que solo habla **inglés y francés**.
-* El guía 2 solo atiende a turistas japoneses y coreanos dado que solo habla **japonés y coreano**.
+* contar por lo menos  con cuatro turistas a su cargo en caso de que haya los suficientes, es decir, que si al museo ya no llegan más turistas, el guía no tiene a quien esperar, por lo tanto debe comenzar su recorrido con menos de cuatro turistas.
 
-* El tercer guía habla **inglés y español**
-* El cuarto guía solo habla **portugués e italiano**
-* Y finalmente, el último guía solo habla **alemán y holandés**
+* El guía debe dar el recorrido a  turistas que hablen el mismo idioma que el, no importando el número de turistas que haya de cada idioma.
 
-A lo largo del día llegan muchos turistas de distintas nacionalidades y la mécanica del museo es la siguiente.
+* En caso de que el museo no cuente con guías que hablen el mismo idioma que el turista este debe comenzar su recorrido solo, y quejarse con el museo por el mal servicio.
 
-1. Un turista llega y paga su boleto de acuerdo a las siguientes categorías
-   1. Estudiante
-   2. Persona de mayor a 65 años
-   3. Público en general
-2. Antes de finalizar el pago debe escoger si quiere realizar el recorrido por el museo con algún guía o solo. En caso de escoger al guía se le cobrarán un monto adicional.
 
-## Primer problema de sincronización
 
-Por ordenes del museo el guía no puede iniciar su recorrido si
+  En el problema planteado se puede ver la concurrencia a la hora de llegada de los turistas y su asignación a cierto guía.
 
-* No hay por lo menos 6 turistas a su cargo
-* Además, si por ejemplo el guía habla inglés y francés debe de tener el mismo número de turistas franceses que ingleses. Esto porque en el recorrido tiene que dar su charla en ambos idiomas y no le conviene dar su discurso para 5 ingleses y para un solo francés, por ejemplo.
+* Inicialmente se quiere controlar que los guías inicien su recorrido con solo 4 turistas, pero si no se cumple la condición al final de la llegada de todos los turistas(hilos) los guías deben seguir trabajando e irse a dar los recorridos.
+
+* También se quiere controlar la manera en la que los turistas son asignados a los guías, ya que esto va a depender de los idiomas que hablen.
 
 ### Caso base
 
 ```shell
-Para el guía 1
-Llegan 4 ingleses y 2 franceses
-	Ya son 6 turistas, sin embargo aún no se puede ir el guía dado que necesita que el 		número de turistas ingleses sea el mismo que el de franceses.
-	Entonces lo que debe hacer en este caso es evitar que sigan pasando turistas ingleses 	  y dejar pasar a 2 franceses 
-	De manera que con esto tendría 4 turistas ingleses y 4 franceses y entes momento ¡Puede inciar el viaje!!
+Guía 1 habla italiano y frances
+Guía 2 habla español e inglés
+Llegan 3 ingleses, 1 español, 1 italiano, 1 frances, 1 holandes
+Guía 2 inicia su recorrido!
+Guía 1 inicia su recorrido con 2 turistas, no hay más ):
+Turista 7 se va solo
 ```
 
-### Segundo problema de sincronización
+## Descripción de la solución
 
-En algún momento que desconocemos los guías se pelearon y no pueden estar en la misma sala al mismo tiempo con sus respectivos turistas. Si la sala se encuentra ocupado por algún guía y otro guía quiere pasar  no podrá hacerlo y solo le queda esperar a que se desocupe o *asomarse* a la sala de al lado para ver si esta desocupada y entrar allí mientras se desocupa la otra. 
+### Estructura del programa
 
-Se considera que las salas se recorren en el orden que fueron elistadas al principio.
+Para la resolución del problema pensamos todo en términos de `clases`, creamos dos clases principales.
 
-Los guías deben de recorrer todas las salas con todo sus turistas a cargo.
+* La clase Guia.
+* Y la clase Turista.
 
-Los que eligieron recorrer el museo solos pueden recorrer el museo en desorden.
+La clase guia se compone de
 
-### Tercer problema de sincronización
+* Un `id`
+* Una lista de idiomas debido a que el guia puede manejar 2 idiomas.
+* Un contador de turistas que se van a ir con él
 
-¡El museo de Djiskstra es genial! Sin embargo, es un museo no muy famoso y por lo tanto sus recursos son limitados. Para una de las tantas actividades lúdicas que ofrecen los turistas se deben compartir los recursos. Sin embargo un turistas no puede realizar la actividad recreativa sino tiene el recurso A y el recurso B. [Se quiere llegar al caso de espera por...]
+En la clase turista pusimos todos nuestros esfuerzos. Se compone de
 
+* Un `id`
+* Un idioma
+
+Y por último tuvimos que definir variables globales como una
+
+* lista de guías
+* Un contador de turistas
+* Y un par de variables que nos ayudan a las sincronización como
+  * Una **lista** de mutex guía.
+  * Una **lista** de semaforos para los turistas. En el código se encuentra como `lista_turistas`.
+  * Y por último tenemos un simple mutex para proteger al contador.
+
+### Mecanismos utilizados
+
+El atributo contador de cada objeto de tipo Guia va a fungir como una región crítica, se utiliza una lista de mutexes para proteger la sección crítica de cada guía que se crea en el programa. Los mutex guia son una lista de mutexes en donde cada posición corresponde a un guía del museo, entonces si un turista intenta incrementar el contador su región crítica queda protegido el mutex correspondiente.
+
+Crear listas de mutexes fue un importante porque tenemos validar que si el guía 2 habla inglés y francés y un turista `A` que habla francés quiere irse con el entonces lo que debe pasar es que el turista `A` pide la sección crítica correpondiente al guía 2.
+
+Para resolver la condición en la cual un guía no se pude ir si no tiene 4 turistas tuvimos que hacer uso de una `barrera`. Los turistas se pueden ir a cualquier guía *n* que les corresponda de acuerdo a su idioma, una vez que ya saben que guía les va a dar el recorrido se duermen hasta que llega un cuarto turista, el cual es el encargado de despertarlos. Pero, ¡Cuidado! tiene que despertan solo a los turistas que se van con el guía n, no puede despertar a los turistas del $guía_{n+1}$ por lo cual tuvimos que jugar con las posiciones de los mutex y de nuestra `lista_turistas` para hacer que concordaran. En otras palabras si un guía *n* tenían 3 turistas y llega un 4° este despertará a los demás de la siguiente manera.
+
+```python
+for i in range(4)
+	lista_turistas[n].release # en donde n es la posción del guía que ellos decidieron seguir con base en su idioma.
+```
+
+¡PERO! podría presentarse el caso desafortunado en el cual un turista habla idioma que ningún otro guía habla, ¿qué hacemos? Pues *no hay que complicarse la vida*, ni a nosotros ni al pobre turista. No debemos mandarlo con algún guía porque no le entenderá nada. La única vía es **mandarlo solo**.
+
+**¿Qué falta considerar?**
+
+¿Qué pasa si ya llegaron todos los turistas que tenían que llegar en un día habitual, es probable que los guías entren en anición debido a que no van a poder hacer su recorrido porque no tienen el número suficiente de turistas.
+
+**Solución**
+
+Podemos asumir que sabemos cuando llega el último turista, para eso usar la variable llamada `contador_turistas`, una vez ha llegado el último turista le delegamos la responsabilidad de avisar  a los otros grupos de guías y turistas que nadie más llegará al museo por lo cual ellos deben iniciar su recorrido a pesar de ser pocos (menos de cuatro para nuestra sencilla simulación.)
+
+Admitimos que en esta parte de la solución perdimos un poco de elegancia porque el último turista despierta casi por "fuerza bruta" al resto de los turistas.
+
+## Entorno y dependencias
+
+El proyecto fue desarrollado en python 3.7.0, para la ejecución del programa usted va a ser el jefe del museo, va a poder elegir cuantos guías van a atender ese día, al igual que cuantos turistas podrán visitar el museo, esto si es que lo quiere, si no por defecto serán 5 guías y 20 turistas.
+
+Se hace uso de algunas bibliotecas para la mejor visualización y manejo para el usuario, como usuario linux no es necesario instalar nada.
+
+PARA LA EJECUCIÓN:
+
+-Nos movemos a la carpeta donde se encuentra el archivo **main.py**, es decir:
+
+sistop-2019-2/proyectos/2/FranciscoRodrigo-SanchezBeatriz/
+
+Una vez dentro para la ejecución tenemos 3 banderas:
+
+-h para ver la ayuda, básicamente nos va a mostrar las banderas que tenemos disponibles, ahí ya veremos las otras dos opciones que tenemos:
+
+```powershell
+$python main.py -h
+usage: main.py [-h] [-t TURISTAS] [-g GUIAS]
+
+Ayuda para el usuario
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TURISTAS, --turistas TURISTAS
+                        Define el numero de turistas
+  -g GUIAS, --guias GUIAS
+                        Define el numero de guias
+```
+
+Ejemplo de salida de la ejecución.
+
+
+
+Si no se ponen argumentos, los que trae por defecto son 20 turistas y 5 guías:
+
+![](./capturas/funciono.png)
+
+Por ejemplo, se quiere que un día en el museo vayan 100 turistas y  3 guías, se tendría que poner algo como lo siguiente:
+
+```shell
+$python main.py -t 100 -g 3
+```
+
+![](./capturas/museo_t100_g3_a.png)
+
+![](./capturas/museo_t100_g3_b.png)
+
+
+
+![](./capturas/museo_t100_g3_c.png)
+
+El programa fue probado en un sistema operativo linux, distribución ubuntu 16.
