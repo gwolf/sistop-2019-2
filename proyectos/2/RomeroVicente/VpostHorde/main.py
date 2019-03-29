@@ -1,5 +1,8 @@
-from core.console import Console
+from tools.Consola import Consola
+import pkg_resources
+import sys
 
 if __name__ == "__main__":
-    console = Console()
-    console.evaluar_argumentos()
+    consola = Consola()
+    consola.evaluarArgumentos()
+    consola.iniciar_consola()
