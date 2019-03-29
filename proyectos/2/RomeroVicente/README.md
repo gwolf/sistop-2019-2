@@ -1,4 +1,8 @@
 # Proyecto 2. Simulacion y aplicacion real para pruebas de estres a paginas web con varios usuarios simultaneos
+
+## Nombres de los integrantes
+* Romero Andrade Vicente
+
 ## Introduccion
 Este programa hace una simulacion real de usuarios simultaneos a cualquier url que se le indique.
 Se simularan N numero de usuarios haciendo click simultaneamente a la url y se guardara un registro del comportamiento
