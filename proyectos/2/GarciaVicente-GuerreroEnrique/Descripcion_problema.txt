@@ -1,0 +1,5 @@
+Una situación cotidiana paralelizable
+La situación que elegimos fue la rutina que se tiene al tomar un camión de transporte público, el cual en este caso tendrá paradas exclusivas en las cuales se podrá subir pasaje, sin embargo, los usuarios que ya estén arriba podrán bajar en cualquier momento, en dado caso que haya pasajeros que se queden arriba del autobús, al llegar a la base, todos se bajaran.
+Lo que observamos es que cuando un pasajero se quiere bajar, deberá tocar el timbre con lo cual hará que el camión se detenga hasta que se pueda bajar, en nuestro caso controlaremos este caso además de poner la restricción de que solo una persona puede bajar al mismo tiempo.
+Otra condición que definimos es que el conducto no podrá avanzar hasta que los pasajeros mínimos definidos estén arriba del autobús en cada parada.
+En esta situación es importante la sincronía de los eventos puesto que ningún pasajero, en la vida real, se debería de bajar del autobús cuando está en movimiento.
