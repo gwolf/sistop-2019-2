@@ -174,7 +174,6 @@ class Estres(Peticion):
                 num_respuestas = num_respuestas + self.hilos
                 for i in range(int(self.hilos)):
                     thread = threading.Thread(target = self.head, args = (self.respuestas,),name=str(i+1)+" peticion")
-                    self.mutex.acquire()
                     thread.start()
                     self.mutex_cont.acquire()
                     num = num + 1 #se proteje el contador con este mutex
