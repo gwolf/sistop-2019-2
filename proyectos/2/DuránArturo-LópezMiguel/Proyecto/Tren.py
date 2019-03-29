@@ -42,6 +42,8 @@ class Tren:
     def vaciarTren(self):
         self.Capacidad_Actual = 0
         return
+    def getNumero(self):
+        return self.Numero
     def isEmpty(self):
         return self.Capacidad_Actual == 0
     

@@ -20,11 +20,11 @@ class estacion:
         desviacion = random.uniform(3.5,6)
         num_personas = 0
         tasa = 0
-        if direccion<0:
-            tasa=st.norm.pdf(hora, 7.5, desviacion )
         if direccion>0:
+            tasa=st.norm.pdf(hora, 7.5, desviacion )
+        if direccion<0:
             tasa=st.norm.pdf(hora, 18, desviacion)
-        num_personas = tasa*60*15*t_espera
+        num_personas = tasa*60*20*t_espera
         return int(num_personas)
     def isTerminal(self):
         return self.tipoE == 'T'

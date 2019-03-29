@@ -8,9 +8,26 @@ from Tren import *
 from Estacion import *
 from Carga import *
 
-#from Mapa import *
+import queue 
+from Mapa import *
 
 ################ MAPA #######################################
+"""
+Esta funcion fue pirateada de StackOverflow al tratar de resolver un problema descrito en:
+https://stackoverflow.com/questions/19498447/multithreading-with-python-turtle
+"""
+def process_queue():
+    while not graphics.empty():
+        (graphics.get())(1)
+
+    if threading.active_count() > 1:
+        turtle.ontimer(process_queue, 100)
+
+MapaCola = queue.Queue(106)
+
+TurtleLinea=[turtle.Turtle(),turtle.Turtle(),turtle.Turtle(),turtle.Turtle()]
+for i in range(40):
+    TurtleLinea.append(turtle.Turtle())
 """
 def process_queue():
     while not actions.empty():
@@ -140,8 +157,6 @@ def TrenF(num_linea,i,Direccion):
 
     print("Funcion Tren ",i)
     print("Direccion ",Direccion)
-
-
     
     TrenAs = Tren(NLineas[num_linea],i,Direccion)
     
@@ -150,33 +165,27 @@ def TrenF(num_linea,i,Direccion):
     longitud_E = len(LineasObj[num_linea])
     
     estacionid = (Direccion % longitud_E )
-    Direccion_Tasa = Direccion
-    if num_linea == 3:
-        Direccion = Direccion*-1 
+
     #Variables Ascenso y Descenso
     Ascenso = 0
     Descenso = 0
-
-
     
     if Direccion < 0:
         estacionid -=1
     
+    DepositoInicial = 0
+    DepositoFinal = 0        
+    if Direccion < 0 :
+        DepositoInicial = 0
+        DepositoFinal = 1
+    else:
+        DepositoInicial = 1
+        DepositoFinal = 0
+    
     for j in range(1,longitud):
         O.acquire()
-        
-        DepositoInicial = 0
-        DepositoFinal = 0
-        if Direccion < 0 :
-            DepositoInicial = 0
-            DepositoFinal = 1
-        else:
-            DepositoInicial = 1
-            DepositoFinal = 0
-            
-            
-        Mutexs[num_linea][DepositoInicial][j].acquire()
-        Mutexs[num_linea][DepositoInicial][j-1].acquire()
+        Mutexs[num_linea][Direccion%2][j].acquire()
+        Mutexs[num_linea][Direccion%2][j-1].acquire()
         print("Agarró mutex ",j," ",j-1)
         if j%2==0:
             estacionid += Direccion*1
@@ -188,8 +197,7 @@ def TrenF(num_linea,i,Direccion):
         
         #################### Ascenso Descenso #########################
         if j%2==0:
-            print("Direccion tasa ",Direccion)
-            tasa = EstacionActual.getNumPersonas(Hora+Minuto/60,Direccion_Tasa,tiempo_salida[num_linea])
+            tasa = EstacionActual.getNumPersonas(Hora+Minuto/60,Direccion,tiempo_salida[num_linea])
             print("Llegan ",tasa," personas")
             #Ascenso
             #Nuevas personas que llegan + Personas en la estacion que no abordaron
@@ -211,20 +219,20 @@ def TrenF(num_linea,i,Direccion):
             else:
                 TrenAs.addUsuarios(Ascenso)
             print("Personas en tren ", TrenAs.getCapacidadActual())
-        Mutexs[num_linea][DepositoInicial][j-1].release()
-        Mutexs[num_linea][DepositoInicial][j].release()
+        Mutexs[num_linea][Direccion%2][j-1].release()
+        Mutexs[num_linea][Direccion%2][j].release()
         #El tren espera el tiempo de traslado y el tiempo que tarda en la estacion
         tiempo_en_estacion = random.uniform(0.2,1) #[minutos]
         tiempo_traslado = TrenAs.getvelocidad()/EstacionActual.getDistancia(Direccion)
         tiempo_traslado = random.uniform(0.7*tiempo_traslado,tiempo_traslado)
         tiempo_espera = tiempo_traslado + tiempo_en_estacion
         print("Tiempo total de espera ",tiempo_espera)
+        MapaCola.put(lineaXY(estacionid,num_linea,turtle.Turtle()))
         sleep(tiempo_espera / IncrementoTiempo)
         O.release()
     ############ Destruye y crea un tren como en un campo de cuantico y sus fluctuaciones xD #############
     TrenNuevo = Tren(num_linea,i,Direccion*-1)
-    Depositos[num_linea][DepositoFinal].append(TrenNuevo)
-    
+    Depositos[num_linea][DepositoFinal].append(TrenNuevo)    
     return
 
 def CreacionTrenes(num_linea):
@@ -251,10 +259,10 @@ def GestorDeLinea(num_linea):
     CreacionTrenes(num_linea)
     while not (len(Depositos[num_linea][0])==0 and len(Depositos[num_linea][1]) == 0):
         ActualD1 = Depositos[num_linea][0].pop(0)
-        #ActualD2 = Depositos[num_linea][1].pop(0)
+        ActualD2 = Depositos[num_linea][1].pop(0)
         #print("len ",len(Depositos[num_linea][0]))
         ActualD1.start()
-        #ActualD2.start()
+        ActualD2.start()
         #Calcula el tiempo de salida de cada tren
         
         ############### TASA GLOBAL DE LLEGADAS
@@ -284,11 +292,13 @@ def run():
     
     Fin = 24*60*60
     
-    #L1=Thread(target=GestorDeLinea,args=[0],name='L1').start()
-    #L5=Thread(target=GestorDeLinea,args=[1],name='L5').start()
-    #L9=Thread(target=GestorDeLinea,args=[2],name='L9').start()
-    #LA=Thread(target=GestorDeLinea,args=[3],name='LA').start() 
- 
+    L1=Thread(target=GestorDeLinea,args=[0],name='L1').start()
+    L5=Thread(target=GestorDeLinea,args=[1],name='L5').start()
+    L9=Thread(target=GestorDeLinea,args=[2],name='L9').start()
+    LA=Thread(target=GestorDeLinea,args=[3],name='LA').start()
+    
+    Ventana = Mapa()
+    Ventana.run() 
     
     while not (t == Fin):
 
