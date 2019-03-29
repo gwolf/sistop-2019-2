@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import scipy.stats as st
 import random 
 umbral = 0.01
@@ -15,7 +17,7 @@ class estacion:
     def getNombreE(self):
         return self.nombreE
     def getTipoE(self):
-        return tipoE
+        return self.tipoE
     def getNumPersonas(self,hora,direccion,t_espera):
         desviacion = random.uniform(3.5,6)
         num_personas = 0

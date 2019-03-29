@@ -2,13 +2,7 @@
 # -*- coding: utf-8 -*-
 import csv
 from Estacion import *
-"""
-#Listas:
-linea1 = []
-linea5 = []
-linea9 = []
-lineaA = []
-"""
+
 def cargarObject(arg,listaEsta):
     with open(str(arg)+'.csv') as File:
         reader = csv.reader(File, delimiter=',')
@@ -19,16 +13,6 @@ def cargarObject(arg,listaEsta):
 
     return listaEsta
 
-#linea1 = cargarObject("Data/L1",linea1)
-
-#for i in linea1:
-#    print(i.getNombreE())
-#linea5 = cargarObject("Data/L5",linea5)
-#print(linea5)
-#linea9 = cargarObject("Data/L9",linea9)
-#print(linea9)
-#lineaA = cargarObject("Data/LA",lineaA)
-#print(lineaA)
 
 
 

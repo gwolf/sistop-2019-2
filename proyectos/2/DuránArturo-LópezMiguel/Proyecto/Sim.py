@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from threading import Semaphore,Thread
 from time import sleep
 import turtle
@@ -16,41 +18,22 @@ from Mapa import *
 Esta funcion fue pirateada de StackOverflow al tratar de resolver un problema descrito en:
 https://stackoverflow.com/questions/19498447/multithreading-with-python-turtle
 """
+'''''''''
 def process_queue():
     while not graphics.empty():
         (graphics.get())(1)
 
     if threading.active_count() > 1:
         turtle.ontimer(process_queue, 100)
+'''''
+
+
 
 MapaCola = queue.Queue(106)
 
 TurtleLinea=[turtle.Turtle(),turtle.Turtle(),turtle.Turtle(),turtle.Turtle()]
 for i in range(40):
     TurtleLinea.append(turtle.Turtle())
-"""
-def process_queue():
-    while not actions.empty():
-        turtle, action, argument = actions.get()
-        action(turtle, argument)
-
-    if active_count() > 1:
-        screen.ontimer(process_queue, 100)
-
-
-screen = turtle.Screen()
-
-image = "Resources/mapa_macabro_gif.gif"
-
-screen.addshape(image)
-fondo = turtle.shape(image)
-
-turtle.setup(1483,737,0,0)
-turtle.title("Mapa de control")
-turtle.showturtle()
-UI_LA = turtle.Turtle()
-
-"""
 
 
 #Se crean las listas donde se almacenan los trenes (depósitos)
@@ -183,15 +166,14 @@ def TrenF(num_linea,i,Direccion):
         DepositoFinal = 0
     
     for j in range(1,longitud):
-        O.acquire()
+        #O.acquire()
         Mutexs[num_linea][Direccion%2][j].acquire()
         Mutexs[num_linea][Direccion%2][j-1].acquire()
         print("Agarró mutex ",j," ",j-1)
         if j%2==0:
             estacionid += Direccion*1
-        #print("Estacion Id ",estacionid)
+            MapaCola.put(lineaXY(estacionid,num_linea,turtle.Turtle(),Direccion))
         EstacionActual = LineasObj[num_linea][estacionid]
-        #printLineaA(estacionid,UI_LA,0)
         print("Estoy en la estacion ", EstacionActual.getNombreE() )
         print("Es la hora ",Hora,":",Minuto)
         
@@ -219,17 +201,16 @@ def TrenF(num_linea,i,Direccion):
             else:
                 TrenAs.addUsuarios(Ascenso)
             print("Personas en tren ", TrenAs.getCapacidadActual())
-        Mutexs[num_linea][Direccion%2][j-1].release()
-        Mutexs[num_linea][Direccion%2][j].release()
         #El tren espera el tiempo de traslado y el tiempo que tarda en la estacion
         tiempo_en_estacion = random.uniform(0.2,1) #[minutos]
         tiempo_traslado = TrenAs.getvelocidad()/EstacionActual.getDistancia(Direccion)
         tiempo_traslado = random.uniform(0.7*tiempo_traslado,tiempo_traslado)
         tiempo_espera = tiempo_traslado + tiempo_en_estacion
         print("Tiempo total de espera ",tiempo_espera)
-        MapaCola.put(lineaXY(estacionid,num_linea,turtle.Turtle()))
         sleep(tiempo_espera / IncrementoTiempo)
-        O.release()
+        Mutexs[num_linea][Direccion%2][j-1].release()
+        Mutexs[num_linea][Direccion%2][j].release()
+        #O.release()
     ############ Destruye y crea un tren como en un campo de cuantico y sus fluctuaciones xD #############
     TrenNuevo = Tren(num_linea,i,Direccion*-1)
     Depositos[num_linea][DepositoFinal].append(TrenNuevo)    
@@ -254,6 +235,8 @@ def CreacionTrenes(num_linea):
 
 #Gestiona  las salidas de la linea
 MutexPrint = Semaphore(1)
+
+
 def GestorDeLinea(num_linea):
     createMutex(num_linea)
     CreacionTrenes(num_linea)
@@ -321,17 +304,8 @@ def SetVariables(Dia,Hora,Vel):
         Es_Fin = True
     
     return
-    
 
-run()
 
-#for i in linea5:
-#    print(i.getNombreE())
-
-#createMutex(1)
-#screen.mainloop()
-
-#turtle.exitonclick()
 
 
 
