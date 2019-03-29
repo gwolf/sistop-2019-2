@@ -24,6 +24,8 @@ public class Sistema {
     private Sistema(int numPlatillos) {
         Sistema.tiempoSistema=0;
         cola = new ArrayList<>();
+        hornos = new ArrayList<>();
+        estaciones = new ArrayList<>();
         Sistema.numPlatillos = numPlatillos ;
     }
 
@@ -36,7 +38,30 @@ public class Sistema {
         return instance;
     }
     
-    public void creaHornos(int numHornos){
+    public void atiende(){
+        while(!cola.isEmpty()){
+            for(Horno horno : hornos){
+                horno.atiende();
+                for(PlatilloHorneable platillo : cola){
+                    if(platillo.getVolumen()<=horno.getCapacidad()){
+                        horno.addPlatillo(platillo);
+                        cola.remove(platillo);
+                        System.out.println(platillo.getNombre()+" entra a "+horno.getNombre());
+                    }
+                    else
+                        System.out.println(platillo.getNombre()+" espera por espacio en algún horno");
+                }
+            }
+        }
+    }
+    
+    public void trabajaEstaciones(){
+        for(EstacionDeCocina estacion : estaciones){
+            estacion.start();
+        }
+    }
+    
+    public void creaHornos(){
         Scanner sc=new Scanner(System.in);
         System.out.println("Ahora proporcioname el numero de hornos(agentes de atención de la cola de espera)");
         int n = sc.nextInt();

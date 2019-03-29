@@ -46,4 +46,10 @@ public abstract class PlatilloHorneable {
         else
             this.tiempo=0;
     }
+
+    @Override
+    public String toString() {
+        return this.getNombre()+"\tTiempo de prep: "+Float.toString(this.tiempo)+"\tVolumen: "+Integer.toString(this.volumen);
+    }
+    
 }

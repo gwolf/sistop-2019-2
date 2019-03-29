@@ -6,6 +6,8 @@
 package comp;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @version 0.1
@@ -26,6 +28,12 @@ public class EstacionDeCocina extends Thread {
         synchronized(Sistema.class){
             while(Sistema.numPlatillos>0){
                 int x = rand.nextInt(100);
+                try {
+                    Thread.sleep(rand.nextInt(17));
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(EstacionDeCocina.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.print("Estacion "+this.getName()+" agrega");
                 if(x>0 && x<35){
                     this.platillo = new Pastel(2+3*rand.nextFloat(), rand.nextInt(5)+1);
                 }else{
@@ -38,6 +46,7 @@ public class EstacionDeCocina extends Thread {
                     }
                 }
                 Sistema.agregaPlatillo(platillo);
+                System.out.print(platillo);
                 Sistema.numPlatillos-=1;
             }
         }

@@ -24,6 +24,7 @@ public class Horno {
         nuevo();
         this.capacidad=capacidad;
         this.nombre="Horno "+Integer.toString(count);
+        System.out.println(this.nombre+" con capacidad de:"+this.capacidad);
     }
     
     public synchronized void atiende(){
@@ -36,6 +37,18 @@ public class Horno {
         }
     }
     
+    public List<PlatilloHorneable> getPlatillos() {
+       return platillos;
+    }
+    
+    private int calculateVolume(){
+        int x = 0;
+        for(PlatilloHorneable platillo : platillos) {
+            x+=platillo.getVolumen();
+        }
+        return x;
+    }
+    
     public void setPlatillos(PlatilloHorneable[] platillos) {
         this.platillos = new ArrayList<>(Arrays.asList(platillos));
     }
@@ -45,7 +58,7 @@ public class Horno {
     }
     
     public synchronized int getCapacidad() {
-        return capacidad;
+        return capacidad-calculateVolume();
     }
 
     public synchronized String getNombre() {
