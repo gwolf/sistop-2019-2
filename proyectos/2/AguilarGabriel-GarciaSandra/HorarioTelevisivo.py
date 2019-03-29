@@ -45,13 +45,13 @@ def ActualizarTeles():
 			if programas[canal][programa][2] == tiempo:
 				for x in range(1,len(teles[2])):
 					control[i].release()
-				pasillo.release()
+				#pasillo.release()
 			else:
 				for x in  programas[canal][programa][1]:
 					if x == tiempo:
 						for x in range(1,len(teles[2])):
 							control[i].release()
-						pasillo.release()
+						#pasillo.release()
 			#queHoraEs.release()
 	print('En uso:', TelesEnUso, '\nTeles:', teles)
 
@@ -68,47 +68,52 @@ def Usuario(who):
 	time.sleep(0.1)
 	queHoraEs.acquire()
 	tiempoAux = tiempo
-	#print('checkpoint1 usuarioTiempo')
 	queHoraEs.release()
 	while programas[canal][programa][0] > tiempoAux:
 		queHoraEs.acquire()
 		tiempoAux = tiempo
-		#print('checkpoint1 usuarioTiempo')
 		queHoraEs.release()
 	while programas[canal][programa][2] > tiempoAux:
-		#print('checkpoint2 usuarioWhile')
 		print('soy usuario', str(who), 'estoy en el pasillo esperando')
 		pasillo.acquire()
+		print('¿¿¿¿¿¿¿¿¿Usuario', str(who),'termino mi programa')
 		queHoraEs.acquire()
+		print('Usuario', str(who),'termino mi programa?????????')
 		tiempoAux = tiempo
 		queHoraEs.release()
 		if programas[canal][programa][2] > tiempoAux:
-			print('soy usuario', str(who), 'busco una tele')
+			print('-----------soy usuario', str(who), 'busco una tele')
 			tomarTele.acquire()
+			compartiendo = 0
 			for x in range(0,len(TelesEnUso)-1):
 				if TelesEnUso[x] == 1 and teles[x][0] == canal and teles[x][1] == programa:
 					teles[x][2].append(who)
 					lugar = x
-					compartiendo = True
+					compartiendo += 1
+					pasillo.release() 
 					#tomarTele.release()
-				else:
-					compartiendo = False
-			if not compartiendo:
+			if compartiendo == 0:
 				#tomarTele.acquire()
 				lugar = TelesEnUso.index(0)
 				TelesEnUso[lugar] = 1
-				teles[lugar] = [canal, programa, [who]]
+				if len(teles[lugar]) == 0:
+					teles[lugar] = [canal, programa, [who]]
+				else:
+					teles[lugar][0] = canal
+					teles[lugar][1] = programa
+					teles[lugar][2].append(who)
 			tomarTele.release()
 			control[lugar].acquire()
-			print('Usuario', str(who), 'Dejo la tele', lugar)
+			print('////////////////Usuario', str(who), 'Dejo la tele', lugar)
 			tomarTele.acquire()
 			TelesEnUso[lugar] = 0
 			teles[lugar][2].remove(who)
 			tomarTele.release()
-		#pasillo.release()
+		pasillo.release()
 		queHoraEs.acquire()
 		tiempoAux = tiempo
 		queHoraEs.release()
+	pasillo.release()
 	print('\n\t-----------Usuario', str(who), 'El programa que queria ver termino-----------')
 	if random.random() <= otroPrograma:
 		Usuario(who)
