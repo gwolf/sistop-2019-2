@@ -1,0 +1,40 @@
+------------------------------------------
+#INTEGRANTES 
+	Garcia Cabrera Orlando Anselmo 
+	Rodríguez Agiss Zuriel Uzai
+---------------------------------------------
+	PLANTEAMIENTO DEL PROBLEMA 
+
+No hay razón para limitar el estudio de problemas de concurrencia a las actividades humanas, es por 
+estoy por el gusto a los animales que decidimos estudiar  el compartamiento en el mar. Nuestra actividad
+a analizar es la convivencia y comportamiento de los peces, en especial su comportamiento en la forma 
+de nadar,considerando que los peces poseen un periodo de memoria corto lo que provoca que su direccion 
+al nadar y actividades sea incierto a partir de esta situación es posible que exista una concurencia en 
+que dos o mas peces naden en en el mismo "carril".
+
+Considerando un acuario en donde existen diversas especies de peces.Los peces son muy sencillos. A ellos 
+sólo les gusta nadar alrededor de la pecera, y por ende éstos solo pueden nadar en dos direcciones. En sentido
+del reloj y en la dirección opuesta.Además no todos los peces se llevan bien entre ellos por lo que su decisión 
+dee nadar tambien sera definida por la presencia de otro pez.
+
+Esto quiere decir que existe una "compatibilidad" entre peces. Por otro lado en este escenario su memoria se recetea 
+cada 5 segundos, enfrentandose a la decisión de seguir nadando en la dirección en la que ya estaban o cambiar de dirección.
+ Para evitar accidentes al momento de hacer el cambio de dirección, los peces deben desviarse y nadar hacia el centro de 
+la pecera, donde nuevamente deberán esperar 5 segundos antes de decidir en qué dirección nadar, ya que nuevamente, son 
+peces con memoria de corto plazo; no recuerdan en qué dirección iban a cambiar o estaban nadando originalmente.
+
+Los peces instintivamente deben evaluar dos situaciones antes de seguir nadando:
+1. No puede haber la misma cantidad de peces nadando en sentidos opuestos. Por ejemplo, esto quiere decir que si se encuentran 
+6 peces en circulación, no pueden haber 3 peces nadando en sentido del reloj y 3 nadando en sentido contrario para evitar choques.
+En consecuencia, si un pez se halla al centro de la pecera en espera, y hay 3 peces nadando en sentido del reloj y 2 en sentido 
+contrario, no puede comenzar a nadar en sentido contrario. 
+2. No puede haber más de 5 peces nadando en la misma dirección. 
+
+Si no se cumple alguna de las condiciones anteriores el pez o los peces deben de esperar hasta que se den las condiciones óptimas 
+para que sigan nadando.
+-------------------------------------------------------------------------------------------------------
+
+	
+	
+
+
