@@ -36,7 +36,6 @@ def ActualizarTeles():
 	global programas
 	global teles
 	global TelesEnUso
-	global control
 	global numeroTeles
 	for i in range(0,numeroTeles-1):
 		if TelesEnUso[i] == 1:
@@ -101,10 +100,10 @@ def Usuario(who):
 				teles[lugar] = [canal, programa, [who]]
 			tomarTele.release()
 			control[lugar].acquire()
+			print('Usuario', str(who), 'Dejo la tele', lugar)
 			tomarTele.acquire()
 			TelesEnUso[lugar] = 0
 			teles[lugar][2].remove(who)
-			print('Usuario', str(who), 'Dejo la tele', lugar)
 			tomarTele.release()
 		#pasillo.release()
 		queHoraEs.acquire()
