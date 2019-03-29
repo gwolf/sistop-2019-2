@@ -13,6 +13,18 @@ public class Pavo extends PlatilloHorneable{
     private static int count;
 
     public Pavo(float tiempo, int volumen) {
+        nuevo();
+        this.setNombre("Pavo "+Integer.toString(count));
+        this.setTiempo(tiempo);
+        this.setVolumen(volumen);
+    }
+    
+    private synchronized void nuevo(){
+        Pavo.count+=1;
+    }
+    
+    public synchronized void resetContador(){
+        Pavo.count=0;
     }
     
 }

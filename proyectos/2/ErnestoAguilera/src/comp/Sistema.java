@@ -10,7 +10,14 @@ package comp;
  * @author Luis
  */
 public class Sistema {
+    private static float tiempoSistema;
+
     public static void main(String[] args){
         
     }
+    
+    public static synchronized float getTiempoSistema() {
+        return tiempoSistema;
+    }
+
 }

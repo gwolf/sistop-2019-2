@@ -11,8 +11,8 @@ package comp;
  */
 public class EstacionDeCocina extends Thread {
 
-    public EstacionDeCocina(String str){
-        super(str);
+    public EstacionDeCocina(String name){
+        super(name);
     }
     
     @Override

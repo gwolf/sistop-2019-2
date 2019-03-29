@@ -13,6 +13,17 @@ public class Pizza extends PlatilloHorneable{
     private static int count;
 
     public Pizza(float tiempo, int volumen) {
+        nuevo();
+        this.setNombre("Pizza"+Integer.toString(count));
+        this.setTiempo(tiempo);
+        this.setVolumen(volumen);
     }
     
+    private synchronized void nuevo(){
+        Pizza.count+=1;
+    }
+    
+    public synchronized void resetContador(){
+        Pizza.count=0;
+    }
 }

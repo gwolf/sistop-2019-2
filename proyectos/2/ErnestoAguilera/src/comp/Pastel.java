@@ -13,6 +13,17 @@ public class Pastel extends PlatilloHorneable{
     private static int count;
 
     public Pastel(float tiempo, int volumen) {
+        nuevo();
+        this.setNombre("Pastel "+Integer.toString(count));
+        this.setTiempo(tiempo);
+        this.setVolumen(volumen);
     }
     
+    private synchronized void nuevo(){
+        Pastel.count+=1;
+    }
+    
+    public synchronized void resetContador(){
+        Pastel.count=0;
+    }
 }
