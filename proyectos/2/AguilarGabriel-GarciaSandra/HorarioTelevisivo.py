@@ -43,13 +43,13 @@ def ActualizarTeles():
 			programa = teles[i][1]
 			#queHoraEs.acquire()
 			if programas[canal][programa][2] == tiempo:
-				for x in range(1,len(teles[2])):
+				for x in teles[2]:
 					control[i].release()
 				#pasillo.release()
 			else:
 				for x in  programas[canal][programa][1]:
 					if x == tiempo:
-						for x in range(1,len(teles[2])):
+						for x in teles[2]:
 							control[i].release()
 						#pasillo.release()
 			#queHoraEs.release()
@@ -61,11 +61,11 @@ def Usuario(who):
 	global tiempo
 	global teles
 	global TelesEnUso
+	time.sleep(0.1)
 	canal = random.randint(0,len(canales)-1)
 	programa = random.randint(0,len(programas[canal])-1)
 	otroPrograma = random.random() % 0.1
 	print('Usuario:', str(who), '; quiero ver:', canal, programa, 'que empieza en', programas[canal][programa][0], 'y termina en', programas[canal][programa][2])
-	time.sleep(0.1)
 	queHoraEs.acquire()
 	tiempoAux = tiempo
 	queHoraEs.release()
@@ -76,6 +76,7 @@ def Usuario(who):
 	while programas[canal][programa][2] > tiempoAux:
 		print('soy usuario', str(who), 'estoy en el pasillo esperando')
 		pasillo.acquire()
+		time.sleep(0.1) #antes de entrar dejo salir
 		print('¿¿¿¿¿¿¿¿¿Usuario', str(who),'termino mi programa')
 		queHoraEs.acquire()
 		print('Usuario', str(who),'termino mi programa?????????')
@@ -85,7 +86,7 @@ def Usuario(who):
 			print('-----------soy usuario', str(who), 'busco una tele')
 			tomarTele.acquire()
 			compartiendo = 0
-			for x in range(0,len(TelesEnUso)-1):
+			for x in range(0,len(TelesEnUso)):
 				if TelesEnUso[x] == 1 and teles[x][0] == canal and teles[x][1] == programa:
 					teles[x][2].append(who)
 					lugar = x
@@ -113,7 +114,7 @@ def Usuario(who):
 		queHoraEs.acquire()
 		tiempoAux = tiempo
 		queHoraEs.release()
-	pasillo.release()
+	#pasillo.release()
 	print('\n\t-----------Usuario', str(who), 'El programa que queria ver termino-----------')
 	if random.random() <= otroPrograma:
 		Usuario(who)
@@ -135,9 +136,15 @@ def generarProgramacion():
 			duracion = random.randint(1,5) #ATENCION
 			for j in range(0,duracion):
 				acumulado += canales[i][1]
+				if acumulado > tiempoMax:
+					programas[i][programa].append(tiempoMax)
+					break
 				programas[i][programa][1].append(acumulado)
 				acumulado += canales[i][0]
 			acumulado += canales[i][1]
+			if acumulado > tiempoMax:
+				programas[i][programa].append(tiempoMax)
+				break
 			programas[i][programa].append(acumulado)
 			programa += 1
 	print('Se generarron los canales y programas\ncanales:', canales, '\nprogramas:', programas)
