@@ -1,8 +1,8 @@
 import threading
 import random
 import time
-numeroTeles = 5 #Indica  el numero de televisores en la casa
-numeroIntegrantes = 12 #Indica el numero de integrantes de la familia que desean ver la television
+numeroTeles = 2 #Indica  el numero de televisores en la casa
+numeroIntegrantes = 4 #Indica el numero de integrantes de la familia que desean ver la television
 tiempo = 0 #Este contador se utiliza para indicar la hora actual
 pasillo = threading.Semaphore(numeroTeles) #Este semaforo sirve para indicar si hay televisiones disponibles, si un integrante desea una television pero todos estan ocupadas el hilo se queda esperando
 queHoraEs = threading.Semaphore(1) #Mutex para acceder al contador de tiempo
@@ -37,22 +37,21 @@ def ActualizarTeles():
 	global teles
 	global TelesEnUso
 	global numeroTeles
-	for i in range(0,numeroTeles-1):
+	for i in range(0,numeroTeles):
+		tomarTele.acquire()
 		if TelesEnUso[i] == 1:
 			canal = teles[i][0]
 			programa = teles[i][1]
 			#queHoraEs.acquire()
-			if programas[canal][programa][2] == tiempo:
-				for x in teles[2]:
+			if programas[canal][programa][2] <= tiempo:
+				for x in teles[i][2]:
 					control[i].release()
-				#pasillo.release()
 			else:
 				for x in  programas[canal][programa][1]:
 					if x == tiempo:
-						for x in teles[2]:
+						for j in teles[i][2]:
 							control[i].release()
-						#pasillo.release()
-			#queHoraEs.release()
+		tomarTele.release()
 	print('En uso:', TelesEnUso, '\nTeles:', teles)
 
 def Usuario(who):
@@ -108,13 +107,15 @@ def Usuario(who):
 			print('////////////////Usuario', str(who), 'Dejo la tele', lugar)
 			tomarTele.acquire()
 			TelesEnUso[lugar] = 0
+			if len(teles[lugar][2]) == 1: #si soy el unico viendo la tele aviso a quienes esperan que la tele se desocupo
+				pasillo.release()
 			teles[lugar][2].remove(who)
 			tomarTele.release()
-		pasillo.release()
+		else:
+			pasillo.release()
 		queHoraEs.acquire()
 		tiempoAux = tiempo
 		queHoraEs.release()
-	#pasillo.release()
 	print('\n\t-----------Usuario', str(who), 'El programa que queria ver termino-----------')
 	if random.random() <= otroPrograma:
 		Usuario(who)
