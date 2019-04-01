@@ -1,0 +1,8 @@
+Durán Arturo
+
+Solo me faltó el último algoritmo, una disculpa se me juntaron varias cosas
+traté de hacer lo mejor posible los otros algoritmos.
+
+Ejecución $python main.py
+
+Entorno de ejecución consola Linux.
