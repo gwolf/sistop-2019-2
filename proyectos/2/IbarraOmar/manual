@@ -1,0 +1,88 @@
+NOMBRE
+		omar_ibarra.proyecto.sh
+
+SINOPSIS
+		omar_ibarra.proyecto.sh [[[opcion1] opcion2] opcion3]
+		Es un comando creado para realizar labores basicas de un administrador
+
+DESCRIPCION
+		
+		El comando sin argumentos te enviara a un amigable modo interactivo, si deseas usar argumentos estos se dividen en primaros que a su vez algunos pueden tener argumentos secundarios y terciarios
+
+		Opciones primarias (Del primer argumento)
+
+		-A
+			Indica que entra al modulo de administracion, el cual necesita segundos argumentos
+		--M
+			Opcion de administracion, modulo de monitorea el cual necesita otro argumento	
+		---D
+			Opcion de monitoreo para ver el disco
+		---M
+			Opcion de monitoreo para ver la memoria
+		---CS
+			Opcion de monitoreo para ver la carga del sistema
+		---U
+			Opcion de monitoreo para ver los usuarios
+		--GU
+			Opcion de administracion, modulo que gestiona usuarios
+		---I
+			Opcion de gestion de usuarios, para obtener informacion sobre algun usuario 
+		---C
+			Opcion de gestion de usuarios, para cambiar el password
+		--GP
+			Opcion de administracion para gesionar procesos
+		--R
+			Opcion de administracion para generar respaldos
+		---C
+			Opcion de respaldos para hacer uno completo
+		---I
+			Opcion de respaldos para hacer uno incremental
+		---D
+			Opcion de respaldos para hacer uno diferencial	
+		-OB
+			Indica que entra al modulo de operaciones basicas
+		--m
+			Opcion de operaciones basicas para mover(renombrar)
+		--c
+			Opcion de operaciones basicas para copiar
+		--f
+			Opcion de operaciones basicas para buscar(find)
+		--mk 
+			Opcion de operaciones basicas para crear un directorio
+		--cr
+			Opcion de operaciones basicas para usar cron
+		-OSA
+			Indica que entra al modulo de operaciones sobre archivos
+		--AD
+			Opcion de operaciones sobre archivos para encontrar archivos duplicados
+		--C
+			Opcion de operaciones sobre archivos para cifrer alguno
+		-IG
+			Indica que entra al modulo de informacion general
+		--UC
+			Opcion de informacion general sobre usuarios conectados
+		--T
+			Opcion de informacion general del tiempo que lleva arriba la maquina
+
+EJEMPLOS CON TODAS LAS POSIBLES COMBINACIONES 
+		
+		omar_ibarra.proyecto.sh -A -M -D
+		omar_ibarra.proyecto.sh -A -M -M
+		omar_ibarra.proyecto.sh -A -M -CS
+		omar_ibarra.proyecto.sh -A -M -U
+		omar_ibarra.proyecto.sh -A -GU -I 
+		omar_ibarra.proyecto.sh -A -GU -C
+		omar_ibarra.proyecto.sh -A -GP
+		omar_ibarra.proyecto.sh -A -R -C
+		omar_ibarra.proyecto.sh -A -R -I
+		omar_ibarra.proyecto.sh -A -R -D
+		omar_ibarra.proyecto.sh -OB -m 
+		omar_ibarra.proyecto.sh -OB -c 
+		omar_ibarra.proyecto.sh -OB -f 
+		omar_ibarra.proyecto.sh -OB -mk
+		omar_ibarra.proyecto.sh -OB -cr
+		omar_ibarra.proyecto.sh -OSA -AD
+		omar_ibarra.proyecto.sh -OSA -C
+		omar_ibarra.proyecto.sh -IG -UC
+		omar_ibarra.proyecto.sh -IG -T
+		omar_ibarra.proyecto.sh --man

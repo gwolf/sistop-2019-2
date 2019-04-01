@@ -1,0 +1,20 @@
+Alumno: Ibarra Badillo Omar
+
+
+Problema a resolver:
+Monitor de sistema.
+Un administrador de sistemas le gusta mucho linux y tiene un poco de timpo libre 
+y decea emplear una herramienta un poco como un 'comando' que le ayude en sus lobores 
+diarias y entonces realiza un programa en C que en realidad lo unico que hace es llamar 
+a un script en bash en el cual el implemento varios comando para generar un menu el cual
+le ayuda en sus labores como administrador y tambien hace un htop para ver los procesos 
+que se estan realizando en el sistema.
+
+Ademas a el no le gusta que nadie que no sea usuario del equipo use su comando entonces pide 
+contraseña de usuario al usar el comando, y por seguridad si quiere rializar alguna cosa de administracion 
+tendra que haber ejecutado el comando como 'root'.
+
+
+
+Requisitos de software:
+El script funciona correctamente en CentOs 6, con Gnome y se debe de contar con la instalacion del comando 'htop'.
