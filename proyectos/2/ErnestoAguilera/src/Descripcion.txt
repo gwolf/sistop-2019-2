@@ -1,0 +1,15 @@
+Situacion cotidiana paralelizable
+
+	El uso de hornos en cocinas de restaurantes concurridos.
+
+Normalmente cuando en un restaurante algo grande se sirven muchos platillos el recurso que más puede 
+solicitarse por parte de los cocineros, es el uso de los hornos, pues son los que mayor tiempo ocupan
+para preparar un platillo y normalmente se cuenta con pocos hornos a comparación del número de estaciones
+de trabajo, pues además suelen ser un recursos compartido, esto a veces lleva a retrasos en los tiempos 
+de salida de los platillos que requieran su uso. Algunos restaurantes lo arreglan poniendo hornos más grandes
+para preparar varios platillos al mismo tiempo que sean del mismo tipo, y por norma general se tienen varios hornos
+sin embargo aún con ello puede darse un caso de inanición por espera del recurso.
+
+Si este problema no se resuelve puede verse afectada la reputación del restaurante y perder clientes, que 
+significa perder dinero, además los restaurantes que se ven afectados por este tipo de problemas son restaurantes
+medianos que tienen un buen número de cleintes, pero no suficientes ingresos para comprar siempre más hornos.
