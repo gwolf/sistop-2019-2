@@ -125,7 +125,7 @@ def actTiempo():
 
 	
 #**********Funciones parte logica************
-#Funcion que maneja tiempo global
+#Funcion que maneja tiempo global, es la encargada de incrementar el tiempo.
 def padreTiempo():
 	global tiempo
 	global tiempoMax
@@ -146,13 +146,13 @@ def padreTiempo():
 	fin()
 	print('Fin simulacion')
 
+#Esta funcion se encarga de verificar que los programas sintonizados en cada televisor no hayan terminado o entrado en bloque comercial
 def ActualizarTeles():
 	global tiempo
 	global programas
 	global teles
 	global TelesEnUso
 	global numeroTeles
-	print('numero de teles:',numeroTeles,'\tteles en uso:',len(TelesEnUso))
 	for i in range(0,numeroTeles):
 		tomarTele.acquire()
 		print(TelesEnUso)
@@ -160,12 +160,12 @@ def ActualizarTeles():
 			canal = teles[i][0]
 			programa = teles[i][1]
 			if programas[canal][programa][2] <= tiempo:
-				for x in teles[i][2]:
+				for x in teles[i][2]: #Si el programa termino indica a todos los que veian esa tele que debe desocuparla
 					control[i].release()
 			else:
 				for x in  programas[canal][programa][1]:
 					if x == tiempo:
-						for j in teles[i][2]:
+						for j in teles[i][2]:#Si el programa esta en comerciales indica a todos los que veian esa tele que debe desocuparla
 							control[i].release()
 		tomarTele.release()
 	impresion()
@@ -176,37 +176,37 @@ def Usuario(who):
 	global tiempo
 	global teles
 	global TelesEnUso
-	time.sleep(0.1)
-	canal = random.randint(0,len(canales)-1)
+	time.sleep(0.1)#Con este sleep buscamos concurrencia
+	canal = random.randint(0,len(canales)-1) #El usuario elige un canal y programa de la programacion al azar 
 	programa = random.randint(0,len(programas[canal])-1)
-	otroPrograma = random.random() % 0.1
+	otroPrograma = random.random() % 0.1 #Esta es la probabilidad de que un usuario quiera ver otro programa una vez termine el primero
 	print('Usuario:', str(who), '; quiero ver:', canal, programa, 'que empieza en', programas[canal][programa][0], 'y termina en', programas[canal][programa][2])
 	queHoraEs.acquire()
-	tiempoAux = tiempo
+	tiempoAux = tiempo #El usuario verifica en que tiempo se encuentra
 	queHoraEs.release()
-	while programas[canal][programa][0] > tiempoAux:
+	while programas[canal][programa][0] > tiempoAux: #Mientras su programa no haya iniciado el usuario solo ve el tiempo
 		queHoraEs.acquire()
 		tiempoAux = tiempo
 		queHoraEs.release()
-	while programas[canal][programa][2] > tiempoAux:
+	while programas[canal][programa][2] > tiempoAux: #Mientras su programa no termine los usuarios sigue este algoritmo:
 		texto='\nSoy usuario:'+ str(who)+ 'estoy en el pasillo esperando'
 		info(texto)
-		pasillo.acquire()
+		pasillo.acquire() #Primero espera a que una tele se desocupe
 		time.sleep(0.1) #antes de entrar dejo salir
 		queHoraEs.acquire()
-		tiempoAux = tiempo
+		tiempoAux = tiempo#Debido a que pudo haber esperado varios tiempos vuelve a verificar que el programa no haya terminado
 		queHoraEs.release()
 		if programas[canal][programa][2] > tiempoAux:
 			texto='\nSoy usuario: '+ str(who)+ ' busco una tele'
 			info(texto)
 			tomarTele.acquire()
 			compartiendo = 0
-			for x in range(0,len(TelesEnUso)):
+			for x in range(0,len(TelesEnUso)): #Revisa si alguien más esta viendo el mismo programa para utilizar la misma tele
 				if TelesEnUso[x] == 1 and teles[x][0] == canal and teles[x][1] == programa:
 					teles[x][2].append(who)
 					lugar = x
 					compartiendo += 1 
-			if compartiendo == 0:
+			if compartiendo == 0: #Si nadie esta viendo lo mismo toma la tele que se desocupo
 				lugar = TelesEnUso.index(0)
 				TelesEnUso[lugar] = 1
 				if len(teles[lugar]) == 0:
@@ -216,9 +216,9 @@ def Usuario(who):
 					teles[lugar][1] = programa
 					teles[lugar][2].append(who)
 			else:
-				pasillo.release()
+				pasillo.release() #Si va a compartir televisor avisa que hay una tele libre
 			tomarTele.release()
-			control[lugar].acquire()
+			control[lugar].acquire() #Se queda viendo el televisor hasta que el actualizador de Teles le indique que debe liberar la tele
 			texto='\nSoy usuario: '+ str(who)+ ' dejé la tele '+str(lugar)
 			info(texto)
 			tomarTele.acquire()
@@ -226,40 +226,40 @@ def Usuario(who):
 			if len(teles[lugar][2]) == 1: #si soy el unico viendo la tele aviso a quienes esperan que la tele se desocupo
 				pasillo.release()
 			teles[lugar][2].remove(who)
-			print(texto)
 			tomarTele.release()
 		else:
-			pasillo.release()
+			pasillo.release() #Si el programa termino mientras esperaba indico a quienes esperan que hay una tele libre
 		queHoraEs.acquire()
 		tiempoAux = tiempo
 		queHoraEs.release()
-	if random.random() <= otroPrograma:
+	if random.random() <= otroPrograma: #El usuario podria elegir otro programa
 		Usuario(who)
 	texto='\n**Usuario '+str(who)+ ' termino**'
 	info(texto)
 	print(texto)
 
+#Esta funcion sirve para generar la programacion televisiva
 def generarProgramacion():
 	global canales
 	global programas
 	global tiempoMax
-	for i in range(0,10):
-		canales.append([random.randint(1,3), random.randint(4,7)])
-		programas.append([])
+	for i in range(0,10): #definimos 10 canales distintos
+		canales.append([random.randint(1,3), random.randint(4,7)])#para cada canal se define la duracion de un bloque comercial y de un bloque de programacion
+		programas.append([])#En el arreglo programa se genera una lista por cada canal, dentro del cual se ponen los distintos programas del mismo
 		acumulado = 0
 		programa = 0
-		while acumulado < tiempoMax:
+		while acumulado < tiempoMax:#Para cada canal se genera la programacion hasta el tiempo de simulacion
 			programas[i].append([])
-			programas[i][programa].append(acumulado)
-			programas[i][programa].append([])
-			duracion = random.randint(1,5) 
+			programas[i][programa].append(acumulado)#La primer posicion indica la hora en que el programa inicia
+			programas[i][programa].append([])#La segunda es un arreglo que indica en que tiempo inician los distintos bloques comerciales
+			duracion = random.randint(1,5)#Al azar se define los bloques televisivos que tendra el programa
 			for j in range(0,duracion):
 				acumulado += canales[i][1]
 				if acumulado > tiempoMax:
 					programas[i][programa].append(tiempoMax)
 					break
 				programas[i][programa][1].append(acumulado)
-				acumulado += canales[i][0]
+				acumulado += canales[i][0]#cada bloque de programacion va seguido de un bloque comercial
 			acumulado += canales[i][1]
 			if acumulado > tiempoMax:
 				programas[i][programa].append(tiempoMax)
@@ -267,7 +267,7 @@ def generarProgramacion():
 			programas[i][programa].append(acumulado)
 			programa += 1
 	print("Canales [tiempo comercial][tiempo visualizacion programa]")
-	print("Programas [Canal][Usua]")#***********************************AQUI GABO***************************
+	print("Programas [Canal][Usua]")
 	print('Se generarron los canales y programas\ncanales:', canales, '\nprogramas:', programas)
 
 
@@ -276,13 +276,13 @@ numeroTeles=0
 tiempo = 0 #Este contador se utiliza para indicar la hora actual
 pasillo = threading.Semaphore(numeroTeles) #Este semaforo sirve para indicar si hay televisiones disponibles, si un integrante desea una television pero todos estan ocupadas el hilo se queda esperando
 queHoraEs = threading.Semaphore(1) #Mutex para acceder al contador de tiempo
-tomarTele = threading.Semaphore(1)
-canales = [] #Este arreglo sirve para indicar el numero de canales disponibles y el tamaño de sus bloques comerciales y la frecuencia de los mismos
-programas = [] #Este arreglo idica los programas de los canales con su duracion [[[horaInicio, [bloquesComerciales], horaFin], ...], ...]
-teles = [] #En este arreglo se guarda el canal sintonizado en cada tele [[canal, programa, [usuarios]], ...]
-control = []
+tomarTele = threading.Semaphore(1)#Mutex para los arreglos de TelesEnUso y teles
+canales = [] #Este arreglo sirve para indicar el numero de canales disponibles y el tamaño de sus bloques comerciales y bloques de programacion
+programas = [] #Este arreglo idica los programas de cada uno de los canales con sus horarios [[[horaInicio, [bloquesComerciales], horaFin], ...], ...]
+teles = [] #En este arreglo se guarda el canal sintonizado en cada tele y los usuarios que la utilizan [[canal, programa, [usuarios]], ...]
+control = []#Este sera un arreglo de semaforos que serviara para simular que los usuarios se queda mirando la tele
 tiempoMax = 40 #********************************************* 
-TelesEnUso = []
+TelesEnUso = [] #En este arreglo se indicara con un 0 las teles libres y con un 1 las teles ocupadas
 telesGrafo=[]
 texto=""
 
