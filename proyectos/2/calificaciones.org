@@ -1,0 +1,28 @@
+#+title: Proyecto 1 — Calificaciones y comentarios
+#+options: toc:nil
+
+* Gabriel Aguilar y Sandra García
+
+* Luis Arvizu y Paola Lara
+
+* Arturo Durán y Miguel López
+
+* Ernesto Aguilera
+
+* Alberto Espinoza
+
+* Rodrigo Francisco y Beatriz Sánchez
+
+* Orlando García y Zuriel Rodríguez
+
+* Vicente García y Enrique Guerrero
+
+* Omar Ibarra
+
+* Osmar Juárez y Luis Morales
+
+* Luis Mata
+
+* Carlos Morales y Miguel Pérz Quiroz
+
+* Vicente Romero
