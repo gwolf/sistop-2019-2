@@ -1,0 +1,157 @@
+#+title: Revisión de la tarea 2
+#+options: toc:nil num:nil
+
+** Gabriel Aguilar, Sandra García
+- Lenguaje :: Python
+- Código :: [[./AguilarGabriel-GarciaSandra/AlPlanificacion.py][AlPlanificacion.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FCFS, RR1, RR4
+- Comentarios ::
+  - Tuve que corregir dos problemas para que el programa se ejecutara
+    exitosamente:
+    - La línea 217 está /indentada inconsistentemente/. En Python,
+      todo el programa debe llevar el mismo nivel de indentación (el
+      mismo número de espacios utilizados para cada nivel).
+    - El segundo error fue un poco más divertido ☺ Python se queja de
+      que:
+      #+BEGIN_SRC python
+        Traceback (most recent call last):
+          File "AlPlanificacion.py", line 223, in <module>
+            prueba(x)
+          File "AlPlanificacion.py", line 217, in prueba
+            SPN(ordenProcesos)
+          File "AlPlanificacion.py", line 156, in SPN
+            for i in range(numProcesos):
+        NameError: global name 'numProcesos' is not defined
+      #+END_SRC
+      Y esto a pesar de que habían ya declarado =global
+      numProcesos=. Esto es porque no había sido
+      inicializada. Pasa que en la definición de =prueba(ronda)=
+      (línea 194) no habían declarado a la variable como global (y el
+      valor se asignaba a una local). Esto es, se corrige insertando
+      la siguiente primera línea en el cuerpo de la función:
+      #+BEGIN_SRC python
+        def prueba(ronda):
+      	  global numProcesos
+                numProcesos=3
+      #+END_SRC
+    - Por último, supongo que como no les funcionaba SPN, no estaban
+      mostrando su ejecución. Agregué la llamada a =mostrar()=, /et voilà!/
+  - Reportan los resultados usando aritmética de enteros. Tendría
+    sentido que reportaran los resultados (particularmente /P/) como
+    flotante.
+  - La ejecución de FCFS, RR1, RR4 me parece que es correcta.
+    - Quedan problemas lógicos en SPN, que ya no me corresponde arreglar
+      ☹ La ejecución queda trunca / incompleta. Me parece que la porción
+      que muestran es correcta, pero siempre le falta imprimir algunos
+      procesos. Por ejemplo, con =numProcesos=10= (y omitiendo los "YA
+      ESTA" de depuración),
+      #+BEGIN_SRC text
+	A: 0, t=2;B: 0, t=10;C: 2, t=1;D: 2, t=3;E: 5, t=4;F: 7, t=2;G: 7, t=8;H: 8, t=1;I: 10, t=7;J: 10, t=7;
+	FCFS: T=17, E=13, P=6
+	AABBBBBBBBBBCDDDEEEEFFGGGGGGGGHIIIIIIIJJJJJJJ
+	RR1: T=19, E=15, P=3
+	ABCDABDEFGHIJBDEFGIJBEGIJBEGIJBGIJBGIJBGIJBGB
+	RR4: T=18, E=13, P=4
+	AABBBBCDDDEEEEFFGGGGHIIIIJJJJBBBBGGGGIIIJJJBB
+	SPN: T=7, E=4, P=2
+	AACDDDDDDHFFFFEEEEEEEEIIIIIII
+      #+END_SRC
+- Calificación :: 8
+
+** Ernesto Aguilera
+- Lenguaje :: Java
+- Código :: [[./AguileraErnesto/dispatch/Despachador.java][Despachador.java]], [[./AguileraErnesto/dispatch/Fifo.java][Fifo.java]], [[./AguileraErnesto/dispatch/Proceso.java][Proceso.java]],
+            [[./AguileraErnesto/dispatch/RoundRobin.java][RoundRobin.java]], [[./AguileraErnesto/dispatch/Sistema.java][Sistema.java]], [[./AguileraErnesto/dispatch/Spn.java][Spn.java]]
+- Documentación :: [[./AguileraErnesto/dispatch/Readme.md][Readme.md]]
+- Algoritmos implementados :: FCFS, SPN, RR
+- Comentarios ::
+  - Hay que compilar los *.java, pero no incluiste un =.gitignore=
+  - Como lineamiento de estilo, te sugiero ubicar la documentación de
+    tus programas en su raiz (esto es, en =AguileraErnesto/Readme.md=)
+    en vez de hacerlo dentro del directorio de clases
+    (=AguileraErnesto/dispatch/Readme.md=).
+  - En el caso de tu proyecto, hago el comentario opuesto al que hice
+    con tus compañeros anteriores: Para estos ejemplos usamos siempre
+    la aritmética de /enteros/ (y únicamente reportamos como flotante
+    las /relaciones/).
+  - Sin haber revisado la lógica de tus algoritmos... Algo no me
+    cuadra: ¿Cómo puede la misma carga generar duraciones diferentes
+    dependiendo del algoritmo empleado?
+    - Oh, revisando... Para cada clase, generas cuatro conjuntos de
+      procesos distintos. ¡Así no podemos compararlos! ☹
+- Calificación :: 7
+
+** Arturo Durán
+- Lenguaje ::
+- Código :: [[././DuránArturo/FIFO.py][FIFO.py]], [[./DuránArturo/lista.py][lista.py]], [[./DuránArturo/main.py][main.py]], [[./DuránArturo/RR1.py][RR1.py]], [[./DuránArturo/RR4.py][RR4.py]]
+- Documentación :: [[./Dur%C3%A1nArturo/leeme.txt][leeme.txt]]
+- Algoritmos implementados :: FIFO, RR1, RR4
+- Comentarios ::
+- Calificación ::
+
+** Alberto Espinoza
+- Lenguaje ::
+- Código :: [[././EspinozaAlberto/tarea3.cpp][tarea3.cpp]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Orlando García, Zuriel Rodríguez
+- Lenguaje ::
+- Código :: [[././GarciaOrlando-RodriguezZuriel/fifo.py][fifo.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Vicente García, Enrique Guerrero
+- Lenguaje ::
+- Código :: [[././GarciaVicente-GuerreroEnrique/ProgramaT3.py][ProgramaT3.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Osmar Juárez, Luis Morales
+- Lenguaje ::
+- Código :: [[./JuarezOsmar-MoralesLuis/Implementacion_SPN.py][Implementacion_SPN.py]], [[./JuarezOsmar-MoralesLuis/planificadores.py][planificadores.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Miguel López
+- Lenguaje ::
+- Código :: [[./LopezMiguel/PlanificacionProc.py][PlanificacionProc.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Luis Mata
+- Lenguaje ::
+- Código :: [[./MataLuis/fifo.py][fifo.py]], [[./MataLuis/ronda1.py][ronda1.py]], [[./MataLuis/ronda4.py][ronda4.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Carlos Morales, Miguel Pérez Quiróz
+- Lenguaje ::
+- Código :: [[./MoralesCarlos-PerezQuirozMiguel/DEFINITIVO.py][DEFINITIVO.py]]
+- Documentación :: ---
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
+** Romero Vicente
+- Lenguaje ::
+- Código :: [[./RomeroVicente/core/Console.py][Console.py]], [[./RomeroVicente/core/FCFS.py][FCFS.py]], [[./RomeroVicente/core/Planificador.py][Planificador.py]], [[./RomeroVicente/core/Proceso.py][Proceso.py]],
+            [[./RomeroVicente/core/RoundRobin4.py][RoundRobin4.py]], [[./RomeroVicente/core/RoundRobin.py][RoundRobin.py]], [[./RomeroVicente/core/SPN.py][SPN.py]], [[./RomeroVicente/main.py][main.py]]
+- Documentación :: [[./RomeroVicente/README.MD][README.MD]]
+- Algoritmos implementados ::
+- Comentarios ::
+- Calificación ::
+
