@@ -1,0 +1,33 @@
+
+-------------------------------------------
+#INTEGRANTES 
+	Garcia Cabrera Orlando Anselmo 
+	Rodríguez Agiss Zuriel Uzai
+-------------------------------------------
+
+-------------------------------------------------------------------------
+	DESCRIPCION DE LOS MECANISMOS DE SINCRONIZACIÓN 
+
+Utilizamos un multiplex con la intencion de controlar la circulacion de peces en cada sentido  y un mutex para lograr controlar el accesos a lavariable que nos permite conocer la situcion de si es seguro cruzar y cambiar de dirección.
+
+Los peces comparten la variable que les permite decidir su cambio de dirección además de compartir en grupos determiandos el carril y sentido que les toca.
+
+A cada hilo le corresponde la representación de un pez 
+--------------------------------------------------------------------------
+
+	SOFTWARE EMPLEADO 
+
+Para la implementación de nuestro programa utilizamos el lenguaje de programacion python,con la versión 2.7.15, es decir 
+para su ejecución solo es necesario ejecutar la siguiente instrucción desde la linea de comandos:
+
+	python PecesCircundantes.py
+
+Y esperar la ejecucion de nuestro programa, observando el resultado con las impresiones en pantalla.Cabe mencionar que tambien puede ser ejecutado en versiones superiores como es python3, solo es necesario:
+
+	python3 PecesCircundantes.py
+
+Lo desarrollamos bajo una distribucion de linux basada en debian, como lo es Kali LInux ademas de ello fue probado en Windows 8.1 y Widnores 10
+
+--------------------------------------------------------------------------------------------------------
+
+

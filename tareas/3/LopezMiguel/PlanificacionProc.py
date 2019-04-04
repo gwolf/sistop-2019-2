@@ -1,5 +1,7 @@
-import random
+#Tarea 3
+#Lenguaje Python 3.7
 
+import random
 class Process:
     PID=str()
     t=0

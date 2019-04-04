@@ -1,0 +1,2 @@
+El archivo HorarioTelevisivo_G.py es la version completa del proyecto con la presentacion grafica con tkinter(Esta version tiene todos los comentarios pertinentes para la comprension del programa).
+El archivo HorarioTelevisivo.py es la version que unicamente despliega en consola.

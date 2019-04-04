@@ -1,0 +1,17 @@
+Proyecto 2 
+Mata Mota Luis Valentin
+
+La situación que se modela es el comportamiento en una cola de un banco. Se toma como suposicion que existen 3 cajas abiertas. Para ello comienzan a llegar diversos clientes que al llegar se forma en una cola general de espera, si alguna de las cajas se encuentra disponible pasa de inmediato y realiza el tramite que desea hacer. Si ninguna esta libre, tiene su lugar en la cola general pero toma asiento esperando a que alguna caja se libere. 
+La tres cajas funcionan de manera simultanea y se toma en cuenta que cada cliente varia su tiempo en el que es atendido. 
+
+Para este ejercicio tome cierta aleatoriedad de llegada de los clientes y asi mismo del tiempo en el que tarda en la caja. 
+
+Tambien supuse que si una persona esta esperando puede distraerse y le pueden ganar el lugar. 
+
+Esto ultimo es tomado como una consecuencia de la concurrencia, debido a que si una persona esta distraida otra al llegar pasara a la caja libre que vea y la persona que ya esperaba, seguira esperando. 
+
+En otra palabras, tenemos una condicion de carrera sobre dos hilos y evidententemente solo uno podra ser procesado primero. 
+
+El evento que tratamos de controlar es que tres personas sean atendidas al mismo tiempo, tres hilos son procesados al mismo tiempo y pueden terminar cada uno en su tiempo. 
+
+
