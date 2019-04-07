@@ -1,0 +1,303 @@
+#+title: Revisión de la tarea 2
+#+options: toc:nil num:nil
+
+** Gabriel Aguilar, Sandra García
+- Lenguaje :: Python
+- Código :: [[./AguilarGabriel-GarciaSandra/AlPlanificacion.py][AlPlanificacion.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FCFS, RR1, RR4
+- Comentarios ::
+  - Tuve que corregir dos problemas para que el programa se ejecutara
+    exitosamente:
+    - La línea 217 está /indentada inconsistentemente/. En Python,
+      todo el programa debe llevar el mismo nivel de indentación (el
+      mismo número de espacios utilizados para cada nivel).
+    - El segundo error fue un poco más divertido ☺ Python se queja de
+      que:
+      #+BEGIN_SRC python
+        Traceback (most recent call last):
+          File "AlPlanificacion.py", line 223, in <module>
+            prueba(x)
+          File "AlPlanificacion.py", line 217, in prueba
+            SPN(ordenProcesos)
+          File "AlPlanificacion.py", line 156, in SPN
+            for i in range(numProcesos):
+        NameError: global name 'numProcesos' is not defined
+      #+END_SRC
+      Y esto a pesar de que habían ya declarado =global
+      numProcesos=. Esto es porque no había sido
+      inicializada. Pasa que en la definición de =prueba(ronda)=
+      (línea 194) no habían declarado a la variable como global (y el
+      valor se asignaba a una local). Esto es, se corrige insertando
+      la siguiente primera línea en el cuerpo de la función:
+      #+BEGIN_SRC python
+        def prueba(ronda):
+      	  global numProcesos
+                numProcesos=3
+      #+END_SRC
+    - Por último, supongo que como no les funcionaba SPN, no estaban
+      mostrando su ejecución. Agregué la llamada a =mostrar()=, /et voilà!/
+  - Reportan los resultados usando aritmética de enteros. Tendría
+    sentido que reportaran los resultados (particularmente /P/) como
+    flotante.
+  - La ejecución de FCFS, RR1, RR4 me parece que es correcta.
+    - Quedan problemas lógicos en SPN, que ya no me corresponde arreglar
+      ☹ La ejecución queda trunca / incompleta. Me parece que la porción
+      que muestran es correcta, pero siempre le falta imprimir algunos
+      procesos. Por ejemplo, con =numProcesos=10= (y omitiendo los "YA
+      ESTA" de depuración),
+      #+BEGIN_SRC text
+	A: 0, t=2;B: 0, t=10;C: 2, t=1;D: 2, t=3;E: 5, t=4;F: 7, t=2;G: 7, t=8;H: 8, t=1;I: 10, t=7;J: 10, t=7;
+	FCFS: T=17, E=13, P=6
+	AABBBBBBBBBBCDDDEEEEFFGGGGGGGGHIIIIIIIJJJJJJJ
+	RR1: T=19, E=15, P=3
+	ABCDABDEFGHIJBDEFGIJBEGIJBEGIJBGIJBGIJBGIJBGB
+	RR4: T=18, E=13, P=4
+	AABBBBCDDDEEEEFFGGGGHIIIIJJJJBBBBGGGGIIIJJJBB
+	SPN: T=7, E=4, P=2
+	AACDDDDDDHFFFFEEEEEEEEIIIIIII
+      #+END_SRC
+- Calificación :: 8
+
+** Ernesto Aguilera
+- Lenguaje :: Java
+- Código :: [[./AguileraErnesto/dispatch/Despachador.java][Despachador.java]], [[./AguileraErnesto/dispatch/Fifo.java][Fifo.java]], [[./AguileraErnesto/dispatch/Proceso.java][Proceso.java]],
+            [[./AguileraErnesto/dispatch/RoundRobin.java][RoundRobin.java]], [[./AguileraErnesto/dispatch/Sistema.java][Sistema.java]], [[./AguileraErnesto/dispatch/Spn.java][Spn.java]]
+- Documentación :: [[./AguileraErnesto/dispatch/Readme.md][Readme.md]]
+- Algoritmos implementados :: FCFS, SPN, RR1
+- Comentarios ::
+  - Hay que compilar los *.java, pero no incluiste un =.gitignore=
+  - Como lineamiento de estilo, te sugiero ubicar la documentación de
+    tus programas en su raiz (esto es, en =AguileraErnesto/Readme.md=)
+    en vez de hacerlo dentro del directorio de clases
+    (=AguileraErnesto/dispatch/Readme.md=).
+  - En el caso de tu proyecto, hago el comentario opuesto al que hice
+    con tus compañeros anteriores: Para estos ejemplos usamos siempre
+    la aritmética de /enteros/ (y únicamente reportamos como flotante
+    las /relaciones/).
+  - Sin haber revisado la lógica de tus algoritmos... Algo no me
+    cuadra: ¿Cómo puede la misma carga generar duraciones diferentes
+    dependiendo del algoritmo empleado?
+    - Oh, revisando... Para cada clase, generas cuatro conjuntos de
+      procesos distintos. ¡Así no podemos compararlos! ☹
+- Calificación :: 8
+
+** Arturo Durán
+- Lenguaje :: Python
+- Código :: [[././DuránArturo/FIFO.py][FIFO.py]], [[./DuránArturo/lista.py][lista.py]], [[./DuránArturo/main.py][main.py]], [[./DuránArturo/RR1.py][RR1.py]], [[./DuránArturo/RR4.py][RR4.py]]
+- Documentación :: [[./Dur%C3%A1nArturo/leeme.txt][leeme.txt]]
+- Algoritmos implementados :: FIFO, RR1, RR4
+- Comentarios ::
+  - Al ejecutar tu archivo =main.py= e importar a los demás archivos
+    fuente, éstos se compilan a =.pyc=. No estás incluyendo un
+    .gitignore ☹
+  - Los procesos no son aleatorios (aunque en el código explica el
+    problema con el que te topaste): Estás trabajando con /arreglos de
+    arreglos/. Ilustro un poco. Tu situación es similar a la
+    siguiente:
+    #+BEGIN_SRC python
+      datos = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+      copia = datos[:]
+      for arr in copia:
+        for idx in range(len(arr)):
+          arr[idx] += 1
+      print datos
+      print copia
+      print datos == copia
+      #
+      # ↓ Resultados
+      #
+      [[2, 3, 4], [5, 6, 7], [8, 9, 10]]
+      [[2, 3, 4], [5, 6, 7], [8, 9, 10]]
+      True
+    #+END_SRC
+    Lo que deberías hacer es hacer una /copia profunda/ — Cada uno de
+    los elementoses únicamente una /referencia/ a un arreglo anónimo
+    en memoria, por lo que si bien las listas no son las mismas
+    (puedes agregarle o quitarle elementos /de primer nivel/ a =datos=
+    o =copia= sin que se modifique el otro), modificar cualquiera de
+    los elementos que ya tienen hace que aparezcan modificados en el
+    otro. Puedes verificar esto comparando la referencia en memoria
+    que te da =id()=: Si bien =id(datos)= es distinto de =id(copia)=,
+    =id(datos[0])= sí es igual a =id(datos[1])=. Podrías hacerlo
+    manualmente:
+    #+BEGIN_SRC python
+      datos = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+      copia = []
+      for elem in datos:
+        copia.append(elem[:])
+      for arr in copia:
+        for idx in range(len(arr)):
+          arr[idx] += 1
+      print datos
+      print copia
+      print datos == copia
+      #
+      # ↓ Resultados
+      #
+      [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+      [[2, 3, 4], [5, 6, 7], [8, 9, 10]]
+      False
+    #+END_SRC
+    O usando la biblioteca estándar de Python, con el módulo =copy=,
+    que te lleva a los mismos resultados:
+    #+BEGIN_SRC python
+    import copy
+    datos = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+    copia = copy.deepcopy(datos)
+    # (...)
+    #+END_SRC
+  - La ejecución de tu programa me hace ver que... Bueno, para
+    próximos semestres en que deje esta tarea, sí voy a pedir que me
+    muestren la representación de los procesos (AAABBCCCC...) — Va a
+    ser mucho más sencillo de verificar que comprender la lógica que
+    tiene cada uno de ustedes ☺
+    - No verifiqué que la implementación de tus RR fuera
+      correcta... Lo es de forma intuitiva, pero los totales me
+      parecen un poco raros.
+- Calificación :: 8
+
+** Alberto Espinoza
+- Lenguaje :: C++
+- Código :: [[././EspinozaAlberto/tarea3.cpp][tarea3.cpp]]
+- Documentación :: ---
+- Algoritmos implementados :: FIFO, RR3
+- Comentarios ::
+  - La implementación de FIFO es correcta, pero la de RR no — Divide
+    la ejecución en los puntos (casi) correctos, pero no alterna con
+    otros procesos listos para ejecutar (termina siendo equivalente a
+    FIFO)
+    - Una cosa buena de cómo te vas acercando a RR: Puedes cambiar el
+      valor de la comparación en la línea 122, y tienes un punto claro
+      para modular RR con distintas duraciones de quantum
+  - No calculas ni presentas las estadísticas por algoritmo.
+- Calificación :: 6
+
+** Orlando García, Zuriel Rodríguez
+- Lenguaje :: Python
+- Código :: [[././GarciaOrlando-RodriguezZuriel/fifo.py][fifo.py]]
+- Documentación :: ---
+- Algoritmos implementados :: ---
+- Comentarios ::
+  - Únicamente hacen la creación de procesos, no implementan ninguno
+    de los algoritmos ☹
+- Calificación :: 2
+
+** Vicente García, Enrique Guerrero
+- Lenguaje :: Python
+- Código :: [[././GarciaVicente-GuerreroEnrique/ProgramaT3.py][ProgramaT3.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FCFS, RR, SPN
+- Comentarios ::
+  - Su manera de instrumentar el código completo (¡incluyendo la
+    definición de las funciones!) dentro de un =try:= / =except
+    Exception as e= me hace ver que vienen de una cultura de Java. Si
+    "cachan" a /cualquier/ excepción por igual, el =except= resulta
+    más nocivo que útil.
+    - Ademas, si lo manejan únicamente imprimiendo =ERROR=, tampoco
+      ganan nada. ¡Mejor dejen que el lenguaje maneje a las excepción
+      si es que ocurren!
+  - Si bien podría profundizar en detalles de legibilidad y
+    mantenibilidad, en líneas generales, es una bastante buena
+    implementación.
+- Calificación :: 9
+
+** Osmar Juárez, Luis Morales
+- Lenguaje :: Python
+- Código :: [[./JuarezOsmar-MoralesLuis/Implementacion_SPN.py][Implementacion_SPN.py]], [[./JuarezOsmar-MoralesLuis/planificadores.py][planificadores.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FIFO, SPN(?) (RR a medio desarrollar, comentado)
+- Comentarios ::
+  - En SPN no veo la decisión basada en la duración del siguiente
+    proceso (únicamente compara las llegadaS). Me parece que es otro
+    FIFO.
+  - ¿Por qué lo presentan como dos archivos fuentes, bastante
+    distintos estilísticamente entre sí? 
+- Calificación :: 6
+
+** Miguel López
+- Lenguaje :: Python
+- Código :: [[./LopezMiguel/PlanificacionProc.py][PlanificacionProc.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FCFS, RR1, RR4, SPN
+- Comentarios ::
+  - ¡Muy buena implementación!
+  - Hay un detalle en SPN: Recuerda que es para /multitarea no
+    apropiativa/. Siguiendo las ejecuciones, veo que /en algunos
+    casos/ un proceso es detenido y luego retomado (¿será por el
+    evento de llegada de otro proceso? ¡No debería!) Por ejemplo,
+    aquí:
+    #+BEGIN_SRC text
+
+      ################################################## Carga 1##################################################
+       A: 0, t=4; B: 2, t=7; C: 5, t=4; D: 7, t=8; E: 10, t=3; F: 11, t=1; G: 12, t=8; H: 16, t=5; I: 17, t=9; J: 18, t=8;
+      FCFS
+      Llegada   |Tiempo_Req  |Proceso   |Inicio    |Fin       |T         |E         |P         
+      0         |4           |A         |0         |4         |4         |0         |1.00      
+      2         |7           |B         |4         |11        |9         |2         |1.29      
+      5         |4           |C         |11        |15        |10        |6         |2.50      
+      7         |8           |D         |15        |23        |16        |8         |2.00      
+      10        |3           |E         |23        |26        |16        |13        |5.33      
+      11        |1           |F         |26        |27        |16        |15        |16.00     
+      12        |8           |G         |27        |35        |23        |15        |2.88      
+      16        |5           |H         |35        |40        |24        |19        |4.80      
+      17        |9           |I         |40        |49        |32        |23        |3.56      
+      18        |8           |J         |49        |57        |39        |31        |4.88      
+      ----------------------------------------------------------------------------------------
+      Promedio                                                |18.90     |13.20     |4.42      
+      FCFS
+      AAAABBBBBBBCCCCDDDDDDDDEEEFGGGGGGGGHHHHHIIIIIIIIIJJJJJJJJ
+      Round Robin  1
+      AABABACBDCBDECFBGDECHBIGJDEHBIGJDHIGJDHIGJDHIGJDIGJIGJIJI
+      T:  25.7	E:  20.0	P: 4.38
+      Round Robin  4
+      AAAABBBBCCCCDDDDBBBEEEFGGGGHHHHDDDDIIIIJJJJGGGGHIIIIJJJJI
+      T:  22.5	E:  16.8	P: 4.46
+      SPN
+      AAAABCCCCBEFEEBBBBBHHHHHDDDDDDDDGGGGGGGGJJJJJJJJIIIIIIIII
+      T: 16.1	E: 10.4	P:2.32
+    #+END_SRC
+    Puedes ver que =B= fue interrumpido en múltiples ocasiones.
+- Calificación :: 10
+
+** Luis Mata
+- Lenguaje :: Python
+- Código :: [[./MataLuis/fifo.py][fifo.py]], [[./MataLuis/ronda1.py][ronda1.py]], [[./MataLuis/ronda4.py][ronda4.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FIFO, RR1, RR4
+- Comentarios ::
+  - ¡Guau! Les dije que bastaba una /simulación/, pero tú creaste un
+    programa multihilos que va intercambiando la ejecución... ¡Muy
+    bueno! (y muy interesante ver tu lógica)
+  - No parte de procesos aleatorios, sino que de un arreglo declarado
+    en el fuente
+- Calificación :: 9
+
+** Carlos Morales, Miguel Pérez Quiróz
+- Lenguaje :: Python
+- Código :: [[./MoralesCarlos-PerezQuirozMiguel/DEFINITIVO.py][DEFINITIVO.py]]
+- Documentación :: ---
+- Algoritmos implementados :: FIFO, RR1, RR4, SPN
+- Comentarios ::
+  - ¡Muy bien! Además de estar completo, es un programa muy limpio,
+    tanto en lo relativo al desarrollo del código, como a la claridad
+    de la salida generada.
+- Calificación :: 10
+
+** Romero Vicente
+- Lenguaje :: Python
+- Código :: [[./RomeroVicente/core/Console.py][Console.py]], [[./RomeroVicente/core/FCFS.py][FCFS.py]], [[./RomeroVicente/core/Planificador.py][Planificador.py]], [[./RomeroVicente/core/Proceso.py][Proceso.py]],
+            [[./RomeroVicente/core/RoundRobin4.py][RoundRobin4.py]], [[./RomeroVicente/core/RoundRobin.py][RoundRobin.py]], [[./RomeroVicente/core/SPN.py][SPN.py]], [[./RomeroVicente/main.py][main.py]]
+- Documentación :: [[./RomeroVicente/README.MD][README.MD]]
+- Algoritmos implementados :: FCFS, RR1, RR3, SPN
+- Comentarios ::
+  - Genera una salida amigable y fácil de leer, con la gráfica en
+    colorcitos y todo. ¡Bien!
+  - El programa es parametrizable desde la línea de comando. ¡Muy
+    bien!
+  - En RR4: ¡Ojo! Si un proceso termina antes de que termine su
+    quantum, el CPU no permanece ocioso — Al terminar el proceso, el
+    control pasa al SO, y éste planifica al siguiente proceso de
+    inmediato.
+- Calificación :: 10
+
