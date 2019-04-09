@@ -263,39 +263,43 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Alberto Espinoza
-- Situación implementada ::
-- Interfaz ::
-- Documentación :: [[./EspinozaAlberto/p2doc.pdf][p2doc.pdf]]
+- Situación implementada :: Control aéreo del aeropuerto
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
+- Documentación :: [[./EspinozaAlberto/p2Doc.pdf][p2Doc.pdf]]
 - Código :: [[./EspinozaAlberto/Aeropuerto.java][Aeropuerto.java]], [[./EspinozaAlberto/Avion.java][Avion.java]], [[./EspinozaAlberto/ControlDeTrafico.java][ControlDeTrafico.java]], [[./EspinozaAlberto/CreaAvion.java][CreaAvion.java]], [[./EspinozaAlberto/PistasAeropuerto.java][PistasAeropuerto.java]]
 - Lenguaje de desarrollo :: Java
 - Uso de multitarea / sincronización ::
+  - Cada avión es un hilo; cada pista es un hilo
+  - Mutex (mediante =ReentrantLock=) controlando el estado de =pistaOcupada=
+  - Funciones =synchronized= (mutex implícito) para solicitar /
+    desocupar / verificar las pistas del aeropuerto
 - Obsevaciones :: 
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.01 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.17 |
+| Historial en Git       |         0 |        |     0.00 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |     1.67 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     8.18 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
