@@ -1,28 +1,492 @@
-#+title: Proyecto 1 — Calificaciones y comentarios
+#+title: Proyecto 2 — Calificaciones y comentarios
 #+options: toc:nil
 
+El planteamiento del proyecto y la rúbrica para su calificación están
+[[./README.org][disponibles aquí]].
+
 * Gabriel Aguilar y Sandra García
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./AguilarGabriel-GarciaSandra/Especificaciones.docx][Especificaciones.docx]], [[./AguilarGabriel-GarciaSandra/README.txt][README.txt]], [[./AguilarGabriel-GarciaSandra/Planteamiento][Planteamiento]]
+- Código :: [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo_G.py][HorarioTelevisivo_G.py]], [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo.py][HorarioTelevisivo.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Arvizu y Paola Lara
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./ArvizuLuis-LaraPaola/Documentacion.pdf][Documentacion.pdf]], [[./ArvizuLuis-LaraPaola/identificacion.pdf][identificacion.pdf]],
+                   [[./ArvizuLuis-LaraPaola/PruebaFuncionamientopdf][PruebaFuncionamiento.pdf]]
+- Código :: [[./ArvizuLuis-LaraPaola/Pumabus_Paw_Luis.py][Pumabus_Paw_Luis.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones ::
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Arturo Durán y Miguel López
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./DuránArturo-LópezMiguel/Documentación/Proyecto_2_SO.pdf][Proyecto_2_SO.pdf]]
+- Código :: [[./DuránArturo-LópezMiguel/Carga.py][Carga.py]], [[./DuránArturo-LópezMiguel/Estacion.py][Estacion.py]], [[./DuránArturo-LópezMiguel/GUI_main.py][GUI_main.py]], [[./DuránArturo-LópezMiguel/Mapa.py][Mapa.py]], [[./DuránArturo-LópezMiguel/Sim.py][Sim.py]],
+            [[./DuránArturo-LópezMiguel/Tren.py][Tren.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Ernesto Aguilera
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./ErnestoAguilera/README.md][README.md]], [[./ErnestoAguilera/src/Descripcion.txt][Descripcion.txt]]
+- Código :: [[./ErnestoAguilera/src/comp/EstacionDeCocina.java][EstacionDeCocina.java]], [[./ErnestoAguilera/src/comp/Horno.java][Horno.java]], [[./ErnestoAguilera/src/comp/Main.java][Main.java]], [[./ErnestoAguilera/src/comp/Pastel.java][Pastel.java]],
+            [[./ErnestoAguilera/src/comp/Pavo.java][Pavo.java]], [[./ErnestoAguilera/src/comp/Pizza.java][Pizza.java]], [[./ErnestoAguilera/src/comp/PlatilloHorneable.java][PlatilloHorneable.java]],
+            [[./ErnestoAguilera/src/comp/Sistema.java][Sistema.java]]
+- Lenguaje de desarrollo :: Java
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Alberto Espinoza
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./EspinozaAlberto/p2doc.pdf][p2doc.pdf]]
+- Código :: [[./EspinozaAlberto/Aeropuerto.java][Aeropuerto.java]], [[./EspinozaAlberto/Avion.java][Avion.java]], [[./EspinozaAlberto/ControlDeTrafico.java][ControlDeTrafico.java]], [[./EspinozaAlberto/CreaAvion.java][CreaAvion.java]], [[./EspinozaAlberto/PistasAeropuerto.java][PistasAeropuerto.java]]
+- Lenguaje de desarrollo :: Java
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Rodrigo Francisco y Beatriz Sánchez
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md]]
+- Código :: [[./FranciscoRodrigo-SanchezBeatriz/d_museum/argumentos.py][argumentos.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/colors.py][colors.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/guia.py][guia.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/turista.py][turista.py]], [[./FranciscoRodrigo-SanchezBeatriz/main.py][main.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Orlando García y Zuriel Rodríguez
+- Situación implementada ::
+- Interfaz :: 
+- Documentación :: [[./GarciaOrlando-RodriguezZuriel/Descripcion.txt][Descripcion.txt]],  [[./GarciaOrlando-RodriguezZuriel/Documentacion.txt][Documentacion.txt]]
+- Código :: [[./GarciaOrlando-RodriguezZuriel/PecesCircundantes.py][PecesCircundantes.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Vicente García y Enrique Guerrero
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./GarciaVicente-GuerreroEnrique/Descripcion_problema.txt][Descripcion_problema.py]], [[./GarciaVicente-GuerreroEnrique/Documentacion.docx][Documentacion.docx]]
+- Código :: [[./GarciaVicente-GuerreroEnrique/PanelControl.py][PanelControl.py]], [[./GarciaVicente-GuerreroEnrique/prog2.py][prog2.py]], [[./GarciaVicente-GuerreroEnrique/PSincronizacion.py][PSincronizacion.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Omar Ibarra
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./IbarraOmar/Documentacion][Documentacion]],  [[./IbarraOmar/manual][manual]]
+- Código :: [[./IbarraOmar/autorizacion.sh][autorizacion.sh]], [[./IbarraOmar/CamPass.sh][CamPass.sh]], [[./IbarraOmar/cargadelsistema.sh][cargadelsistema.sh]], [[./IbarraOmar/disco.sh][disco.sh]],
+            [[./IbarraOmar/ejecutableF.c][ejecutableF.c]], [[./IbarraOmar/memoria.sh][memoria.sh]],
+            [[./IbarraOmar/omar_ibarra_proyecto_sistemas.sh][omar_ibarra_proyecto_sistemas.sh]], [[./IbarraOmar/usuarios.sh][usuarios.sh]]
+- Lenguaje de desarrollo :: Shell Bourne / C
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Osmar Juárez y Luis Morales
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionProyecto2_SO.odt][DocumentacionProyecto2_SO.odt]]
+- Código :: [[./JuarezOsmar-MoralesLuis/Proyecto2_Sistop.py][Proyecto2_Sistop.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Mata
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./MataLuis/proyecto2Documentacion][proyecto2Documentacion]]
+- Código :: [[./MataLuis/banco.py][banco.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Carlos Morales y Miguel Pérz Quiroz
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./MoralesCarlos-PerezQuirozMiguel/README.md][README.md]]
+- Código :: [[./MoralesCarlos-PerezQuirozMiguel/office.py][office.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Vicente Romero
+- Situación implementada ::
+- Interfaz ::
+- Documentación :: [[./RomeroVicente/README.md][README.md]]
+- Código :: [[./RomeroVicente/VpostHorde/main.py][main.py]], [[./RomeroVicente/VpostHorde/tools/Analisis.py][Analisis.py]], [[./RomeroVicente/VpostHorde/tools/Consola.py][Consola.py]], [[./RomeroVicente/VpostHorde/tools/Estres.py][Estres.py]], [[./RomeroVicente/VpostHorde/tools/GUI.py][GUI.py]], [[./RomeroVicente/VpostHorde/tools/Peticion.py][Peticion.py]], [[./RomeroVicente/VpostHorde/tools/plot.py][plot.py]]
+- Lenguaje de desarrollo ::
+- Uso de multitarea / sincronización ::
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |       0. |
+| Creatividad            |           |        |     0.00 |
+| Complejidad            |           |        |     0.00 |
+| Interfaz usuario       |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |       0. |
+| Documentación expresa  |           |        |     0.00 |
+| Entorno y dependencias |           |        |     0.00 |
+| Comentarios            |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |       0. |
+| Historial en Git       |           |        |     0.00 |
+| Directorio de proyecto |           |        |     0.00 |
+| Código válido          |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       0. |
+| Estructura             |           |        |     0.00 |
+| Nomenclatura           |           |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |       0. |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
