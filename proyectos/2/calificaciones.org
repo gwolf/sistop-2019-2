@@ -5,39 +5,68 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 [[./README.org][disponibles aquí]].
 
 * Gabriel Aguilar y Sandra García
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: El problema de las televisiones
+- Interfaz :: Una versión de consola, una sobre TkInter
 - Documentación :: [[./AguilarGabriel-GarciaSandra/Especificaciones.docx][Especificaciones.docx]], [[./AguilarGabriel-GarciaSandra/README.txt][README.txt]], [[./AguilarGabriel-GarciaSandra/Planteamiento][Planteamiento]]
 - Código :: [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo_G.py][HorarioTelevisivo_G.py]], [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo.py][HorarioTelevisivo.py]]
 - Lenguaje de desarrollo :: Python
 - Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+  - Cada /persona/ de la familia es un hilo
+  - Semáforos para indicar las televisiones libres / en uso
+    (¿multiplex?)
+  - Una especie de señalización a /n/ usuarios basada en tiempo
+    (/terminó el programa/)
+  - Manejo del /tiempo/ mediante un hilo que señaliza usando
+    contadores acerca de distintos eventos
+- Obsevaciones ::
+  - ¡Buena implementación!
+  - Me gusta que hayan desarrollado el refinamiento de buscar si ya
+    había alguien viendo el programa deseado, para no desperdiciar
+    recursos. ¡Muy bien!
+  - A nivel estilo: Casi todos sus comentarios /siguen/ a la línea que
+    comentan, como:
+    #+BEGIN_SRC python
+      pasillo.release() #Si el programa termino mientras esperaba indico a quienes esperan que hay una tele libre
+    #+END_SRC
+    En general, para que las líneas no sean tannn largas (y además,
+    porque normalmente queremos documentar lo que hacen /varias/
+    líneas), se considera mejor estilo comentar /antes/ de la línea en
+    cuestión:
+    #+BEGIN_SRC python
+      # Si el programa termino mientras esperaba indico a quienes esperan que hay
+      # una tele libre
+      pasillo.release()
+    #+END_SRC
+  - Las funciones son tal vez un poco demasiado largas, lo cual
+    dificulta un poco su comprensión. Por ejemplo, el hilo llama
+    directamente a =Usuario()=, que mide de la línea 173 a la 240, y
+    tiene toda la lógica de cada una de las /personas/.
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.84 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.01 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     2.01 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |      1.5 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     9.36 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
