@@ -71,117 +71,194 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Arvizu y Paola Lara
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: El Pumabús
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
 - Documentación :: [[./ArvizuLuis-LaraPaola/Documentacion.pdf][Documentacion.pdf]], [[./ArvizuLuis-LaraPaola/identificacion.pdf][identificacion.pdf]],
-                   [[./ArvizuLuis-LaraPaola/PruebaFuncionamientopdf][PruebaFuncionamiento.pdf]]
+                   [[./ArvizuLuis-LaraPaola/PruebaFuncionamiento.pdf][PruebaFuncionamiento.pdf]]
 - Código :: [[./ArvizuLuis-LaraPaola/Pumabus_Paw_Luis.py][Pumabus_Paw_Luis.py]]
 - Lenguaje de desarrollo :: Python
-- Uso de multitarea / sincronización ::
+- Uso de multitarea / sincronización :: Un hilo para el Pumabús, para
+     cada persona que se forma y para cada minuto que pasa
+     (¡interesante uso!); el Pumabús espera por una suerte de barrera,
+     liberada por cualquiera de dos condiciones: Un umbral de personas
+     formadas, o un determinado tiempo transcurrido.
 - Obsevaciones ::
+  - Buena resolución. Para modelar mejor la vida real, que no es tan
+    determinista como quisiéramos, yo sugeriría meter
+    aleatoreidad. Por ejemplo, que sólo una de cada /n/ personas (en
+    este caso, con probabilidad de 0.7) se forme:
+    #+begin_src python
+      def Personas():
+	      global personas
+	      mutex.acquire()
+	      if random.random() <= 0.7:
+		      personas += 1 #Añade a las personas que van formandose en la fila
+		      print (llegada + 'Persona') + '\n' + (total) + 'Personas = %d' %(personas)
+	      if personas == 15: #Si son 15  personas sale el pumabus
+		      pumaBus.release()
+	      mutex.release()
+    #+end_src
+  - Por otro lado, el inicio de un recorrido debería limpia tanto el
+    número de minutos que llevamos esperando como la cantidad de
+    personas formadas, para evitar distorsiones antieconómicas como la
+    siguiente:
+    #+begin_src text
+      Encendiendo Pumabus...
+      »------(¯` Inicia Recorrido ´¯)------»
+      ,*
+      ,*
+      ,*
+      ,*
+      »------(¯` Termina Recorrido ´¯)------»
+       Pumabus Estacionado
+
+      Ha pasado un minuto
+      Total de Minutos = 24
+      Llega un Persona
+      Total de Personas = 1
+      Ha pasado un minuto
+      Total de Minutos = 25
+      Encendiendo Pumabus...
+      Encendiendo Pumabus...
+      »------(¯` Inicia Recorrido ´¯)------»
+    #+end_src
+    Para eso, basta reiniciar también los minutos. En la función
+    =PumaBus()=, agrego una línea 82 =minutos = 0=, y ya con eso
+    queda. Claro, sólo puede observarse este funcionamiento si le
+    dieron una función aleatoria (en caso contrario, siempre sale
+    cuando llegan 15 personas)
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.01 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.67 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |     1.67 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     9.02 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Arturo Durán y Miguel López
-- Situación implementada ::
-- Interfaz ::
-- Documentación :: [[./DuránArturo-LópezMiguel/Documentación/Proyecto_2_SO.pdf][Proyecto_2_SO.pdf]]
-- Código :: [[./DuránArturo-LópezMiguel/Carga.py][Carga.py]], [[./DuránArturo-LópezMiguel/Estacion.py][Estacion.py]], [[./DuránArturo-LópezMiguel/GUI_main.py][GUI_main.py]], [[./DuránArturo-LópezMiguel/Mapa.py][Mapa.py]], [[./DuránArturo-LópezMiguel/Sim.py][Sim.py]],
-            [[./DuránArturo-LópezMiguel/Tren.py][Tren.py]]
+- Situación implementada :: Control de flujo de trenes en las líneas
+     1, 5, 9, A del Metro de la CdMx
+- Interfaz :: Simulación de trenes sobre TkInter
+- Documentación :: [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Documentaci%C3%B3n/Proyecto_2_SO.pdf][Proyecto_2_SO.pdf]]
+- Código :: [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Carga.py][Carga.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Estacion.py][Estacion.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/GUI_main.py][GUI_main.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Mapa.py][Mapa.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Sim.py][Sim.py]],
+            [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Tren.py][Tren.py]]
 - Lenguaje de desarrollo :: Python
-- Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+- Uso de multitarea / sincronización :: Cada uno de los trenes es un
+     hilo. Cada /gestor de línea/ es un hilo. Se maneja un mutex por
+     cada combinación línea / dirección / estación, para evitar
+     colisiones. Se generan varios semáforos más, pero no se utilizan
+     hasta donde puedo ver ☺
+- Obsevaciones ::
+  - ¡Qué planteamiento tan bueno e interesante! Realmente se pasaron
+    con mucho del ámbito del problema que yo esperaba que
+    desarrollaran.
+  - ¡La representación visual es muy impresionante! Le trabajaría un
+    poco a la lógica visual — Si entiendo correctamente, cada cuadrito
+    nuevo "cae" en la nueva posición del tren. Pero todos los
+    cuadritos salen desde el centro (la /tortuga/). ¡Pero no se van
+    borrando los cuadritos una vez que el tren salió de una estación?
+    (¿o estamos en un universo tipo Centipede, en que los trenes son
+    largos gusanos que cubren varias estaciones a la vez?)
+  - ¿Hay alguna interacción entre las cuatro líneas? Vamos, comprendo
+    que presentan cómo los trenes cruzan por cada una de ellas sobre
+    el tiempo, y que eligieron a Pantitlán por ser la estación más
+    /divertida/ (¿complicada?) de la red. Pero parece que son cuatro
+    simulaciones de líneas independientes y simultáneas, ¿me equivoco?
+  - Al ejecutar el proyecto, las bibliotecas de Python que ustedes
+    definen se compilan a /bytecode/ a los archivos correspondientes
+    =*.pyc=... Y no los agregaron al =.gitignore= ☹
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.01 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |      1.5 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |      1.5 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     8.68 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Ernesto Aguilera
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: Uso de hornos en cocinas de restaurantes concurridos
+- Interfaz :: Conversacional (línea de comando)
 - Documentación :: [[./ErnestoAguilera/README.md][README.md]], [[./ErnestoAguilera/src/Descripcion.txt][Descripcion.txt]]
 - Código :: [[./ErnestoAguilera/src/comp/EstacionDeCocina.java][EstacionDeCocina.java]], [[./ErnestoAguilera/src/comp/Horno.java][Horno.java]], [[./ErnestoAguilera/src/comp/Main.java][Main.java]], [[./ErnestoAguilera/src/comp/Pastel.java][Pastel.java]],
             [[./ErnestoAguilera/src/comp/Pavo.java][Pavo.java]], [[./ErnestoAguilera/src/comp/Pizza.java][Pizza.java]], [[./ErnestoAguilera/src/comp/PlatilloHorneable.java][PlatilloHorneable.java]],
             [[./ErnestoAguilera/src/comp/Sistema.java][Sistema.java]]
 - Lenguaje de desarrollo :: Java
 - Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+  - Cada /estación de cocina/ es un hilo
+  - Varias funciones de las diferentes clases están declaradas como
+    =synchronized= (equivalente a declarar un mutex)
+- Obsevaciones ::
+  - Para ejecutar el proyecto, es necesario compilar tus archivos
+    fuente =*.java= → =*.class==... Y no los agregaste al =.gitignore=
+    ☹
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.16 |
+| Creatividad            |         5 |        |     0.33 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     1.17 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |         0 |        |     0.00 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.84 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |      1.5 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     7.67 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
 
