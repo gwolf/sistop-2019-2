@@ -1,0 +1,826 @@
+#+title: Proyecto 2 — Calificaciones y comentarios
+#+options: toc:nil
+
+El planteamiento del proyecto y la rúbrica para su calificación están
+[[./README.org][disponibles aquí]].
+
+* Gabriel Aguilar y Sandra García
+- Situación implementada :: El problema de las televisiones
+- Interfaz :: Una versión de consola, una sobre TkInter
+- Documentación :: [[./AguilarGabriel-GarciaSandra/Especificaciones.docx][Especificaciones.docx]], [[./AguilarGabriel-GarciaSandra/README.txt][README.txt]], [[./AguilarGabriel-GarciaSandra/Planteamiento][Planteamiento]]
+- Código :: [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo_G.py][HorarioTelevisivo_G.py]], [[./AguilarGabriel-GarciaSandra/HorarioTelevisivo.py][HorarioTelevisivo.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+  - Cada /persona/ de la familia es un hilo
+  - Semáforos para indicar las televisiones libres / en uso
+    (¿multiplex?)
+  - Una especie de señalización a /n/ usuarios basada en tiempo
+    (/terminó el programa/)
+  - Manejo del /tiempo/ mediante un hilo que señaliza usando
+    contadores acerca de distintos eventos
+- Obsevaciones ::
+  - ¡Buena implementación!
+  - Me gusta que hayan desarrollado el refinamiento de buscar si ya
+    había alguien viendo el programa deseado, para no desperdiciar
+    recursos. ¡Muy bien!
+  - A nivel estilo: Casi todos sus comentarios /siguen/ a la línea que
+    comentan, como:
+    #+BEGIN_SRC python
+      pasillo.release() #Si el programa termino mientras esperaba indico a quienes esperan que hay una tele libre
+    #+END_SRC
+    En general, para que las líneas no sean tannn largas (y además,
+    porque normalmente queremos documentar lo que hacen /varias/
+    líneas), se considera mejor estilo comentar /antes/ de la línea en
+    cuestión:
+    #+BEGIN_SRC python
+      # Si el programa termino mientras esperaba indico a quienes esperan que hay
+      # una tele libre
+      pasillo.release()
+    #+END_SRC
+  - Las funciones son tal vez un poco demasiado largas, lo cual
+    dificulta un poco su comprensión. Por ejemplo, el hilo llama
+    directamente a =Usuario()=, que mide de la línea 173 a la 240, y
+    tiene toda la lógica de cada una de las /personas/.
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.84 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |     1.75 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.75 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     9.59 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Luis Arvizu y Paola Lara
+- Situación implementada :: El Pumabús
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
+- Documentación :: [[./ArvizuLuis-LaraPaola/Documentacion.pdf][Documentacion.pdf]], [[./ArvizuLuis-LaraPaola/identificacion.pdf][identificacion.pdf]],
+                   [[./ArvizuLuis-LaraPaola/PruebaFuncionamiento.pdf][PruebaFuncionamiento.pdf]]
+- Código :: [[./ArvizuLuis-LaraPaola/Pumabus_Paw_Luis.py][Pumabus_Paw_Luis.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización :: Un hilo para el Pumabús, para
+     cada persona que se forma y para cada minuto que pasa
+     (¡interesante uso!); el Pumabús espera por una suerte de barrera,
+     liberada por cualquiera de dos condiciones: Un umbral de personas
+     formadas, o un determinado tiempo transcurrido.
+- Obsevaciones ::
+  - Buena resolución. Para modelar mejor la vida real, que no es tan
+    determinista como quisiéramos, yo sugeriría meter
+    aleatoriedad. Por ejemplo, que sólo una de cada /n/ personas (en
+    este caso, con probabilidad de 0.7) se forme:
+    #+begin_src python
+      def Personas():
+	      global personas
+	      mutex.acquire()
+	      if random.random() <= 0.7:
+		      personas += 1 #Añade a las personas que van formandose en la fila
+		      print (llegada + 'Persona') + '\n' + (total) + 'Personas = %d' %(personas)
+	      if personas == 15: #Si son 15  personas sale el pumabus
+		      pumaBus.release()
+	      mutex.release()
+    #+end_src
+  - Por otro lado, el inicio de un recorrido debería limpia tanto el
+    número de minutos que llevamos esperando como la cantidad de
+    personas formadas, para evitar distorsiones anti-económicas como la
+    siguiente:
+    #+begin_src text
+      Encendiendo Pumabus...
+      »------(¯` Inicia Recorrido ´¯)------»
+      ,*
+      ,*
+      ,*
+      ,*
+      »------(¯` Termina Recorrido ´¯)------»
+       Pumabus Estacionado
+
+      Ha pasado un minuto
+      Total de Minutos = 24
+      Llega un Persona
+      Total de Personas = 1
+      Ha pasado un minuto
+      Total de Minutos = 25
+      Encendiendo Pumabus...
+      Encendiendo Pumabus...
+      »------(¯` Inicia Recorrido ´¯)------»
+    #+end_src
+    Para eso, basta reiniciar también los minutos. En la función
+    =PumaBus()=, agrego una línea 82 =minutos = 0=, y ya con eso
+    queda. Claro, sólo puede observarse este funcionamiento si le
+    dieron una función aleatoria (en caso contrario, siempre sale
+    cuando llegan 15 personas)
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |         5 |        |     0.33 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.67 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     9.34 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Arturo Durán y Miguel López
+- Situación implementada :: Control de flujo de trenes en las líneas
+     1, 5, 9, A del Metro de la CdMx
+- Interfaz :: Simulación de trenes sobre TkInter
+- Documentación :: [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Documentaci%C3%B3n/Proyecto_2_SO.pdf][Proyecto_2_SO.pdf]]
+- Código :: [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Carga.py][Carga.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Estacion.py][Estacion.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/GUI_main.py][GUI_main.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Mapa.py][Mapa.py]], [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Sim.py][Sim.py]],
+            [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Proyecto/Tren.py][Tren.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización :: Cada uno de los trenes es un
+     hilo. Cada /gestor de línea/ es un hilo. Se maneja un mutex por
+     cada combinación línea / dirección / estación, para evitar
+     colisiones. Se generan varios semáforos más, pero no se utilizan
+     hasta donde puedo ver ☺
+- Obsevaciones ::
+  - ¡Qué planteamiento tan bueno e interesante! Realmente se pasaron
+    con mucho del ámbito del problema que yo esperaba que
+    desarrollaran.
+  - ¡La representación visual es muy impresionante! Le trabajaría un
+    poco a la lógica visual — Si entiendo correctamente, cada cuadrito
+    nuevo "cae" en la nueva posición del tren. Pero todos los
+    cuadritos salen desde el centro (la /tortuga/). ¡Pero no se van
+    borrando los cuadritos una vez que el tren salió de una estación?
+    (¿o estamos en un universo tipo Centipede, en que los trenes son
+    largos gusanos que cubren varias estaciones a la vez?)
+  - ¿Hay alguna interacción entre las cuatro líneas? Vamos, comprendo
+    que presentan cómo los trenes cruzan por cada una de ellas sobre
+    el tiempo, y que eligieron a Pantitlán por ser la estación más
+    /divertida/ (¿complicada?) de la red. Pero parece que son cuatro
+    simulaciones de líneas independientes y simultáneas, ¿me equivoco?
+  - Al ejecutar el proyecto, las bibliotecas de Python que ustedes
+    definen se compilan a /bytecode/ a los archivos correspondientes
+    =*.pyc=... Y no los agregaron al =.gitignore= ☹
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |      1.5 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |     1.75 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.75 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     8.92 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Ernesto Aguilera
+- Situación implementada :: Uso de hornos en cocinas de restaurantes concurridos
+- Interfaz :: Conversacional (línea de comando)
+- Documentación :: [[./ErnestoAguilera/README.md][README.md]], [[./ErnestoAguilera/src/Descripcion.txt][Descripcion.txt]]
+- Código :: [[./ErnestoAguilera/src/comp/EstacionDeCocina.java][EstacionDeCocina.java]], [[./ErnestoAguilera/src/comp/Horno.java][Horno.java]], [[./ErnestoAguilera/src/comp/Main.java][Main.java]], [[./ErnestoAguilera/src/comp/Pastel.java][Pastel.java]],
+            [[./ErnestoAguilera/src/comp/Pavo.java][Pavo.java]], [[./ErnestoAguilera/src/comp/Pizza.java][Pizza.java]], [[./ErnestoAguilera/src/comp/PlatilloHorneable.java][PlatilloHorneable.java]],
+            [[./ErnestoAguilera/src/comp/Sistema.java][Sistema.java]]
+- Lenguaje de desarrollo :: Java
+- Uso de multitarea / sincronización ::
+  - Cada /estación de cocina/ es un hilo
+  - Varias funciones de las diferentes clases están declaradas como
+    =synchronized= (equivalente a declarar un mutex)
+- Obsevaciones ::
+  - Para ejecutar el proyecto, es necesario compilar tus archivos
+    fuente =*.java= → =*.class==... Y no los agregaste al =.gitignore=
+    ☹
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.16 |
+| Creatividad            |         5 |        |     0.33 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     1.17 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |         0 |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.84 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |     1.75 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.75 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     7.92 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Alberto Espinoza
+- Situación implementada :: Control aéreo del aeropuerto
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
+- Documentación :: [[./EspinozaAlberto/p2Doc.pdf][p2Doc.pdf]]
+- Código :: [[./EspinozaAlberto/Aeropuerto.java][Aeropuerto.java]], [[./EspinozaAlberto/Avion.java][Avion.java]], [[./EspinozaAlberto/ControlDeTrafico.java][ControlDeTrafico.java]], [[./EspinozaAlberto/CreaAvion.java][CreaAvion.java]], [[./EspinozaAlberto/PistasAeropuerto.java][PistasAeropuerto.java]]
+- Lenguaje de desarrollo :: Java
+- Uso de multitarea / sincronización ::
+  - Cada avión es un hilo; cada pista es un hilo
+  - Mutex (mediante =ReentrantLock=) controlando el estado de =pistaOcupada=
+  - Funciones =synchronized= (mutex implícito) para solicitar /
+    desocupar / verificar las pistas del aeropuerto
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.17 |
+| Historial en Git       |         0 |        |     0.00 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     8.50 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Rodrigo Francisco y Beatriz Sánchez
+- Situación implementada :: El museo de Dijkstra
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora /
+              consola, dando color por tipo de mensaje; parámetros
+              especificables por línea de comando
+- Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md]]
+- Código :: [[./FranciscoRodrigo-SanchezBeatriz/d_museum/argumentos.py][argumentos.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/colors.py][colors.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/guia.py][guia.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/turista.py][turista.py]], [[./FranciscoRodrigo-SanchezBeatriz/main.py][main.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización :: Cada turista es un hilo; los
+     guías son únicamente estructuras de datos compartidas entre un
+     grupo de turistas.
+- Obsevaciones ::
+  - ¡Excelente documentación!
+    - Busqué referencia a este planteamiento entre los textos de
+      Dijkstra, y no lo encontré. ¿Es original de ustedes?
+  - Mencionan que no les gusta, para resolver la inanición de los
+    guías, que el último turista tenga que /despertar por fuerza
+    bruta/ a todos los turistas. ¿Y por qué no lo hacen como la
+    barrera? Esto es, podrían reemplazar al arreglo de semáforos que
+    tienen en =lista_turistas= por una barrera. ¡Me parece que
+    describen /exactamente/ el comportamiento que provee!
+    - Eso sí: El que lo implementaran de esta manera muestra que
+      pueden razonar usando semáforos de forma original. ¡Bien! :-D
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     2.00 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     1.67 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |         5 |        |     0.33 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     9.67 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Orlando García y Zuriel Rodríguez
+- Situación implementada :: Los peces en el acuario
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
+- Documentación :: [[./GarciaOrlando-RodriguezZuriel/Descripcion.txt][Descripcion.txt]],  [[./GarciaOrlando-RodriguezZuriel/Documentacion.txt][Documentacion.txt]]
+- Código :: [[./GarciaOrlando-RodriguezZuriel/PecesCircundantes.py][PecesCircundantes.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización :: Cada pez es un hilo. Multiplex
+     para poner una cota máxima de peces nadando en la misma
+     dirección. Mutex para controlar variable de estado.
+- Obsevaciones ::
+  - Me resultó muy útil para entender lo que pasaba agregar lo
+    siguiente en =getStatus()=:
+    #+BEGIN_SRC python
+      string += "Peces en el centro[" + '*'*len(Centro)+"]\n\n"
+      for pez in Centro:
+          string += "      (( °-° ))    : "+pez.nombre+"\n"
+    #+END_SRC
+    De otro modo, los peces simplemente se me /desaparecían/ sin
+    explicación ☹
+    - Aunque probablemente debería haber algún mutex para hacer esta
+      impresión de estado..? Porque a veces, el mismo pez parece estar
+      en dos estados a la vez... O a veces, ¡parece no existir!
+      #+BEGIN_SRC text
+
+        ,************************************
+        Peces circulando a reloj[ ** ]
+        ><((( °-° ) : Marlin
+        ><((( °-° ) : Jacques
+        Peces circulando en contrareloj[ ** ]
+
+      	( °-° )))>< : Nemo
+      	( °-° )))>< : Dory
+        Peces en el centro[*]
+
+      	(( °-° ))   : Marlin
+
+        ,************************************
+        Peces circulando a reloj[ ** ]
+        ><((( °-° ) : Crush
+        ><((( °-° ) : Jacques
+        Peces circulando en contrareloj[ ** ]
+
+      	( °-° )))>< : Nemo
+      	( °-° )))>< : Dory
+        Peces en el centro[***]
+
+      	(( °-° ))   : Jacques
+      	(( °-° ))   : Nemo
+      	(( °-° ))   : Dory
+      #+END_SRC
+  - Si entendí correctamente, una de sus condiciones se rompe todo el
+    tiempo: Supuestamente no debería haber el mismo número de peces
+    nadando en el mismo sentido. Muchas veces nadan dos y dos. (¿o
+    será que se /reportan/ dos y dos? ¿Lo podrían demostrar?)
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.67 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     9.00 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Vicente García y Enrique Guerrero
+- Situación implementada :: Subiendo y bajando del autobús
+- Interfaz :: Envía mensajes con una bitácora detallada de acciones a
+              consola; presenta una bonita representación gráfica
+              ilustrando el recorrido del autobús a lo largo de la
+              ruta
+- Documentación :: [[./GarciaVicente-GuerreroEnrique/Descripcion_problema.txt][Descripcion_problema.py]], [[./GarciaVicente-GuerreroEnrique/Documentacion.docx][Documentacion.docx]]
+- Código :: [[./GarciaVicente-GuerreroEnrique/PanelControl.py][PanelControl.py]], [[./GarciaVicente-GuerreroEnrique/prog2.py][prog2.py]], [[./GarciaVicente-GuerreroEnrique/PSincronizacion.py][PSincronizacion.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+  - Cada pasajero es un hilo
+  - Mutex (sólo uno baja a la vez)
+  - Señalización (hora de arrancar / quiero bajar / ...)
+- Obsevaciones ::
+  - Tuve que adivinar cómo ejecutar el programa (en la documentación
+    no mencionan si hay que llamar a prog2.py, a PanelControl.py, o
+    cómo se inicia el programa
+  - Tuve que hacer varias modificaciones para lograr que funcionara el
+    programa
+  - Si iniciamos el programa por primera vez llamando a =prog2.py=, se
+    /muere/ por no encontrar al archivo variables.py
+    - Y si llamamos primero a =PanelControl.py=, asume algunos
+      detalles del entorno Windows que me dificultaron la
+      ejecución. Por ejemplo, =os.system('proy2.py')= no es exitoso
+      (no encuentra al archivo, el archivo no tiene permisos de
+      ejecución...)
+  - La ejecución del programa conlleva la creación de varios archivos
+    — variables.py (presentando al funcionamiento del programa) genera
+    a =variables.py= (y a su contraparte, =variables.pyc=). 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |      1.5 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |      1.5 |
+| Historial en Git       |       7.5 |        |     0.50 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |       7.5 |        |     0.50 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |     1.75 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.75 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     8.42 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Omar Ibarra
+- Situación implementada :: Monitor de sistema
+- Interfaz :: Menú para invocar a diferentes programas
+- Documentación :: [[./IbarraOmar/Documentacion][Documentacion]],  [[./IbarraOmar/manual][manual]]
+- Código :: [[./IbarraOmar/autorizacion.sh][autorizacion.sh]], [[./IbarraOmar/CamPass.sh][CamPass.sh]], [[./IbarraOmar/cargadelsistema.sh][cargadelsistema.sh]], [[./IbarraOmar/disco.sh][disco.sh]],
+            [[./IbarraOmar/ejecutableF.c][ejecutableF.c]], [[./IbarraOmar/memoria.sh][memoria.sh]],
+            [[./IbarraOmar/omar_ibarra_proyecto_sistemas.sh][omar_ibarra_proyecto_sistemas.sh]], [[./IbarraOmar/usuarios.sh][usuarios.sh]]
+- Lenguaje de desarrollo :: Shell Bourne / C
+- Uso de multitarea / sincronización :: No tiene
+- Obsevaciones ::
+  - ¡Cuida tu ortografía! Una de las razones que pido que con los
+    proyectos entreguen documentación es para ir "empujando" hacia cómo
+    se tienen que hacer las entregas "reales" en un entorno
+    profesional. Tu documentación me resulta difícil de leer — no usas
+    ningún acento, hay varios dedazos ("timpo", "lobores"), y hay unas
+    faltas de ortografía tremendas ("decea", "rializar"). Todo esto
+    daría una muy mala imagen de tu profesionalismo a cualquiera que
+    evalúe trabajar contigo.
+  - El programa no es lo que pedí ☹ No hay manejo de concurrencia, no
+    hay sincronización, no hay hilos o procesos con avance
+    simultáneo... ¿Qué me toca calificar? ☹
+  - Es un lindo proyecto, y sin duda te llevó a aprender acerca de
+    cómo tu sistema operativo te reporta diferentes niveles. Se ve
+    bien trabajado e interesante.
+  - ¡No asumas que todos los que usamos Linux tenemos configurado a
+    nuestro "sudo" para dar acceso irrestricto! Sé que es de uso
+    frecuente, pero... También sé que es muy mala idea :-)
+    - Además, la mayor parte de los comandos que requiere tu programa
+      no requieren niveles elevados de privilegios. ¡Un importante
+      principio de administración de sistemas es nunca tener más
+      derechos de lo que necesitas! (y pedirlos, si acaso, en el
+      momento que los requieras).
+    - Como sea, estás verificando para entrar a la sección
+      /Administración/ que el UID sea 0...
+  - /Bash/ es, como lenguaje de programación, /bastante/ feo e
+    inconsistente. Lograste escribir un programa largo y relativamente
+    fácil de seguir a ojo. Eso por sí solo ya merece felicitaciones ☺
+
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       0. |
+| Cumplimiento           |         0 |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.34 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         0 |        |     0.00 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     1.67 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.84 |
+| Historial en Git       |       7.5 |        |     0.50 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     6.85 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Osmar Juárez y Luis Morales
+- Situación implementada :: Sistema de compra de boletos
+- Interfaz :: Lanzador en Tkinter, el programa reporta su avance con
+              mensajes a la consola dentro de Tkinter
+- Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionProyecto2_SO.odt][DocumentacionProyecto2_SO.odt]]
+- Código :: [[./JuarezOsmar-MoralesLuis/Proyecto2_Sistop.py][Proyecto2_Sistop.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+  - Barreras para que los clientes entren de diez en diez
+  - Mutex para que no haya dos compras simultáneas
+- Obsevaciones ::
+  - ¡Ni parece que cruzaron por tres semestres de puro Ciencias
+    Básicas! 😉 ¿Qué es eso de que /para un concierto X (...) se X
+    número boletos/? ¡Una misma variable no se usa para dos cosas
+    distintas! (segundo caso, al final de la primera hoja: /«el otro
+    caso es que estén n personas/ /en el sistema online y n personas
+    en la tienda físicamente»/... ¿Significa esto que pueden
+    únicamente ser 5 y 5? Porque para permitir 6 y 4 o 3 y 7, tendrían
+    que ser cuando menos /n/ y /n'/, o algo por el estilo
+  - ¡Trabajen en mejorar su redacción! Llevo leídos apenas los
+    primeros dos párrafos de su documentación, y ya me perdí varias
+    veces.
+    - Separar ideas distintas en oraciones distintas. El primer
+      párrafo presenta dos ideas, separadas por una coma, y genera
+      confusión en el lector. → /«...disponibilidad de boletos. Se
+      debe tener...»/ (O, más aún, en español tendemos a abusar de la
+      /voz pasiva/ con /sujeto tácito/. ¿Por qué no decir, /«El
+      sistema debe mantener control de que dos personas...»/?
+    - Faltan partículas de conexión, como preposiciones (segundo
+      párrafo, sugiero /«vender es de X número *de* boletos»/
+    - Separación de fragmentos de la misma idea: poner algunas comas
+      en la mega-oración "/Debido a ... al mismo tiempo/"
+    - Concordancia de número. /«que no se vendan 1 boleto a 2
+      personas»/ → «que no se venda el mismo boleto a dos personas»?
+    - Hay varios dedazos, que entorpecen todavía más la
+      lectura. «pudra ser en linea», «pudiera ingresara l mismo
+      tiempo»...
+    - No me enfoco más en detalles de ortografía, redacción y dedazos,
+      que no me tocan... ¡Pero trabajen en ellos! Es muy importante
+      para la imagen de profesionales que dan, y para la claridad de
+      lo que escriben. No conviene confundir a un potencial cliente
+      con textos poco claros (me canso de leerlos y los descarto).
+  - La aplicación tal como la presentan, con una ventana de dimensión
+    fija a 1800x1000 y una ventana de texto de 40 líneas, no muestra
+    los botones de la parte inferior. Reduje la altura de la ventana
+    =tinfo= a 40, y pude ejecutarlo correctamente (en una pantalla de
+    suficiente resolución)
+  - Entiendo que ambicionaban presentar una interfaz gráfica, pero a
+    fin de cuentas, presentaron una terminal dentro de una ventanota
+    :-)
+    - Algo que les ayudaría a conceptualizar y a desarrollar su
+      interfaz puede ser seguir el patrón /Modelo-Vista-Controlador/
+      (MVC), en que se hace una limpia /separación de intereses/ entre
+      los componentes del código. Lo tienen ya medio-andado — El
+      principal cambio es que, por ejemplo, sus funciones
+      =compradorFisico()= y =compradorOnline()= (que serían los
+      /modelos/) no /inyectarían/ cadenas específicas de texto, sino
+      que sólo modificarían su estado. El /controlador/ monitorea y
+      realiza cambios a los objetos modelados, y la /vista/ se limita
+      a presentarlo al usuario.  Con eso, tendrían suficiente para
+      encontrar mejor cómo representar lo que ocurre.
+    - El mismo modelo de aplicación que les impone Tkinter los
+      "empuja" hacia MVC. La aplicación (=class AplicacionBoleto=)
+      debería limitarse al controlador.
+    - Llama mucho mi atención que usaron una característica poco
+      frecuentemente utilizada de Python: Las funciones anidadas o
+      locales. Me queda un tanto la duda de si lo hicieron a propósito
+      😉 Esto ya indica buena parte del camino andado para estructurar
+      al programa bajo una orientación a objetos (pero tal como
+      está... Me parece que dificulta un poco la comprensión ☹
+
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |      1.5 |
+| Estructura             |       7.5 |        |     0.75 |
+| Nomenclatura           |       7.5 |        |     0.75 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     8.83 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Luis Mata
+- Situación implementada :: La cola del banco
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
+- Documentación :: [[./MataLuis/proyecto2Documentacion][proyecto2Documentacion]]
+- Código :: [[./MataLuis/banco.py][banco.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+  - Cada cliente es un hilo
+  - Mutex para el manejo de la cola general y de las colas por caja
+- Obsevaciones :: 
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.16 |
+| Creatividad            |         5 |        |     0.33 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     0.83 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |         0 |        |     0.00 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     1.34 |
+| Historial en Git       |         0 |        |     0.00 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     7.33 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Carlos Morales y Miguel Pérz Quiroz
+- Situación implementada :: La oficina de los locos
+- Interfaz :: Despliegue /animado/ sobre el tiempo, utilizando =colorama=
+- Documentación :: [[./MoralesCarlos-PerezQuirozMiguel/README.md][README.md]]
+- Código :: [[./MoralesCarlos-PerezQuirozMiguel/office.py][office.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización :: 
+  - Multiplex para marcar el máximo de cubículos simultáneos en uso
+  - Cada trabajador es un hilo
+- Obsevaciones ::
+  - Hacen bien en identificar la solución como algo similar /
+    comparable con el Round Robin (aunque en este caso, podríamos
+    decir que es un RR con una cola única para multiprocesador)
+  - Podrían haber agregado algo de interacción necesaria entre algunos
+    hilos, implicando alguna señalización, para hacerlo más
+    /divertido/ (e incluir un mayor uso de la sincronización)
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |     9.67 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
+
+* Vicente Romero
+- Situación implementada :: Pruebas de /estres/ a páginas web
+- Interfaz :: Gtk (wxPython), tanto para la especificación de
+              parámetros como para el reporte de resultados; genera
+              archivo de bitácora
+- Documentación :: [[./RomeroVicente/README.md][README.md]]
+- Código :: [[./RomeroVicente/VpostHorde/main.py][main.py]], [[./RomeroVicente/VpostHorde/tools/Analisis.py][Analisis.py]], [[./RomeroVicente/VpostHorde/tools/Consola.py][Consola.py]], [[./RomeroVicente/VpostHorde/tools/Estres.py][Estres.py]], [[./RomeroVicente/VpostHorde/tools/GUI.py][GUI.py]], [[./RomeroVicente/VpostHorde/tools/Peticion.py][Peticion.py]], [[./RomeroVicente/VpostHorde/tools/plot.py][plot.py]]
+- Lenguaje de desarrollo :: Python
+- Uso de multitarea / sincronización ::
+  - Múltiples hilos para realizar solicitudes simultáneas
+  - Señalización de acciones finalizadas entre los componentes de la aplicación
+  - Barrera para inicio coordinado de pruebas
+  - Mutex para proteger al contador de trabajadores activos
+- Obsevaciones ::
+  - Muy buen programa, linda implementación, ¡y hasta útil!
+    ¡Felicidades!
+  - Si acaso, podría sugerirte buscar cómo implementar =DRY= (/Don't
+    Repeat Yourself/). Al desarrollar un programa, si ves que la misma
+    región se repite en diferentes partes o siguiendo condiciones
+    similares, de forma idéntica o con cambios muy menores, conviene
+    considerar convertirlo en una función. Por ejemplo, en
+    =tools/Estres.py=, repites muchas veces el siguiente bloque:
+    #+begin_src python
+	  num_respuestas = 0 # Se inicializa una variable que acumula el numero de respuestas esperadas
+      while(self.esperarTiempo()):
+	  num = 0 # se inicializa en 0 el contador para la barrera 
+	  num_respuestas = num_respuestas + self.hilos # en cada iteracion se aumenta por el numero de hilos concurrentes
+	  for i in range(self.hilos):
+	      thread = threading.Thread(target = self.post, args = (self.respuestas,),name=str(i+1)+" peticion")
+	      thread.start() #adentro se libera el mutex
+	      self.mutex_cont.acquire()
+	      num = num + 1 #se proteje el contador con este mutex
+	      self.mutex_cont.release()
+	  if num == self.hilos:
+	      for i in range(self.hilos):
+		  self.barrier.release() #Se libera la barrear
+	      num = 0 #Se reinicializa el contador para otra barrera
+	  self.barrier.acquire()
+	  if (self.tiempo==None): # Si no se define tiempo se terminara el while inmediatamente
+	      break
+      while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+	  pass
+      self.escribirRespuestas(output)
+      self.finished.release()
+    #+end_src
+    Con cambios bastante menores entre una y otra. Si tuvieras que
+    agregar, digamos, un mensaje a bitácora antes de =thread.start()=,
+    se vuelve una tarea ingrata y frágil. ¡No te repitas! Usa una
+    función, con comportamiento parametrizado.
+
+| *Rubro*                | *Parcial* | *Peso* | *Puntos* |
+|------------------------+-----------+--------+----------|
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
+|------------------------+-----------+--------+----------|
+| *Proyecto*             |           |    0.2 |     2.00 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
+|------------------------+-----------+--------+----------|
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
+|------------------------+-----------+--------+----------|
+| *TOTAL*                |           |        |    10.00 |
+|------------------------+-----------+--------+----------|
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
