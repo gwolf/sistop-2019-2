@@ -8,6 +8,10 @@ algoritmos. Si bien los más divertidos son los últimos, los primeros
 son más sencillos de implementar — Y, por tanto, son aptos para un
 bonito ejercicio.
 
+## Resultados
+
+Pueden consultar los [./revision.org](resultados de la revisión de sus tareas).
+
 ## Implementar algoritmos
 
 El planteamiento de esta tarea es bastante sencillo: Implementar y
