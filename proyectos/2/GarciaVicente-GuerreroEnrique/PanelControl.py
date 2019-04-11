@@ -1,3 +1,4 @@
+# -*- Encoding: utf-8 -*-
 from tkinter import *
 import time
 import os
@@ -7,7 +8,7 @@ raiz.title("Menú")
 raiz.resizable(0,0)
 raiz.geometry("800x500")
 raiz.config(bg="yellow green")
-bit = raiz.iconbitmap("bus.ico")
+#bit = raiz.iconbitmap("bus.ico")
 
 def iniciar():
 	lbl2 = Label(raiz,text="Programa finalizado",font=("Arial Bold",35),background = "yellow green")
@@ -16,7 +17,7 @@ def iniciar():
 	comienza()
 
 def comienza():
-	os.system("prog2.py")
+	os.system("python3 prog2.py")
 
 def finalizar():
 	exit()

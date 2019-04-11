@@ -62,13 +62,13 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Directorio de proyecto |        10 |        |     0.67 |
 | Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |      1.5 |
+| *Legibilidad*          |           |    0.2 |     1.75 |
 | Estructura             |        10 |        |     1.00 |
-| Nomenclatura           |       7.5 |        |     0.50 |
+| Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.36 |
+| *TOTAL*                |           |        |     9.61 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Arvizu y Paola Lara
 - Situación implementada :: El Pumabús
@@ -148,13 +148,13 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Directorio de proyecto |        10 |        |     0.67 |
 | Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |     1.67 |
+| *Legibilidad*          |           |    0.2 |       2. |
 | Estructura             |        10 |        |     1.00 |
-| Nomenclatura           |        10 |        |     0.67 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.02 |
+| *TOTAL*                |           |        |     9.35 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Arturo Durán y Miguel López
 - Situación implementada :: Control de flujo de trenes en las líneas
@@ -209,13 +209,13 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Directorio de proyecto |       7.5 |        |     0.50 |
 | Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |      1.5 |
+| *Legibilidad*          |           |    0.2 |     1.75 |
 | Estructura             |        10 |        |     1.00 |
-| Nomenclatura           |       7.5 |        |     0.50 |
+| Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     8.68 |
+| *TOTAL*                |           |        |     8.93 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Ernesto Aguilera
 - Situación implementada :: Uso de hornos en cocinas de restaurantes concurridos
@@ -254,13 +254,13 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Directorio de proyecto |       7.5 |        |     0.50 |
 | Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |      1.5 |
+| *Legibilidad*          |           |    0.2 |     1.75 |
 | Estructura             |        10 |        |     1.00 |
-| Nomenclatura           |       7.5 |        |     0.50 |
+| Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     7.67 |
+| *TOTAL*                |           |        |     7.92 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Alberto Espinoza
 - Situación implementada :: Control aéreo del aeropuerto
@@ -295,124 +295,206 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Directorio de proyecto |       7.5 |        |     0.50 |
 | Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |     1.67 |
+| *Legibilidad*          |           |    0.2 |       2. |
 | Estructura             |        10 |        |     1.00 |
-| Nomenclatura           |        10 |        |     0.67 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     8.18 |
+| *TOTAL*                |           |        |     8.51 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Rodrigo Francisco y Beatriz Sánchez
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: El museo de Djikstra
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora /
+              consola, dando color por tipo de mensaje; parámetros
+              especificables por línea de comando
 - Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md]]
 - Código :: [[./FranciscoRodrigo-SanchezBeatriz/d_museum/argumentos.py][argumentos.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/colors.py][colors.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/guia.py][guia.py]], [[./FranciscoRodrigo-SanchezBeatriz/d_museum/turista.py][turista.py]], [[./FranciscoRodrigo-SanchezBeatriz/main.py][main.py]]
 - Lenguaje de desarrollo :: Python
-- Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+- Uso de multitarea / sincronización :: Cada turista es un hilo; los
+     guías son únicamente estructuras de datos compartidas entre un
+     grupo de turistas.
+- Obsevaciones ::
+  - ¡Excelente documentación!
+    - Busqué referencia a este planteamiento entre los textos de
+      Dijkstra, y no lo encontré. ¿Es original de ustedes?
+  - Mencionan que no les gusta, para resolver la inanición de los
+    guías, que el último turista tenga que /despertar por fuerza
+    bruta/ a todos los turistas. ¿Y por qué no lo hacen como la
+    barrera? Esto es, podrían reemplazar al arreglo de semáforos que
+    tienen en =lista_turistas= por una barrera. ¡Me parece que
+    describen /exactamente/ el comportamiento que provee!
+    - Eso sí: El que lo implementaran de esta manera muestra que
+      pueden razonar usando semáforos de forma original. ¡Bien! :-D
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     2.01 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     1.67 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     2.01 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     9.69 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Orlando García y Zuriel Rodríguez
-- Situación implementada ::
+- Situación implementada :: Los peces en el acuario
 - Interfaz :: 
 - Documentación :: [[./GarciaOrlando-RodriguezZuriel/Descripcion.txt][Descripcion.txt]],  [[./GarciaOrlando-RodriguezZuriel/Documentacion.txt][Documentacion.txt]]
 - Código :: [[./GarciaOrlando-RodriguezZuriel/PecesCircundantes.py][PecesCircundantes.py]]
 - Lenguaje de desarrollo :: Python
-- Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+- Uso de multitarea / sincronización :: Cada pez es un hilo. Multiplex
+     para poner una cota máxima de peces nadando en la misma
+     dirección. Mutex para controlar variable de estado.
+- Obsevaciones ::
+  - Me resultó muy útil para entender lo que pasaba agregar lo
+    siguiente en =getStatus()=:
+    #+BEGIN_SRC python
+      string += "Peces en el centro[" + '*'*len(Centro)+"]\n\n"
+      for pez in Centro:
+          string += "      (( °-° ))    : "+pez.nombre+"\n"
+    #+END_SRC
+    De otro modo, los peces simplemente se me /desaparecían/ sin
+    explicación ☹
+    - Aunque probablemente debería haber algún mutex para hacer esta
+      impresión de estado..? Porque a veces, el mismo pez parece estar
+      en dos estados a la vez... O a veces, ¡parece no existir!
+      #+BEGIN_SRC text
+
+        ,************************************
+        Peces circulando a reloj[ ** ]
+        ><((( °-° ) : Marlin
+        ><((( °-° ) : Jacques
+        Peces circulando en contrareloj[ ** ]
+
+      	( °-° )))>< : Nemo
+      	( °-° )))>< : Dory
+        Peces en el centro[*]
+
+      	(( °-° ))   : Marlin
+
+        ,************************************
+        Peces circulando a reloj[ ** ]
+        ><((( °-° ) : Crush
+        ><((( °-° ) : Jacques
+        Peces circulando en contrareloj[ ** ]
+
+      	( °-° )))>< : Nemo
+      	( °-° )))>< : Dory
+        Peces en el centro[***]
+
+      	(( °-° ))   : Jacques
+      	(( °-° ))   : Nemo
+      	(( °-° ))   : Dory
+      #+END_SRC
+  - Si entendí correctamente, una de sus condiciones se rompe todo el
+    tiempo: Supuestamente no debería haber el mismo número de peces
+    nadando en el mismo sentido. Muchas veces nadan dos y dos. (¿o
+    será que se /reportan/ dos y dos? ¿Lo podrína demostrar?)
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.01 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.67 |
+| Historial en Git       |         5 |        |     0.33 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     9.01 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Vicente García y Enrique Guerrero
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: Subiendo y bajando del autobús
+- Interfaz :: Envía mensajes con una bitácora detallada de acciones a
+              consola; presenta una bonita representación gráfica
+              ilustrando el recorrido del autobús a lo largo de la
+              ruta
 - Documentación :: [[./GarciaVicente-GuerreroEnrique/Descripcion_problema.txt][Descripcion_problema.py]], [[./GarciaVicente-GuerreroEnrique/Documentacion.docx][Documentacion.docx]]
 - Código :: [[./GarciaVicente-GuerreroEnrique/PanelControl.py][PanelControl.py]], [[./GarciaVicente-GuerreroEnrique/prog2.py][prog2.py]], [[./GarciaVicente-GuerreroEnrique/PSincronizacion.py][PSincronizacion.py]]
 - Lenguaje de desarrollo :: Python
 - Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+  - Cada pasajero es un hilo
+  - Mutex (sólo uno baja a la vez)
+  - Señalización (hora de arrancar / quiero bajar / ...)
+- Obsevaciones ::
+  - Tuve que adivinar cómo ejecutar el programa (en la documentación
+    no mencionan si hay que llamar a prog2.py, a PanelControl.py, o
+    cómo se inicia el programa
+  - Tuve que hacer varias modificaciones para lograr que funcionara el
+    programa
+  - Si iniciamos el programa por primera vez llamando a =prog2.py=, se
+    /muere/ por no encontrar al archivo variables.py
+    - Y si llamamos primero a =PanelControl.py=, asume algunos
+      detalles del entorno Windows que me dificultaron la
+      ejecución. Por ejemplo, =os.system('proy2.py')= no es exitoso
+      (no encuentra al archivo, el archivo no tiene permisos de
+      ejecución...)
+  - La ejecución del programa conlleva la creación de varios archivos
+    — variables.py (presentando al funcionamiento del programa) genera
+    a =variables.py= (y a su contraparte, =variables.pyc=). 
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |      1.5 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |      1.5 |
+| Historial en Git       |       7.5 |        |     0.50 |
+| Directorio de proyecto |       7.5 |        |     0.50 |
+| Código válido          |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |     1.75 |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     8.42 |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Omar Ibarra
 - Situación implementada ::
@@ -451,7 +533,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 | *TOTAL*                |           |        |       0. |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Osmar Juárez y Luis Morales
 - Situación implementada ::
@@ -488,7 +570,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 | *TOTAL*                |           |        |       0. |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Mata
 - Situación implementada ::
@@ -525,7 +607,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 | *TOTAL*                |           |        |       0. |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Carlos Morales y Miguel Pérz Quiroz
 - Situación implementada ::
@@ -562,7 +644,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 | *TOTAL*                |           |        |       0. |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Vicente Romero
 - Situación implementada ::
@@ -599,4 +681,4 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 | *TOTAL*                |           |        |       0. |
 |------------------------+-----------+--------+----------|
-#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/3 ; f-2::@19$4=@2+@4+@8+@12+@16
+#+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
