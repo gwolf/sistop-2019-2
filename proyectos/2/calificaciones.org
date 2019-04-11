@@ -52,12 +52,12 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Complejidad            |        10 |        |     0.67 |
 | Interfaz usuario       |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |     2.01 |
+| *Documentación*        |           |    0.2 |     2.00 |
 | Documentación expresa  |        10 |        |     0.67 |
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |     2.01 |
+| *Entrega*              |           |    0.2 |     2.00 |
 | Historial en Git       |        10 |        |     0.67 |
 | Directorio de proyecto |        10 |        |     0.67 |
 | Código válido          |        10 |        |     0.67 |
@@ -66,7 +66,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.61 |
+| *TOTAL*                |           |        |     9.59 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
@@ -85,7 +85,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 - Obsevaciones ::
   - Buena resolución. Para modelar mejor la vida real, que no es tan
     determinista como quisiéramos, yo sugeriría meter
-    aleatoreidad. Por ejemplo, que sólo una de cada /n/ personas (en
+    aleatoriedad. Por ejemplo, que sólo una de cada /n/ personas (en
     este caso, con probabilidad de 0.7) se forme:
     #+begin_src python
       def Personas():
@@ -100,7 +100,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
     #+end_src
   - Por otro lado, el inicio de un recorrido debería limpia tanto el
     número de minutos que llevamos esperando como la cantidad de
-    personas formadas, para evitar distorsiones antieconómicas como la
+    personas formadas, para evitar distorsiones anti-económicas como la
     siguiente:
     #+begin_src text
       Encendiendo Pumabus...
@@ -138,7 +138,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Complejidad            |        10 |        |     0.67 |
 | Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |     2.01 |
+| *Documentación*        |           |    0.2 |     2.00 |
 | Documentación expresa  |        10 |        |     0.67 |
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |        10 |        |     0.67 |
@@ -152,7 +152,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.35 |
+| *TOTAL*                |           |        |     9.34 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
@@ -199,7 +199,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Complejidad            |         5 |        |     0.33 |
 | Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |     2.01 |
+| *Documentación*        |           |    0.2 |     2.00 |
 | Documentación expresa  |        10 |        |     0.67 |
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |        10 |        |     0.67 |
@@ -213,7 +213,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     8.93 |
+| *TOTAL*                |           |        |     8.92 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
@@ -285,7 +285,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Complejidad            |         5 |        |     0.33 |
 | Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |     2.01 |
+| *Documentación*        |           |    0.2 |     2.00 |
 | Documentación expresa  |        10 |        |     0.67 |
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |        10 |        |     0.67 |
@@ -299,12 +299,12 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     8.51 |
+| *TOTAL*                |           |        |     8.50 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Rodrigo Francisco y Beatriz Sánchez
-- Situación implementada :: El museo de Djikstra
+- Situación implementada :: El museo de Dijkstra
 - Interfaz :: Presenta los cambios de estado del sistema a bitácora /
               consola, dando color por tipo de mensaje; parámetros
               especificables por línea de comando
@@ -332,7 +332,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | *Requisitos*           |           |    0.2 |       2. |
 | Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |     2.01 |
+| *Proyecto*             |           |    0.2 |     2.00 |
 | Creatividad            |        10 |        |     0.67 |
 | Complejidad            |        10 |        |     0.67 |
 | Interfaz usuario       |        10 |        |     0.67 |
@@ -342,7 +342,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |     2.01 |
+| *Entrega*              |           |    0.2 |     2.00 |
 | Historial en Git       |        10 |        |     0.67 |
 | Directorio de proyecto |        10 |        |     0.67 |
 | Código válido          |        10 |        |     0.67 |
@@ -351,13 +351,13 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.69 |
+| *TOTAL*                |           |        |     9.67 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Orlando García y Zuriel Rodríguez
 - Situación implementada :: Los peces en el acuario
-- Interfaz :: 
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
 - Documentación :: [[./GarciaOrlando-RodriguezZuriel/Descripcion.txt][Descripcion.txt]],  [[./GarciaOrlando-RodriguezZuriel/Documentacion.txt][Documentacion.txt]]
 - Código :: [[./GarciaOrlando-RodriguezZuriel/PecesCircundantes.py][PecesCircundantes.py]]
 - Lenguaje de desarrollo :: Python
@@ -408,7 +408,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
   - Si entendí correctamente, una de sus condiciones se rompe todo el
     tiempo: Supuestamente no debería haber el mismo número de peces
     nadando en el mismo sentido. Muchas veces nadan dos y dos. (¿o
-    será que se /reportan/ dos y dos? ¿Lo podrína demostrar?)
+    será que se /reportan/ dos y dos? ¿Lo podrían demostrar?)
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
@@ -420,7 +420,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Complejidad            |         5 |        |     0.33 |
 | Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |     2.01 |
+| *Documentación*        |           |    0.2 |     2.00 |
 | Documentación expresa  |        10 |        |     0.67 |
 | Entorno y dependencias |        10 |        |     0.67 |
 | Comentarios            |        10 |        |     0.67 |
@@ -434,7 +434,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 | Estructura             |        10 |        |     1.00 |
 | Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |     9.01 |
+| *TOTAL*                |           |        |     9.00 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
@@ -497,188 +497,330 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Omar Ibarra
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: Monitor de sistema
+- Interfaz :: Menú para invocar a diferentes programas
 - Documentación :: [[./IbarraOmar/Documentacion][Documentacion]],  [[./IbarraOmar/manual][manual]]
 - Código :: [[./IbarraOmar/autorizacion.sh][autorizacion.sh]], [[./IbarraOmar/CamPass.sh][CamPass.sh]], [[./IbarraOmar/cargadelsistema.sh][cargadelsistema.sh]], [[./IbarraOmar/disco.sh][disco.sh]],
             [[./IbarraOmar/ejecutableF.c][ejecutableF.c]], [[./IbarraOmar/memoria.sh][memoria.sh]],
             [[./IbarraOmar/omar_ibarra_proyecto_sistemas.sh][omar_ibarra_proyecto_sistemas.sh]], [[./IbarraOmar/usuarios.sh][usuarios.sh]]
 - Lenguaje de desarrollo :: Shell Bourne / C
-- Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+- Uso de multitarea / sincronización :: No tiene
+- Obsevaciones ::
+  - ¡Cuida tu ortografía! Una de las razones que pido que con los
+    proyectos entreguen documentación es para ir "empujando" hacia cómo
+    se tienen que hacer las entregas "reales" en un entorno
+    profesional. Tu documentación me resulta difícil de leer — no usas
+    ningún acento, hay varios dedazos ("timpo", "lobores"), y hay unas
+    faltas de ortografía tremendas ("decea", "rializar"). Todo esto
+    daría una muy mala imagen de tu profesionalismo a cualquiera que
+    evalúe trabajar contigo.
+  - El programa no es lo que pedí ☹ No hay manejo de concurrencia, no
+    hay sincronización, no hay hilos o procesos con avance
+    simultáneo... ¿Qué me toca calificar? ☹
+  - Es un lindo proyecto, y sin duda te llevó a aprender acerca de
+    cómo tu sistema operativo te reporta diferentes niveles. Se ve
+    bien trabajado e interesante.
+  - ¡No asumas que todos los que usamos Linux tenemos configurado a
+    nuestro "sudo" para dar acceso irrestricto! Sé que es de uso
+    frecuente, pero... También sé que es muy mala idea :-)
+    - Además, la mayor parte de los comandos que requiere tu programa
+      no requieren niveles elevados de privilegios. ¡Un importante
+      principio de administración de sistemas es nunca tener más
+      derechos de lo que necesitas! (y pedirlos, si acaso, en el
+      momento que los requieras).
+    - Como sea, estás verificando para entrar a la sección
+      /Administración/ que el UID sea 0...
+  - /Bash/ es, como lenguaje de programación, /bastante/ feo e
+    inconsistente. Lograste escribir un programa largo y relativamente
+    fácil de seguir a ojo. Eso por sí solo ya merece felicitaciones ☺
+
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
 | *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| Cumplimiento           |         0 |        |     0.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.34 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         0 |        |     0.00 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     1.67 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.84 |
+| Historial en Git       |       7.5 |        |     0.50 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     6.85 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Osmar Juárez y Luis Morales
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: Sistema de compra de boletos
+- Interfaz :: Lanzador en Tkinter, el programa reporta su avance con
+              mensajes a la consola dentro de Tkinter
 - Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionProyecto2_SO.odt][DocumentacionProyecto2_SO.odt]]
 - Código :: [[./JuarezOsmar-MoralesLuis/Proyecto2_Sistop.py][Proyecto2_Sistop.py]]
 - Lenguaje de desarrollo :: Python
 - Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+  - Barreras para que los clientes entren de diez en diez
+  - Mutex para que no haya dos compras simultáneas
+- Obsevaciones ::
+  - ¡Ni parece que cruzaron por tres semestres de puro Ciencias
+    Básicas! 😉 ¿Qué es eso de que /para un concierto X (...) se X
+    número boletos/? ¡Una misma variable no se usa para dos cosas
+    distintas! (segundo caso, al final de la primera hoja: /«el otro
+    caso es que estén n personas/ /en el sistema online y n personas
+    en la tienda físicamente»/... ¿Significa esto que pueden
+    únicamente ser 5 y 5? Porque para permitir 6 y 4 o 3 y 7, tendrían
+    que ser cuando menos /n/ y /n'/, o algo por el estilo
+  - ¡Trabajen en mejorar su redacción! Llevo leídos apenas los
+    primeros dos párrafos de su documentación, y ya me perdí varias
+    veces.
+    - Separar ideas distintas en oraciones distintas. El primer
+      párrafo presenta dos ideas, separadas por una coma, y genera
+      confusión en el lector. → /«...disponibilidad de boletos. Se
+      debe tener...»/ (O, más aún, en español tendemos a abusar de la
+      /voz pasiva/ con /sujeto tácito/. ¿Por qué no decir, /«El
+      sistema debe mantener control de que dos personas...»/?
+    - Faltan partículas de conexión, como preposiciones (segundo
+      párrafo, sugiero /«vender es de X número *de* boletos»/
+    - Separación de fragmentos de la misma idea: poner algunas comas
+      en la mega-oración "/Debido a ... al mismo tiempo/"
+    - Concordancia de número. /«que no se vendan 1 boleto a 2
+      personas»/ → «que no se venda el mismo boleto a dos personas»?
+    - Hay varios dedazos, que entorpecen todavía más la
+      lectura. «pudra ser en linea», «pudiera ingresara l mismo
+      tiempo»...
+    - No me enfoco más en detalles de ortografía, redacción y dedazos,
+      que no me tocan... ¡Pero trabajen en ellos! Es muy importante
+      para la imagen de profesionales que dan, y para la claridad de
+      lo que escriben. No conviene confundir a un potencial cliente
+      con textos poco claros (me canso de leerlos y los descarto).
+  - La aplicación tal como la presentan, con una ventana de dimensión
+    fija a 1800x1000 y una ventana de texto de 40 líneas, no muestra
+    los botones de la parte inferior. Reduje la altura de la ventana
+    =tinfo= a 40, y pude ejecutarlo correctamente (en una pantalla de
+    suficiente resolución)
+  - Entiendo que ambicionaban presentar una interfaz gráfica, pero a
+    fin de cuentas, presentaron una terminal dentro de una ventanota
+    :-)
+    - Algo que les ayudaría a conceptualizar y a desarrollar su
+      interfaz puede ser seguir el patrón /Modelo-Vista-Controlador/
+      (MVC), en que se hace una limpia /separación de intereses/ entre
+      los componentes del código. Lo tienen ya medio-andado — El
+      principal cambio es que, por ejemplo, sus funciones
+      =compradorFisico()= y =compradorOnline()= (que serían los
+      /modelos/) no /inyectarían/ cadenas específicas de texto, sino
+      que sólo modificarían su estado. El /controlador/ monitorea y
+      realiza cambios a los objetos modelados, y la /vista/ se limita
+      a presentarlo al usuario.  Con eso, tendrían suficiente para
+      encontrar mejor cómo representar lo que ocurre.
+    - El mismo modelo de aplicación que les impone Tkinter los
+      "empuja" hacia MVC. La aplicación (=class AplicacionBoleto=)
+      debería limitarse al controlador.
+    - Llama mucho mi atención que usaron una característica poco
+      frecuentemente utilizada de Python: Las funciones anidadas o
+      locales. Me queda un tanto la duda de si lo hicieron a propósito
+      😉 Esto ya indica buena parte del camino andado para estructurar
+      al programa bajo una orientación a objetos (pero tal como
+      está... Me parece que dificulta un poco la comprensión ☹
+
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.33 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |         5 |        |     0.33 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |      1.5 |
+| Estructura             |       7.5 |        |     0.75 |
+| Nomenclatura           |       7.5 |        |     0.75 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     8.83 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Luis Mata
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: La cola del banco
+- Interfaz :: Presenta los cambios de estado del sistema a bitácora / consola
 - Documentación :: [[./MataLuis/proyecto2Documentacion][proyecto2Documentacion]]
 - Código :: [[./MataLuis/banco.py][banco.py]]
 - Lenguaje de desarrollo :: Python
 - Uso de multitarea / sincronización ::
+  - Cada cliente es un hilo
+  - Mutex para el manejo de la cola general y de las colas por caja
 - Obsevaciones :: 
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.16 |
+| Creatividad            |         5 |        |     0.33 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |       7.5 |        |     0.50 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     0.83 |
+| Documentación expresa  |       7.5 |        |     0.50 |
+| Entorno y dependencias |         5 |        |     0.33 |
+| Comentarios            |         0 |        |     0.00 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     1.34 |
+| Historial en Git       |         0 |        |     0.00 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     7.33 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Carlos Morales y Miguel Pérz Quiroz
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: La oficina de los locos
+- Interfaz :: Despliegue /animado/ sobre el tiempo, utilizando =colorama=
 - Documentación :: [[./MoralesCarlos-PerezQuirozMiguel/README.md][README.md]]
 - Código :: [[./MoralesCarlos-PerezQuirozMiguel/office.py][office.py]]
 - Lenguaje de desarrollo :: Python
-- Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+- Uso de multitarea / sincronización :: 
+  - Multiplex para marcar el máximo de cubículos simultáneos en uso
+  - Cada trabajador es un hilo
+- Obsevaciones ::
+  - Hacen bien en identificar la solución como algo similar /
+    comparable con el Round Robin (aunque en este caso, podríamos
+    decir que es un RR con una cola única para multiprocesador)
+  - Podrían haber agregado algo de interacción necesaria entre algunos
+    hilos, implicando alguna señalización, para hacerlo más
+    /divertido/ (e incluir un mayor uso de la sincronización)
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     1.67 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |         5 |        |     0.33 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |     9.67 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
 * Vicente Romero
-- Situación implementada ::
-- Interfaz ::
+- Situación implementada :: Pruebas de /estres/ a páginas web
+- Interfaz :: Gtk (wxPython), tanto para la especificación de
+              parámetros como para el reporte de resultados; genera
+              archivo de bitácora
 - Documentación :: [[./RomeroVicente/README.md][README.md]]
 - Código :: [[./RomeroVicente/VpostHorde/main.py][main.py]], [[./RomeroVicente/VpostHorde/tools/Analisis.py][Analisis.py]], [[./RomeroVicente/VpostHorde/tools/Consola.py][Consola.py]], [[./RomeroVicente/VpostHorde/tools/Estres.py][Estres.py]], [[./RomeroVicente/VpostHorde/tools/GUI.py][GUI.py]], [[./RomeroVicente/VpostHorde/tools/Peticion.py][Peticion.py]], [[./RomeroVicente/VpostHorde/tools/plot.py][plot.py]]
-- Lenguaje de desarrollo ::
+- Lenguaje de desarrollo :: Python
 - Uso de multitarea / sincronización ::
-- Obsevaciones :: 
+  - Múltiples hilos para realizar solicitudes simultáneas
+  - Señalización de acciones finalizadas entre los componentes de la aplicación
+  - Barrera para inicio coordinado de pruebas
+  - Mutex para proteger al contador de trabajadores activos
+- Obsevaciones ::
+  - Muy buen programa, linda implementación, ¡y hasta útil!
+    ¡Felicidades!
+  - Si acaso, podría sugerirte buscar cómo implementar =DRY= (/Don't
+    Repeat Yourself/). Al desarrollar un programa, si ves que la misma
+    región se repite en diferentes partes o siguiendo condiciones
+    similares, de forma idéntica o con cambios muy menores, conviene
+    considerar convertirlo en una función. Por ejemplo, en
+    =tools/Estres.py=, repites muchas veces el siguiente bloque:
+    #+begin_src python
+	  num_respuestas = 0 # Se inicializa una variable que acumula el numero de respuestas esperadas
+      while(self.esperarTiempo()):
+	  num = 0 # se inicializa en 0 el contador para la barrera 
+	  num_respuestas = num_respuestas + self.hilos # en cada iteracion se aumenta por el numero de hilos concurrentes
+	  for i in range(self.hilos):
+	      thread = threading.Thread(target = self.post, args = (self.respuestas,),name=str(i+1)+" peticion")
+	      thread.start() #adentro se libera el mutex
+	      self.mutex_cont.acquire()
+	      num = num + 1 #se proteje el contador con este mutex
+	      self.mutex_cont.release()
+	  if num == self.hilos:
+	      for i in range(self.hilos):
+		  self.barrier.release() #Se libera la barrear
+	      num = 0 #Se reinicializa el contador para otra barrera
+	  self.barrier.acquire()
+	  if (self.tiempo==None): # Si no se define tiempo se terminara el while inmediatamente
+	      break
+      while len(self.respuestas) < num_respuestas and self.esperarTiempo():
+	  pass
+      self.escribirRespuestas(output)
+      self.finished.release()
+    #+end_src
+    Con cambios bastante menores entre una y otra. Si tuvieras que
+    agregar, digamos, un mensaje a bitácora antes de =thread.start()=,
+    se vuelve una tarea ingrata y frágil. ¡No te repitas! Usa una
+    función, con comportamiento parametrizado.
 
 | *Rubro*                | *Parcial* | *Peso* | *Puntos* |
 |------------------------+-----------+--------+----------|
-| *Requisitos*           |           |    0.2 |       0. |
-| Cumplimiento           |           |        |     0.00 |
+| *Requisitos*           |           |    0.2 |       2. |
+| Cumplimiento           |        10 |        |     2.00 |
 |------------------------+-----------+--------+----------|
-| *Proyecto*             |           |    0.2 |       0. |
-| Creatividad            |           |        |     0.00 |
-| Complejidad            |           |        |     0.00 |
-| Interfaz usuario       |           |        |     0.00 |
+| *Proyecto*             |           |    0.2 |     2.00 |
+| Creatividad            |        10 |        |     0.67 |
+| Complejidad            |        10 |        |     0.67 |
+| Interfaz usuario       |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Documentación*        |           |    0.2 |       0. |
-| Documentación expresa  |           |        |     0.00 |
-| Entorno y dependencias |           |        |     0.00 |
-| Comentarios            |           |        |     0.00 |
+| *Documentación*        |           |    0.2 |     2.00 |
+| Documentación expresa  |        10 |        |     0.67 |
+| Entorno y dependencias |        10 |        |     0.67 |
+| Comentarios            |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Entrega*              |           |    0.2 |       0. |
-| Historial en Git       |           |        |     0.00 |
-| Directorio de proyecto |           |        |     0.00 |
-| Código válido          |           |        |     0.00 |
+| *Entrega*              |           |    0.2 |     2.00 |
+| Historial en Git       |        10 |        |     0.67 |
+| Directorio de proyecto |        10 |        |     0.67 |
+| Código válido          |        10 |        |     0.67 |
 |------------------------+-----------+--------+----------|
-| *Legibilidad*          |           |    0.2 |       0. |
-| Estructura             |           |        |     0.00 |
-| Nomenclatura           |           |        |     0.00 |
+| *Legibilidad*          |           |    0.2 |       2. |
+| Estructura             |        10 |        |     1.00 |
+| Nomenclatura           |        10 |        |     1.00 |
 |------------------------+-----------+--------+----------|
-| *TOTAL*                |           |        |       0. |
+| *TOTAL*                |           |        |    10.00 |
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
