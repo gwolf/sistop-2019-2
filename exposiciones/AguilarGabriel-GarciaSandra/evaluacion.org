@@ -2,7 +2,7 @@
 #+author: Gunnar Wolf
 
 - Tema presentado por :: Sandra García y Gabriel Aguilar
-- Calificación global :: 88.75 * 0.3 +  * 0.7 = **
+- Calificación global :: 88.75 * 0.3 +  76.25 * 0.7 = *80.0*
 
 * Evaluación grupal
 
@@ -50,14 +50,14 @@
 
 | *Aspecto*              | *Peso* | *Evaluación* | *Puntos* |
 |------------------------+--------+--------------+----------|
-| Originalidad del tema  |    0.1 |              |       0. |
-| Material desarrollado  |    0.2 |              |       0. |
-| Contenido              |    0.2 |              |       0. |
-| Fuentes bibliográficas |    0.1 |              |       0. |
-| Uso del tiempo         |    0.1 |              |       0. |
-| Dominio del tema       |   0.15 |              |       0. |
-| Presencia              |   0.15 |              |       0. |
+| Originalidad del tema  |    0.1 |           75 |      7.5 |
+| Material desarrollado  |    0.2 |           50 |      10. |
+| Contenido              |    0.2 |           75 |      15. |
+| Fuentes bibliográficas |    0.1 |           75 |      7.5 |
+| Uso del tiempo         |    0.1 |          100 |      10. |
+| Dominio del tema       |   0.15 |          100 |      15. |
+| Presencia              |   0.15 |           75 |    11.25 |
 |------------------------+--------+--------------+----------|
-| *Global*               |        |              |     0.00 |
+| *Global*               |        |              |    76.25 |
 #+TBLFM: @<<$4..@>>$4=$2*$3::$4=vsum(@<<..@>>);f-2
 

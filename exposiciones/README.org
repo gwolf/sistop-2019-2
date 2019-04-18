@@ -21,7 +21,7 @@ el que ustedes me planteen los temas de su interés.
 | 26/mar | — No disponible —                                         |                                     |                       |            |
 | 28/mar | — No disponible —                                         |                                     |                       |            |
 | 2/abr  | — No disponible —                                         |                                     |                       |            |
-| 4/abr  | Trusted Platform Module (TPM)                             | Sandra García y Gabriel Aguilar     |                       |            |
+| 4/abr  | Trusted Platform Module (TPM)                             | Sandra García y Gabriel Aguilar     | [[./AguilarGabriel-GarciaSandra/Resumen TPM.pdf][Resumen]], [[./AguilarGabriel-GarciaSandra/Trusted Plataform Module.pptx][Presentación]] | [[./AguilarGabriel-GarciaSandra/evaluacion.org][Evaluación]] |
 | 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Omar Ibarra           | [[./RodriguezZuriel-IbarraOmar/Inteligencia artificial en los sistemas operativos.pptx][Presentación]]          | [[./RodriguezZuriel-IbarraOmar/evaluacion.org][Evaluación]] |
 | 11/abr | Cómputo cuántico                                          | Miguel Ángel López                  | [[./LopezMiguel/MecanicaCuantica.pdf][Resumen]], [[./LopezMiguel/ComputaciónCuánticaPresentacion.pdf][Presentación]] | [[./LopezMiguel/evaluacion.org][Evaluación]] |
 | 23/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales |                       |            |
