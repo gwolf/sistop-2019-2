@@ -30,6 +30,7 @@ el que ustedes me planteen los temas de su interés.
 | 2/may  | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  |                       |            |
 | 4/may  | Las clases de planificación en Linux y SCHED_DEADLINE     | Joel Feria y Vladimir López         |                       |            |
 | 16/may | Sistemas de archivos distribuidos                         | Enrique Guerrero y Vicente García   |                       |            |
+| 20/may | Deduplicación                                             | Yared Guzmán y Félix González       |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 
 
