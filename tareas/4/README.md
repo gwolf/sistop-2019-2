@@ -12,6 +12,8 @@ Esta tarea la presento, tal como fue la tarea 1, como una suerte de
 _control de lectura_, y para tener claro qué les quedó de la
 exposición.
 
+Pueden consultar la [revisión de sus trabajos](./revision.org).
+
 ## ¿Qué hay que hacer?
 
 - Elaboren un _mapa conceptual_ de los puntos principales que sienten

@@ -1,0 +1,139 @@
+#+title: Revisión de la tarea 4
+
+Como lo comenté en clase, esta tarea es –nuevamente– meramente un
+control de lectura. En esta ocasión, no únicamente espero que les haya
+parecido interesante — Conozco a Chema, y confío plenamente en que la
+hayan disfrutado.
+
+Calificar esta tarea de forma objetiva resulta todavía más complicado
+que con la [[../1/revision.org][tarea 1]]: En esta ocasión, ni siquiera estuve presente. Así
+que intentaré hacer algún comentario a lo que me llame la atención,
+pero comprenderán si no muestro un pleno rigor para calificarlos ☺
+
+- Gabriel Aguilar, Sandra García ::
+  - Archivo :: [[./AguilarGabriel-GarciaSandra/PlanTiempoReal.PNG][PlanTiempoReal.PNG]]
+  - Comentarios ::
+    - ¡No olviden poner su nombre en las entregas que realicen!
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+  - Calificación :: 8
+
+- Ernesto Aguilera ::
+  - Archivos :: [[./AguileraErnesto/Resumen.txt][Resumen.txt]], [[./AguileraErnesto/TiempoReal.jpeg][TiempoReal.jpeg]]
+  - Comentarios ::
+    - ¡No olvides poner tu nombre en las entregas que realices!
+    - Completamente de acuerdo con lo que señalas en el resumen: Para
+      usar embebidos /de verdad/, tienes que atorarle profundamente a
+      conceptos de tiempo real. Es un campo de mucha especialización,
+      en el sentido de que hay poca gente que lo comprenda bien (tal
+      vez no tanto en la profundidad de los conceptos, pero sí en la
+      importancia de implementarlos /bien/)
+    - Te sugiero asomarte al proyecto /Automotive Grade Linux/ para
+      más al respecto.
+  - Calificación :: 10
+
+- Lizbeth Alejandro ::
+  - Archivo :: [[./AlejandroLizbeth/Tarea4.LizbethAlejandro.pdf][Tarea4.LizbethAlejandro.pdf]]
+  - Comentarios ::
+    - ¡Muy buen mapa / resumen!
+  - Calificación :: 10
+
+- Luis Arvizu y Paola Lara ::
+  - Archivo :: [[./ArvizuLuis-LaraPaola/ArvizuLuis_LaraPaola-Tarea4.pdf][ArvizuLuis_LaraPaola-Tarea4.pdf]]
+  - Comentarios ::
+    - ¡Buen trabajo!
+  - Calificación :: 10
+
+- Arturo Durán ::
+  - Archivo :: [[./DuránArturo/Tarea4_SistemasO.pdf][Tarea4_SistemasO.pdf]]
+  - Comentarios ::
+    - Buen resumen.
+    - Como mapa conceptual, no separas ideas (presentas toda una idea
+      compleja como un gran bloque, y no segmentas bloques).
+  - Calificación :: 9
+
+- Joel Feria ::
+  - Archivo :: [[./FeriaJoel/Doc.docx][Doc.docx]]
+  - Comentarios ::
+    - ¡No olvides poner tu nombre en las entregas que realices!
+    - Estoy mayormente de acuerdo con lo que comentas (y con cómo lo
+      haces). Me llama la atención únicamente lo último que mencionas:
+      ¿cómo relacionar este tema con nuestras tareas habituales? El
+      nivel de trabajo del planificador /de tiempo real/ no es algo
+      que /a diario planificamos/ en nuestras vidas, sino que algo
+      que no ha permeado a la comprensión de la mayor parte de
+      nosotros (¡me incluyo!)
+  - Calificación :: 9
+
+- Rodrigo Francisco y Beatriz Sánchez ::
+  - Archivo :: [[./FranciscoRodrigo-SanchezBreatriz/planificacion.pdf][planificacion.pdf]]
+  - Comentarios ::
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+  - Calificación :: 8
+
+- Orlando García y Zuriel Rodríguez ::
+  - Archivo :: [[./GarciaOrlando-RodriguezZuriel/DIAGRAMAPTR.pdf][DIAGRAMAPTR.pdf]]
+  - Comentarios ::
+    - ¡No olviden poner su nombre en las entregas que realicen!
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+      - Eso sí, un buen mapa ☺
+  - Calificación :: 8
+
+- Vicente García y Enrique Guerrero ::
+  - Archivo :: [[./GarciaVicente-GuerreroEnrique/Tarea4.pdf][Tarea4.pdf]]
+  - Comentarios ::
+    - ¡No olviden poner su nombre en las entregas que realicen!
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+    - Para ser un mapa conceptual, creo yo que /duro/ y /suave/
+      deberían estar bajo un encabezado, /tipos/, y las columnas
+      /tiempo/, /prioridad/ y /apañamiento/ bajo otra a la par (porque
+      no son atributos únicamente del tiempo real suave... ¿O sí?)
+  - Calificación :: 8
+
+- Félix González y Yared Guzmán ::
+  - Archivo :: [[./Gonzalez Felix-Guzman Yared/Planificacion en tiempo real.pdf][Planificacion en tiempo real.pdf]]
+  - Comentarios ::
+    - Buen resumen
+  - Calificación :: 10
+
+- Omar Ibarra ::
+  - Archivo :: [[./IbarraOmar/Tarea_4_Ibarra_Badillo_Omar.pdf][Tarea_4_Ibarra_Badillo_Omar.pdf]]
+  - Comentarios ::
+    - ¡No olvides poner tu nombre en las entregas que realices!
+    - Punto a favor: Tu mapa toma aspectos distintos de los que
+      tomaron muchos de tus compañeros. ¡Bien! :-)
+  - Calificación :: 10
+
+- Osmar Juárez y Luis Morales ::
+  - Archivo :: [[./JuarezOsmar-MoralesLuis/Tarea4_MapaConceptual.jpg][Tarea4_MapaConceptual.jpg]]
+  - Comentarios ::
+    - ¡No olviden poner su nombre en las entregas que realicen!
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+    - Respecto a la claridad del mapa mental: ¿Por qué «Aparatos
+      médicos» deriva de «Grabaciones musicales»? Supongo que debería
+      ir a la par, como concepto /hermano/. Hay varios otros ejemplos
+      de esto. Entiendo que el /árbol/ les quedó ancho y poco
+      profundo, pero la manera en que lo estructuraron resulta un poco
+      más confuso ⸚
+  - Calificación :: 8
+
+- Miguel López ::
+  - Archivo :: [[./LopezMiguel/Planificación de tiempo real.pdf][Planificación de tiempo real.pdf]]
+  - Comentarios ::
+    - Buen resumen
+  - Calificación :: 10
+
+- Carlos Morales y Miguel Pérez Quiroz ::
+  - Archivo :: [[./MoralesCarlos-PerezQuirozMiguel/Planificación de tiempo real.pdf][Planificación de tiempo real.pdf]]
+  - Comentarios ::
+    - Únicamente el mapa. ¿Y los otros puntos que pedí? ☹
+    - El mapa conceptual es de planificación en general, no presentan
+      los conceptos particulares de tiempo real que se vieron en esta
+      sesión.
+  - Calificación :: 8
+
+- Vicente Romero ::
+  - Archivo :: [[./RomeroVicente/planificacion en tiempo real.pdf][planificacion en tiempo real.pdf]]
+  - Comentarios ::
+    - ¡No olviden poner su nombre en las entregas que realicen!
+    - Buen resumen
+  - Calificación :: 10
