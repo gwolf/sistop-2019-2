@@ -702,7 +702,7 @@ El planteamiento del proyecto y la rúbrica para su calificación están
 |------------------------+-----------+--------+----------|
 #+TBLFM: @2$4=@3::@3$4=@3$2*@2$3 ; f-2::@4$4=@5+@6+@7::@5$4=$2*@4$3/3 ; f-2::@6$4=$2*@4$3/3 ; f-2::@7$4=$2*@4$3/3 ; f-2::@8$4=@9+@10+@11::@9$4=$2*@8$3/3 ; f-2::@10$4=$2*@8$3/3 ; f-2::@11$4=$2*@8$3/3 ; f-2::@12$4=@13+@14+@15::@13$4=$2*@12$3/3 ; f-2::@14$4=$2*@12$3/3 ; f-2::@15$4=$2*@12$3/3 ; f-2::@16$4=@17+@18::@17$4=$2*@16$3/2 ; f-2::@18$4=$2*@16$3/2 ; f-2::@19$4=@2+@4+@8+@12+@16
 
-* Carlos Morales y Miguel Pérz Quiroz
+* Carlos Morales y Miguel Pérez Quiroz
 - Situación implementada :: La oficina de los locos
 - Interfaz :: Despliegue /animado/ sobre el tiempo, utilizando =colorama=
 - Documentación :: [[./MoralesCarlos-PerezQuirozMiguel/README.md][README.md]]

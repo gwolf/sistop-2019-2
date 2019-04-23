@@ -1,4 +1,4 @@
-#+title: Revisión de la tarea 2
+#+title: Revisión de la tarea 3
 #+options: toc:nil num:nil
 
 ** Gabriel Aguilar, Sandra García
@@ -301,3 +301,25 @@
     inmediato.
 - Calificación :: 10
 
+** Rodrigo Francisco y Beatriz Sánchez
+- Lenguaje :: Python
+- Código :: [[./FranciscoRodrigo-SanchezBeatriz/fcfs.py][fcfs.py]], [[./FranciscoRodrigo-SanchezBeatriz/main.py][main.py]], [[./FranciscoRodrigo-SanchezBeatriz/rr4.py][rr4.py]], [[./FranciscoRodrigo-SanchezBeatriz/rr.py][rr.py]], [[./FranciscoRodrigo-SanchezBeatriz/spn.py][spn.py]], [[./FranciscoRodrigo-SanchezBeatriz/common/mystats.py][mystats.py]],
+            [[./FranciscoRodrigo-SanchezBeatriz/common/random_proc.py][random_proc.py]], [[./FranciscoRodrigo-SanchezBeatriz/common/watcher.py][watcher.py]]
+- Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md][README.md]]
+- Algoritmos implementados :: FCFS, RR1, RR4, SPN
+- Comentarios ::
+  - ¡Disculpen por la demora en calificarles!
+  - ¡Buena implementación! Es buena práctica separar la funcionalidad
+    en archivos fuente, con interfaces consistentes
+    - Casi casi lo hacen orientado a objetos... ¡No le tengan miedo!
+      Conviene estar familiarizado con la metodología, para adoptarla
+      sin dolor cuando tiene sentido
+    - Esto les permitiría ahorrar repeticiones de código (y la
+      debilidad en mantenimiento que de ahí puede presentarse): Si
+      tuvieran una clase abstracta general =planificador= (o si usaran
+      una para los más similares, /rr/ y /rr4/) que incluyera algunos
+      puntos comunes, únicamente tendrían que implementar las
+      diferencias.
+  - Bien por identificar y separar a los archivos que están dentro de
+    =common/=
+- Calificación :: 10
