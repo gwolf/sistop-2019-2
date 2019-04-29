@@ -2,7 +2,7 @@
 #+author: Gunnar Wolf
 
 - Tema presentado por :: Miguel Pérez Quiroz y Carlos Morales
-- Calificación global :: 91.83 * 0.3 + 76.25 * 0.7 = *80.92*
+- Calificación global :: 91.83 * 0.3 + 86.25 * 0.7 = *87.92*
 
 * Evaluación grupal
 
@@ -46,13 +46,13 @@
 | *Aspecto*              | *Peso* | *Evaluación* | *Puntos* |
 |------------------------+--------+--------------+----------|
 | Originalidad del tema  |    0.1 |          100 |      10. |
-| Material desarrollado  |    0.2 |           50 |      10. |
+| Material desarrollado  |    0.2 |          100 |      20. |
 | Contenido              |    0.2 |           75 |      15. |
 | Fuentes bibliográficas |    0.1 |           75 |      7.5 |
 | Uso del tiempo         |    0.1 |           75 |      7.5 |
 | Dominio del tema       |   0.15 |           75 |    11.25 |
 | Presencia              |   0.15 |          100 |      15. |
 |------------------------+--------+--------------+----------|
-| *Global*               |        |              |    76.25 |
+| *Global*               |        |              |    86.25 |
 #+TBLFM: @<<$4..@>>$4=$2*$3::$4=vsum(@<<..@>>);f-2
 
