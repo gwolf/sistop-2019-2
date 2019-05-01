@@ -29,9 +29,10 @@ el que ustedes me planteen los temas de su interés.
 | 30/abr | Puntos de control en procesos                             | Alan Monroy y Adair Peña            |                       |            |
 | 2/may  | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  |                       |            |
 | 7/may  | Las clases de planificación en Linux y SCHED_DEADLINE     | Joel Feria y Vladimir López         |                       |            |
-| 9/may  |                                                           | Paola Lara y Luis Arvizu            |                       |            |
+| 9/may  | — No disponible —                                         |                                     |                       |            |
+| 14/may |                                                           | Paola Lara y Luis Arvizu            |                       |            |
 | 16/may | Sistemas de archivos distribuidos                         | Enrique Guerrero y Vicente García   |                       |            |
-| 20/may | Deduplicación                                             | Yared Guzmán y Félix González       |                       |            |
+| 21/may | Deduplicación                                             | Yared Guzmán y Félix González       |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 
 
