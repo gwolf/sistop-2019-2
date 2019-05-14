@@ -1,7 +1,5 @@
 #+title: Proyecto 3: (Micro) sistema de archivos
 
-*  Proyecto 3: (Micro) sistema de archivos
-
 #+BEGIN_SRC yaml
 Planteamiento: 09.05.2019
 Entrega: 23.05.2019
@@ -38,8 +36,13 @@ tienen que desarrollar un programa que pueda:
    /desfragmente/ al =FiUnamFS=. Ojo, la defragmentación debe hacerse
    /dentro del sistema de archivos/ (no creando un sistema de archivos
    nuevo y copiando hacia éste).
-6. Antes del próximo lunes, les daré un sistema de archivos =FiUnamFS=
-   muestra. Díganme qué archivos tiene (¡describan su contenido!)
+
+*** Sistema muestra
+
+Para verificar su implementación, pueden [[./fiunamfs.img][descargar un sistema de
+archivos ejemplo]] que cumple con el planteamiento. Verifiquen que
+pueden realizar todas las tareas que les solicité con éste. Indíquenme
+— ¿Cuáles son los contenidos del /disco/?
 
 ** Especificación de =FiUnamFS=
 
@@ -65,10 +68,11 @@ tienen que desarrollar un programa que pueda:
             archivos. ¡Debes validar nunca modificar un sistema de
             archivos que no sea el correcto! Debe ser la cadena =FiUnamFS=.
   - 10--13 :: Versión de la implementación. Estamos implementando la
-              versión =0.3=
+              versión =0.4=
   - 20--35 :: Etiqueta del volumen
   - 40--45 :: Tamaño del cluster en bytes
   - 47--49 :: Número de clusters que mide el directorio
+  - 52--60 :: Número de clusters que mide la unidad completa
   El resto del superbloque puede quedar vacío (o puedes
   /sobrecargarlo/ con otros datos  — No es importante para la
   implementación.
