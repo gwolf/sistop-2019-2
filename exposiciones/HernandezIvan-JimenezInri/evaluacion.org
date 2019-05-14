@@ -2,7 +2,7 @@
 #+author: Gunnar Wolf
 
 - Tema presentado por :: Ivan Hernández e Inri Jiménez
-- Calificación global ::  * 0.3 +  * 0.7 = **
+- Calificación global ::  53.50 * 0.3 + 52.50 * 0.7 = *52.8*
 
 * Evaluación grupal
 
@@ -43,13 +43,13 @@
 | *Aspecto*              | *Peso* | *Evaluación* | *Puntos* |
 |------------------------+--------+--------------+----------|
 | Originalidad del tema  |    0.1 |           75 |      7.5 |
-| Material desarrollado  |    0.2 |              |       0. |
+| Material desarrollado  |    0.2 |           50 |      10. |
 | Contenido              |    0.2 |           50 |      10. |
-| Fuentes bibliográficas |    0.1 |              |       0. |
+| Fuentes bibliográficas |    0.1 |           75 |      7.5 |
 | Uso del tiempo         |    0.1 |          100 |      10. |
 | Dominio del tema       |   0.15 |            0 |       0. |
 | Presencia              |   0.15 |           50 |      7.5 |
 |------------------------+--------+--------------+----------|
-| *Global*               |        |              |    35.00 |
+| *Global*               |        |              |    52.50 |
 #+TBLFM: @<<$4..@>>$4=$2*$3::$4=vsum(@<<..@>>);f-2
 
