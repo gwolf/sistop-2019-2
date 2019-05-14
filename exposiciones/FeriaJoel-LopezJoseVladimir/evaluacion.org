@@ -1,4 +1,4 @@
-#+title: Evaluación de exposición: /Rootkits/
+#+title: Evaluación de exposición: /Las clases de planificación en Linux y SCHED_DEADLINE/
 #+author: Gunnar Wolf
 
 - Tema presentado por :: Vladimir López y Joel Feria
