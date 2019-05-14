@@ -30,7 +30,7 @@ el que ustedes me planteen los temas de su interés.
 | 2/may  | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  | [[./FranciscoRodrigo-SanchezBeatriz/Documentaci%C3%B3nRootkits%20(1).pdf][Resumen]], [[./FranciscoRodrigo-SanchezBeatriz/ROOTKITS%20(2).pdf][Presentación]] | [[./FranciscoRodrigo-SanchezBeatriz/evaluacion.org][Evaluación]] |
 | 7/may  | Las clases de planificación en Linux y SCHED_DEADLINE     | Joel Feria y Vladimir López         |                       |            |
 | 9/may  | — No disponible —                                         |                                     |                       |            |
-| 14/may |                                                           | Paola Lara y Luis Arvizu            |                       |            |
+| 14/may | Cargado y ligado                                          | Paola Lara y Luis Arvizu            | [[./ArvizuLuis_LaraPaola/Resumen - Cargado y Ligado de Programas.pdf][Resumen]], [[ArvizuLuis_LaraPaola/Cargado-y-ligado-de-programas_ArvizuLuis_LaraPaola.pdf][Presentación]] |            |
 | 16/may | Sistemas de archivos distribuidos                         | Enrique Guerrero y Vicente García   |                       |            |
 | 21/may | Deduplicación                                             | Yared Guzmán y Félix González       |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
