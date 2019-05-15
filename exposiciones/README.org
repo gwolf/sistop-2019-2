@@ -16,20 +16,23 @@ el que ustedes me planteen los temas de su interés.
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 | 26/feb | "The Machine" (HP)                                        | Lizbeth Alejandro, Arturo Durán     | [[./AlejandroLizbeth-DuránArturo/ResumenTheMachine.LizbethAlejandro.ArturoDuran.pdf][Resumen]], [[./AlejandroLizbeth-Dur%C3%A1nArturo/The.machine.LizbethAlejandro.ArturoDuran.pdf][Presentación]] | [[./AlejandroLizbeth-DuránArturo/evaluacion.org][Evaluación]] |
 | 7/mar  | Seguridad en entornos virtualizados; el modelo de anillos | Ernesto Aguilera                    | [[./AguileraErnesto/Resumen.Seguridad.en.entornos.virtualizados.el.modelo.de.anillos.AguileraErnesto.pdf][Resumen]], [[./AguileraErnesto/Seguridad.en.entornos.virtualizados.el.modelo.de.anillos.AguileraErnesto.pdf][Presentación]] | [[./AguileraErnesto/evaluacion.org][Evaluación]] |
-| 21/mar | SPECTRE y Meltdown                                        | Osmar Juárez                        |                       |            |
-| 21/mar | Planificación → Tiempo real, núcleo prevenible...         | Orlando García, Luis Morales        |                       |            |
+| 21/mar | SPECTRE y Meltdown                                        | Osmar Juárez                        | [[./JuarezOsmar/Articulo_MeltdownSpectre_SO.pdf][Resumen]], [[./JuarezOsmar/Meltdown_Spectre_Expo_SO_JuarezOsmar.pdf][Presentación]] | [[./JuarezOsmar/evaluacion.org][Evaluación]] |
+| 21/mar | Planificación → Tiempo real, núcleo prevenible...         | Orlando García, Luis Morales        | [[./GarciaOrlando-MoralesLuis/pdfresumen.pdf][Resumen]], [[./GarciaOrlando-MoralesLuis/PlanProcesos.pptx][Presentación]] | [[./GarciaOrlando-MoralesLuis/evaluacion.org][Evaluación]] |
 | 26/mar | — No disponible —                                         |                                     |                       |            |
 | 28/mar | — No disponible —                                         |                                     |                       |            |
 | 2/abr  | — No disponible —                                         |                                     |                       |            |
-| 4/abr  | Trusted Platform Module (TPM)                             | Sandra García y Gabriel Aguilar     |                       |            |
-| 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Omar Ibarra           |                       |            |
-| 11/abr | Cómputo cuántico                                          | Miguel Ángel López                  |                       |            |
-| 23/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales |                       |            |
-| 25/abr | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández                      |                       |            |
-| 30/abr | Puntos de control en procesos                             | Alan Monroy y Adair Peña            |                       |            |
-| 2/may  | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  |                       |            |
-| 4/may  | Las clases de planificación en Linux y SCHED_DEADLINE     | Joel Feria y Vladimir López         |                       |            |
+| 4/abr  | Trusted Platform Module (TPM)                             | Sandra García y Gabriel Aguilar     | [[./AguilarGabriel-GarciaSandra/Resumen TPM.pdf][Resumen]], [[./AguilarGabriel-GarciaSandra/Trusted Plataform Module.pptx][Presentación]] | [[./AguilarGabriel-GarciaSandra/evaluacion.org][Evaluación]] |
+| 9/abr  | Inteligencia artificial en SOs                            | Zuriel Uzai y Omar Ibarra           | [[./RodriguezZuriel-IbarraOmar/Inteligencia artificial en los sistemas operativos.pptx][Presentación]]          | [[./RodriguezZuriel-IbarraOmar/evaluacion.org][Evaluación]] |
+| 11/abr | Cómputo cuántico                                          | Miguel Ángel López                  | [[./LopezMiguel/MecanicaCuantica.pdf][Resumen]], [[./LopezMiguel/ComputaciónCuánticaPresentacion.pdf][Presentación]] | [[./LopezMiguel/evaluacion.org][Evaluación]] |
+| 23/abr | RATS - Remote Access Trojan                               | Miguel Pérez Quiroz, Carlos Morales | [[./MoralesCarlos-PerezQuirozMiguel/RATS_articulo.pdf][Resumen]], [[./MoralesCarlos-PerezQuirozMiguel/RATS.MoralesCarlos.PerezQuirozMiguel.pdf][Presentación]] | [[./MoralesCarlos-PerezQuirozMiguel/evaluacion.org][Evaluación]] |
+| 25/abr | Algoritmo de Dekker y solucuión de Peterson               | Ivan Hernández, Inri Jiménez        | [[./exposiciones/HernandezIvan-JimenezInri/expo.odp][Presentación]]          | [[./HernandezIvan-JimenezInri/evaluacion.org][Evaluación]] |
+| 30/abr | +Puntos de control en procesos+                           | +Alan Monroy y Adair Peña+          | Cancelada             |            |
+| 2/may  | Rootkits                                                  | Beatriz Sánchez, Rodrigo Francisco  | [[./FranciscoRodrigo-SanchezBeatriz/Documentaci%C3%B3nRootkits%20(1).pdf][Resumen]], [[./FranciscoRodrigo-SanchezBeatriz/ROOTKITS%20(2).pdf][Presentación]] | [[./FranciscoRodrigo-SanchezBeatriz/evaluacion.org][Evaluación]] |
+| 7/may  | Las clases de planificación en Linux y SCHED_DEADLINE     | Joel Feria y Vladimir López         | [[./FeriaJoel-LopezJoseVladimir/Clases-de-planificación-en-LINUX-y-SCHED.docx][Resumen]], [[./FeriaJoel-LopezJoseVladimir/Clases de Planificación en LINUX y SCHED_DEADLINE.pptx][Presentación]] | [[./FeriaJoel-LopezJoseVladimir/evaluacion.org][Evaluación]] |
+| 9/may  | — No disponible —                                         |                                     |                       |            |
+| 14/may | Cargado y ligado                                          | Paola Lara y Luis Arvizu            | [[./ArvizuLuis_LaraPaola/Resumen - Cargado y Ligado de Programas.pdf][Resumen]], [[ArvizuLuis_LaraPaola/Cargado-y-ligado-de-programas_ArvizuLuis_LaraPaola.pdf][Presentación]] |            |
 | 16/may | Sistemas de archivos distribuidos                         | Enrique Guerrero y Vicente García   |                       |            |
+| 21/may | Deduplicación                                             | Yared Guzmán y Félix González       |                       |            |
 |--------+-----------------------------------------------------------+-------------------------------------+-----------------------+------------|
 
 

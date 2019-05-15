@@ -1,3 +1,4 @@
+# -*- Encoding: utf-8 -*-
 from variables import * #Se importa la informacion del archivo variables.py donde esta definido el valor de pasajeros minimos y el numero de paradas
 import turtle
 from tkinter import PhotoImage
