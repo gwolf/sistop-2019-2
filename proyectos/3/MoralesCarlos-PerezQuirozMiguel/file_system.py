@@ -49,7 +49,7 @@ def create_file_system_disk():
 		#insert_bytes(61+actual_pointer,65+actual_pointer,extra)
 		#El puntero iniciará en el byte 1024 
 		actual_pointer = actual_pointer + 64
-
+	
 
 
 def get_existing_files(disk_name):
@@ -137,8 +137,9 @@ def copy_from_computer_to_disk(route,disk_name):
 			insert_bytes(actual_pointer_for_insert+25,actual_pointer_for_insert+30,init_cluster)
 			insert_bytes(actual_pointer_for_insert+31,actual_pointer_for_insert+45,c_date)
 			insert_bytes(actual_pointer_for_insert+46,actual_pointer_for_insert+60,m_date)
-			file_content_locator.append(os.path.getsize(disk_name) + 4)
-			insert_bytes(os.path.getsize(disk_name)+4,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
+
+			file_content_locator.append(os.path.getsize(disk_name)+4)
+			insert_bytes(os.path.getsize(disk_name)+8,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
 			#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
 			if len(file_content_locator) > 1:
 				if file_content_locator[-1] == file_content_locator[-2]:
@@ -155,26 +156,67 @@ def copy_from_computer_to_disk(route,disk_name):
 	computer_file.close()
 
 
-def copy_from_disk_to_computer():
-	pass
+def copy_from_disk_to_computer(file_name,disk_name):
+	new_file = open(file_name,'w')
+	file_system_disk = open(disk_name,'r')
+	file_position = file_names.index(file_name)
+	file_size = file_sizes[file_position]
+	file_pointer = file_content_locator[file_position]
+	file_system_disk.seek(file_pointer)
+	new_file.write(file_system_disk.read(file_size))
+	file_system_disk.close()
+	new_file.close()
 
 def list_files(disk_name):
-	pass
+	pass 
 
 def delete_file(file_name,disk_name):
-	pass
+	actual_pointer_for_delete = init_dir
+	file_system_disk = open(disk_name,'r+')
+	flag = 0
+	while flag == 0: 
+		file_system_disk.seek(actual_pointer_for_delete)
+		query = file_system_disk.read(15)
+		if query.replace(" ","") == file_name:
+			insert_bytes(actual_pointer_for_delete,actual_pointer_for_delete+15,'AQUI_NO_VA_NADA')
+			insert_bytes(actual_pointer_for_delete+16,actual_pointer_for_delete+24,'00000000')
+			insert_bytes(actual_pointer_for_delete+25,actual_pointer_for_delete+30,'00000000')
+			insert_bytes(actual_pointer_for_delete+31,actual_pointer_for_delete+45,'00000000000000')
+			insert_bytes(actual_pointer_for_delete+46,actual_pointer_for_delete+60,'00000000000000')
+			index = file_names.index(file_name)
+			location = file_content_locator[index]
+			for i in range(file_sizes[index] + 4):
+				file_system_disk.seek(location)
+				file_system_disk.write('0')
+				location += 1
+
+			
+			file_names.remove(file_name)
+			del file_sizes[index]
+			del file_content_locator[index]
+
+			flag = 1
+
+		actual_pointer_for_delete = actual_pointer_for_delete + 64
+	
+	file_system_disk.close()
 
 def disk_defragmenter(disk_name):
 	pass
 
-#create_file_system_disk()
+
+
+create_file_system_disk()
 get_existing_files(disk_name)
-copy_from_computer_to_disk('/Users/carlosmorales/Desktop/lol',disk_name)
-copy_from_computer_to_disk('/Users/carlosmorales/Desktop/s-00-main.sql',disk_name)
+copy_from_computer_to_disk('/Users/carlosmorales/Downloads/lol',disk_name)
+copy_from_computer_to_disk('/Users/carlosmorales/Downloads/s-00-main.sql',disk_name)
+copy_from_computer_to_disk('/Users/carlosmorales/Desktop/sysa.py',disk_name)
 print(file_names)
 print(file_sizes)
 print(file_content_locator)
-
+#copy_from_disk_to_computer('lol',disk_name)
+copy_from_disk_to_computer('s-00-main.sql',disk_name)
+delete_file('s-00-main.sql',disk_name)
 #copy_from_computer_to_disk('/Users/carlosmorales/Desktop/s-00-main.sql',disk_name)
 #print(file_names)
 #print(file_content_locator)
