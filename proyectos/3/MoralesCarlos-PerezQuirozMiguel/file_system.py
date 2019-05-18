@@ -139,7 +139,7 @@ def copy_from_computer_to_disk(route,disk_name):
 			insert_bytes(actual_pointer_for_insert+46,actual_pointer_for_insert+60,m_date)
 
 			file_content_locator.append(os.path.getsize(disk_name)+4)
-			insert_bytes(os.path.getsize(disk_name)+8,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
+			insert_bytes(os.path.getsize(disk_name)+4,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
 			#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
 			if len(file_content_locator) > 1:
 				if file_content_locator[-1] == file_content_locator[-2]:
@@ -168,7 +168,11 @@ def copy_from_disk_to_computer(file_name,disk_name):
 	new_file.close()
 
 def list_files(disk_name):
-	pass 
+	global file_names, file_sizes
+	for file_name in file_names:
+		index = file_names.index(file_name)
+		print(file_name + '\t' + str(file_sizes[index]) + '\t')
+
 
 def delete_file(file_name,disk_name):
 	actual_pointer_for_delete = init_dir
@@ -205,19 +209,48 @@ def disk_defragmenter(disk_name):
 	pass
 
 
+def user_interface(disk_name):
+	try: 
+		file_system_disk = open(disk_name,'r+')
+		file_system_disk.close()
+		get_existing_files(disk_name)
 
-create_file_system_disk()
-get_existing_files(disk_name)
-copy_from_computer_to_disk('/Users/carlosmorales/Downloads/lol',disk_name)
-copy_from_computer_to_disk('/Users/carlosmorales/Downloads/s-00-main.sql',disk_name)
-copy_from_computer_to_disk('/Users/carlosmorales/Desktop/sysa.py',disk_name)
-print(file_names)
-print(file_sizes)
-print(file_content_locator)
-#copy_from_disk_to_computer('lol',disk_name)
-copy_from_disk_to_computer('s-00-main.sql',disk_name)
-delete_file('s-00-main.sql',disk_name)
-#copy_from_computer_to_disk('/Users/carlosmorales/Desktop/s-00-main.sql',disk_name)
-#print(file_names)
-#print(file_content_locator)
+	except FileNotFoundError: 
+		create_file_system_disk()
+
+	while True:
+		print('-----------------Gracias por usar FiUnamFS----------------')
+		print('Si eres nuevo utilizando FiUnamFS puedes utilizar el ')
+		print('comando help para obtener ayuda.\n')
+		option = input('FiUnamFS# ')
+		command = option[:option.find(" ")]
+		if option == 'exit' or command == 'exit':
+			break
+		elif command == 'copyfc':
+			file_name = option[option.find(" ")+1:]
+			copy_from_computer_to_disk(file_name,disk_name)
+			#print(file_names)
+			#print(file_sizes)
+			#print(file_content_locator)
+		elif command == 'copyfs':
+			file_name = option[option.find(" ")+1:]
+			copy_from_disk_to_computer(file_name,disk_name)	
+			#print(file_names)
+			#print(file_sizes)
+			#print(file_content_locator)
+		elif command == 'delete':
+			file_name = option[option.find(" ")+1:]
+			delete_file(file_name,disk_name)
+			#print(file_names)
+			#print(file_sizes)
+			#print(file_content_locator)
+		elif command == 'list' or option == 'list':
+			list_files(disk_name)
+
+
+	
+user_interface(disk_name)
+
+
+
 
