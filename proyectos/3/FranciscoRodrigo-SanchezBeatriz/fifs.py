@@ -31,10 +31,10 @@ class Inode :
         permisos ni propietarios porque NO los tenemos
     """
     offset_fname  = 15
-    # offset_fsize = 8
-    # offset_fcluster = 5
-    # offset_fcreated = 14
-    # offset_fmodif = 14
+    offset_fsize = 9
+    offset_fcluster = 6
+    #offset_fcreated = 15
+    # offset_fmodif = 15
 
     fname = ""         # 0-15
     fsize = 0          # 16-24
@@ -74,6 +74,7 @@ class FIFS:
 
     dentry_notused ='AQUI_NO_VA_NADA'
 
+    # Función interna
     def inodes(self):
         # usamos del 1-4 clusters, es decir 1024*4 = 4096
         # las entradas miden 64 por lo tanto 4096/64 = 64, entonces el rango
@@ -96,6 +97,7 @@ class FIFS:
                 inodes.append(i)
         return inodes
 
+    # Función interna
     def search(self,fe):
         for j in range(0,64):
             prtb = self.sb.size_cluster + j*self.sb.size_dentry
@@ -105,13 +107,29 @@ class FIFS:
                 return i
         return None
 
-    def registerFile(self,fe):
-        for j in rang(0,64):
+    # Función interna
+    def registerFile(self,fe,cluster):
+        for j in range(0,64):
             prtb = self.sb.size_cluster + j*self.sb.size_dentry
             i = Inode(self.fs_map[prtb:prtb + self.sb.size_dentry])
             if self.dentry_notused == i.fname:
                 # tener cuidado con longitud de nombres
-                self.fs_map[prtb:prtb + i.offset_fname] = # fe pero ya rellenada
+                spaces = i.offset_fname - len(fe)
+                self.fs_map[prtb:prtb + i.offset_fname] = bytes(fe.rjust(len(fe)+spaces),'utf-8')
+                print(self.fs_map[prtb:prtb + i.offset_fname])
+                print(len(self.fs_map[prtb:prtb + i.offset_fname]))
+
+                fe_size = str(os.stat(fe).st_size)
+                size_zeros = i.offset_fsize - len(fe_size)
+                new_ptrb = prtb + i.offset_fname
+                self.fs_map[new_ptrb :new_ptrb + i.offset_fsize] = bytes(fe_size.zfill(len(fe_size)+size_zeros),'utf-8')
+
+                fe_cluster = str(cluster)
+                cluster_zeros = i.offset_fcluster - len(fe_cluster)
+                new_ptrb += i.offset_fsize
+                self.fs_map[new_ptrb:new_ptrb + i.offset_fcluster] = bytes(fe_cluster.zfill(len(fe_cluster)+cluster_zeros),'utf-8')
+
+                break
 
     def ls(self):
         # nodes.sort(reverse=True,key=lambda x: x.finit_cluster)= ordenar por ...
@@ -143,7 +161,6 @@ class FIFS:
             filecp.close()
 
     def cpin(self,fe):
-        print("Not build yet")
         # Pseudocodigo
         # Buscar si no hay un archivo con el nombre recibido
         # Si sí, pedir que renombre el archivo
@@ -180,7 +197,7 @@ class FIFS:
                 #print(prtt)
                 self.fs_map[fe_prtb:fe_prtt] = f.read()
                 # hacer registro de metadatos
-                registerFile(fe)
+                self.registerFile(fe,i_lastcluster+1)
                 break
             else :
                 print("cpin: " + fe + ": file too large")

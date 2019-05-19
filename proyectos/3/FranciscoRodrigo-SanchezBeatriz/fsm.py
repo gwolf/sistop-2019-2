@@ -30,7 +30,7 @@ def main():
         else :
             print("Invalid command")
     else :
-        print("Please enter a command")
+        print("Please enter a command or use help")
 
     fs.close()
 
