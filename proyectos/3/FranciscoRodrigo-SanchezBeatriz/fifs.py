@@ -11,7 +11,7 @@ class SuperBlock :
     f = open('../fiunamfs.img','r+b')
     fs_map = mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ)
 
-    # Suberblock information
+    # Información de superbloque
     name            = fs_map[0:8].decode('utf-8')         # FiUnamFS
     version         = fs_map[10:13].decode('utf-8')       # 0.4
     tagv            = fs_map[20:35].decode('utf-8')       # Mi Sistema
@@ -30,7 +30,7 @@ class Inode :
         inodes y obviamente tampoco estamos guardando
         permisos ni propietarios porque NO los tenemos
     """
-    offset_fname  = 15
+    offset_fname  = 15 # deberia ser 16 pero la cadena 'AQUI_NO_VA_NADA' solo mide 15
     offset_fsize = 9
     offset_fcluster = 6
     #offset_fcreated = 15
@@ -116,8 +116,6 @@ class FIFS:
                 # tener cuidado con longitud de nombres
                 spaces = i.offset_fname - len(fe)
                 self.fs_map[prtb:prtb + i.offset_fname] = bytes(fe.rjust(len(fe)+spaces),'utf-8')
-                print(self.fs_map[prtb:prtb + i.offset_fname])
-                print(len(self.fs_map[prtb:prtb + i.offset_fname]))
 
                 fe_size = str(os.stat(fe).st_size)
                 size_zeros = i.offset_fsize - len(fe_size)
@@ -132,7 +130,8 @@ class FIFS:
                 break
 
     def ls(self):
-        # nodes.sort(reverse=True,key=lambda x: x.finit_cluster)= ordenar por ...
+        # Para tener un ls versatil podemos mostra el cotenido ordenado por ...
+        # nodes.sort(reverse=True,key=lambda x: x.finit_cluster)
         for i in self.inodes():
             print("%s\t%d\t%d" %(i.fname,i.finit_cluster,i.fsize))
 
