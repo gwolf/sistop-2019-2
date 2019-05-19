@@ -1,4 +1,4 @@
-from FIFS import FIFS
+from fifs import FIFS
 import sys
 
 def main():

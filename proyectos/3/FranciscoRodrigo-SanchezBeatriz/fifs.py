@@ -6,7 +6,7 @@ class SuperBlock :
         del mismo, es decir, ocupa 1024
     """
 
-    f = open('fiunamfs.img','r+b')
+    f = open('../fiunamfs.img','r+b')
     fs_map = mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ)
 
     # Suberblock information
@@ -39,6 +39,8 @@ class Inode :
     finit_cluster = 0  # 25-30
     fcreated = ""      # 31-45
     fmodif = ""        # 46-60
+    numdir = -1        # numero entre 0-63
+                       # por las especificaciones
 
     def __init__(self, dir_entry):
         self.fname = dir_entry[0:15].decode('utf-8').lstrip()
@@ -50,8 +52,8 @@ class Inode :
 class FIFS:
     """FIFS es el sistema de archivos de la Facultad de Ingenieria.
         Para la implementacion de las funciones de este controlador de
-        sistema de archivos se estan usando la convencion de los comandos
-        en linux, por ejemplo
+        sistema de archivos se estan usando la convencion siguiente
+        convención
         * para mostrar el directorio usamos
             ls
         * para eliminar un archivo usamos
@@ -63,7 +65,7 @@ class FIFS:
         * para desfragmentar
             defrag
     """
-    f = open('fiunamfs.img','a+b')
+    f = open('../fiunamfs.img','a+b')
     fs_map = mmap.mmap(f.fileno(),0,access=mmap.ACCESS_WRITE)
 
     sb = SuperBlock()
@@ -88,37 +90,38 @@ class FIFS:
             if self.dentry_notused != i.fname:
                 print("%s\t%d\t%d" %(i.fname,i.finit_cluster,i.fsize))
 
-    def rm(self,fe):
-        #Primero buscar si el archivo existe,
-        #si existe, perdemos la ref hacia él
-        fexists = False
+    def search(self,fe):
         for j in range(0,64):
             prtb = self.sb.size_cluster + j*self.sb.size_dentry
             i = Inode(self.fs_map[prtb:prtb + self.sb.size_dentry])
             if fe == i.fname:
-                fexists = True
-                #print(self.fs_map[prtb:prtb + i.offset_fname])
-                self.fs_map[prtb:prtb + i.offset_fname] = bytes(self.dentry_notused,'utf-8')
-                break
-        if not fexists:
+                i.numdir = j
+                return i
+        return None
+
+    def rm(self,fe):
+        #Primero buscar si el archivo existe,
+        #si existe, perdemos la ref hacia él
+        i = self.search(fe)
+        if i is None :
             print("rm: " + fe + " : No such file ")
+        else :
+            prtb = self.sb.size_cluster + self.sb.size_dentry*i.numdir
+            self.fs_map[prtb:prtb + i.offset_fname] = bytes(self.dentry_notused,'utf-8')
 
     def cpout(self,fe,dir):
         #Primero buscar si el archivo existe,
         #si existe, lo copiamos al directorio especificado
-        fexists = False
-        for j in range(0,64):
-            prtb = self.sb.size_cluster + j*self.sb.size_dentry
-            i = Inode(self.fs_map[prtb:prtb + self.sb.size_dentry])
-            if fe == i.fname:
-                fexists = True
-                filecp = open(fe,"a+b")
-                cluster = self.sb.size_cluster*i.finit_cluster
-                # 1024*inicio_cluster_del_archivo_a_copiar
-                filecp.write(self.fs_map[cluster:cluster + i.fsize])
-                break
-        if not fexists :
+        i = self.search(fe)
+        if i is None :
             print("cpout: " + fe + " : No such file ")
+        else :
+            prtb = self.sb.size_cluster + self.sb.size_dentry*i.numdir
+            filecp = open(fe,"a+b")
+            cluster = self.sb.size_cluster*i.finit_cluster
+            # operacion : 1024*inicio_cluster_del_archivo_a_copiar
+            filecp.write(self.fs_map[cluster:cluster + i.fsize])
+            filecp.close()
 
     def cpin(self,fe):
         print("Not build yet")
