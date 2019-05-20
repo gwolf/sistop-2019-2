@@ -23,6 +23,7 @@ info_size = 64
 disk_name = 'FiUnamFS.img'
 actual_pointer = init_dir
 
+
 def create_file_system_disk():
 	global byte_number,file_system_name,file_system_version
 	global volume_tag,cluster_length,num_of_clusters_dir,num_of_clusters_unit
@@ -45,9 +46,6 @@ def create_file_system_disk():
 		date_mod = '00000000000000'
 		insert_bytes(46+actual_pointer,60+actual_pointer,date)
 
-		#extra = '0000'
-		#insert_bytes(61+actual_pointer,65+actual_pointer,extra)
-		#El puntero iniciará en el byte 1024 
 		actual_pointer = actual_pointer + 64
 	
 
@@ -141,9 +139,9 @@ def copy_from_computer_to_disk(route,disk_name):
 			file_content_locator.append(os.path.getsize(disk_name)+4)
 			insert_bytes(os.path.getsize(disk_name)+4,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
 			#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
-			if len(file_content_locator) > 1:
-				if file_content_locator[-1] == file_content_locator[-2]:
-					file_content_locator[-1] = file_content_locator[-2] + 4
+			#if len(file_content_locator) > 1:
+			#	if file_content_locator[-1] == file_content_locator[-2]:
+			#		file_content_locator[-1] = file_content_locator[-2] + 4
 
 			
 			flag = 1
@@ -184,14 +182,21 @@ def delete_file(file_name,disk_name):
 		if query.replace(" ","") == file_name:
 			insert_bytes(actual_pointer_for_delete,actual_pointer_for_delete+15,'AQUI_NO_VA_NADA')
 			insert_bytes(actual_pointer_for_delete+16,actual_pointer_for_delete+24,'00000000')
-			insert_bytes(actual_pointer_for_delete+25,actual_pointer_for_delete+30,'00000000')
+			insert_bytes(actual_pointer_for_delete+25,actual_pointer_for_delete+30,'00000')
 			insert_bytes(actual_pointer_for_delete+31,actual_pointer_for_delete+45,'00000000000000')
 			insert_bytes(actual_pointer_for_delete+46,actual_pointer_for_delete+60,'00000000000000')
 			index = file_names.index(file_name)
 			location = file_content_locator[index]
-			for i in range(file_sizes[index] + 4):
-				file_system_disk.seek(location)
-				file_system_disk.write('0')
+			print(index)
+			print(location)
+			file_system_disk.seek(location)
+			for i in range(file_sizes[index + 1]+1+file_sizes[index]):
+				file_system_disk.seek(file_content_locator[index + 1])
+				content2 = file_system_disk.read(1)
+				if i < file_sizes[index+1]:
+					pass
+				file_system_disk.seek(location-1)
+				file_system_disk.write(content2)
 				location += 1
 
 			
@@ -206,7 +211,63 @@ def delete_file(file_name,disk_name):
 	file_system_disk.close()
 
 def disk_defragmenter(disk_name):
-	pass
+	file_system_disk = open(disk_name,'r+')
+	
+
+	for i in range(64):
+		flag = 0
+		flag2 = 0 
+		pointer_for_def = init_dir
+		p_dest = 0 
+		p_origin = 0
+		while flag == 0: 
+			file_system_disk.seek(pointer_for_def)
+			query = file_system_disk.read(15)
+			if query == 'AQUI_NO_VA_NADA':
+				p_dest = pointer_for_def
+				flag = 1
+			else: 
+				pointer_for_def += 64
+
+
+		while flag2 == 0 and pointer_for_def < 5120: 
+			file_system_disk.seek(pointer_for_def)
+			file_name = file_system_disk.read(15)
+			if file_name != 'AQUI_NO_VA_NADA':
+				p_origin = pointer_for_def
+				file_system_disk.seek(pointer_for_def+16)
+				file_size = file_system_disk.read(8)
+				print(file_size)
+				file_system_disk.seek(pointer_for_def+25)
+				file_ini_cluster = file_system_disk.read(5)
+				print(file_ini_cluster)
+				file_system_disk.seek(pointer_for_def+31)
+				file_creation_date = file_system_disk.read(14)
+				print(file_creation_date)
+				file_system_disk.seek(pointer_for_def+46)
+				file_mod_date = file_system_disk.read(14)
+				print(file_mod_date)
+				flag2 = 1
+				insert_bytes(p_dest,p_dest+15, file_name)
+				insert_bytes(p_dest+16,p_dest+24,file_size)
+				insert_bytes(p_dest+25,p_dest+30,file_ini_cluster)
+				insert_bytes(p_dest+31,p_dest+45,file_creation_date)
+				insert_bytes(p_dest+46,p_dest+60,file_mod_date)
+
+				insert_bytes(p_origin,p_origin+15, "AQUI_NO_VA_NADA")
+				insert_bytes(p_origin+16,p_origin+24,'00000000')
+				insert_bytes(p_origin+25,p_origin+30,'00000')
+				insert_bytes(p_origin+31,p_origin+45,'00000000000000')
+				insert_bytes(p_origin+46,p_origin+60,'00000000000000')
+
+			else:
+				pointer_for_def += 64
+
+
+		#pointer_for_def = init_dir
+
+
+	file_system_disk.close()
 
 
 def user_interface(disk_name):
@@ -229,28 +290,25 @@ def user_interface(disk_name):
 		elif command == 'copyfc':
 			file_name = option[option.find(" ")+1:]
 			copy_from_computer_to_disk(file_name,disk_name)
-			#print(file_names)
-			#print(file_sizes)
-			#print(file_content_locator)
+			
 		elif command == 'copyfs':
 			file_name = option[option.find(" ")+1:]
 			copy_from_disk_to_computer(file_name,disk_name)	
-			#print(file_names)
-			#print(file_sizes)
-			#print(file_content_locator)
 		elif command == 'delete':
 			file_name = option[option.find(" ")+1:]
 			delete_file(file_name,disk_name)
-			#print(file_names)
-			#print(file_sizes)
-			#print(file_content_locator)
+			disk_defragmenter(disk_name)
+
 		elif command == 'list' or option == 'list':
 			list_files(disk_name)
+			print(file_names)
+			print(file_sizes)
+			print(file_content_locator)
 
 
 	
 user_interface(disk_name)
 
 
-
+#       santa.py 00001895 00001020190520121144 20190520121144
 
