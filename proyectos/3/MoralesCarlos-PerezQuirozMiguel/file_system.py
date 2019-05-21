@@ -134,7 +134,7 @@ def copy_from_computer_to_disk(route):
 		init_cluster = '5'
 	#Fecha de creación 
 	c_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getctime(file_name)))
-	
+
 	#Fecha de modificación
 	m_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getmtime(file_name)))
 	file_content = computer_file.read()
@@ -213,8 +213,6 @@ def delete_file(file_name):
 			insert_bytes(actual_pointer_for_delete + 46,actual_pointer_for_delete + 60, no_date)
 			index = file_names.index(file_name)
 			location = file_content_locator[index]
-			print(index)
-			print(location)
 			file_system_disk.seek(location)
 			total_file_sizes = 0
 			sum_file_sizes = 0 
@@ -225,7 +223,6 @@ def delete_file(file_name):
 				sum_file_sizes += file_sizes[i] + 4
 
 			for i in range(total_file_sizes):
-				print (i)
 				if i < sum_file_sizes-4:
 					file_system_disk.seek(file_content_locator[index + 1]+i)
 					content2 = file_system_disk.read(1)
@@ -278,16 +275,16 @@ def disk_defragmenter():
 				p_origin = pointer_for_def
 				file_system_disk.seek(pointer_for_def+16)
 				file_size = file_system_disk.read(8)
-				print(file_size)
+				#print(file_size)
 				file_system_disk.seek(pointer_for_def+25)
 				file_ini_cluster = file_system_disk.read(5)
-				print(file_ini_cluster)
+				#print(file_ini_cluster)
 				file_system_disk.seek(pointer_for_def+31)
 				file_creation_date = file_system_disk.read(14)
-				print(file_creation_date)
+				#print(file_creation_date)
 				file_system_disk.seek(pointer_for_def+46)
 				file_mod_date = file_system_disk.read(14)
-				print(file_mod_date)
+				#print(file_mod_date)
 				flag2 = 1
 
 				#En esta parte se intercambia el valor de los campos
@@ -306,8 +303,13 @@ def disk_defragmenter():
 			else:
 				pointer_for_def += 64
 
-
 	file_system_disk.close()
+
+def help():
+	print('copyfc </path/of/file>\t -Copia un archivo de la computadora a FiUnamFS')
+	print('copyfs <name_of_file>\t -Copia un archivo de FiUnamFS a la computadora')
+	print('list \t\t\t -Lista los archivos actualmente en FiUnamFS')
+	print('delete <name_of_file>\t -Borra un archivo de FiUnamFS')
 
 
 def user_interface():
@@ -321,10 +323,11 @@ def user_interface():
 	except FileNotFoundError: 
 		create_file_system_disk()
 
+	print('-----------------------Gracias por usar FiUnamFS----------------------')
+	print('Si eres nuevo utilizando FiUnamFS puedes utilizar el ')
+	print('comando \'help\' para obtener ayuda.\n')
+	
 	while True:
-		print('-----------------Gracias por usar FiUnamFS----------------')
-		print('Si eres nuevo utilizando FiUnamFS puedes utilizar el ')
-		print('comando help para obtener ayuda.\n')
 		option = input('FiUnamFS# ')
 		command = option[:option.find(" ")]
 		if option == 'exit' or command == 'exit':
@@ -349,7 +352,8 @@ def user_interface():
 			print(file_names)
 			print(file_sizes)
 			print(file_content_locator)
-
+		elif command == 'help' or option == 'help':
+			help()
 
 	
 user_interface()
