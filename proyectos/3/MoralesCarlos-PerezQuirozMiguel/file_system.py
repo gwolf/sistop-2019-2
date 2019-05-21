@@ -23,6 +23,8 @@ info_size = 64
 disk_name = 'FiUnamFS.img'
 actual_pointer = init_dir
 
+limit_of_files = init_dir / 64
+
 
 def create_file_system_disk():
 	global byte_number,file_system_name,file_system_version
@@ -34,7 +36,7 @@ def create_file_system_disk():
 	insert_bytes(40,45,cluster_length)
 	insert_bytes(47,49,num_of_clusters_dir)
 	insert_bytes(52,60,num_of_clusters_unit)
-	for i in range(0,64): #Aquí es 64 por que es el tamaño del directorio 1024 * 4 = 4096 = 64bytes*64
+	for i in range(0,limit_of_files): #Aquí es 64 por que es el tamaño del directorio 1024 * 4 = 4096 = 64bytes*64
 		file_name = "AQUI_NO_VA_NADA"
 		insert_bytes(0+actual_pointer,15+actual_pointer,file_name)
 		size = '00000000'
@@ -71,7 +73,7 @@ def get_existing_files(disk_name):
 			file_sizes.append(int(file_system_disk.read(8)))
 
 			file_position = 0 
-			for i in range(len(file_sizes)-1,0,-1):
+			for i in range(len(file_content_locator)):
 				file_position += file_sizes[i] + 4
 
 			file_position += 5120
@@ -86,7 +88,7 @@ def get_existing_files(disk_name):
 	#	file_system_disk.seek(actual_pointer_aux)
 
 
-	#file_system_disk.close()
+	file_system_disk.close()
 
 
 
@@ -190,16 +192,23 @@ def delete_file(file_name,disk_name):
 			print(index)
 			print(location)
 			file_system_disk.seek(location)
-			for i in range(file_sizes[index + 1]+1+file_sizes[index]):
-				file_system_disk.seek(file_content_locator[index + 1])
-				content2 = file_system_disk.read(1)
-				if i < file_sizes[index+1]:
-					pass
-				file_system_disk.seek(location-1)
-				file_system_disk.write(content2)
-				location += 1
+			sum_file_sizes = 0 
+			for i in range(len(file_sizes)):
+				sum_file_sizes += file_sizes[i] + 4
 
+			for i in range(sum_file_sizes):
+				if i < sum_file_sizes-file_sizes[index]-8:
+					file_system_disk.seek(file_content_locator[index + 1]+i)
+					content2 = file_system_disk.read(1)
+					file_system_disk.seek(location)
+					file_system_disk.write(content2)
+					location += 1
+				else:
+					file_system_disk.seek(location)
+					file_system_disk.write('\0')
+					location += 1
 			
+
 			file_names.remove(file_name)
 			del file_sizes[index]
 			del file_content_locator[index]
@@ -264,13 +273,11 @@ def disk_defragmenter(disk_name):
 				pointer_for_def += 64
 
 
-		#pointer_for_def = init_dir
-
-
 	file_system_disk.close()
 
 
 def user_interface(disk_name):
+	global file_names, file_content_locator,file_sizes
 	try: 
 		file_system_disk = open(disk_name,'r+')
 		file_system_disk.close()
@@ -298,7 +305,10 @@ def user_interface(disk_name):
 			file_name = option[option.find(" ")+1:]
 			delete_file(file_name,disk_name)
 			disk_defragmenter(disk_name)
-
+			file_names = []
+			file_sizes = []
+			file_content_locator = []
+			get_existing_files(disk_name)
 		elif command == 'list' or option == 'list':
 			list_files(disk_name)
 			print(file_names)
@@ -308,7 +318,4 @@ def user_interface(disk_name):
 
 	
 user_interface(disk_name)
-
-
-#       santa.py 00001895 00001020190520121144 20190520121144
 
