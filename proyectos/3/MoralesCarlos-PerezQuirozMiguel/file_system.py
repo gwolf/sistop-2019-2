@@ -4,6 +4,7 @@ import os
 import subprocess
 import time
 from datetime import datetime
+import math
 
 file_names = []
 file_content_locator = []
@@ -127,11 +128,15 @@ def copy_from_computer_to_disk(route):
 	file_system_disk = open(disk_name,'r+')
 	file_name =  os.path.basename(route)
 	sizeof_file =  str(os.path.getsize(route))
-	init_cluster = str((actual_pointer_for_insert % 1024)+1)
-	#Fecha de creación (¿Se debe obtener del archivo?)
-	c_date = str(datetime.today().strftime('%Y%m%d%H%M%S')) 
-	#Fecha de modificación (¿Se debe obtener del archivo?)
-	m_date = str(datetime.today().strftime('%Y%m%d%H%M%S'))
+	if len(file_content_locator) > 0: 
+		init_cluster = str(int((file_content_locator[-1] + file_sizes[-1]) / 1024))
+	else: 
+		init_cluster = '5'
+	#Fecha de creación 
+	c_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getctime(file_name)))
+	
+	#Fecha de modificación
+	m_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getmtime(file_name)))
 	file_content = computer_file.read()
 	flag = 0
 	while flag == 0:
