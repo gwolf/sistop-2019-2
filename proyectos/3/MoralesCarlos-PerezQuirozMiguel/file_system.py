@@ -15,44 +15,48 @@ volume_tag = 'FiUnamFS.img'
 cluster_length = '1024'
 num_of_clusters_dir = '4'
 num_of_clusters_unit = '1440'
-
-#El directorio inicia en el cluster 1 
+'''
+El directorio inicia en el cluster 1. 
+Es decir, en el byte 1024
+'''
 init_dir = 1024
 info_size = 64
 
 disk_name = 'FiUnamFS.img'
 actual_pointer = init_dir
 
-limit_of_files = init_dir / 64
+limit_of_files = 64
+no_file_name = 'AQUI_NO_VA_NADA'
+no_size = '00000000'
+no_init_cluster = '00000'
+no_date = '00000000000000'
 
 
 def create_file_system_disk():
-	global byte_number,file_system_name,file_system_version
+	global file_system_name,file_system_version
 	global volume_tag,cluster_length,num_of_clusters_dir,num_of_clusters_unit
-	global actual_pointer
-	insert_bytes(0,8,file_system_name)
-	insert_bytes(10,13,file_system_version)
-	insert_bytes(20,35,volume_tag)
-	insert_bytes(40,45,cluster_length)
-	insert_bytes(47,49,num_of_clusters_dir)
-	insert_bytes(52,60,num_of_clusters_unit)
-	for i in range(0,limit_of_files): #Aquí es 64 por que es el tamaño del directorio 1024 * 4 = 4096 = 64bytes*64
-		file_name = "AQUI_NO_VA_NADA"
-		insert_bytes(0+actual_pointer,15+actual_pointer,file_name)
-		size = '00000000'
-		insert_bytes(16+actual_pointer,24+actual_pointer,size)
-		init_cluster = '00000'
-		insert_bytes(25+actual_pointer,30+actual_pointer,init_cluster)
-		date = '00000000000000'
-		insert_bytes(31+actual_pointer,45+actual_pointer,date)
-		date_mod = '00000000000000'
-		insert_bytes(46+actual_pointer,60+actual_pointer,date)
+	global actual_pointer,no_file_name,no_size,no_init_cluster,no_date
 
+	insert_bytes(0,  8,  file_system_name)
+	insert_bytes(10, 13, file_system_version)
+	insert_bytes(20, 35, volume_tag)
+	insert_bytes(40, 45, cluster_length)
+	insert_bytes(47, 49, num_of_clusters_dir)
+	insert_bytes(52, 60, num_of_clusters_unit)
+
+	for i in range(limit_of_files): #Aquí es 64 por que es el tamaño del directorio 1024 * 4 = 4096 = 64bytes*64
+		insert_bytes(actual_pointer + 0,  actual_pointer + 15, no_file_name)
+		insert_bytes(actual_pointer + 16, actual_pointer + 24, no_size)
+		insert_bytes(actual_pointer + 25, actual_pointer + 30, no_init_cluster)
+		insert_bytes(actual_pointer + 31, actual_pointer + 45, no_date)
+		insert_bytes(actual_pointer + 46, actual_pointer + 60, no_date)
 		actual_pointer = actual_pointer + 64
+	
 	
 
 
-def get_existing_files(disk_name):
+def get_existing_files():
+	global disk_name
 	''' 
 	Por la forma en la que trabaja el sistema se debe obtener una lista con los 
 	nombres de archivos. 
@@ -106,14 +110,17 @@ def insert_bytes(init_byte,limit_byte,word):
 		file_system_disk = open('FiUnamFS.img','r+')
 
 	except FileNotFoundError: 
-		file_system_disk = open('FiUnamFS.img','w') 
+		file_system_disk = open('FiUnamFS.img','w')
+		file_system_disk.seek(1474560)
+		file_system_disk.write('\0') 
 
 	file_system_disk.seek(init_byte)
 	file_system_disk.write(word)			
 	file_system_disk.close()
 
 
-def copy_from_computer_to_disk(route,disk_name):
+def copy_from_computer_to_disk(route):
+	global disk_name
 	global init_dir, file_content_locator
 	actual_pointer_for_insert = init_dir
 	computer_file = open(route,'r')
@@ -121,31 +128,39 @@ def copy_from_computer_to_disk(route,disk_name):
 	file_name =  os.path.basename(route)
 	sizeof_file =  str(os.path.getsize(route))
 	init_cluster = str((actual_pointer_for_insert % 1024)+1)
-	c_date = str(datetime.today().strftime('%Y%m%d%H%M%S')) #Fecha de creación (¿Se debe obtener del archivo?)
-	m_date = str(datetime.today().strftime('%Y%m%d%H%M%S')) #Fecha de modificación (¿Se debe obtener del archivo?)
+	#Fecha de creación (¿Se debe obtener del archivo?)
+	c_date = str(datetime.today().strftime('%Y%m%d%H%M%S')) 
+	#Fecha de modificación (¿Se debe obtener del archivo?)
+	m_date = str(datetime.today().strftime('%Y%m%d%H%M%S'))
 	file_content = computer_file.read()
 	flag = 0
 	while flag == 0:
 		file_system_disk.seek(actual_pointer_for_insert)
 		query = file_system_disk.read(15)
 		if query == 'AQUI_NO_VA_NADA':
-			file_names.append(file_name)
-			file_sizes.append(os.path.getsize(route))
+			
 
-			insert_bytes(actual_pointer_for_insert,actual_pointer_for_insert+15,file_name)
-			insert_bytes(actual_pointer_for_insert+16,actual_pointer_for_insert+24,sizeof_file)
-			insert_bytes(actual_pointer_for_insert+25,actual_pointer_for_insert+30,init_cluster)
-			insert_bytes(actual_pointer_for_insert+31,actual_pointer_for_insert+45,c_date)
-			insert_bytes(actual_pointer_for_insert+46,actual_pointer_for_insert+60,m_date)
+			insert_bytes(actual_pointer_for_insert,actual_pointer_for_insert + 15, file_name)
+			insert_bytes(actual_pointer_for_insert + 16, actual_pointer_for_insert + 24, sizeof_file)
+			insert_bytes(actual_pointer_for_insert + 25, actual_pointer_for_insert + 30, init_cluster)
+			insert_bytes(actual_pointer_for_insert + 31, actual_pointer_for_insert + 45, c_date)
+			insert_bytes(actual_pointer_for_insert + 46, actual_pointer_for_insert + 60, m_date)
 
-			file_content_locator.append(os.path.getsize(disk_name)+4)
-			insert_bytes(os.path.getsize(disk_name)+4,os.path.getsize(disk_name)+os.path.getsize(route),file_content)
+			sum_file_sizes = 0 
+			for i in range(len(file_sizes)):
+				sum_file_sizes += file_sizes[i] + 4
+			sum_file_sizes += 5120
+
+			file_content_locator.append(sum_file_sizes)
+			insert_bytes(sum_file_sizes,sum_file_sizes+os.path.getsize(route),file_content)
 			#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
 			#if len(file_content_locator) > 1:
 			#	if file_content_locator[-1] == file_content_locator[-2]:
 			#		file_content_locator[-1] = file_content_locator[-2] + 4
 
-			
+			file_names.append(file_name)
+			file_sizes.append(os.path.getsize(route))
+
 			flag = 1
 
 
@@ -156,7 +171,8 @@ def copy_from_computer_to_disk(route,disk_name):
 	computer_file.close()
 
 
-def copy_from_disk_to_computer(file_name,disk_name):
+def copy_from_disk_to_computer(file_name):
+	global disk_name
 	new_file = open(file_name,'w')
 	file_system_disk = open(disk_name,'r')
 	file_position = file_names.index(file_name)
@@ -167,14 +183,17 @@ def copy_from_disk_to_computer(file_name,disk_name):
 	file_system_disk.close()
 	new_file.close()
 
-def list_files(disk_name):
-	global file_names, file_sizes
+def list_files():
+	global disk_name,file_names,file_sizes
 	for file_name in file_names:
 		index = file_names.index(file_name)
 		print(file_name + '\t' + str(file_sizes[index]) + '\t')
 
 
-def delete_file(file_name,disk_name):
+def delete_file(file_name):
+	global disk_name
+	global no_file_name,no_size,no_init_cluster,no_date
+
 	actual_pointer_for_delete = init_dir
 	file_system_disk = open(disk_name,'r+')
 	flag = 0
@@ -182,33 +201,40 @@ def delete_file(file_name,disk_name):
 		file_system_disk.seek(actual_pointer_for_delete)
 		query = file_system_disk.read(15)
 		if query.replace(" ","") == file_name:
-			insert_bytes(actual_pointer_for_delete,actual_pointer_for_delete+15,'AQUI_NO_VA_NADA')
-			insert_bytes(actual_pointer_for_delete+16,actual_pointer_for_delete+24,'00000000')
-			insert_bytes(actual_pointer_for_delete+25,actual_pointer_for_delete+30,'00000')
-			insert_bytes(actual_pointer_for_delete+31,actual_pointer_for_delete+45,'00000000000000')
-			insert_bytes(actual_pointer_for_delete+46,actual_pointer_for_delete+60,'00000000000000')
+			insert_bytes(actual_pointer_for_delete, actual_pointer_for_delete + 15, no_file_name)
+			insert_bytes(actual_pointer_for_delete + 16,actual_pointer_for_delete + 24, no_size)
+			insert_bytes(actual_pointer_for_delete + 25,actual_pointer_for_delete + 30, no_init_cluster)
+			insert_bytes(actual_pointer_for_delete + 31,actual_pointer_for_delete + 45, no_date)
+			insert_bytes(actual_pointer_for_delete + 46,actual_pointer_for_delete + 60, no_date)
 			index = file_names.index(file_name)
 			location = file_content_locator[index]
 			print(index)
 			print(location)
 			file_system_disk.seek(location)
+			total_file_sizes = 0
 			sum_file_sizes = 0 
 			for i in range(len(file_sizes)):
+				total_file_sizes += file_sizes[i] + 4
+
+			for i in range(index+1,len(file_names)):
 				sum_file_sizes += file_sizes[i] + 4
 
-			for i in range(sum_file_sizes):
-				if i < sum_file_sizes-file_sizes[index]-8:
+			for i in range(total_file_sizes):
+				print (i)
+				if i < sum_file_sizes-4:
 					file_system_disk.seek(file_content_locator[index + 1]+i)
 					content2 = file_system_disk.read(1)
 					file_system_disk.seek(location)
 					file_system_disk.write(content2)
 					location += 1
 				else:
+					#Se les asigna '\0' a los bytes faltantes
 					file_system_disk.seek(location)
+
 					file_system_disk.write('\0')
 					location += 1
-			
-
+				
+			#Eliminando registros de las listas. 
 			file_names.remove(file_name)
 			del file_sizes[index]
 			del file_content_locator[index]
@@ -219,10 +245,11 @@ def delete_file(file_name,disk_name):
 	
 	file_system_disk.close()
 
-def disk_defragmenter(disk_name):
-	file_system_disk = open(disk_name,'r+')
-	
+def disk_defragmenter():
+	global disk_name
+	global no_file_name,no_size,no_init_cluster,no_date
 
+	file_system_disk = open(disk_name,'r+')
 	for i in range(64):
 		flag = 0
 		flag2 = 0 
@@ -257,17 +284,19 @@ def disk_defragmenter(disk_name):
 				file_mod_date = file_system_disk.read(14)
 				print(file_mod_date)
 				flag2 = 1
-				insert_bytes(p_dest,p_dest+15, file_name)
-				insert_bytes(p_dest+16,p_dest+24,file_size)
-				insert_bytes(p_dest+25,p_dest+30,file_ini_cluster)
-				insert_bytes(p_dest+31,p_dest+45,file_creation_date)
-				insert_bytes(p_dest+46,p_dest+60,file_mod_date)
 
-				insert_bytes(p_origin,p_origin+15, "AQUI_NO_VA_NADA")
-				insert_bytes(p_origin+16,p_origin+24,'00000000')
-				insert_bytes(p_origin+25,p_origin+30,'00000')
-				insert_bytes(p_origin+31,p_origin+45,'00000000000000')
-				insert_bytes(p_origin+46,p_origin+60,'00000000000000')
+				#En esta parte se intercambia el valor de los campos
+				insert_bytes(p_dest, p_dest + 15, file_name)
+				insert_bytes(p_dest + 16, p_dest + 24, file_size)
+				insert_bytes(p_dest + 25, p_dest + 30, file_ini_cluster)
+				insert_bytes(p_dest + 31, p_dest + 45, file_creation_date)
+				insert_bytes(p_dest + 46, p_dest + 60, file_mod_date)
+
+				insert_bytes(p_origin, p_origin + 15, no_file_name)
+				insert_bytes(p_origin + 16,p_origin + 24, no_size)
+				insert_bytes(p_origin + 25,p_origin + 30, no_init_cluster)
+				insert_bytes(p_origin + 31,p_origin + 45, no_date)
+				insert_bytes(p_origin + 46,p_origin + 60, no_date)
 
 			else:
 				pointer_for_def += 64
@@ -276,12 +305,13 @@ def disk_defragmenter(disk_name):
 	file_system_disk.close()
 
 
-def user_interface(disk_name):
+def user_interface():
+	global disk_name
 	global file_names, file_content_locator,file_sizes
 	try: 
 		file_system_disk = open(disk_name,'r+')
 		file_system_disk.close()
-		get_existing_files(disk_name)
+		get_existing_files()
 
 	except FileNotFoundError: 
 		create_file_system_disk()
@@ -296,26 +326,26 @@ def user_interface(disk_name):
 			break
 		elif command == 'copyfc':
 			file_name = option[option.find(" ")+1:]
-			copy_from_computer_to_disk(file_name,disk_name)
+			copy_from_computer_to_disk(file_name)
 			
 		elif command == 'copyfs':
 			file_name = option[option.find(" ")+1:]
-			copy_from_disk_to_computer(file_name,disk_name)	
+			copy_from_disk_to_computer(file_name)	
 		elif command == 'delete':
 			file_name = option[option.find(" ")+1:]
-			delete_file(file_name,disk_name)
-			disk_defragmenter(disk_name)
+			delete_file(file_name)
+			disk_defragmenter()
 			file_names = []
 			file_sizes = []
 			file_content_locator = []
-			get_existing_files(disk_name)
+			get_existing_files()
 		elif command == 'list' or option == 'list':
-			list_files(disk_name)
+			list_files()
 			print(file_names)
 			print(file_sizes)
 			print(file_content_locator)
 
 
 	
-user_interface(disk_name)
+user_interface()
 
