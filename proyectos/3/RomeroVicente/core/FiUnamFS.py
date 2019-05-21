@@ -2,6 +2,7 @@ import mmap
 import os
 from core.Menu import Menu
 from datetime import datetime
+from math import ceil
 
 class FiUnamFS(Menu):
 
@@ -12,8 +13,9 @@ class FiUnamFS(Menu):
             size_name_vol = len(name_vol)
             if size_name_vol < 35 - 20:
                  sobrante_name_vol = (35 - 20) - size_name_vol
-        with open(root,"r+") as f:
-            fs = mmap.mmap(f.fileno(),1024*1440)
+        with open(root,"w+") as f:
+            f.write(("\x00"*(1024*1440)))
+            fs = mmap.mmap(f.fileno(),0)
             fs[0:8] = "FiUnamFS".encode('ascii')
             fs[10:13] = "0.4".encode('ascii')
             fs[20:35] = str(("0"*sobrante_name_vol)+name_vol).encode('ascii')
@@ -32,7 +34,7 @@ class FiUnamFS(Menu):
 
     def parse_dir(self):
         for input_dir in range(self.num_input_dir):
-            name_dir = self.map[1024+(64*input_dir):1024+(64*input_dir)+15].decode('ascii')
+            name_dir = self.map[1024+(64*input_dir):1024+(64*input_dir)+15].decode('ascii').replace(" ","")
             tam_archivo = int(self.map[1024+(64*input_dir)+16:1024+(64*input_dir)+24])
             cluster_inicial = int(self.map[1024+(64*input_dir)+25:1024+(64*input_dir)+30])
             fecha_creacion = int(self.map[1024+(64*input_dir)+31:1024+(64*input_dir)+45])
@@ -47,7 +49,11 @@ class FiUnamFS(Menu):
         if os.path.isfile(self.root):
             with open(self.root,"r+") as f:
                 self.map = mmap.mmap(f.fileno(),0)
-                self.nombre_FS = self.map[0:8].decode('ascii')
+                try:
+                    self.nombre_FS = self.map[0:8].decode('ascii')
+                except:
+                    print("el sistema de archivos no es valido")
+                    exit()
                 self.version_FS = self.map[10:13].decode('ascii')
                 self.etiqueta_vol = self.map[20:35].decode('ascii')
                 self.size_of_cluster_FS = int(self.map[40:45].decode('ascii'))
@@ -57,17 +63,6 @@ class FiUnamFS(Menu):
                 dir_cluster_offset=1024
                 size_input_dir = 64
                 self.num_input_dir = int(self.size_of_cluster_FS/size_input_dir * self.num_of_cluster_dir_FS)
-                for i in range(self.num_input_dir):
-                    name_file = self.map[dir_cluster_offset+(size_input_dir*i):dir_cluster_offset+(size_input_dir*i)+15].decode('ascii').replace(" ","")
-                    if(name_file != 'AQUI_NO_VA_NADA'):
-                        tamano_archivo = int(self.map[dir_cluster_offset+(size_input_dir*i)+16:dir_cluster_offset+(size_input_dir*i)+24].decode('ascii'))
-                        cluster_inicial = int(self.map[dir_cluster_offset+(size_input_dir*i)+25:dir_cluster_offset+(size_input_dir*i)+30].decode('ascii'))
-                        fecha_creacion = self.map[dir_cluster_offset+(size_input_dir*i)+31:dir_cluster_offset+(size_input_dir*i)+45].decode('ascii')
-                        #fc = datetime.strptime(fecha_creacion,"%Y%m%d%H%M%S")
-                        #fc = mktime(fc.timetuple())
-                        fecha_modificacion = self.map[dir_cluster_offset+(size_input_dir*i)+46:dir_cluster_offset+(size_input_dir*i)+60].decode('ascii')
-                        #fm = datetime.strptime(fecha_modificacion,"%Y%m%d%H%M%S")
-                        #fm = mktime(fm.timetuple())
                 self.inputs_dir = []
                 self.descriptor_archivo = 0
                 if self.nombre_FS != 'FiUnamFS':
@@ -78,7 +73,36 @@ class FiUnamFS(Menu):
             exit()
 
     def get_index_dir(self,name):
-        return self.inputs_dir.index(filter(lambda n:n.get('name_dir') == name,self.inputs_dir)[0])
+        try:
+            lista = []
+            for elem in self.inputs_dir:
+                if elem['name_dir'] == name:
+                    lista.append(elem['id'])
+            return lista
+        except:
+            return -1
+    
+    def get_index_not_dir(self,name):
+        try:
+            lista = []
+            for elem in self.inputs_dir:
+                if elem['name_dir'] != name:
+                    lista.append(elem['id'])
+            return lista
+        except:
+            return -1
+    
+    def write_index_dir(self):
+        dir_cluster_offset=1024
+        size_input_dir = 64
+        for input_dir in self.inputs_dir:
+            i = int(input_dir['id'])
+            self.map[dir_cluster_offset+(size_input_dir*i):dir_cluster_offset+(size_input_dir*i)+15] = (" "*(15-len(input_dir['name_dir']))+input_dir['name_dir']).encode('ascii')
+            self.map[dir_cluster_offset+(size_input_dir*i)+16:dir_cluster_offset+(size_input_dir*i)+24] = ("0"*(8-len(str(input_dir['size_file'])))+str(input_dir['size_file'])).encode('ascii')
+            self.map[dir_cluster_offset+(size_input_dir*i)+25:dir_cluster_offset+(size_input_dir*i)+30] = ("0"*(5-len(str(input_dir['inic_cluster'])))+str(input_dir['inic_cluster'])).encode('ascii')
+            self.map[dir_cluster_offset+(size_input_dir*i)+31:dir_cluster_offset+(size_input_dir*i)+45] = ("0"*(14 - len(str(input_dir['fc'])))+str(input_dir['fc'])).encode('ascii')
+            self.map[dir_cluster_offset+(size_input_dir*i)+46:dir_cluster_offset+(size_input_dir*i)+60] = ("0"*(14- len(str(input_dir['fm'])))+str(input_dir['fm'])).encode('ascii')
+        return True
     
      # Lista el contenido del FS
     def listar_contenido(self):
@@ -89,22 +113,69 @@ class FiUnamFS(Menu):
     # regresa los datos del archivo por su nombre
     def read(self,name):
         index = self.get_index_dir(name)
-        if index:
+        print("=====")
+        print(index)
+        print("=====")
+        if index != []:
+            index = index[0]
             input_dir = self.inputs_dir[index]
             inic_cluster = input_dir['inic_cluster']
             size_file =  input_dir['size_file']
             return self.map[self.size_of_cluster_FS*inic_cluster:self.size_of_cluster_FS*inic_cluster+size_file]
         return False
+    
+    def get_clusters_ocupados(self):
+        ocupados = []
+        inputs = self.get_index_not_dir(self.void_entrada_dir)
+        if inputs != -1:
+            for input_dir in inputs:
+                cluster_inicial = self.inputs_dir[input_dir]['inic_cluster']
+                tam_cluster = ceil(self.inputs_dir[input_dir]['size_file'] / 1024) + 1
+                for cluster in range(cluster_inicial,tam_cluster):
+                    ocupados.append(cluster)
+            return ocupados
+        return []
+    
+    def get_clusters_usados(self,inic,size):
+        usados = []
+        tam = ceil(size/1024) + 1
+        print(inic)
+        print("----")
+        print(tam+inic)
+        for cluster in range(inic,tam+inic):
+            print(cluster)
+            usados.append(cluster)
+        return usados
+
 
     # Escribe un nuevo archivo
     def write(self,name,data):
         index = self.get_index_dir(self.void_entrada_dir)
-        if index:
+        if index != -1:
+            index = index[0]
             input_dir = self.inputs_dir[index]
-            inic_cluster = input_dir['inic_cluster']
+            inic_cluster = 0
             size_file =  len(data)
+            cluster_ocupados = self.get_clusters_ocupados()
+            seccion_valida = False
+            for i in range(5,1440):
+                if i not in cluster_ocupados:
+                    clusters_usados = self.get_clusters_usados(i,size_file)
+                    print(clusters_usados)
+                    for cluster_usado in clusters_usados:
+                        seccion_valida = True
+                        if cluster_usado in cluster_ocupados:
+                            seccion_valida = False
+                            break
+                    if seccion_valida == True:
+                        inic_cluster = i
+                        break
+            print(str(self.size_of_cluster_FS*inic_cluster)+":"+str(self.size_of_cluster_FS*inic_cluster+size_file))
             self.map[self.size_of_cluster_FS*inic_cluster:self.size_of_cluster_FS*inic_cluster+size_file] = data
-            return True
+            self.inputs_dir[index]['name_dir'] = name
+            self.inputs_dir[index]['inic_cluster'] = inic_cluster
+            self.inputs_dir[index]['size_file'] = size_file
+            return self.write_index_dir()
         return False
     
     def parse_ruta_a_nombre_archivo(self,path):
@@ -115,7 +186,7 @@ class FiUnamFS(Menu):
     #copia del FS a un FS externo
     def copiar_FS_a_eXFS(self,source,dest):
         data = self.read(source)
-        with open(dest,"w+") as f:
+        with open(dest,"wb+") as f:
             f.write(data)
     
     
@@ -125,15 +196,19 @@ class FiUnamFS(Menu):
             fs = mmap.mmap(f.fileno(),0)
             name = self.parse_ruta_a_nombre_archivo(source)
             data = fs.read()
-            self.write(name,data)
+            return self.write(name,data)
 
     def delete(self,name):
         index = self.get_index_dir(name)
-        if index:
+        if index != []:
+            index = index[0]
             input_dir = self.inputs_dir[index]
             inic_cluster = input_dir['inic_cluster']
             size_file =  input_dir['size_file']
-            self.map[self.size_of_cluster_FS*inic_cluster:] = "\x00"*size_file
-            del self.inputs_dir[index]
-            return True
+            self.inputs_dir[index]['name_dir'] = "AQUI_NO_VA_NADA"
+            self.inputs_dir[index]['size_file'] = "0"
+            self.inputs_dir[index]['inic_cluster'] = "0"
+            self.inputs_dir[index]['fc'] = "0"
+            self.inputs_dir[index]['fm'] = "0"
+            return self.write_index_dir()
         return False

@@ -17,16 +17,16 @@ class Menu:
             self.listar_contenido()
         elif(opcion == 2):
             self.listar_contenido()
-            source = input("escribe el nombre del archivo que deseas copiar")
-            dest = input("escribe la ruta donde deseas escribir el archivo")
+            source = input("escribe el nombre del archivo que deseas copiar\n_ ")
+            dest = input("escribe la ruta donde deseas escribir el archivo\n_ ")
             self.copiar_FS_a_eXFS(source,dest)
         elif(opcion == 3):
             self.listar_contenido()
             source = input("escribe la ruta del archivo que deseas añadir al FS\n_ ")
-            self.copiar_eXFS_a_FS(source)
+            print(self.copiar_eXFS_a_FS(source))
         elif(opcion == 4):
             self.listar_contenido()
-            name = input("introduce el nombre del archivo a eliminar")
+            name = input("introduce el nombre del archivo a eliminar\n_ ")
             self.delete(name)
         elif(opcion == 5):
             print("Se desfragmenta el FS")

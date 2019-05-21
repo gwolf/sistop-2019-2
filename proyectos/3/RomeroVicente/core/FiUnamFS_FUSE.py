@@ -95,6 +95,9 @@ class FiUnamFS(LoggingMixIn,Operations):
         else:
             exit()
     
+    def get_date(self):
+        
+    
     # Lee el contenido del directorio
     def readdir(self, path, fh):
         return ['.', '..'] + [x[1:] for x in self.files if x != '/']

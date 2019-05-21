@@ -1,0 +1,4 @@
+set transaction isolation level serializable;
+SELECT en_existencia from libro where libro_id = 1;
+commit;
+/
