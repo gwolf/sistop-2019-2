@@ -23,7 +23,7 @@ class Menu:
         elif(opcion == 3):
             self.listar_contenido()
             source = input("escribe la ruta del archivo que deseas añadir al FS\n_ ")
-            print(self.copiar_eXFS_a_FS(source))
+            self.copiar_eXFS_a_FS(source)
         elif(opcion == 4):
             self.listar_contenido()
             name = input("introduce el nombre del archivo a eliminar\n_ ")
@@ -40,5 +40,8 @@ class Menu:
     def iniciar_menu(self):
         while self.exit == False:
             self.print_menu()
-            opcion = input("_")
-            self.seleccionar_accion(int(opcion))
+            try:
+                opcion = input("_" )
+                self.seleccionar_accion(int(opcion))
+            except:
+                print("No es una opcion valida")
