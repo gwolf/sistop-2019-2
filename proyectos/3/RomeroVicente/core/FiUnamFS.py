@@ -3,6 +3,8 @@ import os
 from core.Menu import Menu
 from datetime import datetime
 from math import ceil
+import datetime
+import time
 
 class FiUnamFS(Menu):
 
@@ -28,7 +30,7 @@ class FiUnamFS(Menu):
                 fs[1024+(64*i)+25:1024+(64*i)+30] = ("0"*(30-25)).encode('ascii')
                 fs[1024+(64*i)+31:1024+(64*i)+45] = ("0"*(45-31)).encode('ascii')
                 fs[1024+(64*i)+46:1024+(64*i)+60] = ("0"*(60-46)).encode('ascii')
-                fs[1024+(64*i)+61:1024+(64*i)+64] = ("0"*(64-61)).encode('ascii')
+                fs[1024+(64*i)+61:1024+(64*i)+64] = ("\x00"*(64-61)).encode('ascii')
             fs[1024*5:] = str("\x00"*(1024*1435)).encode('ascii')
             f.close()
 
@@ -113,9 +115,6 @@ class FiUnamFS(Menu):
     # regresa los datos del archivo por su nombre
     def read(self,name):
         index = self.get_index_dir(name)
-        print("=====")
-        print(index)
-        print("=====")
         if index != []:
             index = index[0]
             input_dir = self.inputs_dir[index]
@@ -149,7 +148,7 @@ class FiUnamFS(Menu):
 
 
     # Escribe un nuevo archivo
-    def write(self,name,data):
+    def write(self,name,data,create_date):
         index = self.get_index_dir(self.void_entrada_dir)
         if index != -1:
             index = index[0]
@@ -175,6 +174,8 @@ class FiUnamFS(Menu):
             self.inputs_dir[index]['name_dir'] = name
             self.inputs_dir[index]['inic_cluster'] = inic_cluster
             self.inputs_dir[index]['size_file'] = size_file
+            self.inputs_dir[index]['fm'] = self.time_to_formatFS(time.time())
+            self.inputs_dir[index]['fc'] = self.time_to_formatFS(create_date)
             return self.write_index_dir()
         return False
     
@@ -196,7 +197,51 @@ class FiUnamFS(Menu):
             fs = mmap.mmap(f.fileno(),0)
             name = self.parse_ruta_a_nombre_archivo(source)
             data = fs.read()
-            return self.write(name,data)
+            create_date = os.path.getctime(source)
+            return self.write(name,data,create_date)
+    
+    def desfragmentar(self):
+        self.inputs_dir
+        indexes = self.get_index_not_dir(self.void_entrada_dir)
+        cluster_nuevo = 5
+        for index in indexes:
+            cluster_inicial = self.inputs_dir[index]['inic_cluster']
+            size_bits = self.inputs_dir[index]['size_file']
+            data = self.get_data(cluster_inicial,size_bits)
+            cluster_final = self.get_cluster_final(self.inputs_dir[index])
+            tam_clusters = len(self.get_list_range(cluster_inicial,cluster_final))
+            cluster_inicial = cluster_nuevo
+            self.set_data(cluster_inicial,size_bits,data)
+            self.inputs_dir[index]['inic_cluster'] = cluster_inicial
+            cluster_nuevo = cluster_inicial + tam_clusters
+        self.write_index_dir()
+
+    def get_data(self,cluster_inicial,size_bits):
+        return self.map[self.size_of_cluster_FS*cluster_inicial:self.size_of_cluster_FS*cluster_inicial+size_bits]
+    
+    def set_data(self,cluster_inicial,size_bits,data):
+        try:
+            self.map[self.size_of_cluster_FS*cluster_inicial:self.size_of_cluster_FS*cluster_inicial+size_bits] = data
+            return True
+        except Exception as e:
+            print(e)
+            return False
+    
+        
+    def get_cluster_final(self,input_dir):
+        tam = ceil(input_dir['size_file']/1024) + 1
+        return input_dir['inic_cluster'] + tam
+
+    def get_list_range(self,init,end):
+        lista = []
+        for i in range(init,end+1):
+            lista.append(i)
+        return lista
+    
+    def time_to_formatFS(self,time):
+        date_time = datetime.datetime.fromtimestamp(time)
+        return date_time.strftime("%Y%m%d%H%M%S")
+
 
     def delete(self,name):
         index = self.get_index_dir(name)
