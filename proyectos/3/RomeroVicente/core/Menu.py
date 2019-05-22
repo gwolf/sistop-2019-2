@@ -30,7 +30,7 @@ class Menu:
             self.delete(name)
         elif(opcion == 5):
             print("Se desfragmenta el FS")
-            pass
+            self.desfragmentar()
         elif(opcion == 6):
             print("se procede a salir del programa")
             self.exit = True
