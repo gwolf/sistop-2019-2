@@ -8,6 +8,23 @@
 - python 3.*
 #### bibliotecas externas
 - ninguna
+
+#### uso
+
+```
+$ python main.py [-h] -R [ROOT] [-N [NAME_VOL]] [-C]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -R [ROOT], --root [ROOT]
+                        Define el archivo que contiene o contendra el sistema
+                        de archivos
+  -N [NAME_VOL], --name-vol [NAME_VOL]
+                        Define la etiqueta del volumen
+  -C, --create          Define si se creara nuevo sistema de archivos
+
+```
+
 ### funciones
 * listar contenido
 * Copiar del sistema de archivos FiUNAM a sistema externo
