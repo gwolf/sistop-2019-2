@@ -1,8 +1,13 @@
+import sys
 class Menu:
     def __init__(self):
         self.exit = False
 
     def print_menu(self):
+        input()
+        print(chr(27)+'[2j')
+        print('\033c')
+        print('\x1bc')
         print("Selecciona la accion")
         print("1.Listar directorio")
         print("2.Copiar de FS a sistema externo")
@@ -19,7 +24,8 @@ class Menu:
             self.listar_contenido()
             source = input("escribe el nombre del archivo que deseas copiar\n_ ")
             dest = input("escribe la ruta donde deseas escribir el archivo\n_ ")
-            self.copiar_FS_a_eXFS(source,dest)
+            if(not self.copiar_FS_a_eXFS(source,dest)):
+                print("Error en la escritura del archivo a sistema externo")
         elif(opcion == 3):
             self.listar_contenido()
             source = input("escribe la ruta del archivo que deseas añadir al FS\n_ ")

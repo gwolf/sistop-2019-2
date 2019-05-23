@@ -123,9 +123,10 @@ class FiUnamFS(Menu):
     
      # Lista el contenido del FS
     def listar_contenido(self):
+        print("Nombre         Cluster inicial  tamaño en bytes")
         for input_dir in self.inputs_dir:
             if input_dir["name_dir"] != self.void_entrada_dir:
-                print("{0} {1} {2}".format(input_dir["name_dir"],input_dir['inic_cluster'],input_dir['size_file']))
+                print("{0} {1}     {2}".format(input_dir["name_dir"],input_dir['inic_cluster'],input_dir['size_file']))
     
     # regresa los datos del archivo por su nombre
     def read(self,name):
