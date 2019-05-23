@@ -171,7 +171,7 @@ class FiUnamFS(Menu):
             else:
                 print("Ya no hay espacio para meter este archivo")
         else:
-            print("Un archivo con el mismo nombre ya existe")
+            print("ya existe un archivo con el mismo nombre")
         return False
     
     # Convierte una ruta absoluta y obtiene el nombre del archivo
@@ -195,11 +195,15 @@ class FiUnamFS(Menu):
     def copiar_eXFS_a_FS(self,source):
         if os.path.isfile(source):
             with open(source,"r+") as f:
-                fs = mmap.mmap(f.fileno(),0)
                 name = self.parse_ruta_a_nombre_archivo(source)
-                data = fs.read()
-                create_date = os.path.getctime(source)
-                return self.write(name,data,create_date)
+                if name not in self.get_index_dir(name,'name_dir'):
+                    fs = mmap.mmap(f.fileno(),0)
+                    data = fs.read()
+                    create_date = os.path.getctime(source)
+                    return self.write(name,data,create_date)
+                else:
+                    print("Este archivo ya existe en el sistema de archivos")
+                    return False
         print("No es un archivo valido")
         return False
     
