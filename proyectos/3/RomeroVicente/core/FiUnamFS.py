@@ -58,6 +58,7 @@ class FiUnamFS(Menu):
             cluster_inicial = int(self.map[1024+(64*input_dir)+25:1024+(64*input_dir)+30])
             fecha_creacion = int(self.map[1024+(64*input_dir)+31:1024+(64*input_dir)+45])
             fecha_modificacion = int(self.map[1024+(64*input_dir)+46:1024+(64*input_dir)+60])
+            # Crea diccionario que sera añadido al array del indice de directorio
             self.inputs_dir.append(dict(id=input_dir,name_dir=name_dir,size_file=tam_archivo,inic_cluster=cluster_inicial,
                                         fc = fecha_creacion, fm = fecha_modificacion))
     # Inicializa el FS y valida que sea un FS valido
@@ -74,6 +75,11 @@ class FiUnamFS(Menu):
                 except:
                     print("el sistema de archivos no es valido")
                     exit()
+                # Se valida que sea no sea otro FS
+                if self.nombre_FS != 'FiUnamFS':
+                    print("el sistema de archivos no es valido")
+                    exit()
+                # Añado datos del superbloque a variable
                 self.version_FS = self.map[10:13].decode('ascii')
                 self.etiqueta_vol = self.map[20:35].decode('ascii')
                 self.size_of_cluster_FS = int(self.map[40:45].decode('ascii'))
@@ -82,12 +88,9 @@ class FiUnamFS(Menu):
                 self.files = {}
                 dir_cluster_offset=1024
                 size_input_dir = 64
+                # Se calcula el numero de entradas en directorio
                 self.num_input_dir = int(self.size_of_cluster_FS/size_input_dir * self.num_of_cluster_dir_FS)
                 self.inputs_dir = []
-                self.descriptor_archivo = 0
-                if self.nombre_FS != 'FiUnamFS':
-                    print("el sistema de archivos no es valido")
-                    exit()
             self.parse_dir()
         else:
             exit()
@@ -123,10 +126,11 @@ class FiUnamFS(Menu):
     
      # Lista el contenido del FS
     def listar_contenido(self):
-        print("Nombre         Cluster inicial  tamaño en bytes")
+        print("\033[31mNombre       \033[32mCluster inicial  \033[33mtamaño en bytes\033[34m Fecha Creacion \033[35m Fecha modificacion\033[0m")
         for input_dir in self.inputs_dir:
             if input_dir["name_dir"] != self.void_entrada_dir:
-                print("{0} {1}     {2}".format(input_dir["name_dir"],input_dir['inic_cluster'],input_dir['size_file']))
+                print("\033[31m{0}  \033[32m{1}     \033[33m{2}  \033[34m{3} \033[35m{4}\033[0m".format(input_dir["name_dir"]
+                    ,input_dir['inic_cluster'],input_dir['size_file'],input_dir['fc'],input_dir['fm']))
     
     # regresa los datos del archivo por su nombre
     def read(self,name):
@@ -214,7 +218,7 @@ class FiUnamFS(Menu):
             self.set_data(cluster_inicial,size_bits,data)
             self.inputs_dir[index]['inic_cluster'] = cluster_inicial
             cluster_nuevo = cluster_inicial + tam_clusters
-        self.write_index_dir()
+        return self.write_index_dir()
 
     # Obtiene los datos binarios de una entrada en el FS
     def get_data(self,cluster_inicial,size_bits):
@@ -248,6 +252,7 @@ class FiUnamFS(Menu):
 
     # Elimina una entrada del indice de directorios dejandola libre
     # No elimina datos pero al no estar mapeados en el indice se consideran basura
+    # Al final se desfragmenta de manera implicita
     def delete(self,name):
         index = self.get_index_dir(name)
         if index != []:
@@ -260,5 +265,5 @@ class FiUnamFS(Menu):
             self.inputs_dir[index]['inic_cluster'] = "0"
             self.inputs_dir[index]['fc'] = "0"
             self.inputs_dir[index]['fm'] = "0"
-            return self.write_index_dir()
+            return self.desfragmentar()
         return False

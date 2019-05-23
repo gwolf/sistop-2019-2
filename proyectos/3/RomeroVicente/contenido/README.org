@@ -1,4 +1,4 @@
-#+title: Proyecto 3: (Micro) sistema de archivos
+# title: Proyecto 3: (Micro) sistema de archivos
 
 #+BEGIN_SRC yaml
 Planteamiento: 09.05.2019

@@ -1,5 +1,5 @@
 import argparse
-from fuse import FUSE
+#from fuse import FUSE
 from core.FiUnamFS import FiUnamFS
 
 class Console:
