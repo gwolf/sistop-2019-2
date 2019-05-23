@@ -267,21 +267,17 @@ def disk_defragmenter():
 		pointer_for_def = init_dir
 		p_dest = 0 
 		p_origin = 0
-		while flag == 0: 
+		while flag == 0 and pointer_for_def < 5120: 
 			file_system_disk.seek(pointer_for_def)
 			query = file_system_disk.read(15)
 			if query == 'AQUI_NO_VA_NADA':
 				p_dest = pointer_for_def
-				flag = 1
-			else: 
 				pointer_for_def += 64
-
-
-		while flag2 == 0 and pointer_for_def < 5120: 
-			file_system_disk.seek(pointer_for_def)
-			file_name = file_system_disk.read(15)
-			if file_name != 'AQUI_NO_VA_NADA':
 				p_origin = pointer_for_def
+
+				file_system_disk.seek(pointer_for_def)
+				file_name = file_system_disk.read(15)
+
 				file_system_disk.seek(pointer_for_def+16)
 				file_size = file_system_disk.read(8)
 				#print(file_size)
@@ -294,9 +290,6 @@ def disk_defragmenter():
 				file_system_disk.seek(pointer_for_def+46)
 				file_mod_date = file_system_disk.read(14)
 				#print(file_mod_date)
-				flag2 = 1
-
-				#En esta parte se intercambia el valor de los campos
 				insert_bytes(p_dest, p_dest + 15, file_name)
 				insert_bytes(p_dest + 16, p_dest + 24, file_size)
 				insert_bytes(p_dest + 25, p_dest + 30, file_ini_cluster)
@@ -308,8 +301,8 @@ def disk_defragmenter():
 				insert_bytes(p_origin + 25,p_origin + 30, no_init_cluster)
 				insert_bytes(p_origin + 31,p_origin + 45, no_date)
 				insert_bytes(p_origin + 46,p_origin + 60, no_date)
-
-			else:
+				flag = 1
+			else: 
 				pointer_for_def += 64
 
 	file_system_disk.close()
