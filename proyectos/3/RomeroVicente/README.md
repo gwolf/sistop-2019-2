@@ -14,7 +14,7 @@
 ```
 $ python main.py [-h] -R [ROOT] [-N [NAME_VOL]] [-C]
 
-optional arguments:
+argumentos:
   -h, --help            show this help message and exit
   -R [ROOT], --root [ROOT]
                         Define el archivo que contiene o contendra el sistema
