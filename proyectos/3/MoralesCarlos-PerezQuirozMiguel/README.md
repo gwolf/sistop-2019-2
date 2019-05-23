@@ -151,21 +151,21 @@ for i in range(64):
 
 ## Pruebas de ejecución
 ### Archivo de prueba en la computadora
-![1](./1.png)
+![1](./img/1.png)
 
 ### Estado inicial del sistema de archivos
-![2](./2.png)
+![2](./img/2.png)
 
 ### Después de copiar hacia FiUnamFS
-![3](./3.png)
-![4](./4.png)
+![3](./img/3.png)
+![4](./img/4.png)
 ### Listado de archivos
-![5](./5.png)
+![5](./img/5.png)
 ### Después de borrar
-![6](./6.png)
-![7](./7.png)
-![8](./8.png)
+![6](./img/6.png)
+![7](./img/7.png)
+![8](./img/8.png)
 
 ### Después de copiar hacia la computadora
-![9](./9.png)
-![10](./10.png)
+![9](./img/9.png)
+![10](./img/10.png)
