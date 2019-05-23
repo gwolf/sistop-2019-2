@@ -383,7 +383,7 @@ def user_interface():
 					else: 
 						copy_from_computer_to_disk(file)
 			except FileNotFoundError:
-				print("No existe el archivo: " + file_name)
+				print("No existe el archivo: " + file)
 
 		elif command == 'delete':
 			file_name = option[option.find(" ")+1:]
