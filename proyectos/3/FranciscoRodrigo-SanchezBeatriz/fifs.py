@@ -153,6 +153,7 @@ class FIFS:
             print("cpout: " + fe + " : No such file ")
         else :
             prtb = self.sb.size_cluster + self.sb.size_dentry*i.numdir
+            # VERIFICAR QUE EXISTA EL ARCHIVO
             filecp = open(fe,"a+b")
             cluster = self.sb.size_cluster*i.finit_cluster
             # operacion : 1024*inicio_cluster_del_archivo_a_copiar
@@ -197,10 +198,21 @@ class FIFS:
                 self.fs_map[fe_prtb:fe_prtt] = f.read()
                 # hacer registro de metadatos
                 self.registerFile(fe,i_lastcluster+1)
+                f.close()
                 break
             else :
                 print("cpin: " + fe + ": file too large")
 
+    def defrag(self):
+        inodes=self.inodes()
+        print(inodes)
+        for j in range(0,len(inodes)-1):
+            i_lastcluster = inodes[j].finit_cluster + math.ceil(inodes[j].fsize/self.sb.size_cluster)
+            print(i_lastcluster)
+
     def close(self):
         self.fs_map.close()
         self.f.close()
+
+    def cpint(self,inode):
+        

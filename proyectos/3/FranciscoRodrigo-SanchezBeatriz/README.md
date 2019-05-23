@@ -10,11 +10,12 @@ Sánchez Breatriz
 0. Lista directorios (Betty)
    1. Ya lo hice pero a medias, falta decir su fecha de modificación, etc.
       1. Para ello pues hay que crear una función que del formato de fecha que nos dio el profe  pasarlo a un formato entendible
+      2. Verificar la validacion del sist de archivos
 1. Copiar archivos 1  (Yo)
    1. Solo falta que los puede copiar a "cualquier directorio"
 2. Copiar archivos 2 (Yo)
    1. Se puede hacer pero solo para archivos pequeños, cuado se implemente **desfragmentar**  ya podremos copiar archivos más grandes a él.
-3. Eliminar un archivo (Yo) [ Listo ] 
+3. Eliminar un archivo (Yo) [ Listo ]
 4. Desfragmentador (Betty)
 5. Integración con FUSE (Yo)
 6. Documentación (Betty)

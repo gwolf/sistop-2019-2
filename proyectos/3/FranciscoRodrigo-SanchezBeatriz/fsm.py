@@ -27,6 +27,8 @@ def main():
                 fs.cpin(sys.argv[2])
             else:
                 print("cpin: miss operand")
+        elif sys.argv[1]=="defrag":
+            fs.defrag()
         else :
             print("Invalid command")
     else :
