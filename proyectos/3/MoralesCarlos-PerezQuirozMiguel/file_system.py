@@ -7,6 +7,8 @@ from datetime import datetime
 import math
 import getpass
 
+
+
 username = getpass.getuser()
 
 file_names = []
@@ -136,43 +138,47 @@ def copy_from_computer_to_disk(route):
 	else: 
 		init_cluster = '5'
 	#Fecha de creación 
-	c_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getctime(file_name)))
+	c_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getctime(route)))
 
 	#Fecha de modificación
-	m_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getmtime(file_name)))
-	file_content = computer_file.read()
-	flag = 0
-	while flag == 0:
-		file_system_disk.seek(actual_pointer_for_insert)
-		query = file_system_disk.read(15)
-		if query == 'AQUI_NO_VA_NADA':
-			
+	m_date = time.strftime('%Y%m%d%H%M%S', time.gmtime(os.path.getmtime(route)))
+	try:
+		file_content = computer_file.read()
+		flag = 0
+		while flag == 0:
+			file_system_disk.seek(actual_pointer_for_insert)
+			query = file_system_disk.read(15)
+			if query == 'AQUI_NO_VA_NADA':
+				
 
-			insert_bytes(actual_pointer_for_insert,actual_pointer_for_insert + 15, file_name)
-			insert_bytes(actual_pointer_for_insert + 16, actual_pointer_for_insert + 24, sizeof_file)
-			insert_bytes(actual_pointer_for_insert + 25, actual_pointer_for_insert + 30, init_cluster)
-			insert_bytes(actual_pointer_for_insert + 31, actual_pointer_for_insert + 45, c_date)
-			insert_bytes(actual_pointer_for_insert + 46, actual_pointer_for_insert + 60, m_date)
+				insert_bytes(actual_pointer_for_insert,actual_pointer_for_insert + 15, file_name)
+				insert_bytes(actual_pointer_for_insert + 16, actual_pointer_for_insert + 24, sizeof_file)
+				insert_bytes(actual_pointer_for_insert + 25, actual_pointer_for_insert + 30, init_cluster)
+				insert_bytes(actual_pointer_for_insert + 31, actual_pointer_for_insert + 45, c_date)
+				insert_bytes(actual_pointer_for_insert + 46, actual_pointer_for_insert + 60, m_date)
 
-			sum_file_sizes = 0 
-			for i in range(len(file_sizes)):
-				sum_file_sizes += file_sizes[i] + 4
-			sum_file_sizes += 5120
+				sum_file_sizes = 0 
+				for i in range(len(file_sizes)):
+					sum_file_sizes += file_sizes[i] + 4
+				sum_file_sizes += 5120
 
-			file_content_locator.append(sum_file_sizes)
-			insert_bytes(sum_file_sizes,sum_file_sizes+os.path.getsize(route),file_content)
-			#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
-			#if len(file_content_locator) > 1:
-			#	if file_content_locator[-1] == file_content_locator[-2]:
-			#		file_content_locator[-1] = file_content_locator[-2] + 4
+				file_content_locator.append(sum_file_sizes)
+				insert_bytes(sum_file_sizes,sum_file_sizes+os.path.getsize(route),file_content)
+				#Valida si no es el primero que sea mayor, si no, el archivo a insertar está vacío
+				#if len(file_content_locator) > 1:
+				#	if file_content_locator[-1] == file_content_locator[-2]:
+				#		file_content_locator[-1] = file_content_locator[-2] + 4
 
-			file_names.append(file_name)
-			file_sizes.append(os.path.getsize(route))
+				file_names.append(file_name)
+				file_sizes.append(os.path.getsize(route))
 
-			flag = 1
+				flag = 1
 
 
-		actual_pointer_for_insert = actual_pointer_for_insert + 64
+			actual_pointer_for_insert = actual_pointer_for_insert + 64
+	except UnicodeDecodeError:
+		print('Archivo no compatible con el sistema de archivos.')
+	
 
 
 	file_system_disk.close()
@@ -231,13 +237,12 @@ def delete_file(file_name):
 					file_system_disk.seek(location)
 					
 					file_system_disk.write(content2)
-					file_system_disk.write('\0')
 					location += 1
 				else:
 					#Se les asigna '\0' a los bytes faltantes
 					file_system_disk.seek(location)
 
-					#file_system_disk.write('\0')
+					file_system_disk.write('\0')
 					location += 1
 				
 			#Eliminando registros de las listas. 
@@ -316,7 +321,7 @@ def help():
 	print('\t\tlist \t\t\t - Lista los archivos actualmente en FiUnamFS')
 	print('\t\tdelete <name_of_file>\t - Borra un archivo de FiUnamFS')
 	print('\t\tabfs (ABout File System) - Despliega una breve descripción de FiUnamFS')
-
+	print('\t\tclear \t\t\t - Limpia la pantalla')
 def about_file_system():
 	print('\t\tAcerca de FiUnamFS')
 	print('\t\tVersión 4.0')
@@ -349,29 +354,41 @@ def user_interface():
 			break
 		elif command == 'copyfs':
 			file_name = option[option.find(" ")+1:]
-			copy_from_disk_to_computer(file_name)
+			if file_name in file_names: 
+				try: 
+					open(file_name, 'r').close()
+					os.remove(file_name)
+					copy_from_disk_to_computer(file_name)
+				except FileNotFoundError:
+					copy_from_disk_to_computer(file_name)
+			else: 
+				print('No se encuentra el archivo ' + file_name)
 			
 		elif command == 'copyfc':
-			file_name = option[option.find(" ")+1:]
+			file = option[option.find(" ")+1:]
 			try: 
-
-				if file_name in file_names:
-					print('Ya existe el archivo: ' + file_name)
-					replace = input('¿Deseas reemplazarlo? (S o N): ')
-					if replace == 'S':
-						delete_file(file_name)
-						disk_defragmenter()
-						file_names = []
-						file_sizes = []
-						file_content_locator = []
-						get_existing_files()
-						copy_from_computer_to_disk(file_name)
-					elif replace == 'N':
-						pass
-					else: 
-						print('Opción inválida')
+				if os.path.getsize(file) > (os.path.getsize(disk_name)-5120):
+					print('Archivo demasiado grande.')
 				else: 
-					copy_from_computer_to_disk(file_name)
+					file_name = os.path.basename(file)
+					if file_name in file_names:
+						print('Ya existe el archivo: ' + file_name)
+						replace = input('¿Deseas reemplazarlo? (S o N): ')
+						if replace == 'S':
+							delete_file(file_name)
+							disk_defragmenter()
+							file_names = []
+							file_sizes = []
+							file_content_locator = []
+							get_existing_files()
+							print(file)
+							copy_from_computer_to_disk(file)
+						elif replace == 'N':
+							pass
+						else: 
+							print('Opción inválida')
+					else: 
+						copy_from_computer_to_disk(file)
 			except FileNotFoundError:
 				print("No existe el archivo: " + file_name)
 
@@ -397,7 +414,7 @@ def user_interface():
 		elif command == '' or command == ' ':
 			pass
 		else:
-			print('\tNo se encontró la orden: ' + option)
+			print('No se encontró la orden: ' + option)
 
 	
 user_interface()
