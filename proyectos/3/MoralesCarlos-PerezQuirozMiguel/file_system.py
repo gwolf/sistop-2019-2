@@ -5,6 +5,9 @@ import subprocess
 import time
 from datetime import datetime
 import math
+import getpass
+
+username = getpass.getuser()
 
 file_names = []
 file_content_locator = []
@@ -191,8 +194,7 @@ def copy_from_disk_to_computer(file_name):
 def list_files():
 	global disk_name,file_names,file_sizes
 	for file_name in file_names:
-		index = file_names.index(file_name)
-		print(file_name + '\t' + str(file_sizes[index]) + '\t')
+		print(file_name)
 
 
 def delete_file(file_name):
@@ -200,7 +202,7 @@ def delete_file(file_name):
 	global no_file_name,no_size,no_init_cluster,no_date
 
 	actual_pointer_for_delete = init_dir
-	file_system_disk = open(disk_name,'r+')
+	file_system_disk = open(disk_name,'r+',encoding='latin-1')
 	flag = 0
 	while flag == 0: 
 		file_system_disk.seek(actual_pointer_for_delete)
@@ -227,13 +229,15 @@ def delete_file(file_name):
 					file_system_disk.seek(file_content_locator[index + 1]+i)
 					content2 = file_system_disk.read(1)
 					file_system_disk.seek(location)
+					
 					file_system_disk.write(content2)
+					file_system_disk.write('\0')
 					location += 1
 				else:
 					#Se les asigna '\0' a los bytes faltantes
 					file_system_disk.seek(location)
 
-					file_system_disk.write('\0')
+					#file_system_disk.write('\0')
 					location += 1
 				
 			#Eliminando registros de las listas. 
@@ -306,14 +310,24 @@ def disk_defragmenter():
 	file_system_disk.close()
 
 def help():
-	print('copyfc </path/of/file>\t -Copia un archivo de la computadora a FiUnamFS')
-	print('copyfs <name_of_file>\t -Copia un archivo de FiUnamFS a la computadora')
-	print('list \t\t\t -Lista los archivos actualmente en FiUnamFS')
-	print('delete <name_of_file>\t -Borra un archivo de FiUnamFS')
+	print('\t\tCOMANDO               \t \tDESCRIPCIÓN\n')
+	print('\t\tcopyfc </path/of/file>\t - Copia un archivo de la computadora a FiUnamFS')
+	print('\t\tcopyfs <name_of_file>\t - Copia un archivo de FiUnamFS a la computadora')
+	print('\t\tlist \t\t\t - Lista los archivos actualmente en FiUnamFS')
+	print('\t\tdelete <name_of_file>\t - Borra un archivo de FiUnamFS')
+	print('\t\tabfs (ABout File System) - Despliega una breve descripción de FiUnamFS')
+
+def about_file_system():
+	print('\t\tAcerca de FiUnamFS')
+	print('\t\tVersión 4.0')
+	print('\t\tFiUnamFS es un sistema de archivos creado por alumnos de la Facultad')
+	print('\t\tde Ingeniería de la UNAM.\n')
+	print('\t\tNovedades:')
+	print('\t\t-\tProceso de desfragmentación automático')
 
 
 def user_interface():
-	global disk_name
+	global disk_name,username
 	global file_names, file_content_locator,file_sizes
 	try: 
 		file_system_disk = open(disk_name,'r+')
@@ -323,37 +337,67 @@ def user_interface():
 	except FileNotFoundError: 
 		create_file_system_disk()
 
+	os.system('clear')
 	print('-----------------------Gracias por usar FiUnamFS----------------------')
 	print('Si eres nuevo utilizando FiUnamFS puedes utilizar el ')
 	print('comando \'help\' para obtener ayuda.\n')
 	
 	while True:
-		option = input('FiUnamFS# ')
+		option = input(username+'@FiUnamFS# ')
 		command = option[:option.find(" ")]
 		if option == 'exit' or command == 'exit':
 			break
-		elif command == 'copyfc':
-			file_name = option[option.find(" ")+1:]
-			copy_from_computer_to_disk(file_name)
-			
 		elif command == 'copyfs':
 			file_name = option[option.find(" ")+1:]
-			copy_from_disk_to_computer(file_name)	
+			copy_from_disk_to_computer(file_name)
+			
+		elif command == 'copyfc':
+			file_name = option[option.find(" ")+1:]
+			try: 
+
+				if file_name in file_names:
+					print('Ya existe el archivo: ' + file_name)
+					replace = input('¿Deseas reemplazarlo? (S o N): ')
+					if replace == 'S':
+						delete_file(file_name)
+						disk_defragmenter()
+						file_names = []
+						file_sizes = []
+						file_content_locator = []
+						get_existing_files()
+						copy_from_computer_to_disk(file_name)
+					elif replace == 'N':
+						pass
+					else: 
+						print('Opción inválida')
+				else: 
+					copy_from_computer_to_disk(file_name)
+			except FileNotFoundError:
+				print("No existe el archivo: " + file_name)
+
 		elif command == 'delete':
 			file_name = option[option.find(" ")+1:]
-			delete_file(file_name)
-			disk_defragmenter()
-			file_names = []
-			file_sizes = []
-			file_content_locator = []
-			get_existing_files()
+			if file_name in file_names: 
+				delete_file(file_name)
+				disk_defragmenter()
+				file_names = []
+				file_sizes = []
+				file_content_locator = []
+				get_existing_files()
+			else: 
+				print('No existe el archivo: ' + file_name)
 		elif command == 'list' or option == 'list':
 			list_files()
-			print(file_names)
-			print(file_sizes)
-			print(file_content_locator)
 		elif command == 'help' or option == 'help':
 			help()
+		elif command == 'clear' or option == 'clear':
+			os.system('clear')
+		elif command == 'abfc' or option == 'abfs':
+			about_file_system()
+		elif command == '' or command == ' ':
+			pass
+		else:
+			print('\tNo se encontró la orden: ' + option)
 
 	
 user_interface()
