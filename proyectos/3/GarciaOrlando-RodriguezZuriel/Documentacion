@@ -1,0 +1,24 @@
+
+Documentacion de Proyecto 3
+--------------------------------------
+Integrates:
+
+Garcia Cabrera Orlando Anselmo 
+Rodríguez Agiss Zuriel Uzai
+
+----------------------------------------
+Para desarrolar nuestro sistema de archivos decidimos utilizar el lenguaje de alto nivel python en su 
+version 3, para ser ejecutado solo es necesario la sentencia 
+
+python3 FIFS.py -h 
+
+despues se mostrara que se inicializaron los clusters y podra observar las opciones posibles en donde para ser ejecutadas
+sera de la siguiente manera
+
+python3 FIFS.py [opcione] [argumentos] ** sin los parentesis 
+
+
+y es como usted podra jugar con nuestro programa.
+----------------------------------------
+ 
+
