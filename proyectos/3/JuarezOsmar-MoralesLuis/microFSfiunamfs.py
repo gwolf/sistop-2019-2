@@ -73,10 +73,11 @@ def buscaArchivo():
 		#del archivo, struct.unpack_from(tipoSalidaDato,pointerFileSyst,offset), la funcion
 		#o regresa una tupla con el caracter en ese byte
 		while(aux < limiteCadena):
+			print(aux)
 			data=struct.unpack_from('>s',fp,aux)
+			print(data)
 			nomAux=nomAux+data[0] #se guarda el valor de la tupla en una cadena
 			aux = aux + 1
-			peint(nomAux)
 
 		#se limpia la cadena, quitandole espacios y caracteres para ver mejor que tipo de 
 		#archivo es
@@ -85,7 +86,7 @@ def buscaArchivo():
 		#se compara que el header extraido sea el nombre del archivo que se busca eliminar
 		if(nomAux==fileName):
 			offsetDelete=offset
-			print(offset)
+			
 			break
 		#se limpia la variable aux que contiene el nombre del clouster
 		nomAux=''
@@ -133,19 +134,37 @@ def elimina(offsetElimina):
 		fp.close()
 
 #def copiaArchivoDesde():
+	#La idea era mandar a pedir la ruta del archivo que queria copiar el usuario
+	#haciendo uso de funciones de la biblioteca os que imprtamos, funciones como path
+	#para guardar la ruta de ese archivo.
+	#El siguiente paso seria abrir ese archivo en modo lectura con las funciones como 
+	#open(ruta,'rb') despues guardar ese contenido en un arreglo de bytes del tamanio
+	#de un clouster, y despues escribir el contenido de ese arreglo en un clauster que 
+	#tuviera la etiqueta AQUI_NO_VA_NADA
 
 #def copiaArchivoHacia():
-	
+	#Para la idea de copiar desde nuestro FS hacia nuestra computadora era la ingenieria
+	#inversa de la funcion anterior, es decir que el usuario nos inndique el nombre del 
+	#arhivo guardado en fiunamfs y buscarlo con la funcion definica mas arriba y una ves 
+	#veriicado que exista encontrar el offset donde empieza su clauster y empezar a sacar 
+	#su contenido y guardarlo en un arreglo y despues que el usuario nos indique en donde
+	#quiere que compiemos eso en su computadora para crar un archivo en con l informacion
+	#extraida del clauster
+
 #def defrag():
-	
+	#La idea para la desfragmentacion fue complicada pero como lo habiamos pensafo fue que
+	#recorrieramos todo el dispositivo FIUNAMFS y guardaramos el numero de clusters libres 
+	#y a la vez trataramos de identificar si un archivo ocupaba mas de un clouster para su 
+	#informacion y asi determinaramos en que momento moveriamos todo. Guardando el contenido
+	#de un clauster a mover en un arreglo de bytes auxiliar	
 
 def main():
 	flag=True
 	fileName=''
 	while(flag):
 		print("\n")
-		print("- - - - - - - - - - - - - - - - - - - - - - - - - ")
-		print("\t\tBinvnido al Micro Sistema de Archivos\n")
+		print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+		print("\t\tBienvenido al Micro Sistema de Archivos\n")
 		print("\t Seleccione un opcion: \n")
 		print("1. Listar contenido de FIUNAMFS \n")
 		print("2. Copiar archivo a FIUNAMFS \n")
@@ -153,6 +172,7 @@ def main():
 		print("4. Eliminar archivo de FIUNAMFS \n")
 		print("5. Desfragmentar FIUNAMFS \n")
 		print("6. Salir \n")
+		print("NOTA: opciones 2, 3 y 5 solo se plantea la idea\n")
 		opcion=input("---->")
 
 		if opcion==1:
