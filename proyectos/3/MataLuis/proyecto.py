@@ -21,6 +21,7 @@ def obtenerarchivos():
             ubicacion.append(int(sistema.read(5)))
         posicion = posicion + 64
 
+    posicion = 5120    
     sistema.close()
 
 
@@ -43,4 +44,27 @@ def copiarPC(archivo):
     copia_archivo = open(archivo,'wb')
     copia.write(sistema.read(tamano_archivo))
     sistema.close()
+
+def eliminar(archivo): 
+    sistema = open(directorio,'r+')
+    posicion = 1024
+    sistema.seek(posicion)
+    while posicion < 5120:
+        nombre_archivo = sistema.read(15)
+        archivo_act = nombre_archivo.strip()
+        
+        if archivo_act == archivo:
+            sistema.seek(posicion)
+            sistema.write("AQUI_NO_VA_NADA")
+            sistema.wirte('0'*49)
+        
+            for i in range(len(archivos)):
+                info.pop(0)
+                tamano.pop(0)
+                ubicacion.pop(0)
+            obtenerarchivos()
+        else:
+            posicion = posicion + 64
+            sistema.seek(posicion)
+    sistema.close
        
