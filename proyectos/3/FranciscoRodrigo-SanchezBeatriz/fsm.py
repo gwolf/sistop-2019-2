@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from fifs import FIFS
 import sys
 
