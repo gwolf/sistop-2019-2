@@ -1,0 +1,15 @@
+Proyecto #3
+Alumno: Ibarra Badillo Omar
+
+
+En el programa se ejecutan las tareas de listar los archivos del sistema de
+archivos, copiar del sistema de archivos al de nuesta computadora, copiar un 
+archivo de nuestra computadora al sistema de archivos otorgado por el profesor
+y tambien elimina un archivo de ese sistema de archivos y desfragmenta el
+mismo.
+
+Esta generado en el lenguaje C, por lo tanto, se debe compular, de praferencia
+con gcc.
+
+
+
