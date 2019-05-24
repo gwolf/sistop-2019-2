@@ -32,3 +32,15 @@ def obtenerinfo():
         info.append(query)
 
     sistema.close()
+
+def copiarPC(archivo):
+    sistema = open(directorio, 'r+b')
+    posicion_archivo = archivos.index(archivo)
+    tamano_archivo = tamano[posicion_archivo]
+    ubicacion_archivo = ubicacion[posicion_archivo]*1024
+    sistema.seek(ubicacion_archivo)
+
+    copia_archivo = open(archivo,'wb')
+    copia.write(sistema.read(tamano_archivo))
+    sistema.close()
+       
