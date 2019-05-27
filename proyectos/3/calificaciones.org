@@ -1,0 +1,646 @@
+#+title: Proyecto 3 — Calificaciones y comentarios
+#+options: toc:nil
+
+El planteamiento del proyecto y la rúbrica para su calificación están
+[[./README.org][disponibles aquí]].
+
+* Gabriel Aguilar y Sandra García
+- Documentación :: [[./AguilarGabriel-GarciaSandra/readme.txt][readme.txt]]
+- Código :: [[./AguilarGabriel-GarciaSandra/manejador.py][manejador.py]]
+- Lenguaje :: Python
+- Interfaz :: Comandos especificados como argumentos al invocar
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Abren el archivo del FiUnamFS bajo diferentes nombres en
+    diferentes puntos del programa — A veces es =fiunam.img=, a veces
+    =fiUnam.img=. Claro, en Windows son el mismo nombre, pero en
+    cualquier otro sistema operativo se vuelve complicado ☹
+  - No interopera bien con el archivo de referencia que les mandé:
+    Puede listar los directorios (aunque genera un error):
+    #+begin_src text
+      $ python3 manejador.py listar
+      README.org
+      logo.png
+      mensajes.png
+      Traceback (most recent call last):
+	File "manejador.py", line 276, in <module>
+	  opciones(sys.argv)
+	File "manejador.py", line 231, in opciones
+	  listar()
+	File "manejador.py", line 125, in listar
+	  archivoAux=file.read(15)
+	File "/usr/lib/python3.7/codecs.py", line 322, in decode
+	  (result, consumed) = self._buffer_decode(data, self.errors, final)
+      UnicodeDecodeError: 'utf-8' codec can't decode byte 0x89 in position 8128: invalid start byte
+    #+end_src
+    Y sí, el byte 0x89 en cuestión es /parte de/ un /caracter
+    multibyte/ ☺ (¿qué es eso? ¡No me digan que no conocen a [[https://en.wikipedia.org/wiki/Unicode][Unicode]]!)
+
+    ...Lo que no entiendo es /por qué/ siguieron leyendo hasta ese
+    punto. Su código sólo lee del archivo 64 veces, avanzando 64 bytes
+    a cada ciclo, con lo que no debería leer más allá del byte
+    =(1024 + 64 * 64) = 5120=
+  - Especifican codificación de archivos =Latin-1=. ¿Por qué?
+    (nuevamente... ¿No conocen Unicode? Latin-1 no debe utilizarse
+    hace por lo menos cosa de veinte años). Esto lleva a que se
+    corrompan los datos en los archivos. Por ejemplo, copié el fuente
+    del programa que hicieron, y tuvo una corrupción bastante visible:
+    #+begin_src text
+      ,*** manejador.py	2019-05-24 13:34:45.872459182 -0500
+      --- manejador_corrompido	2019-05-24 13:36:17.904493860 -0500
+      ,***************
+      ,*** 88 ****
+      ! 		return("Se ha añadido exitosamente")
+      --- 88 ----
+      ! 		return("Se ha aÃ±adido exitosamente")
+      ,***************
+      ,*** 157 ****
+      ! 			limpiar(ini,ceil(tam/1024))#El tamaño se envia en clusters
+      --- 157 ----
+      ! 			limpiar(ini,ceil(tam/1024))#El tamaÃ±o se envia en clusters
+      ,***************
+      ,*** 164 ****
+      ! #Esta funcion limpia la memoria desde un cluster inicial(ini), el tamaño(tam) esta dado clusters
+      --- 164 ----
+      ! #Esta funcion limpia la memoria desde un cluster inicial(ini), el tamaÃ±o(tam) esta dado clusters
+      ,***************
+      ,*** 176 ****
+      ! 	archivo=[]#[ini,tam] #tamaño dado en clusters
+      --- 176 ----
+      ! 	archivo=[]#[ini,tam] #tamaÃ±o dado en clusters
+      ,***************
+      ,*** 276 ****
+      ! opciones(sys.argv)
+      --- 276 ----
+      ! opciones(sy
+    #+end_src
+  - El sistema de archivos debe ser /de tamaño estable/. ¡Ustedes
+    están haciendo que crezca y decrezca a cada escritura!
+- Calificación :: 7.5
+
+* Ernesto Aguilera
+- Documentación :: ✗
+- Código :: [[./AguileraErnesto/System.py][System.py]]
+- Lenguaje :: Python
+- Interfaz :: Interfaz de menú textual
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✗
+  3. Copiar un archivo desde tu sistema: ✗
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✗
+- Comentarios ::
+  - ¡Se ve que te desesperaste hacia el final! Tu código no corría,
+    pero yo de terco le hice un par de modificaciones... Y anduvo:
+    #+begin_src diff
+      @@ -6,10 +6,12 @@ def main():
+	      #Validamos que el sistema de archivos sea uno conocido
+	      file=open("fiunamfs.img","r")
+	      nom=file.read(8)
+      -       file.seek(2)
+      +       file.seek(10)
+	      version=file.read(3)
+      -       if nom="FiUnamFS":
+      -               if version="0.4":
+      +       print(nom)
+      +       print(version)
+      +       if nom=="FiUnamFS":
+      +               if version=="0.4":
+			      a=True
+			      file.close()
+			      while(a):
+      @@ -21,7 +23,7 @@ def main():
+				      print("5. Desfragmentar.\n")
+				      print("6. Salir.\n")
+				      print("\t Seleccione un opcion: \n")
+      -                               opc=input("->")
+      +                               opc=int(input("->"))
+ 
+				      if opc==1:
+					      print("Listando contenido: \n")
+      @@ -33,15 +35,15 @@ def main():
+				      elif opc==4:
+					      print("Dame el nombre del archivo a borrar...")
+					      print(delete(input("->")))
+      -                               elif op==5:
+      +                               elif opc==5:
+					      print("No implementado")
+				      elif opc==6:
+					      print("\tDomo Harigato profesor :D \n")
+					      a=False
+      -                       else
+      +                       else:
+				      print("Posible incompatibilidad de versiones, abortando...")
+				      sys.exit()
+      -               else
+      +               else:
+			      print("No conozco el formato del sistema, adios.")
+			      sys.exit()
+ 
+      @@ -62,7 +64,7 @@ def delete(archivo):
+			      delDir(file)
+			      file.seek(ini*1024)
+			      for i in range(tam):
+      -                               file.write(' '*1024))
+      +                               file.write(' '*1024)
+			      file.close()
+			      ret="Archivo borrado."
+			      return ret
+      @@ -94,7 +96,8 @@ def list(): #Método que lista el directorio
+	      file=open("fiunamfs.img","r")
+	      file.seek(1024)
+	      for i in range(64):
+      -               if file.read(15) != 'AQUI_NO_VA_NADA':
+      +               archivoAux = file.read(15)
+      +               if archivoAux != 'AQUI_NO_VA_NADA':
+			      print(archivoAux)
+		      file.seek(file.tell()+49)
+	      file.close()
+    #+end_src
+  - Tu código está sencillo, claro y compacto; le faltaba poquito para
+    implementar las funciones faltantes.
+- Calificación :: 6
+
+* Arturo Durán y Miguel López
+- Documentación :: [[./Dur%C3%A1nArturo-L%C3%B3pezMiguel/Documentaci%C3%B3n/Proyecto%203%20SO.pdf][Proyecto 3 SO.pdf]]
+- Código :: [[./DuránArturo-LópezMiguel/main.py][main.py]], [[./DuránArturo-LópezMiguel/FS.py][FS.py]]
+- Lenguaje :: Python
+- Interfaz :: GUI (TkInter)
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✓
+- Comentarios ::
+  - Veo que para muchas de las operaciones realizan una serie de
+    validaciones. ¡Muy bien!
+  - La interfaz es complicada de usar... Eso de dar comandos a
+    ``ratonazos'' y obtener respuestas únicamente en la consola... Es
+    raro, por decir lo menos (-:
+- Calificación :: 10
+
+* Alberto Espinoza
+- Documentación :: ✗
+- Código :: [[./EspinozaAlberto/AlbertoEsp.cpp][AlbertoEsp.cpp]]
+- Lenguaje :: C++
+- Interfaz :: Basado en menú textual
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✗
+  3. Copiar un archivo desde tu sistema: ½ (sólo permite copiar desde
+     la línea de comando, limitando a una única línea)
+  4. Eliminar un archivo: ✗
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Tuve que hacer una serie de cambios para que compilara:
+    #+begin_src diff
+      @@ -4,7 +4,7 @@
+       #include <iostream>
+       # define MAX 25
+ 
+      -char * main_menu_items[32] =
+      +const char * main_menu_items[32] =
+       {
+	      "Salir",
+	      "Nuevo archivo",
+      @@ -245,6 +245,7 @@ int Cerrar(char *fileName){
+	      fputs("k", fd);
+	      rewind(fd);
+	      fclose(fd);
+      +       return 0;
+       }
+ 
+ 
+      @@ -348,7 +349,7 @@ int main(int argc, const char *argv[])
+		       printf ("Nombre delarchivos:");
+				      GetString(temp.name);
+				      printf ("Contenido: ");
+      -                               gets(temp.cont);
+      +                               scanf("%s", &temp.cont);
+				      printf ("Tamano: ");
+				      scanf ("%d", &temp.tam);
+    #+end_src
+  - Ibas desarrollando un programa interesante, y con un estilo
+    bastante decente. Lástima que quedaste tan lejos de terminarlo ☹
+- Calificación :: 5
+
+* Rodrigo Francisco y Beatriz Sánchez
+- Documentación :: [[./FranciscoRodrigo-SanchezBeatriz/README.md][README.md]]
+- Código :: [[./FranciscoRodrigo-SanchezBeatriz/fifs.py][fifs.py]], [[./FranciscoRodrigo-SanchezBeatriz/fsm.py][fsm.py]]
+- Lenguaje :: Python
+- Interfaz :: Comandos especificados como argumentos al invocar
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✓
+- Comentarios ::
+  - Dejan comentarios en su código indicando que "extrañaron" un
+    =switch/case= para que resultara más elegante que un bloque de
+    anidado de =if/elif=. Podrían usar una tabla de despacho
+    (/dispatch table/) que guardara apuntadores a funciones, si todas
+    llevan argumentos compatibles:
+
+    #+begin_src python
+      funciones = {'ls' : fs.ls,
+		   'rm' : fs.rm,
+		   'cpout' : fs.cpout,
+		   # (...)
+		   }
+
+      cual = argv[1]
+      parametro = argv[2]
+
+      if funciones.has_key(cual):
+	  funciones[cual](parametro)
+      else:
+	  print('No tengo idea de cómo realizar "%s"' % cual)
+	  exit(0)
+    #+end_src
+  - Hay varios puntos en que el intérprete de Python que estoy usando
+    se queja de un parámetro de más en las llamadas a =bytes()=; por
+    lo que puedo ver (y funciona en mi máquina), sugiero cambiar (por
+    ejemplo):
+    #+begin_src python
+    bytes(fe_cluster.zfill(len(fe_cluster)+cluster_zeros),'utf-8')
+    #+end_src
+    por:
+    #+begin_src python
+    fe_cluster.zfill(len(fe_cluster)+cluster_zeros).encode('utf-8')
+    #+end_src
+  - Tuve que corregir también una llamada en que no estaba explicitado
+    el tratamiento de enteros:
+    #+begin_src diff
+      @@ -278,8 +278,8 @@
+		       if fe_numclusters <= cluster_space :
+			   f = open(fe,"rb")
+			   # vamos a escribir en i_lastcluster + 1 nuestra info
+      -                    fe_prtb = self.sb.size_cluster*(i_lastcluster + 1)
+      -                    fe_prtt = fe_prtb + fe_size
+      +                    fe_prtb = int(self.sb.size_cluster*(i_lastcluster + 1))
+      +                    fe_prtt = int(fe_prtb + fe_size)
+			   self.fs_map[fe_prtb:fe_prtt] = f.read()
+			   # hacer registro de metadatos
+			   self.registerFile(fe,i_lastcluster+1)
+    #+end_src
+    Y por algunos bugs que siguen dando vueltas, veo que se me escapó
+    alguna otra... El programa corre, pero con varios bugcillos ☹
+  - En general, la implementación se me hace /muy/ buena. Todo
+    parametrizado, extensible. ¡Felicidades!
+- Calificación :: 10
+
+* Orlando García y Zuriel Rodríguez
+- Documentación :: [[./GarciaOrlando-RodriguezZuriel/Documentacion][Documentacion]]
+- Código :: [[./GarciaOrlando-RodriguezZuriel/FIFS.py][FIFS.py]]
+- Lenguaje :: Python
+- Interfaz :: Comandos especificados como argumentos al invocar
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ½
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Ummmm... La función para eliminar archivos existe (aunque tiene
+    algunos problemas, pero está /casi/ lista), pero de alguna manera
+    la ocultaron
+  - La función de desfragmentación está comentada (... y las ="""= que
+    la comentan rompen la indentación :-/ )
+  - En general, me gusta la implementación — Bastante sencilla de leer
+    y clara, aunque un poquito de comentarios ayudarían mucho
+  - En =clear()=, ¿Por qué asignar la ejecución de un programa externo
+    (=cls= o =clear=) a la variable =_=?
+- Calificación :: 8.5
+
+* Enrique Guerrero y Vicente García
+- Documentación :: ✗
+- Código :: [[./GarciaVicente-GuerreroEnrique/Proyecto3.py][Proyecto3.py]]
+- Lenguaje :: Python
+- Interfaz :: Menú desde línea de comando
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Buena implementación, código simple y claro
+  - Eché en falta la documentación. Ejecutar el proyecto y encontrarme
+    con esto:
+    #+begin_src text
+      $ python3 Proyecto3.py 
+      Traceback (most recent call last):
+	File "Proyecto3.py", line 250, in <module>
+	  main()
+	File "Proyecto3.py", line 177, in main
+	  sistema_de_archivos = open('fiunamfs.img','r')
+      FileNotFoundError: [Errno 2] No such file or directory: 'fiunamfs.img'
+    #+end_src
+    No es bonito. Claro, una vez que copié el archivo funcionó sin
+    ningún problema... ¡Pero es importante documentar!
+- Calificación :: 8.5
+
+* Omar Ibarra
+- Documentación :: [[./IbarraOmar/Documentacion][Documentacion]]
+- Código :: [[./IbarraOmar/omar_ibarra.proyecto_sistemas.c][omar_ibarra.proyecto_sistemas.c]]
+- Lenguaje :: C
+- Interfaz ::
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ½
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ½
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Comprendo que andes con prisa, pero... ¿Leíste ya tu
+    documentación? ☹
+  - Fue necesario hacer unas pequeñas modificaciones a tu código para
+    que funcionara:
+    #+begin_src diff
+      @@ -9,7 +9,7 @@
+       #define BUFSIZE 1024
+       //long int Ubicacion;
+       int Conta = 1024 , Recorre = 0;
+      -int fd,fd1, fd2, cerrar,Lugar[64];
+      +int fd,fd1, fd2, fd5, cerrar,Lugar[64];
+       char buf[BUFSIZE];
+       char Nombre_archivo[64][16], T_archivo[64][9];
+       char Version_FS[4],Cluster_inicial[64][6],Aqui_no_va_nada[64];
+      @@ -188,7 +188,7 @@ void Eliminar(){
+
+	      int new = atoi(Cluster_inicial[ubi]) * BUFSIZE;//cluster en el que inicia * 1024
+	       if (strcmp(coinsidencia1, coinsidencia2) == 0 ) { 
+      -                fd5=open(/dev/zero,O_RDONLY);
+      +                fd5=open("/dev/zero",O_RDONLY);
+		      lseek(fd,new,SEEK_SET);
+		       char buf[atoi(T_archivo[ubi])];
+		       n = read(fd5, buf, atoi(T_archivo[ubi]));
+    #+end_src
+  - ¿Escrito en C? ¡Bien!
+  - A nivel usabilidad: Es muy poco probable que un usuario quiera
+    listar, copiar-de, copiar-a y eliminar, necesariamente uno de cada
+    uno. Sería mejor presentar la interfaz a partir de parámetros o
+    menú, y mantendrías casi la misma simplicidad en tu código.
+  - ¡Duele leer el fuente! ¿ =coinsidencia= ? ¡ =coincidencia= !
+  - Al copiar un archivo de mi computadora al sistema de archivos,
+    grabas los datos correctamente en el área de datos, pero no creas
+    la entrada correspondiente en el directorio (por tanto, la
+    información queda inalcanzable)
+  - Hacer comparaciones en C entre cadenas manualmente es muuuuuuuy
+    doloroso. ¿Por qué no usaste =strcmp= para encontrar la entrada
+    correcta del directorio en tu función =Eliminar()=, líneas
+    178–187? Me parece que esto causa que nunca encuentre el archivo especificado
+- Calificación :: 7
+
+* Luis Morales y Osmar Juárez
+- Documentación :: [[./JuarezOsmar-MoralesLuis/DocumentacionProyecto3.odt][DocumentacionProyecto3.odt]]
+- Código :: [[./JuarezOsmar-MoralesLuis/microFSfiunamfs.py][microFSfiunamfs.py]]
+- Lenguaje :: Python
+- Interfaz :: Menú desde línea de comando
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✗
+  3. Copiar un archivo desde tu sistema: ✗
+  4. Eliminar un archivo: ½
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Encontrar el balance correcto de cuánto debe comentarse es un
+    obscuro arte ;-) Ustedes comentan... Casi cada línea de
+    código. Resulta excesivo. Hace difícil leer el código — y les
+    genera una pesada carga de mantenimiento si tienen que modificar
+    algo (tienen que actualizar la funcionalidad _y_ su comentario de
+    manera que se mantenga la armonía).
+  - ¿Qué significa (de la documentación) que determinado valor /esté
+    en hexadecimal/ o /esté en decimal/? Mencioné en el planteamiento
+    que todos los números que empleamos, por simplicidad para ustedes,
+    los guardaba en una representación decimal... ¿?
+  - Al inicio de su implementación mencionan:
+    #+begin_src python
+      def listado():
+	      nomAux=''
+	      #arreglo que contiene las diferentes extensiones que se pueden encontrar
+	      #en nuestro sistema de archivos fiunamfs
+	      extensiones=['png','jpg','pdf','docx','txt','org','csv','PNG','JPG','PDF']
+    #+end_src
+    ... Pero nada de lo que mencionamos en este sistema de archivos
+    mencionaba que las extensiones tuvieran significado alguno.
+  - Al eliminar un archivo, la información que imprimen de depuración
+    encuentra el lugar correcto a modificar, pero no únicamente se
+    muere tras haberla identificado:
+    #+begin_src text
+
+      ---->4
+      Buscando Archivo...
+      Ingresa el nombre del archivo a eliminar: README.org
+      1024
+      (' ',)
+      1025
+      (' ',)
+      1026
+      (' ',)
+      1027
+      (' ',)
+      1028
+      (' ',)
+      1029
+      ('R',)
+      1030
+      ('E',)
+      1031
+      ('A',)
+      1032
+      ('D',)
+      1033
+      ('M',)
+      1034
+      ('E',)
+      1035
+      ('.',)
+      1036
+      ('o',)
+      1037
+      ('r',)
+      1038
+      ('g',)
+      1039
+      ('\x00',)
+      Traceback (most recent call last):
+	File "microFSfiunamfs.py", line 200, in <module>
+	  main()
+	File "microFSfiunamfs.py", line 191, in main
+	  elimina(offsetDeleteFile)
+	File "microFSfiunamfs.py", line 124, in elimina
+	  entry=struct.pack('<p',emptyClouster,varAuxZeros)
+      struct.error: pack expected 1 items for packing (got 2)
+    #+end_src
+    Sino que también borra el contenido del archivo =fiunamfs.img= ☹
+    #+begin_src sh
+      $ ls -hl fiunamfs.img 
+      -rw-r--r-- 1 gwolf gwolf 0 May 27 11:49 fiunamfs.img
+    #+end_src
+- Calificación :: 6
+
+* Luis Mata
+- Documentación :: ✗
+- Código :: [[./MataLuis/proyecto.py][proyecto.py]]
+- Lenguaje :: Python
+- Interfaz :: Menú desde línea de comando
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: 
+  3. Copiar un archivo desde tu sistema: 
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✗
+- Comentarios ::
+  - Tu idea de separar la obtención y el reporte de datos es buena, es
+    una buena práctica. Sin embago, te faltó limpiar =info= entre
+    llamadas consecutivas a las funciones.
+    - En tu línea 144, después de verificar que el sistema de archivos
+      es verdaderamente un =FiUnamFS= (¡bien!) haces una llamada a
+      =obtenerarchivos()=
+    - Esto deja la lista de archivos en =info=. Posteriormente, si
+      llamas a =obtenerinfo()=, el arreglo está /sucio/. Por eso,
+      llamadas consecutivas a la misma función se confunden:
+      #+begin_src text
+	$ python proyecto.py 
+	Ingresa:
+	1 Para obtener la informacion del sistema
+	2 Para listar archivos
+	3 Copiar un archivo a la PC
+	4 Copiar un archivo desde la PC
+	5 Eliminar un archivo
+	6 Para salir..
+	Opcion:2
+	logo.png
+	mensajes.png
+	Ingresa:
+	1 Para obtener la informacion del sistema
+	2 Para listar archivos
+	3 Copiar un archivo a la PC
+	4 Copiar un archivo desde la PC
+	5 Eliminar un archivo
+	6 Para salir..
+	Opcion:2
+	m
+	e
+	n
+	s
+	a
+	j
+	e
+	s
+	.
+	p
+	n
+	g
+	Ingresa:
+	1 Para obtener la informacion del sistema
+	2 Para listar archivos
+	3 Copiar un archivo a la PC
+	4 Copiar un archivo desde la PC
+	5 Eliminar un archivo
+	6 Para salir..
+	Opcion:2
+	g
+      #+end_src
+    - Todavía peor se confunde la opción 1 (=Información del
+      sistema=)... ☹ Puedes corregir la situación evitando la llamada
+      a =obtenerarchivos()= de la línea 144, y vaciando info (=info =
+      []=) al entrar al =while=.
+  - Las opciones 3 y 4 invariablemente me generan errores ☹ Modifiqué
+    tu programa corrigiendo el dedazo de la línea 91 (=wirte= por
+    =write=), y pude eliminar archivos... Pero no pude copiar archivos
+    desde o hacia el sistema.
+- Calificación :: 6
+
+* Miguel Pérez Quiroz y Carlos Morales
+- Documentación :: [[./MoralesCarlos-PerezQuirozMiguel/README.md][README.md]]
+- Código :: [[./MoralesCarlos-PerezQuirozMiguel/file_system.py][file_system.py]]
+- Lenguaje :: Python
+- Interfaz :: Menú desde línea de comando
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✓
+- Comentarios ::
+  - El sistema que implementan /se inspira cercanamente/ en el que les
+    propuse, pero no es compatible. Esto es, si intento correr su
+    programa sobre el archivo referencia que les di:
+    #+begin_src text
+      -----------------------Gracias por usar FiUnamFS----------------------
+      Si eres nuevo utilizando FiUnamFS puedes utilizar el 
+      comando 'help' para obtener ayuda.
+
+      gwolf@FiUnamFS# lista
+      README.org
+      logo.png
+      mensajes.png
+      gwolf@FiUnamFS# copyfs logo.png
+      Traceback (most recent call last):
+	File "file_system.py", line 413, in <module>
+	  user_interface()
+	File "file_system.py", line 354, in user_interface
+	  copy_from_disk_to_computer(file_name)
+	File "file_system.py", line 196, in copy_from_disk_to_computer
+	  new_file.write(file_system_disk.read(file_size))
+	File "/usr/lib/python3.7/codecs.py", line 322, in decode
+	  (result, consumed) = self._buffer_decode(data, self.errors, final)
+      UnicodeDecodeError: 'utf-8' codec can't decode byte 0x89 in position 7608: invalid start byte
+    #+end_src
+  - Sin duda, una solución ingeniosa — Y se las voy a dar por buena en
+    los puntos evaluados. Sin embargo, esto no funcionaría pensando en
+    la situación planteada como sistema /de disco/ (porque las
+    lecturas no están /alineadas a bloque/, sino que /de cinta/.
+    - Consideren lo deficiente que sería el rendimiento en un sistema
+      de archivos de tamaño más interesante (¿100MB? ¿10GB?), al
+      tener que reescribir buena parte del contenido del disco a
+      cualquier modificación
+    - No es demasiado lejano del formato que usan herramientas como
+      /tar/, /zip/ y similares. Vale y es bueno, dependiendo del medio
+      que empleen.
+- Calificación :: 9
+
+* Vicente Romero
+- Documentación :: [[./RomeroVicente/README.md][README.md]]
+- Código :: [[./RomeroVicente/core/Console.py][Console.py]], [[./RomeroVicente/core/FiUnamFS.py][FiUnamFS.py]], [[./RomeroVicente/core/Menu.py][Menu.py]], [[./RomeroVicente/core/deprecated/FiUnamFS_FUSE.py][FiUnamFS_FUSE.py]], [[./RomeroVicente/main.py][main.py]]
+- Lenguaje :: Python
+- Interfaz :: Menú desde línea de comando
+- Puntos a cumplir en el FiUnamFS ::
+  1. Listar los contenidos: ✓
+  2. Copiar un archivo hacia tu sistema: ✓
+  3. Copiar un archivo desde tu sistema: ✓
+  4. Eliminar un archivo: ✓
+  5. Defragmentar: ✓
+- Comentarios ::
+  - ¡Muy bueno que incluyas la inicialización del FS! Para futuras
+    ocasiones, será uno de los puntos que pida en el ejercicio.
+  - Muy bien también que parametrices todas las medidas al calcular
+    las ubicaciones y similares:
+    #+begin_src python
+	  def write_input_dir(FS,id,name_file="AQUI_NO_VA_NADA",size_file="",inic_cluster="",cdate="",mdate="",no_use=""):
+	      offset = 1024
+	      size_input_dir = 64
+	      # (...)
+	      FS[offset+(size_input_dir*id)+16:offset+(size_input_dir*id)+24] = ("0"*(8-len(str(size_file)))+str(size_file)).encode('ascii')
+	      FS[offset+(size_input_dir*id)+25:offset+(size_input_dir*id)+30] = ("0"*(5-len(str(inic_cluster)))+str(inic_cluster)).encode('ascii')
+	      FS[offset+(size_input_dir*id)+31:offset+(size_input_dir*id)+45] = ("0"*(14 - len(str(cdate)))+str(cdate)).encode('ascii')
+    #+end_src
+    Yo sugeriría parametrizarlo un poco más — No dejarlo dentro de
+    cada definición de función, sino que como definición global
+    - O posiblemente dejarlo parametrizable en el =__init__= de la clase
+  - No es mala la idea de desfragmentar cada vez que se elimina un
+    archivo. Sin embargo, eso no se hace normalmente en un sistema de
+    archivos real por la sobrecarga que lleva: Puedes crear y borrar
+    miles de archivos por minuto. ¿Quieres desfragmentar cada vez
+    que lo hagas? ¡Duele! ☹
+- Calificación :: 10
+
