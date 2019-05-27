@@ -5,6 +5,8 @@ Planteamiento: 09.05.2019
 Entrega: 23.05.2019
 #+END_SRC
 
+¡Las [[./calificaciones.org][calificaciones y comentarios]] ya están disponibles!
+
 ** Descripción del proyecto
 
 Para la unidad de sistemas de archivos, creo que resulta natural que

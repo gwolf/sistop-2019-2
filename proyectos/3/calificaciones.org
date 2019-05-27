@@ -642,5 +642,9 @@ El planteamiento del proyecto y la rúbrica para su calificación están
     archivos real por la sobrecarga que lleva: Puedes crear y borrar
     miles de archivos por minuto. ¿Quieres desfragmentar cada vez
     que lo hagas? ¡Duele! ☹
-- Calificación :: 10
+  - No me parece que los archivos que incluyes en tu sistema de
+    archivos sean... Lo más adecuado para una entrega :-| Haré de
+    cuenta que no vi nada. Pero, por favor, ¡considera la imagen que
+    dan!
+- Calificación :: 9
 
